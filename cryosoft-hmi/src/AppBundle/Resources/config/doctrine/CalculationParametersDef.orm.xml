@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\CalculationParametersDef" table="calculation_parameters_def">
+    <indexes>
+      <index name="FK_CALCULATION_PARAMETERS_DEF_LN2USER" columns="ID_USER"/>
+    </indexes>
+    <id name="idCalcParamsdef" type="integer" column="ID_CALC_PARAMSDEF">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="horizScanDef" type="boolean" column="HORIZ_SCAN_DEF" nullable="true"/>
+    <field name="vertScanDef" type="boolean" column="VERT_SCAN_DEF" nullable="true"/>
+    <field name="maxItNbDef" type="integer" column="MAX_IT_NB_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="timeStepsNbDef" type="integer" column="TIME_STEPS_NB_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="relaxCoeffDef" type="float" column="RELAX_COEFF_DEF" precision="24" scale="0" nullable="true"/>
+    <field name="timeStepDef" type="float" column="TIME_STEP_DEF" precision="24" scale="0" nullable="true"/>
+    <field name="storageStepDef" type="integer" column="STORAGE_STEP_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="precisionLogStepDef" type="integer" column="PRECISION_LOG_STEP_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="stopTopSurfDef" type="float" column="STOP_TOP_SURF_DEF" precision="24" scale="0" nullable="true"/>
+    <field name="stopIntDef" type="float" column="STOP_INT_DEF" precision="24" scale="0" nullable="true"/>
+    <field name="stopBottomSurfDef" type="float" column="STOP_BOTTOM_SURF_DEF" precision="24" scale="0" nullable="true"/>
+    <field name="stopAvgDef" type="float" column="STOP_AVG_DEF" precision="24" scale="0" nullable="true"/>
+    <field name="studyAlphaTopFixedDef" type="boolean" column="STUDY_ALPHA_TOP_FIXED_DEF" nullable="true"/>
+    <field name="studyAlphaTopDef" type="float" column="STUDY_ALPHA_TOP_DEF" precision="10" scale="0" nullable="true"/>
+    <field name="studyAlphaBottomFixedDef" type="boolean" column="STUDY_ALPHA_BOTTOM_FIXED_DEF" nullable="true"/>
+    <field name="studyAlphaBottomDef" type="float" column="STUDY_ALPHA_BOTTOM_DEF" precision="10" scale="0" nullable="true"/>
+    <field name="studyAlphaLeftFixedDef" type="boolean" column="STUDY_ALPHA_LEFT_FIXED_DEF" nullable="true"/>
+    <field name="studyAlphaLeftDef" type="float" column="STUDY_ALPHA_LEFT_DEF" precision="10" scale="0" nullable="true"/>
+    <field name="studyAlphaRightFixedDef" type="boolean" column="STUDY_ALPHA_RIGHT_FIXED_DEF" nullable="true"/>
+    <field name="studyAlphaRightDef" type="float" column="STUDY_ALPHA_RIGHT_DEF" precision="10" scale="0" nullable="true"/>
+    <field name="studyAlphaFrontFixedDef" type="boolean" column="STUDY_ALPHA_FRONT_FIXED_DEF" nullable="true"/>
+    <field name="studyAlphaFrontDef" type="float" column="STUDY_ALPHA_FRONT_DEF" precision="10" scale="0" nullable="true"/>
+    <field name="studyAlphaRearFixedDef" type="boolean" column="STUDY_ALPHA_REAR_FIXED_DEF" nullable="true"/>
+    <field name="studyAlphaRearDef" type="float" column="STUDY_ALPHA_REAR_DEF" precision="10" scale="0" nullable="true"/>
+    <field name="precisionRequestDef" type="float" column="PRECISION_REQUEST_DEF" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idUser" target-entity="Ln2user" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_USER" referenced-column-name="ID_USER"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

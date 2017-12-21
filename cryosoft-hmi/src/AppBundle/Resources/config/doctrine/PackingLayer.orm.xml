@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PackingLayer" table="packing_layer">
+    <indexes>
+      <index name="FK_PACKING_LAYER_PACKING_ELMT" columns="ID_PACKING_ELMT"/>
+      <index name="FK_PACKING_LAYER_PACKING" columns="ID_PACKING"/>
+    </indexes>
+    <id name="idPackingLayer" type="integer" column="ID_PACKING_LAYER">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="thickness" type="float" column="THICKNESS" precision="24" scale="0" nullable="true"/>
+    <field name="packingSideNumber" type="smallint" column="PACKING_SIDE_NUMBER" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="packingLayerOrder" type="smallint" column="PACKING_LAYER_ORDER" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idPackingElmt" target-entity="PackingElmt" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_PACKING_ELMT" referenced-column-name="ID_PACKING_ELMT"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPacking" target-entity="Packing" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_PACKING" referenced-column-name="ID_PACKING"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

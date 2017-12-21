@@ -1,0 +1,81 @@
+{% extends 'modal.html.twig' %}
+{% block body %}
+
+
+        <div class="row">
+
+            <form action="/profile" method="post">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+
+
+
+                    <div class="form-group">
+                        <label>Language</label>
+                        <select class="form-control chosen-select" name="_lang">
+                            {% for language in listLang %}
+                                <option value="{{ language.codeLangue }}" {{ valuelang == language.codeLangue  ? 'selected' : ''}}>{{ listLangLong[language.langName] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>{{'Monetary'|trans}}</label>
+                        <select class="form-control chosen-select" name="_money">
+                            {% for monetaryCurrency in listMone %}
+                                <option value="{{ monetaryCurrency.idMonetaryCurrency }}" {{ valuemoney == monetaryCurrency.idMonetaryCurrency ? 'selected' : '' }}>{{monetaryCurrency.moneyText}} {{monetaryCurrency.moneySymb}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group Gbutton">
+                        
+                        <button class="btn btn-flat btn-success buttons" type="submit"><i class="fa fa-check"></i> {{'Confirm'|trans}}</button>
+                    </div>
+                    <div class="form-group Gbutton">
+                        <a href="/profile" class="btn btn-flat bg-navy buttons" >{{'Profile'|trans}}</a>
+                        <a href="/change" class="btn btn-flat bg-navy buttons" >{{'Change Password'|trans}}</a>
+                        <a href="/unit" class="btn btn-flat bg-navy buttons" >{{'Unit'|trans}}</a>
+                        <a href="/profileEquipment" class="btn btn-flat bg-navy buttons" >{{'Equipment'|trans}}</a>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </form>
+
+        </div>
+
+        <br/>
+
+
+{% endblock %}
+
+{#{% block javascripts %}#}
+    {#<script type="text/javascript">#}
+        {#function valid()#}
+        {#{#}
+            {#if(document.chngpwd.opwd.value=="")#}
+            {#{#}
+                {#alert("Old Password Filed is Empty !!");#}
+                {#document.chngpwd.opwd.focus();#}
+                {#return false;#}
+            {#}#}
+            {#else if(document.chngpwd.npwd.value=="")#}
+            {#{#}
+                {#alert("New Password Filed is Empty !!");#}
+                {#document.chngpwd.npwd.focus();#}
+                {#return false;#}
+            {#}#}
+            {#else if(document.chngpwd.cpwd.value=="")#}
+            {#{#}
+                {#alert("Confirm Password Filed is Empty !!");#}
+                {#document.chngpwd.cpwd.focus();#}
+                {#return false;#}
+            {#}#}
+            {#else if(document.chngpwd.npwd.value!= document.chngpwd.cpwd.value)#}
+            {#{#}
+                {#alert("Password and Confirm Password Field do not match  !!");#}
+                {#document.chngpwd.cpwd.focus();#}
+                {#return false;#}
+            {#}#}
+            {#return true;#}
+        {#}#}
+    {#</script>#}
+{#{% endblock %}#}

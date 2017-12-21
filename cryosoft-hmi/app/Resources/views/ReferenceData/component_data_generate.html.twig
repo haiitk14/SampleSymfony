@@ -1,0 +1,248 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        {#<header class="main-header">#}
+            {#<!-- Logo -->#}
+            {#<a href="#" class="logo">#}
+                {#<!-- mini logo for sidebar mini 50x50 pixels -->#}
+                {#<span class="logo-mini"><b>C</b>ST</span>#}
+                {#<!-- logo for regular state and mobile devices -->#}
+                {#<span class="logo-lg"><b>CryoSoft</b></span>#}
+            {#</a>#}
+            {#<!-- Header Navbar: style can be found in header.less -->#}
+            {#<nav class="navbar navbar-static-top">#}
+                {#<!-- Sidebar toggle button-->#}
+                {#<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">#}
+                    {#<span class="sr-only">Toggle navigation</span>#}
+                {#</a>#}
+
+                {#<div class="navbar-custom-menu">#}
+                    {#<ul class="nav navbar-nav">#}
+                        {#<!-- User Account: style can be found in dropdown.less -->#}
+                        {#<li class="dropdown user user-menu">#}
+                            {#<a href="#" class="dropdown-toggle" data-toggle="dropdown">#}
+                                {#<img src="assets/dist/img/ua.png" class="user-image" alt="User Image">#}
+                                {#<span class="hidden-xs">{% if app.user %}#}
+                                                        {#{{ app.user.usernam }}#}
+                                                    {#{% endif %}</span>#}
+                            {#</a>#}
+                            {#<ul class="dropdown-menu">#}
+                                {#<!-- User image -->#}
+                                {#<li class="user-header">#}
+                                    {#<img src="assets/dist/img/ua.png" class="img-circle" alt="User Image">#}
+
+                                    {#<p>#}
+                                        {#{% if app.user %}#}
+                                            {#{{ app.user.usernam }}#}
+                                        {#{% endif %} - AZ Corp#}
+                                        {#<small>Member since Nov. 2012</small>#}
+                                    {#</p>#}
+                                {#</li>#}
+                                {#<!-- Menu Footer-->#}
+                                {#<li class="user-footer">#}
+                                    {#<div class="pull-right">#}
+                                        {#<a href="/logout" class="btn btn-default  btn-flat"><i class="fa fa-sign-out"></i>Sign out</a>#}
+                                    {#</div>#}
+                                    {#<div class="pull-left">#}
+                                        {#<a href="#" class="btn btn-default  btn-flat" data-toggle="modal" data-target="#preferUser"><i class="fa fa-users "></i> Profile</a>#}
+                                    {#</div>#}
+                                {#</li>#}
+                            {#</ul>#}
+                        {#</li>#}
+                        {#<!-- Control Sidebar Toggle Button -->#}
+                        {#<li>#}
+                            {#<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</div>#}
+            {#</nav>#}
+        {#</header>#}
+        {#<!-- Left side column. contains the logo and sidebar -->#}
+        {#<aside class="main-sidebar">#}
+            {#<!-- sidebar: style can be found in sidebar.less -->#}
+            {#<section class="sidebar">#}
+                {#<!-- Sidebar user panel -->#}
+                {#<div class="user-panel">#}
+                    {#<div class="pull-left image">#}
+                        {#<img src="assets/dist/img/ua.png" class="img-circle" alt="User Image">#}
+                    {#</div>#}
+                    {#<div class="pull-left info">#}
+                        {#<p>{% if app.user %}#}
+                                {#{{ app.user.usernam }}#}
+                            {#{% endif %}</p>#}
+                        {#<a href="#"><i class="fa fa-circle text-success"></i> AZ Corp</a>#}
+                    {#</div>#}
+                {#</div>#}
+
+                {#<!-- sidebar menu: : style can be found in sidebar.less -->#}
+                {#<ul class="sidebar-menu" data-widget="tree">#}
+                    {#<li class="header">MAIN MENU</li>#}
+                    {#<li class="active treeview">#}
+                        {#<a href="#">#}
+                            {#<i class="fa fa-dashboard"></i> <span>Study</span>#}
+                            {#<span class="pull-right-container">#}
+              {#<i class="fa fa-angle-left pull-right"></i>#}
+            {#</span>#}
+                        {#</a>#}
+                        {#<ul class="treeview-menu">#}
+                            {#<li class="active"><a href="#"><i class="fa fa-filter"></i> Input</a></li>#}
+                            {#<li style="padding-left:25px"><a href="#"><i class="fa fa-calendar-check-o"></i> Check control</a></li>#}
+                            {#<li style="padding-left:25px"><a href="#"><i class="fa fa fa-flash"></i> Calculate</a></li>#}
+                            {#<li style="padding-left:25px"><a href="#"><i class="fa fa-clock-o"></i> Calculate status</a></li>#}
+                            {#<li><a href="#"><i class="fa fa-share"></i> Output</a></li>#}
+                            {#<li><a href="#"><i class="fa fa-pie-chart"></i> Report</a></li>#}
+                        {#</ul>#}
+                    {#</li>#}
+                    {#<li class="header">PERIPHERAL FUNCTIONS</li>#}
+                    {#<li>#}
+                        {#<a href="#">#}
+                            {#<i class="fa fa-th"></i> <span>Reference Data</span>#}
+                        {#</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="#">#}
+                            {#<i class="fa fa-gear"></i> <span>Settings</span>#}
+                        {#</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="#">#}
+                            {#<i class="fa fa-group"></i> <span>Administration</span>#}
+                        {#</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="#">#}
+                            {#<i class="fa fa-retweet"></i> <span>Import / Export</span>#}
+                        {#</a>#}
+                    {#</li>#}
+                {#</ul>#}
+            {#</section>#}
+            {#<!-- /.sidebar -->#}
+        {#</aside>#}
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#" aria-expanded="false">Component-Load</a></li>
+                            <li class=""><a href="#" aria-expanded="false">Packing</a></li>
+                            <li ><a href="#" aria-expanded="false">Equipment</a></li>
+                            <li ><a href="#" aria-expanded="false">Pipline</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Reference Data
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!-- Main row -->
+                <div class="row">
+                    <!-- nav-tab-cus-Preminaty -->
+                    <div class="nav-tabs-custom">
+                        <!-- tab-content Preminary -->
+                        <div class="tab-content">
+                            <!-- nav-tab-custome Calculate mode -->
+                            <div class="nav-tabs-custom">
+                                <!-- nav-tab calculate mode -->
+                                <ul class="nav nav-tabs">
+                                    <li><a href="#">New</a></li>
+                                    <li ><a href="#">Open</a></li>
+                                    <li class="active"><a href="#">Data Generate</a></li>
+                                    <li ><a href="#">Import</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <!-- nav-tab-custom heat, consum, econo -->
+                                    <div class="nav-tabs-custom">
+                                        <!-- tab-content heat, consum, econo  -->
+                                        <div class="tab-content">
+                                            <form class="form-horizontal" action="/reference-data" method="post">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <h3><i class="glyphicon glyphicon-stop"></i> Convection Table</h3>
+                                                        <div class="panel panel-primary">
+                                                            <div class="panel-heading">
+                                                                <div class="pull-right">
+                                                                </div>
+                                                            </div>
+                                                            {#<div class="panel-body">#}
+                                                                {#<div class="input-group">#}
+                                                                    {#<input type="text" class="form-control" name ="_Search_Compenth" placeholder="Search . . .">#}
+                                                                    {#<span class="input-group-btn">#}
+                                                                            {#<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>#}
+                                                                        {#</span>#}
+                                                                {#</div>#}
+
+                                                                {#{{ path('_search') }}#}
+
+                                                                {#<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Search..." />#}
+                                                            {#</div>#}
+                                                            <div class="table-responsive">
+                                                                <div class="box">
+                                                                    <div class="box-body">
+                                                                        <table id="example1" class="table table-bordered table-striped">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>Temperature (<sup>o</sup>C)</th>
+                                                                                <th>Elthalpy (kj/kg)</th>
+                                                                                <th>Conductivity (W/m<sup>o</sup>C)</th>
+                                                                                <th>Density(kg/(m<sup>3</sup>))</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            {% for item in compenth %}
+                                                                                <tr>
+                                                                                    <td>{{ item.comptemp }}</td>
+                                                                                    <td>{{ item.compenth }}</td>
+                                                                                    <td>{{ item.compcond }}</td>
+                                                                                    <td>{{ item.compdens }}</td>
+
+                                                                                </tr>
+                                                                            {% endfor %}
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- /.tab-content calculate mode -->
+                                    </div>
+                                    <!-- /.nav-tab-custome Calculate mode -->
+                                    <!-- /.tab-pane preminary -->
+                                </div>
+                                <!-- /.tab-content Preminary -->
+                            </div>
+                            <!--/. nav-tab-cus-Preminaty -->
+                        </div>
+                        <!-- /.close main row -->
+                    </div>
+                </div>
+                <!-- /.row (main row) -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 3.0
+            </div>
+            <strong>Copyright &copy; 2017 <a href="#">CryoSoft</a>.</strong> All rights reserved.
+        </footer>
+        <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+    </body>
+
+{% endblock %}

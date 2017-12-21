@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\InitialTemperature" table="initial_temperature">
+    <indexes>
+      <index name="IX_ID_PRODUCTION" columns="ID_PRODUCTION"/>
+    </indexes>
+    <id name="idInitialTemp" type="integer" column="ID_INITIAL_TEMP">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="mesh1Order" type="smallint" column="MESH_1_ORDER" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mesh2Order" type="smallint" column="MESH_2_ORDER" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mesh3Order" type="smallint" column="MESH_3_ORDER" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="initialT" type="float" column="INITIAL_T" precision="24" scale="0" nullable="true"/>
+    <many-to-one field="idProduction" target-entity="Production"  inversed-by="idInitialTemp" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_PRODUCTION" referenced-column-name="ID_PRODUCTION"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

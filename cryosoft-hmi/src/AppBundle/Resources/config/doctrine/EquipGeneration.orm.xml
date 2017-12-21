@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\EquipGeneration" table="equip_generation">
+    <indexes>
+      <index name="FK_EQUIP_GENERATION_EQUIPMENT" columns="ID_EQUIP"/>
+    </indexes>
+    <id name="idEquipgeneration" type="integer" column="ID_EQUIPGENERATION">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idOrigEquip1" type="integer" column="ID_ORIG_EQUIP1" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idOrigEquip2" type="integer" column="ID_ORIG_EQUIP2" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="avgProdintemp" type="float" column="AVG_PRODINTEMP" precision="10" scale="0" nullable="true"/>
+    <field name="tempSetpoint" type="float" column="TEMP_SETPOINT" precision="10" scale="0" nullable="true"/>
+    <field name="dwellingTime" type="float" column="DWELLING_TIME" precision="10" scale="0" nullable="true"/>
+    <field name="movingChange" type="smallint" column="MOVING_CHANGE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="movingPos" type="float" column="MOVING_POS" precision="10" scale="0" nullable="true"/>
+    <field name="rotate" type="smallint" column="ROTATE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="posChange" type="smallint" column="POS_CHANGE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="newPos" type="float" column="NEW_POS" precision="10" scale="0" nullable="true"/>
+    <field name="eqpGenStatus" type="integer" column="EQP_GEN_STATUS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="eqpGenLoadrate" type="float" column="EQP_GEN_LOADRATE" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idEquip" target-entity="Equipment" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIP" referenced-column-name="ID_EQUIP"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

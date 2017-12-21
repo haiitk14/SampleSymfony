@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/Ionicons/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/Customize.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/skins/_all-skins.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/morris.js/morris.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/jvectormap/jquery-jvectormap.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/jqwidgets/jqwidgets/styles/jqx.base.css') }}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/iCheck/square/blue.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/chosen/bootstrap-chosen.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/jquery.toast.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/customs.css') }}">
+    {% endblock %}
+</head>
+<body>
+
+<header class="main-header">
+    <!-- Logo -->
+    <a href="#" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>C</b>ST</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>CryoSoft</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="../../assets/dist/img/Icon/user.svg" class="user-image" alt="User Image">
+
+                        <span class="hidden-xs">{% if app.user %}
+                                                        {{ app.user.usernam }}
+                                                    {% endif %}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="../../assets/dist/img/Icon/user.svg" class="img-circle" alt="User Image">
+
+                            <p>
+                                {% if app.user %}
+                                    {{ app.user.usernam }}
+                                {% endif %} - AZ Corp
+                                <small>Member since Nov. 2012</small>
+                            </p>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-right">
+                                <a href="/logout" class="btn btn-default  btn-flat"><i class="fa fa-sign-out"></i>Sign out</a>
+                            </div>
+                            <div class="pull-left">
+                                <a href="/profile" class="btn btn-default  btn-flat if-modal" data-toggle="modalx" data-target="#preferUser" ><i class="fa fa-users "></i> Profile</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="../../assets/dist/img/Icon/user.svg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>{% if app.user %}
+                        {{ app.user.usernam }}
+                    {% endif %}</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> AZ Corp</a>
+            </div>
+        </div>
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MAIN MENU</li>
+            <li class="active treeview">
+                <a href="#">
+                    <img src="../../assets/dist/img/Icon/study.svg">  <span>Study</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a href="../../cryosoft/study_definition/definition.html"><img src="../../assets/dist/img/Icon/intput.svg"></i> Input</a></li>
+                    <li style="padding-left:25px"><a href="#"><img src="../../assets/dist/img/Icon/Checkcontrol.svg"> Check control</a></li>
+                    <li style="padding-left:25px"><a href="#"><img src="../../assets/dist/img/Icon/Calculate.svg"> Calculate</a></li>
+                    <li style="padding-left:25px"><a href="#"><img src="../../assets/dist/img/Icon/Calculatestatus.svg"> Calculate status</a></li>
+                    <li><a href="#"><img src="../../assets/dist/img/Icon/output.svg"> Output</a></li>
+                    <li><a href="../../cryosoft/study_results/report.html"><img src="../../assets/dist/img/Icon/piechart.svg"> Report</a></li>
+                </ul>
+            </li>
+            <li class="header">PERIPHERAL FUNCTIONS</li>
+            <li>
+                <a href="../../cryosoft/study_referencedata/component_new.html">
+                    <img src="../../assets/dist/img/Icon/ReferenceData.svg"> <span>Reference Data</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../../assets/dist/img/Icon/Setting.svg"> <span>Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../../assets/dist/img/Icon/Administration.svg"> <span>Administration</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../../assets/dist/img/Icon/ImportExport.svg"> <span>Import / Export</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<div class="modal" id="preferUser">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">User Preferences</h4>
+            </div>
+            <div class="modal-body">
+                <iframe frameborder="0" style="width:100%;height: 700px;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block body %}
+
+{% endblock %}
+
+{% block javascripts %}
+<!-- jQuery 3 -->
+<script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/js-equipment.js') }}"></script>
+<script src="{{ asset('assets/dist/js/js-production/js-production.js') }}"></script>
+<script src="{{ asset('assets/dist/js/js-product-char/js-product-char.js') }}"></script>
+<script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
+<script>$.widget.bridge('uibutton', $.ui.button);</script>
+
+<script src="{{ asset('assets/bower_components/jquery-knob/dist/jquery.knob.min.js') }}"></script>
+<script src="{{ asset('assets/bower_components/moment/min/moment.min.js') }}"></script>
+<script src="{{ asset('assets/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('assets/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+
+<script src="{{ asset('assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+<script src="{{ asset('assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset('assets/bower_components/fastclick/lib/fastclick.js') }}"></script>
+<script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
+<script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+
+<script src="{{ asset('assets/dist/js/chosen.jquery.js') }}"></script>
+
+<script src="{{ asset('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/jquery.multi-select.js') }}"></script>
+<script src="{{ asset('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}" ></script>
+<script src="{{ asset('assets/plugins/iCheck/icheck.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/jquery.toast.min.js') }}"></script>
+
+<script>
+    function show(nr) {
+        document.getElementById("graph-value1").style.display = "none";
+        document.getElementById("graph-value2").style.display = "none";
+        document.getElementById("graph-value" + nr).style.display = "block";
+    }
+</script>
+<script>
+    function showGraph(nr) {
+        document.getElementById("getGraph1").style.display = "none";
+        document.getElementById("getGraph" + nr).style.display = "block";
+    }
+</script>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(580)
+                    .height(350);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<script>
+    function readURL1(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#blah1')
+                    .attr('src', e.target.result)
+                    .width(580)
+                    .height(350);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<script>
+    $(function() {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+    });
+</script>
+
+<script>
+    function showReport(nr) {
+        document.getElementById("graph-value1").style.display = "none";
+        document.getElementById("graph-value2").style.display = "none";
+        document.getElementById("graph-value3").style.display = "none";
+        document.getElementById("graph-value" + nr).style.display = "block";
+    }
+</script>
+<script>
+    function showSizing(nr) {
+        document.getElementById("graph-value1").style.display = "none";
+        document.getElementById("graph-value2").style.display = "none";
+        document.getElementById("graph-value" + nr).style.display = "block";
+    }
+</script>
+<script>
+    function showGraph(nr) {
+        document.getElementById("getGraph1").style.display = "none";
+        document.getElementById("getGraph" + nr).style.display = "block";
+    }
+</script>
+<script>
+    $(function() {
+        $('.chosen-select').chosen({
+            width: "100%"
+        });
+        $('.chosen-select-deselect').chosen({
+            allow_single_deselect: true
+        });
+    });
+</script>
+<script src="../../assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js" ></script>
+<script>
+    $(function() {
+        $('#example1').DataTable();
+        $("#tableComponent").DataTable();
+    })
+</script>
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $("#calculationSel1").click(function() {
+            window.chay = setInterval(function() {
+                $("#print").parent().after("Name component <br>");
+            }, 1000);
+            window.chay2 = setInterval(function() {
+                $("#process").parent().after("In process... <br> ");
+            }, 1000);
+            $("#parent_met").click(function() {
+                clearInterval(window.chay);
+            });
+            $("#parent_met").click(function() {
+                clearInterval(window.chay2);
+            });
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $('#custom-headers').multiSelect({
+        selectableHeader: "<div class='custom-header'>Equipment List</div>",
+        selectionHeader: "<div class='custom-header'>Active Equipment</div>"
+    });
+    $('#custom-headers1').multiSelect({
+        selectableHeader: "<div class='custom-header'>Equipment List</div>",
+        selectionHeader: "<div class='custom-header'>Active Equipment</div>"
+    });
+</script>
+
+<script>
+    $(function() {
+        //JS script
+        $('.if-modal').on('click', function(e){
+            e.preventDefault();
+            var href = $(this).attr('href');
+            var target = $(this).data('target');
+            if(href!='#') {
+                /*var modal = $(target);
+                var modal_body = $(target + ' .modal-body');
+                modal.on('show.bs.modal', function () {
+                    // use your remote content URL to load the modal body
+                    modal_body.load(href);
+                }).modal();*/
+                //console.log(target, $(target));
+
+                //$(target).modal('show').find('.modal-body').load(href);
+                $(target).modal('show').find('iframe').attr('src',href);
+                //$(target).modal('show').find('.modal-body').html('yyy');
+                //$(target).show();
+                //$(target).find('.modal-body').html('xxxx');
+            }
+        });
+    })
+</script>
+{% endblock %}
+
+<script type="text/javascript">
+    $('#showTop').on('change', function () {
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+        $("#top1, #top2, #top3, #top4, #top5, #top6, #top7, #top8, #top9").hide();
+        if(valueSelected == 1){
+            $("#top1").show();
+        }
+        else if(valueSelected == 2){
+            $("#top1, #top2").show();
+        }
+        else if(valueSelected == 3){
+            $("#top1, #top2, #top3").show();
+        }
+        else if(valueSelected == 4){
+            $("#top1, #top2, #top3, #top4").show();
+        }
+        else if(valueSelected == 5){
+            $("#top1, #top2, #top3, #top4, #top5").show();
+        }
+        else if(valueSelected == 6){
+            $("#top1, #top2, #top3, #top4, #top5, #top6").show();
+        }
+        else if(valueSelected == 7){
+            $("#top1, #top2, #top3, #top4, #top5, #top6, #top7").show();
+        }
+        else if(valueSelected == 8){
+            $("#top1, #top2, #top3, #top4, #top5, #top6, #top7, #top8").show();
+        }
+        else if(valueSelected == 9){
+            $("#top1, #top2, #top3, #top4, #top5, #top6, #top7, #top8, #top9").show();
+        }
+        else{
+            $("#top1, #top2, #top3, #top4, #top5, #top6, #top7, #top8, #top9").hide();
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    $('#showRear').on('change', function () {
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+        $("#rear1, #rear2, #rear3, #rear4, #rear5, #rear6, #rear7, #rear8, #rear9").hide();
+        if(valueSelected == 1){
+            $("#rear1").show();
+        }
+        else if(valueSelected == 2){
+            $("#rear1, #rear2").show();
+        }
+        else if(valueSelected == 3){
+            $("#rear1, #rear2, #rear3").show();
+        }
+        else if(valueSelected == 4){
+            $("#rear1, #rear2, #rear3, #rear4").show();
+        }
+        else if(valueSelected == 5){
+            $("#rear1, #rear2, #rear3, #rear4, #rear5").show();
+        }
+        else if(valueSelected == 6){
+            $("#rear1, #rear2, #rear3, #rear4, #rear5, #rear6").show();
+        }
+        else if(valueSelected == 7){
+            $("#rear1, #rear2, #rear3, #rear4, #rear5, #rear6, #rear7").show();
+        }
+        else if(valueSelected == 8){
+            $("#rear1, #rear2, #rear3, #rear4, #rear5, #rear6, #rear7, #rear8").show();
+        }
+        else if(valueSelected == 9){
+            $("#rear1, #rear2, #rear3, #rear4, #rear5, #rear6, #rear7, #rear8, #rear9").show();
+        }
+        else{
+            $("#rear1, #rear2, #rear3, #rear4, #rear5, #rear6, #rear7, #rear8, #rear9").hide();
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    $('#showSide').on('change', function () {
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+        $("#side1, #side2, #side3, #side4, #side5, #side6, #side7, #side8, #side9").hide();
+        if(valueSelected == 1){
+            $("#side1").show();
+        }
+        else if(valueSelected == 2){
+            $("#side1, #side2").show();
+        }
+        else if(valueSelected == 3){
+            $("#side1, #side2, #side3").show();
+        }
+        else if(valueSelected == 4){
+            $("#side1, #side2, #side3, #side4").show();
+        }
+        else if(valueSelected == 5){
+            $("#side1, #side2, #side3, #side4, #side5").show();
+        }
+        else if(valueSelected == 6){
+            $("#side1, #side2, #side3, #side4, #side5, #side6").show();
+        }
+        else if(valueSelected == 7){
+            $("#side1, #side2, #side3, #side4, #side5, #side6, #side7").show();
+        }
+        else if(valueSelected == 8){
+            $("#side1, #side2, #side3, #side4, #side5, #side6, #side7, #side8").show();
+        }
+        else if(valueSelected == 9){
+            $("#side1, #side2, #side3, #side4, #side5, #side6, #side7, #side8, #side9").show();
+        }
+        else{
+            $("#side1, #side2, #side3, #side4, #side5, #side6, #side7, #side8, #side9").hide();
+        }
+    });
+</script>
+
+<script type="text/javascript">
+function getMethodData(url,data,callback) {
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data:data,
+        dataType: 'json',
+        beforeSend: function(){
+            $('.ajax-loader').css("visibility", "visible");
+          },
+        success: function(data) {
+          callback(data);
+        },
+        complete: function(){
+          $('.ajax-loader').css("visibility", "hidden");
+          // alert("The page has been successfully loaded !!!");
+        },
+    });
+}
+</script>
+
+{% block javascripts_page %}
+{% endblock %}
+</body>
+</html>

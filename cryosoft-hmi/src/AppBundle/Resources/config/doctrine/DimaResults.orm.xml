@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\DimaResults" table="dima_results">
+    <indexes>
+      <index name="FK_DIMA_RESULTS_STUDY_EQUIPMENTS" columns="ID_STUDY_EQUIPMENTS"/>
+    </indexes>
+    <id name="idDimaResults" type="integer" column="ID_DIMA_RESULTS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="setpoint" type="float" column="SETPOINT" precision="10" scale="0" nullable="true"/>
+    <field name="dimaStatus" type="integer" column="DIMA_STATUS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="dimaTs" type="float" column="DIMA_TS" precision="10" scale="0" nullable="true"/>
+    <field name="dimaTfp" type="float" column="DIMA_TFP" precision="10" scale="0" nullable="true"/>
+    <field name="dimaVep" type="float" column="DIMA_VEP" precision="10" scale="0" nullable="true"/>
+    <field name="dimaVc" type="float" column="DIMA_VC" precision="10" scale="0" nullable="true"/>
+    <field name="dimaType" type="smallint" column="DIMA_TYPE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="dimaPrecis" type="float" column="DIMA_PRECIS" precision="10" scale="0" nullable="true"/>
+    <field name="cryoconsprod" type="float" column="CRYOCONSPROD" precision="10" scale="0" nullable="true"/>
+    <field name="hourlyoutputmax" type="float" column="HOURLYOUTPUTMAX" precision="10" scale="0" nullable="true"/>
+    <field name="consum" type="float" column="CONSUM" precision="10" scale="0" nullable="true"/>
+    <field name="userate" type="float" column="USERATE" precision="10" scale="0" nullable="true"/>
+    <field name="consummax" type="float" column="CONSUMMAX" precision="10" scale="0" nullable="true"/>
+    <field name="useratemax" type="float" column="USERATEMAX" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idStudyEquipments" target-entity="StudyEquipments" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY_EQUIPMENTS" referenced-column-name="ID_STUDY_EQUIPMENTS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

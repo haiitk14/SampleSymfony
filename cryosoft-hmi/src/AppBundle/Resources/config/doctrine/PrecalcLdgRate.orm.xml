@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PrecalcLdgRate" table="precalc_ldg_rate">
+    <indexes>
+      <index name="FK_PRECALC_LDG_RATE_EQUIPMENT" columns="ID_EQUIP"/>
+      <index name="FK_PRECALC_LDG_RATE_STUDIES" columns="ID_STUDY"/>
+    </indexes>
+    <id name="idPrecalcLdgRate" type="integer" column="ID_PRECALC_LDG_RATE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="defLoadingRate" type="float" column="DEF_LOADING_RATE" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idStudy" target-entity="Studies" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY" referenced-column-name="ID_STUDY"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEquip" target-entity="Equipment" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIP" referenced-column-name="ID_EQUIP"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

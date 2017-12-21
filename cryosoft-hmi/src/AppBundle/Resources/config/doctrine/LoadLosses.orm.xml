@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\LoadLosses" table="load_losses">
+    <indexes>
+      <index name="FK_LOAD_LOSSES_COOLING_FAMILY" columns="ID_COOLING_FAMILY"/>
+    </indexes>
+    <id name="idLoadLosses" type="integer" column="ID_LOAD_LOSSES">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="flowRate" type="float" column="FLOW_RATE" precision="24" scale="0" nullable="true"/>
+    <field name="lineDiameter" type="float" column="LINE_DIAMETER" precision="10" scale="0" nullable="true"/>
+    <field name="losses" type="float" column="LOSSES" precision="24" scale="0" nullable="true"/>
+    <many-to-one field="idCoolingFamily" target-entity="CoolingFamily" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_COOLING_FAMILY" referenced-column-name="ID_COOLING_FAMILY"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Ln2user" table="ln2user">
+    <id name="idUser" type="integer" column="ID_USER">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idMonetaryCurrency" type="integer" column="ID_MONETARY_CURRENCY" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="codeLangue" type="integer" column="CODE_LANGUE" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idCalcParamsdef" type="integer" column="ID_CALC_PARAMSDEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idTempRecordPtsDef" type="integer" column="ID_TEMP_RECORD_PTS_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="usernam" type="string" column="USERNAM" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="userpass" type="string" column="USERPASS" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="userprio" type="smallint" column="USERPRIO" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="traceLevel" type="integer" column="TRACE_LEVEL" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="userEnergy" type="integer" column="USER_ENERGY" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="userConstructor" type="string" column="USER_CONSTRUCTOR" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="userFamily" type="integer" column="USER_FAMILY" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="userOrigine" type="integer" column="USER_ORIGINE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="userProcess" type="integer" column="USER_PROCESS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="userModel" type="integer" column="USER_MODEL" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="usermail" type="string" column="USERMAIL" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-many field="idUnit" target-entity="Unit" inversed-by="idUser" fetch="LAZY">
+      <join-table name="user_unit">
+        <join-columns>
+          <join-column name="ID_USER" referenced-column-name="ID_USER"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="ID_UNIT" referenced-column-name="ID_UNIT"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <one-to-many field="idStudy" target-entity="Studies" mapped-by="idUser" fetch="LAZY" />
+    <one-to-many field="idEquip" target-entity="Equipment" mapped-by="idUser" fetch="LAZY" />
+    <one-to-many field="idComp" target-entity="Component" mapped-by="idUser" fetch="LAZY" />
+</entity>
+</doctrine-mapping>

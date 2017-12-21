@@ -1,0 +1,201 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs">
+                        <li class=""><a href="/head-balance" aria-expanded="false">Preminary Results</a></li>
+                        <li class="active"><a href="#" aria-expanded="false">Sizing Result</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Sizing Result
+                <small>Summary info</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Sizing Results</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <!-- Main row -->
+            <div class="row">
+                <!-- nav-tab-cus-Preminaty -->
+                <div class="nav-tabs-custom">
+                    <!-- tab-content Preminary -->
+                    <div class="tab-content">
+                        <!-- nav-tab-custome Calculate mode -->
+                        <div class="nav-tabs-custom">
+                            <!-- nav-tab calculate mode -->
+                            <ul class="nav nav-tabs">
+                                <li class="pull-right header"><i class="fa fa-calculator"></i> Output</li>
+                            </ul>
+                            <!-- /.nav-tab calculate mode -->
+                            <!-- tab-content calculate mode -->
+                            <div class="tab-content">
+
+
+                                <!-- nav-tab-custom heat, consum, econo -->
+                                <div class="nav-tabs-custom">
+                                    <!-- nav-tab-custom heat, consum, econo -->
+                                    <ul class="nav nav-tabs pull-right" style="background:#fff">
+                                        <li><a href="/temperature-profile">Temperature Profile</a></li>
+                                        <li class="active"><a href="/out-sizing-result">Sizing Result</a></li>
+                                    </ul>
+                                    <!--/. nav-tab-custom heat, consum, econo -->
+                                    <div class="tab-content" style="background:#fff">
+
+                                        <h4>Select Option: </h4>
+                                          <form class="form-inline">
+                                            <div class="form-group">
+                                               <a href="#" onclick="show(1);" class="btn btn-flat bg-orange buttons"><i class="fa fa-bar-chart"></i> Graph</a>
+                                                <a href="#" onclick='show(2);' class="btn btn-flat bg-purple buttons"><i class="fa fa-bars"></i> Value</a>
+                                            </div>
+                                          </form>
+                                        <div id="graph-value1" style="display: block">
+                                            <legend style="margin: 10px 0">Result Criteria:</legend>
+                                            <div class="result-criteria:">
+                                                <div class="row">
+                                                	<div class="col-md-5">
+                                                        <h4 class="text-primary">Equipment list</h4>
+                                                		<select id="dev_list_select" name="dev_list_select" multiple="" class="form-control" style="height:105px">
+									                    {% for i in listOfAvailableEquipments %}
+										                    <option value="{{ i.idStudyEquipments }}">{{ i.sEquipName }}</option>
+									                    {% endfor %}
+										                  </select>
+                                                	</div>
+                                                	<div class="col-md-2">
+                                                        <div style="margin-top: 38px">
+                                                    		<div class="text-center">
+                                                    			<i id="move_dev_list_select" class="fa fa-long-arrow-right" aria-hidden="true" style="font-size: 50px;cursor: pointer"></i>
+                                                    		</div>
+                                                    		<div class="text-center">
+                                                    			<i id="move_dev_list_result" class="fa fa-long-arrow-left" aria-hidden="true" style="font-size: 50px;cursor: pointer"></i>
+                                                    		</div>
+                                                        </div>
+                                                	</div>
+                                                	<div class="col-md-5">
+                                                        <h4 class="text-primary">Active equipment </h4>
+                                                		<select id="dev_list_result" name="dev_list_result" multiple="" class="form-control" style="height:105px">
+									                    {% for i in listOfSelectedEquipments %}
+										                    <option value="{{ i.idStudyEquipments }}">{{ i.sEquipName }}</option>
+									                    {% endfor %}
+										                  </select>
+                                                	</div>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="form-group pull-right">
+                                                <button class="btn btn-flat btn-info buttons" id="btnRefesh" onclick="loadGrapresultChart();"> Refesh</button>
+                                            </div>
+                                            <br/>
+                                            <br/>
+                                             <div id="grap-result">
+                                                <legend>Graph</legend>
+                                                <div id="loadGrapResult">
+                                                    <canvas id="canvasGrapResult"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="graph-value2">
+                                            <h4>Equipment</h4>
+											<table class="table table-bordered">
+												<tr>
+													<th colspan="4" rowspan="2">Equipment</th>
+													<th colspan="4" style="width:40%">Choose product flowrate</th>
+													<th colspan="4" style="width:40%">Maximum product flowrate</th>
+													</tr>
+												<tr style="background: #fff">
+													<td>Control Temperature ({{ temperatureSymbol }})</td>
+													<td>Product flowrate ({{ productFlowSymbol }})</td>
+													<td>Cryogen consumption (product + equipment heat losses) ({{ consumptionSymbol }}/{{ perUnitOfMassSymbol }})</td>
+													<td>Conveyor coverage or quantity of product per batch</td>
+													<td>Control Temperature ({{ temperatureSymbol }})</td>
+													<td>Maximum product flowrate ({{ productFlowSymbol }})</td>
+													<td>Maximum cryogen consumption (product + equipment heat losses) ({{ consumptionSymbol }}/{{ perUnitOfMassSymbol }})</td>
+													<td>Conveyor coverage or quantity of product per batch</td>
+												</tr>
+												{% for i in arrStudyEquipment %}
+												<tr>
+													<td colspan="4"><a href="#" data-toggle="modal" data-target="#nameCom2"> {{ i.sEquipName }}</a></td>
+													<td style="position: relative">
+														{% if i.sTR[0] == "****" or i.sTR[0] == "" %}
+															{{ i.sTR[0] }}
+														{% else %}
+															<a href="javascript:;" class="my-tooltip-link">{{ i.sTR[0] }}</a>
+															<div class="my-tooltip">
+																<ul>
+																	<li>Control temperature: <span class="text-danger">{{ i.sTR[0] }} {{ temperatureSymbol }}</span></li>
+																	<li>Residence / Dwell time: <span class="text-danger">{{ i.sTS[0] }} {{ timeSymbol }}</span></li>
+																	<li>Convection Setting: <span class="text-danger">{{ i.sVC[0]}} {{ convectionSpeedSymbol }}</span></li>
+																</ul>
+															</div>
+														{% endif %}
+													</td>
+													<td>{{ i.sDHP[0] }}</td>
+													<td>{{ i.sConso[0]|raw }}</td>
+													<td>{{ i.sTOC[0] }}</td>
+													<td style="position:relative">
+														{% if i.sTR[1] == "****" or i.sTR[1] == "" %}
+															{{ i.sTR[1] }}
+														{% else %}
+															<a href="javascript:;" class="my-tooltip-link">{{ i.sTR[1] }}</a>
+															<div class="my-tooltip">
+																<ul>
+																	<li>Control temperature: <span class="text-danger">{{ i.sTR[1] }} {{ temperatureSymbol }}</span></li>
+																	<li>Residence / Dwell time: <span class="text-danger">{{ i.sTS[1] }} {{ timeSymbol }}</span></li>
+																	<li>Convection Setting: <span class="text-danger">{{ i.sVC[1]}} {{ convectionSpeedSymbol }}</span></li>
+																</ul>
+															</div>
+														{% endif %}
+													</td>
+													<td>{{ i.sDHP[1] }}</td>
+													<td>{{ i.sConso[1]|raw }}</td>
+													<td>{{ i.sTOC[1] }}</td>
+												</tr>
+												{% endfor %}
+											</table>
+                                        </div>
+
+                                </div>
+                                </div>
+                                <!--/. nav-tab-custom heat, consum, econo -->
+                            </div>
+                            <!-- /.tab-content calculate mode -->
+                        </div>
+                        <!-- /.nav-tab-custome Calculate mode -->
+
+                        <!-- /.tab-pane preminary -->
+                    </div>
+                    <!-- /.tab-content Preminary -->
+                </div>
+                <!--/. nav-tab-cus-Preminaty -->
+            </div>
+            <!-- /.close main row -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 3.0
+        </div>
+        <strong>Copyright &copy; 2017 <a href="#">CryoSoft</a>.</strong> All rights reserved.
+    </footer>
+
+</div>
+<!-- ./wrapper -->
+</body>
+{% endblock %}
+

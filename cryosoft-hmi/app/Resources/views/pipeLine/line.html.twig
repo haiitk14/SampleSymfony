@@ -1,0 +1,868 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+                            <li class=""><a href="/home" aria-expanded="false">{{'Dashboard'|trans}}</a></li>
+                            <li class=""><a href="/definition" aria-expanded="false">{{'Definitition'|trans}}</a></li>
+                            <li class=""><a href="/production" aria-expanded="false">{{'Production'|trans}}</a></li>
+                            <li class=""><a href="/productChar" aria-expanded="false">{{'Product and characteristic'|trans}}</a></li>
+                            <li class=""><a href="/mesh" aria-expanded="false">{{'Mesh initial temperature'|trans}}</a></li>
+                            <li class=""><a href="/packing" aria-expanded="false">{{'Packing'|trans}}</a></li>
+                            <li class=""><a href="/equipments" aria-expanded="false">{{'Equipment'|trans}}</a></li>
+                            <li class="active"><a href="/line" aria-expanded="false">{{'Line'|trans}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+        {{'Line'|trans}}
+        <small>{{'Summary info'|trans}}</small>
+      </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/home"><i class="fa fa-dashboard"></i> {{'Home'|trans}}</a></li>
+                    <li class="active">{{'Line'|trans}}</li>
+                </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+<span class="label label-danger">{{'Study Name:'|trans}} {{ studyName }}</span>
+                <!-- Main row -->
+                <div class="row">
+                    <div class="nav-tabs-custom">
+                        <div class="tab-content">
+
+                            <form id="form-line" action="/createLine" method="post">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="row">
+                                            <div class="col-md-11">
+                                                <a href="#" class="pull-right" data-toggle="modal" data-target="#helpLine" id="popoverData" data-placement="bottom" data-original-title="Help" data-trigger="manual">
+                                                    <i class="fa fa-question-circle " style="font-size: 34px; padding: 0 13px;"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a href="#" class="pull-right" data-toggle="modal" data-target="#modal-infodefi" id="popoverData1" data-placement="bottom" data-original-title="Info" data-trigger="manual">
+                                                    <i class="fa fa-info-circle " style="font-size: 34px;"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>{{'Insulation Type'|trans}}</label>
+                                                <select id="insType" class="chosen-select">
+                                                  {% if idCoolingFamily == 3 %}
+                                                      {% if (idLineElmt_insTypes == 1)  %}
+                                                      <option value="5">Select option</option>
+                                                      <option selected="true" value="1">Polyrethane</option>
+                                                      <option value="2">Super Insulation</option>
+                                                      <option value="3">Armaflex</option>
+                                                      <option value="0">not insulated</option>
+                                                      {% elseif (idLineElmt_insTypes == 2) %}
+                                                      <option value="5">Select option</option>
+                                                      <option value="1">Polyrethane</option>
+                                                      <option  selected="true" value="2">Super Insulation</option>
+                                                      <option value="3">Armaflex</option>
+                                                      <option value="0">not insulated</option>
+                                                      {% elseif (idLineElmt_insTypes == 3 ) %}
+                                                      <option value="5">Select option</option>
+                                                      <option value="1">Polyrethane</option>
+                                                      <option value="2">Super Insulation</option>
+                                                      <option selected="true" value="3">Armaflex</option>
+                                                      <option value="0">not insulated</option>
+                                                      {% elseif (idLineElmt_insTypes == 0 ) %}
+                                                      <option value="5">Select option</option>
+                                                      <option value="1">Polyrethane</option>
+                                                      <option value="2">Super Insulation</option>
+                                                      <option value="3">Armaflex</option>
+                                                      <option selected="true" value="0">not insulated</option>
+                                                      {% else %}
+                                                      <option value="5">Select option</option>
+                                                      <option value="1">Polyrethane</option>
+                                                      <option value="2">Super Insulation</option>
+                                                      <option value="3">Armaflex</option>
+                                                      <option value="0">not insulated</option>
+                                                      {% endif %}
+                                                  {% else %}
+                                                      {% if (idLineElmt_insTypes == 1)  %}
+                                                      <option value="5">Select option</option>
+                                                      <option selected="true" value="1">Polyrethane</option>
+                                                      <option value="2">Super Insulation</option>
+                                                      <option value="0">not insulated</option>
+                                                      {% elseif (idLineElmt_insTypes == 2) %}
+                                                      <option value="5">Select option</option>
+                                                      <option value="1">Polyrethane</option>
+                                                      <option  selected="true" value="2">Super Insulation</option>
+                                                      <option value="0">not insulated</option>
+                                                      {% elseif (idLineElmt_insTypes == 0 ) %}
+                                                      <option value="5">Select option</option>
+                                                      <option value="1">Polyrethane</option>
+                                                      <option value="2">Super Insulation</option>
+                                                      <option selected="true" value="0">not insulated</option>
+                                                      {% else %}
+                                                      <option value="5">Select option</option>
+                                                      <option value="1">Polyrethane</option>
+                                                      <option value="2">Super Insulation</option>
+                                                      <option value="0">not insulated</option>
+                                                      {% endif %}
+                                                  {% endif %}
+
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>{{'Inside Diameter'|trans}}</label>
+                                                <select name="aaa" id="diameter" data-placeholder=" "  class="chosen-select">
+                                                    <option value="0">Select option</option>
+                                                  {% for listDiameter in diameter %}
+                                                      {% if (listDiameter.eltSize != idLineElmt_diameter) %}
+                                                          <option value="{{ listDiameter.eltSize }}">{{ listDiameter.eltSize }}</option>
+                                                      {% else %}
+                                                          <option value="{{idLineElmt_diameter}}" selected>{{idLineElmt_diameter}}</option>
+                                                      {% endif %}
+                                                  {% endfor %}
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>{{'Insulated line'|trans}}</label>
+                                                <select name="insulatedLine" id="insLine" data-placeholder=" " class="form-control chosen-select">
+                                                  {% if sixInsline == 1 %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionLine != null %}
+                                                  <option value="{{versionLine.idLineElmt}}" selected>{{versionLine.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% else %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionLine != null %}
+                                                  <option value="{{versionLine.idLineElmt}}" >{{versionLine.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% endif %}
+
+
+                                              </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>{{'Insulated values'|trans}}</label>
+                                                <select name="insulatedValves" id="insValues" data-placeholder=" " class="chosen-select">
+                                                  {% if sixInsValue == 5 %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionValue != null %}
+                                                  <option value="{{versionValue.idLineElmt}}" selected>{{versionValue.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% else %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionValue != null %}
+                                                  <option value="{{versionValue.idLineElmt}}" >{{versionValue.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% endif %}
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>{{'Tees'|trans}}</label>
+                                                <select name="tee" id="tees" data-placeholder=" " class="chosen-select">
+                                                  {% if sixTees == 4 %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionTee != null %}
+                                                    <option value="{{versionTee.idLineElmt}}" selected>{{versionTee.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% else %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionTee != null %}
+                                                    <option value="{{versionTee.idLineElmt}}" >{{versionTee.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% endif %}
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>{{'Elbows'|trans}}</label>
+                                                <select name="elbows" id="elbow" data-placeholder=" " class="chosen-select">
+                                                  {% if sixElbows == 3 %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionElbows != null %}
+                                                  <option value="{{versionElbows.idLineElmt}}" selected>{{versionElbows.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% else %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionElbows != null %}
+                                                  <option value="{{versionElbows.idLineElmt}}" >{{versionElbows.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% endif %}
+
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>{{'Non-insulated line'|trans}}</label>
+                                                <select name="nonInsulatedLine" id="nonInsLine" data-placeholder=" " class="chosen-select">
+                                                  {% if sixNonInsline == 2 %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionElbows != null %}
+                                                  <option value="{{versionNonInsLine.idLineElmt}}" selected>{{versionNonInsLine.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% else %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionElbows != null %}
+                                                  <option value="{{versionNonInsLine.idLineElmt}}" >{{versionNonInsLine.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% endif %}
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>{{'Non-insulated value'|trans}}</label>
+                                                <select name="nonInsulatedValves" id="nonInsValue" data-placeholder=" " class="chosen-select">
+                                                  {% if sixNonInsValue == 6 %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionNonInsValue != null %}
+                                                  <option value="{{versionNonInsValue.idLineElmt}}" selected >{{versionNonInsValue.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% else %}
+                                                  <option value="0">Select option</option>
+                                                  {% if versionNonInsValue != null %}
+                                                  <option value="{{versionNonInsValue.idLineElmt}}"  >{{versionNonInsValue.versionValue}}</option>
+                                                  {% endif %}
+                                                  {% endif %}
+
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>{{'Storage tank'|trans}}</label>
+                                                <select name="storageTankName" id="storageTank" data-placeholder=" " class="chosen-select">
+                                                  <option value="0">Select option</option>
+                                                  {% for item in versionTank %}
+                                                  {% if versionTank != null %}
+                                                  <option value="{{item.idLineElmt}}" {% if item.idLineElmt == versionTankSelectedId %} selected {% endif %}>{{item.versionTank}}</option>
+                                                  {% endif %}
+                                                  {% endfor %}
+
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>{{'Equiqment elevation above tank outlet'|trans}}</label>
+                                                <div class="input-group">
+                                                    <input name="_LINE_TANK_OUTLET" value="{{ pipeGen==null ? LTO : pipeGen.height}}" class="form-control input-radiusProD" placeholder="00.0" type="text">
+                                                    <span class="input-group-addon" id="basic-addon2">m</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label> {{'Tank pressure'|trans}}</label>
+                                                <div class="input-group">
+                                                    <input name="_LINE_TANK_PRESSURE" value="{{ pipeGen==null ? LTP : pipeGen.pressure}}" class="form-control input-radiusProD" placeholder="00.0" type="text">
+                                                    <span class="input-group-addon" id="basic-addon2">Bar</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div> <br><br><br><br><br><br><br><br>
+                                    <div class="col-md-6">
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>{{'Length'|trans}}</label>
+                                                <div class="input-group">
+                                                    <input name="_LINE_LENGTH" value="{% if sixInsline != 1 %}0{% else %}{{ pipeGen==null ? LI : pipeGen.insullineLenght}}{% endif %}" class="form-control input-radiusProD" type="text" {% if sixInsline != 1 %} readonly{% endif %} >
+                                                    <span class="input-group-addon" id="basic-addon2">m</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label> {{'Number'|trans}}</label>
+                                                <input name="_LINE_VALUE_LENGTH" value="{% if sixInsline != 1 %}0{% else %}{{ pipeGen==null ? LIV : pipeGen.insulValves}}{% endif %}" class="form-control input-radius" placeholder="text" type="text" {% if sixInsValue != 5 %} readonly{% endif %}>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label> {{'Number'|trans}}</label>
+                                                <input name="_LINE_TEE" value="{% if sixInsline != 1 %}0{% else %}{{ pipeGen==null ? LT : pipeGen.tees}}{% endif %}" class="form-control input-radius" placeholder="text" type="text" {% if sixTees != 4 %} readonly{% endif %}>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label> {{'Number'|trans}}</label>
+                                                <input name="_LINE_ELBOW" value="{% if sixInsline != 1 %}0{% else %}{{ pipeGen==null ? LE : pipeGen.elbows}}{% endif %}" class="form-control input-radius" placeholder="text" type="text" {% if sixElbows != 3 %} readonly{% endif %}>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label> {{'Length'|trans}}</label>
+                                                <div class="input-group">
+                                                    <input name="_LINE_NON_LENGTH" value="{% if sixInsline != 1 %}0{% else %}{{ pipeGen==null ? LNI : pipeGen.noinsullineLenght}}{% endif %}" class="form-control input-radiusProD" placeholder="00.0" type="text" {% if sixNonInsline != 2 %} readonly{% endif %}>
+                                                    <span class="input-group-addon" id="basic-addon2">m</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label> {{'Number'|trans}}</label>
+                                                <input name="_LINE_NON_VALUE_LENGTH" value="{% if sixInsline != 1 %}0{% else %}{{ pipeGen==null ? LNIV : pipeGen.noinsulValves}}{% endif %}"  class="form-control input-radius" placeholder="text" type="text" {% if sixNonInsValue != 6 %} readonly{% endif %}>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group button">
+                                    <form class="form-inline">
+                                        <button class="btn btn-primary btn-flat buttons" type="button" data-toggle="modal" data-target="#modal-success"><i class="fa fa-check"></i> {{'Save'|trans}}</button>
+                                        
+
+                                    </form>
+                                </div>
+                                <!-- close button save -->
+                                <div class="modal fade" id="modal-success">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">{{'Confirm change'|trans}}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>{{'All Items saved.....'|trans}}</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="form-group Gbutton">
+                                                    <form class="form-inline">
+                                                        <button type="button" class="btn btn-danger btn-flat buttons" data-dismiss="modal">{{'Close'|trans}}</button>
+                                                        <button type="button" id="confirm-line" class="btn btn-success btn-flat buttons "><i class="fa fa-check"></i> {{'Confirm'|trans}}</button>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.row (main row) -->
+
+
+                <!-- click help -->
+                <div class="modal fade" id="helpLine">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Line Page</h4>
+                            </div>
+                            <div class="modal-body">
+                                Help Line
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./help -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 3.0
+            </div>
+            <strong>Copyright &copy; 2017 <a href="#">CryoSoft</a>.</strong> All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Create the tabs -->
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- Home tab content -->
+                <div class="tab-pane" id="control-sidebar-home-tab">
+                    <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                Custom Template Design
+                <span class="label label-danger pull-right">70%</span>
+              </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                Update Resume
+                <span class="label label-success pull-right">95%</span>
+              </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                Laravel Integration
+                <span class="label label-warning pull-right">50%</span>
+              </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                Back End Framework
+                <span class="label label-primary pull-right">68%</span>
+              </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+
+                </div>
+                <!-- /.tab-pane -->
+                <!-- Stats tab content -->
+                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+
+                <!-- /.tab-pane -->
+            </div>
+        </aside>
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        var minMaxLine={};
+        function getMethodData(url,data,callback) {
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data:data,
+                dataType: 'json',
+                success: function(data) {
+                    callback(data);
+                }
+            });
+        }
+        (function(){
+            getMethodData("/getAllMinMaxLine",{},function(res){
+                minMaxLine = res;
+            });
+        }());
+
+        $(document).ready(function(){
+            $("#confirm-line").on('click',function(){
+                var LI=$("input[name=_LINE_LENGTH]").val();
+                var LNI=$("input[name=_LINE_NON_LENGTH]").val();
+                var LE=$("input[name=_LINE_ELBOW]").val();
+                var LT=$("input[name=_LINE_TEE]").val();
+                var LIV=$("input[name=_LINE_VALUE_LENGTH]").val();
+                var LNIV=$("input[name=_LINE_NON_VALUE_LENGTH]").val();
+                var LTO=$("input[name=_LINE_TANK_OUTLET]").val();
+                var LTP=$("input[name=_LINE_TANK_PRESSURE]").val();
+                var ST=$("select[name=storageTankName]").val();
+
+                $("#modal-success").modal("hide");
+                if(LI < minMaxLine.LI_MIN || LI > minMaxLine.LI_MAX || isNaN(LI)){
+                    alert("Length of insulated line ("+minMaxLine.LI_MIN+" : "+minMaxLine.LI_MAX+")");
+                    // $("input[name=_LINE_LENGTH]").val("0");
+                    $("input[name=_LINE_LENGTH]").focus();
+                    return;
+                }
+                if(LNI < minMaxLine.LNI_MIN || LNI > minMaxLine.LNI_MAX || isNaN(LNI)){
+                    alert("Length of non insulated line ("+minMaxLine.LNI_MIN+" : "+minMaxLine.LNI_MAX+")");
+                    // $("input[name=_LINE_NON_LENGTH]").val("0");
+                    $("input[name=_LINE_NON_LENGTH]").focus();
+                    return;
+                }
+                if(LE < minMaxLine.LE_MIN || LE > minMaxLine.LE_MAX || isNaN(LE)){
+                    alert("Number of elbows ("+minMaxLine.LE_MIN+" : "+minMaxLine.LE_MAX+")");
+                    // $("input[name=_LINE_ELBOW]").val("0");
+                    $("input[name=_LINE_ELBOW]").focus();
+                    return;
+                }
+                if(LT < minMaxLine.LT_MIN || LT > minMaxLine.LT_MAX || isNaN(LT)){
+                    alert("Number of tees ("+minMaxLine.LT_MIN+" : "+minMaxLine.LT_MAX+")");
+                    // $("input[name=_LINE_TEE]").val("0");
+                    $("input[name=_LINE_TEE]").focus();
+                    return;
+                }
+                if(LIV < minMaxLine.LIV_MIN || LIV > minMaxLine.LIV_MAX || isNaN(LIV)){
+                    alert("Number of insulated valves ("+minMaxLine.LIV_MIN+" : "+minMaxLine.LIV_MAX+")");
+                    // $("input[name=_LINE_VALUE_LENGTH]").val("0");
+                    $("input[name=_LINE_VALUE_LENGTH]").focus();
+                    return;
+                }
+                if(LNIV < minMaxLine.LNIV_MIN || LNIV > minMaxLine.LNIV_MAX || isNaN(LNIV)){
+                    alert("Number of non insulated valves  ("+minMaxLine.LNIV_MIN+" : "+minMaxLine.LNIV_MAX+")");
+                    // $("input[name=_LINE_NON_VALUE_LENGTH]").val("0");
+                    $("input[name=_LINE_NON_VALUE_LENGTH]").focus();
+                    return;
+                }
+                if(LTO < minMaxLine.LTO_MIN || LTO > minMaxLine.LTO_MAX || isNaN(LTO)){
+                    alert("Height beetween tank and material ("+minMaxLine.LTO_MIN+" : "+minMaxLine.LTO_MAX+")");
+                    // $("input[name=_LINE_TANK_OUTLET]").val("0");
+                    $("input[name=_LINE_TANK_OUTLET]").focus();
+                    return;
+                }
+                if(LTP < minMaxLine.LTP_MIN || LTP > minMaxLine.LTP_MAX || isNaN(LTP)){
+                    alert("Stocking Pressure ("+minMaxLine.LTP_MIN+" : "+minMaxLine.LTP_MAX+")");
+                    // $("input[name=_LINE_TANK_PRESSURE]").val("0.2");
+                    $("input[name=_LINE_TANK_PRESSURE]").focus();
+                    return;
+                }
+                if(ST == 0 || isNaN(LTP)){
+                    alert("A Storage Tank is Obligatory");
+                    // $("input[name=_LINE_TANK_PRESSURE]").val("0.2");
+                    $("select[name=storageTankName]").focus();
+                    return;
+                }
+                $("#form-line").submit();
+
+            });
+        });
+
+
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+      $("select[name='tee']").on('change',function(){
+        $('input[name="_LINE_TEE"]').prop('readonly',this.value != 0 ?false:true);
+        $('input[name="_LINE_TEE"]').val(0);
+      })
+
+
+      $("select[name='insulatedLine']").on('change',function(){
+        $('input[name="_LINE_LENGTH"]').prop('readonly',this.value != 0 ?false:true);
+        $('input[name="_LINE_LENGTH"]').val(0);
+      })
+
+      $("select[name='insulatedValves']").on('change',function(){
+        $('input[name="_LINE_VALUE_LENGTH"]').prop('readonly',this.value != 0 ?false:true);
+        $('input[name="_LINE_VALUE_LENGTH"]').val(0);
+      });
+
+
+      $("select[name='elbows']").on('change',function(){
+        $('input[name="_LINE_ELBOW"]').prop('readonly',this.value != 0 ?false:true);
+        $('input[name="_LINE_ELBOW"]').val(0);
+      });
+
+
+      $("select[name='nonInsulatedLine']").on('change',function(){
+        $('input[name="_LINE_NON_LENGTH"]').prop('readonly',this.value != 0 ?false:true);
+        $('input[name="_LINE_NON_LENGTH"]').val(0);
+      })
+
+
+      $("select[name='nonInsulatedValves']").on('change',function(){
+        $('input[name="_LINE_NON_VALUE_LENGTH"]').prop('readonly',this.value != 0 ?false:true);
+        $('input[name="_LINE_NON_VALUE_LENGTH"]').val(0);
+      })
+
+
+      //ajax insType
+      $("#insType").on("change",function () {
+          var idfam=$("#insType").val();
+          // console.log(idfam);
+          $.ajax({
+              url: '/insType',
+              type: 'POST',
+              data:{'idfam':idfam},
+              dataType: 'json',
+              success: function(data) {
+                reponesDataInsType(data.listEltSize);
+              }
+          });
+
+      });
+      //html select option insType
+      var reponesDataInsType= function (res) {
+          var str='<option></option><option selected value="0">Select option</option>';
+          for(var i in res){
+              str+='<option value="'+res[i].eltSize+'">'+res[i].eltSize+'</option>';
+          }
+          $("#diameter").html(str);
+          $('#diameter').trigger('chosen:updated');
+      };
+      });
+
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+    //ajax insLine
+    $("#diameter").on("change",function () {
+        var idInsLine=$("#diameter").val();
+        var idfam=$("#insType").val();
+        $.ajax({
+            url: '/insLine',
+            type: 'POST',
+            data:{'idInsLine':idInsLine,'idfam':idfam},
+            dataType: 'json',
+            success: function(data) {
+              reponesDataInsLine(data.listInsLine);
+            }
+        });
+
+    });
+    //html select option insSize
+    var reponesDataInsLine= function (res) {
+        var str='<option></option><option value="0">Select option</option>';
+        for(var i in res){
+            str+='<option value="'+res[i].idPipelineElmt+'">'+res[i].name+' - '+res[i].lineVersion+' ('+res[i].active+')</option>';
+        }
+        $("#insLine").html(str);
+        $('#insLine').trigger('chosen:updated');
+    };
+
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+    //ajax insValues
+    $("#diameter").on("change",function () {
+        var idInsValues=$("#diameter").val();
+        var idfam=$("#insType").val();
+        $.ajax({
+            url: '/insValues',
+            type: 'POST',
+            data:{'idInsValues':idInsValues,'idfam':idfam},
+            dataType: 'json',
+            success: function(data) {
+              reponesDataInsValues(data.listInsValues);
+            }
+        });
+
+    });
+    //html select option insSize
+    var reponesDataInsValues= function (res) {
+        var str='<option></option><option value="0">Select option</option>';
+        for(var i in res){
+            str+='<option value="'+res[i].idPipelineElmt+'">'+res[i].name+' - '+res[i].lineVersion+' ('+res[i].active+')</option>';
+        }
+        $("#insValues").html(str);
+        $('#insValues').trigger('chosen:updated');
+    };
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+    //ajax insSize
+    $("#diameter").on("change",function () {
+        var idTees=$("#diameter").val();
+        var idfam=$("#insType").val();
+        $.ajax({
+            url: '/tees',
+            type: 'POST',
+            data:{'idTees':idTees,'idfam':idfam},
+            dataType: 'json',
+            success: function(data) {
+              reponesDataTees(data.ListTees);
+            }
+        });
+
+    });
+    //html select option insSize
+    var reponesDataTees= function (res) {
+        var str='<option></option><option value="0">Select option</option>';
+        for(var i in res){
+            str+='<option value="'+res[i].idPipelineElmt+'">'+res[i].name+' - '+res[i].lineVersion+' ('+res[i].active+')</option>';
+        }
+        $("#tees").html(str);
+        $('#tees').trigger('chosen:updated');
+    };
+
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+    //ajax insSize
+    $("#diameter").on("change",function () {
+        var idElbows=$("#diameter").val();
+        var idfam=$("#insType").val();
+        $.ajax({
+            url: '/elbows',
+            type: 'POST',
+            data:{'idElbows':idElbows,'idfam':idfam},
+            dataType: 'json',
+            success: function(data) {
+              reponesDataElbows(data.listElbows);
+            }
+        });
+
+    });
+    //html select option insSize
+    var reponesDataElbows= function (res) {
+        var str='<option></option><option value="0">Select option</option>';
+        for(var i in res){
+            str+='<option value="'+res[i].idPipelineElmt+'">'+res[i].name+' - '+res[i].lineVersion+' ('+res[i].active+')</option>';
+        }
+        $("#elbow").html(str);
+        $('#elbow').trigger('chosen:updated');
+    };
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+    //ajax insSize
+    $("#diameter").on("change",function () {
+        var idNonInsLine=$("#diameter").val();
+        var idfam=$("#insType").val();
+        $.ajax({
+            url: '/nonInsLine',
+            type: 'POST',
+            data:{'idNonInsLine':idNonInsLine,'idfam':idfam},
+            dataType: 'json',
+            success: function(data) {
+              reponesDataNonInsLine(data.listNonInsLine);
+            }
+        });
+
+    });
+    //html select option insSize
+    var reponesDataNonInsLine= function (res) {
+        var str='<option></option><option value="0">Select option</option>';
+        for(var i in res){
+            str+='<option value="'+res[i].idPipelineElmt+'">'+res[i].name+' - '+res[i].lineVersion+' ('+res[i].active+')</option>';
+        }
+        $("#nonInsLine").html(str);
+        $('#nonInsLine').trigger('chosen:updated');
+    };
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+    //ajax insSize
+    $("#diameter").on("change",function () {
+        var idNonInsValues=$("#diameter").val();
+        var idfam=$("#insType").val();
+        $.ajax({
+            url: '/nonInsValues',
+            type: 'POST',
+            data:{'idNonInsValues':idNonInsValues,'idfam':idfam},
+            dataType: 'json',
+            success: function(data) {
+              reponesDataNonInsValues(data.listNonInsValues);
+            }
+        });
+
+    });
+    //html select option insSize
+    var reponesDataNonInsValues= function (res) {
+        var str='<option></option><option value="0">Select option</option>';
+        for(var i in res){
+            str+='<option value="'+res[i].idPipelineElmt+'">'+res[i].name+' - '+res[i].lineVersion+' ('+res[i].active+')</option>';
+        }
+        $("#nonInsValue").html(str);
+        $('#nonInsValue').trigger('chosen:updated');
+    };
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+    //ajax insSize
+    $("#insType").on("change",function () {
+        var idfam=$("#insType").val();
+        $.ajax({
+            url: '/storageTank',
+            type: 'POST',
+            data:{'idfam':idfam},
+            dataType: 'json',
+            success: function(data) {
+              reponesDataStorageTank(data.listStorageTank);
+            }
+        });
+
+    });
+    //html select option insSize
+    var reponesDataStorageTank= function (res) {
+        var str='<option></option><option value="0">Select option</option>';
+        for(var i in res){
+            str+='<option value="'+res[i].idPipelineElmt+'">'+res[i].name+' - '+res[i].lineVersion+' ('+res[i].active+')</option>';
+        }
+        $("#storageTank").html(str);
+        $('#storageTank').trigger('chosen:updated');
+    };
+    });
+    </script>
+</body>
+
+
+{% endblock %}

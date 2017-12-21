@@ -1,0 +1,52 @@
+{% block body %}
+	<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{'Add/Modify Unit'|trans}}</h4>
+    </div>
+    <form action="/createModiUnit" id="form-modal" role="form" method="post">    
+    	<div class="modal-body">
+    		<div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                        	<label>{{'Value type'|trans}} : </label>
+                        </div>
+                        <div class="form-group">
+                        	<input type="radio" onclick="$('#fm_unit_symbol').val('');$('#fm_unit_unita').val('1');$('#fm_unit_unitb').val('0')" name="create_unit" value="1"> {{'New'|trans}}
+							<input type="radio" onclick="$('#fm_unit_symbol').val('{{ret.symbol}}');$('#fm_unit_unita').val('{{ret.unita}}');$('#fm_unit_unitb').val('{{ret.unitb}}')" checked="" name="create_unit" value="0"> {{'Modify'|trans}}<p>	
+                            <input type="hidden" name="id_unit" value="{{ret.idunit}}" >    
+							<input type="hidden" name="_type" value="{{ret.type}}" >	
+                        </div>
+                        <div class="form-group">
+                        	<table class="table table-bordered">
+							  <tr>
+							    <th>{{'Symbol'|trans}}</th>
+							    <th>{{'A'|trans}}</th>
+							    <th>{{'B'|trans}}</th>
+							  </tr>
+							  <tr>
+							    <td><input class="form-control input-radius fm_unit_input" type="text" id="fm_unit_symbol" name="_symbol" value="{{ret.symbol}}"></td>
+							    <td><input class="form-control input-radius fm_unit_input" type="text" id="fm_unit_unita" name="_coeffA" data-label="#conductivityLabel" value="{{ret.unita}}"></td>
+							    <td><input class="form-control input-radius fm_unit_input" type="text" id="fm_unit_unitb" name="_coeffB" value="{{ret.unitb}}"></td>
+							  </tr>
+							</table>
+                        </div>
+                        <div class="form-group">
+                        	{{'Y (new unit) = A*X (reference unit) + B'|trans}}<p>
+							{{'X (reference unit) = (Y (new unit) - B) / A'|trans}}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+		<button type="button" class="btn btn-danger btn-flat pull-left buttons" data-dismiss="modal">{{'Cancel'|trans}}</button>
+		<input type="submit" class="btn btn-success btn-flat buttons" value="{{'Confirm'|trans}}"></input>
+	</div>
+</form>
+</div>
+{% endblock %}

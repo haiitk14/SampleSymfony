@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section>
+            <div class="row">
+                <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="/head-balance" aria-expanded="false">Preminary Results</a></li>
+                            <li class=""><a href="/out-sizing-result" aria-expanded="false">Sizing Result</a></li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Heat Balance
+                <small>Summary info</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="../../../home.html"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="preminary_optimunSel.html">Preminary Results</a></li>
+                <li><a href="preminary_optimunSel.html">Optimum mode & Select mode</a></li>
+                <li class="active">Heat Balance</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <!-- Main row -->
+            <div class="row">
+                <!-- nav-tab-cus-Preminaty -->
+                <div class="nav-tabs-custom">
+                    <!-- tab-content Preminary -->
+                    <div class="tab-content">
+                        <!-- nav-tab-custome Calculate mode -->
+                        <div class="nav-tabs-custom">
+                            <!-- nav-tab calculate mode -->
+                            <ul class="nav nav-tabs">
+                                  <li class="pull-right header"><i class="fa fa-calculator"></i> Output</li>
+                            </ul>
+                            <!-- /.nav-tab calculate mode -->
+                            <!-- tab-content calculate mode -->
+                            <div class="tab-content">
+
+                                <!-- nav-tab-custom heat, consum, econo -->
+                                <div class="nav-tabs-custom">
+                                    <!-- nav-tab-custom heat, consum, econo -->
+                                    <ul class="nav nav-tabs pull-right" style="background:#fff">
+                                        <li class="active"><a href="/analytical-economic">Economics</a></li>
+                                        <li><a href="/analytical-consumption">Consumptions</a></li>
+                                        <li><a href="/head-balance">Heat Balance</a></li>
+                                    </ul>
+                                    <!--/. nav-tab-custom heat, consum, econo -->
+                                    <div class="tab-content" style="background:#fff">
+
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th rowspan="2">Equipment</th>
+                                                    <th rowspan="2">Overall Cryogen Consumption Raito (product + equipment and pipline losses) Unit of Cryogen, per piece of product({{ monetarySymbol|raw }})</th>
+                                                    <th rowspan="2">Total Cryogen Consumption (product + equipment and pipline losses). ({{ monetarySymbol|raw }}/{{ perUnitOfMassSymbol }})</th>
+                                                    <th rowspan="2">Spectific Cryogen Consumption Raito (product only) Unit of Cryogen, per unit weight of product ({{ monetarySymbol|raw }}/{{ perUnitOfMassSymbol }})</th>
+                                                    <th colspan="4">Total Cryogen Consumption</th>
+                                                    <th colspan="2">Equipment Cryogen Consumption</th>
+                                                    <th colspan="2">Pipeline Consumption
+                                                        <br>
+                                                    </th>
+                                                    <th rowspan="2">Tank losses (€)
+                                                        <br>
+                                                    </th>
+                                                </tr>
+                                                <tr style="background:#fff">
+                                                    <td>Total Cryogen Consumption per year ({{ monetarySymbol|raw }})</td>
+                                                    <td>Total Cryogen Consumption per week ({{ monetarySymbol|raw }})</td>
+                                                    <td>Total Cryogen Consumption per day ({{ monetarySymbol|raw }})</td>
+                                                    <td>Total Cryogen Consumption per hour ({{ monetarySymbol|raw }})</td>
+                                                    <td>Heat losses per hour ({{ monetarySymbol|raw }}/h)</td>
+                                                    <td>cooldown ({{ monetarySymbol|raw }})
+                                                        <br>
+                                                    </td>
+                                                    <td>Heat losses per hour ({{ monetarySymbol|raw }}/h)</td>
+                                                    <td>Cooldown ({{ monetarySymbol|raw }})
+                                                        <br>
+                                                    </td>
+                                                </tr>
+                                                {% for i in arrStudyEquipment %}
+                                                <tr>
+                                                    <td><a href="#">{{ i.eqptName }}</a></td>
+                                                    <td>{{ i.tc }}</td>
+                                                    <td>{{ i.ckgProduct }}</td>
+                                                    <td>{{ i.cProduct }}</td>
+                                                    <td>{{ i.cYear }}</td>
+                                                    <td>{{ i.cWeek }}</td>
+                                                    <td>{{ i.sCday }}</td>
+                                                    <td>{{ i.cHour }}</td>
+                                                    <td>{{ i.cEqptperm }}</td>
+                                                    <td>{{ i.cEqptcold }}</td>
+                                                    <td>{{ i.cLineperm }}</td>
+                                                    <td>{{ i.cLinecold }}</td>
+                                                    <td>{{ i.cTank }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/. nav-tab-custom heat, consum, econo -->
+                            </div>
+                            <!-- /.tab-content calculate mode -->
+                        </div>
+                        <!-- /.nav-tab-custome Calculate mode -->
+
+                        <!-- /.tab-pane preminary -->
+                    </div>
+                    <!-- /.tab-content Preminary -->
+                </div>
+                <!--/. nav-tab-cus-Preminaty -->
+            </div>
+            <!-- /.close main row -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 3.0
+        </div>
+        <strong>Copyright &copy; 2017 <a href="#">CryoSoft</a>.</strong> All rights reserved.
+    </footer>
+
+</div>
+<!-- ./wrapper -->
+</body>
+{% endblock %}
+

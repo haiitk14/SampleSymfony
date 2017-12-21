@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\LayoutResults" table="layout_results">
+    <indexes>
+      <index name="FK_LAYOUT_RESULTS_STUDY_EQUIPMENTS" columns="ID_STUDY_EQUIPMENTS"/>
+    </indexes>
+    <id name="idLayoutResults" type="integer" column="ID_LAYOUT_RESULTS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="numberPerM" type="float" column="NUMBER_PER_M" precision="24" scale="0" nullable="true"/>
+    <field name="numberInWidth" type="integer" column="NUMBER_IN_WIDTH" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="leftRightInterval" type="float" column="LEFT_RIGHT_INTERVAL" precision="10" scale="0" nullable="true"/>
+    <field name="loadingRate" type="float" column="LOADING_RATE" precision="10" scale="0" nullable="true"/>
+    <field name="quantityPerBatch" type="float" column="QUANTITY_PER_BATCH" precision="10" scale="0" nullable="true"/>
+    <field name="loadingRateMax" type="float" column="LOADING_RATE_MAX" precision="10" scale="0" nullable="true"/>
+    <field name="quantityPerBatchMax" type="float" column="QUANTITY_PER_BATCH_MAX" precision="10" scale="0" nullable="true"/>
+    <field name="nbShelves" type="smallint" column="NB_SHELVES" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nbShelvesMax" type="smallint" column="NB_SHELVES_MAX" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idStudyEquipments" target-entity="StudyEquipments" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY_EQUIPMENTS" referenced-column-name="ID_STUDY_EQUIPMENTS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

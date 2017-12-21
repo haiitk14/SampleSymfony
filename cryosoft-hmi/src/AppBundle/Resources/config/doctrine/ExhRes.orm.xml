@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ExhRes" table="exh_res">
+    <indexes>
+      <index name="FK_EXH_RES_STUDY_EQUIPMENTS" columns="ID_STUDY_EQUIPMENTS"/>
+    </indexes>
+    <id name="idExhRes" type="integer" column="ID_EXH_RES">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="dilutionAirEnth" type="float" column="DILUTION_AIR_ENTH" precision="10" scale="0" nullable="true"/>
+    <field name="mixtureEnth" type="float" column="MIXTURE_ENTH" precision="10" scale="0" nullable="true"/>
+    <field name="cryogenEnthVariation" type="float" column="CRYOGEN_ENTH_VARIATION" precision="10" scale="0" nullable="true"/>
+    <field name="gasCryogenFlowRate" type="float" column="GAS_CRYOGEN_FLOW_RATE" precision="10" scale="0" nullable="true"/>
+    <field name="dilutionAirFlowRate" type="float" column="DILUTION_AIR_FLOW_RATE" precision="10" scale="0" nullable="true"/>
+    <field name="totalFlowRate" type="float" column="TOTAL_FLOW_RATE" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idStudyEquipments" target-entity="StudyEquipments" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY_EQUIPMENTS" referenced-column-name="ID_STUDY_EQUIPMENTS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<body class="hold-transition skin-blue sidebar-mini" bgcolor="#CAE1F7">
+	<div>
+	    <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+            <!-- Main content -->
+            <section class="content">
+
+               <form name="centerFormToSave" method="post" action="">
+					<table border="0" align="center" cellpadding="0" cellspacing="0" width="830">
+						<tbody>
+							<tr valign="top">
+								<td height="30" valign="top" class="Gros-Titre2">{{'::::Check control'|trans}}</td>
+							</tr>
+							<tr>
+								<td height="1" bgcolor="#6699CC"> </td>
+							</tr>
+							<tr>
+								<td height="15">&nbsp;</td>
+							</tr>
+							<tr>
+								<td height="30" valign="top">
+									<b>{{'The active links correspond to unvalidated screens, please click to complete the screen'|trans}}</b>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<table width="50%" border="1" cellpadding="1" cellspacing="0" align="center">
+										<tbody>
+											<tr>
+												<td align="center" height="20">
+													{% if calcModel == true %}
+													    {{'Definition'|trans}}
+													{% else %}
+													    <a href="/definition" onclick="changeBan()">{{'Definition'|trans}}</a>
+													{% endif %}
+												</td>
+											</tr>
+											<tr>
+												<td align="center" height="20">
+													{% if stdCustomer == true %}
+													    {{'Production'|trans}}
+													{% else %}
+													    <a href="/production" onclick="changeBan()">{{'Production'|trans}}</a>
+													{% endif %}
+												</td>
+											</tr>
+											<tr>
+												<td align="center" height="20">
+													{% if stdProduct == true %}
+													    {{'Product Characteristics'|trans}}
+													{% else %}
+													    <a href="/productChar" onclick="changeBan()">{{'Product Characteristics'|trans}}</a>
+													{% endif %}
+												</td>
+											</tr>
+											<tr>
+												<td align="center" height="20">
+													{% if stdMesh_Init == true %}
+													    {{ "Mesh"|trans}} &amp; {{"Initial Temperature"|trans}}
+													{% else %}
+													    <a href="/mesh" onclick="changeBan()">{{ "Mesh"|trans}} &amp; {{"Initial Temperature"|trans}}</a>
+													{% endif %}
+												</td>
+											</tr>
+											<tr>
+												<td align="center" height="20">
+													{% if stdPacking == true %}
+													    {{'Packing'|trans}}
+													{% else %}
+													    <a href="/packing" onclick="changeBan()">{{'Packing'|trans}}</a>
+													{% endif %}
+												</td>
+											</tr>
+											<tr>
+												<td align="center" height="20">
+													{% if stdEquipment == true %}
+													    {{'Equipment'|trans}}
+													{% else %}
+													    <a href="/equipments" onclick="changeBan()">{{'Equipment'|trans}}</a>
+													{% endif %}
+												</td>
+											</tr>
+											{% if isLineEnabled == true %}
+												<tr>
+													<td align="center" height="20">
+														{% if stdPacking == true %}
+														    {{'PipeLine'|trans}}
+														{% else %}
+														    <a href="/line" onclick="changeBan()">{{'PipeLine'|trans}}</a>
+														{% endif %}
+													</td>
+												</tr>
+											{% endif %}
+
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        {% include 'includes/footer.html.twig' %}
+	</div>
+</body>
+
+{% endblock %}

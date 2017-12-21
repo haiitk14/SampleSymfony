@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\MeshParamDef" table="mesh_param_def">
+    <id name="idUser" association-key="true"/>
+    <field name="mesh1Size" type="float" column="MESH_1_SIZE" precision="10" scale="0" nullable="false"/>
+    <field name="mesh2Size" type="float" column="MESH_2_SIZE" precision="10" scale="0" nullable="false"/>
+    <field name="mesh3Size" type="float" column="MESH_3_SIZE" precision="10" scale="0" nullable="false"/>
+    <field name="meshRatio" type="float" column="MESH_RATIO" precision="24" scale="0" nullable="false"/>
+    <one-to-one field="idUser" target-entity="Ln2user" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_USER" referenced-column-name="ID_USER"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

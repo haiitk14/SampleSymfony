@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Connection" table="connection">
+    <indexes>
+      <index name="IDX_29F77366F8371B55" columns="ID_USER"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="unique" columns="ID_USER,DATE_CONNECTION"/>
+    </unique-constraints>
+    <id name="dateConnection" type="bigint" column="DATE_CONNECTION"/>
+    <id name="idUser" association-key="true"/>
+    <field name="dateDisconnection" type="bigint" column="DATE_DISCONNECTION" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="typeDisconnection" type="smallint" column="TYPE_DISCONNECTION" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <one-to-one field="idUser" target-entity="Ln2user" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_USER" referenced-column-name="ID_USER"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

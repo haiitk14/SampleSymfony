@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Report" table="report">
+    <indexes>
+      <index name="FK_REPORT_STUDIES" columns="ID_STUDY"/>
+    </indexes>
+    <id name="idReport" type="integer" column="ID_REPORT">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="repCustomer" type="smallint" column="REP_CUSTOMER" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="prodList" type="smallint" column="PROD_LIST" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="prodTemp" type="smallint" column="PROD_TEMP" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="prod3d" type="smallint" column="PROD_3D" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="packing" type="smallint" column="PACKING" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="equipList" type="smallint" column="EQUIP_LIST" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="equipParam" type="smallint" column="EQUIP_PARAM" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="pipeline" type="smallint" column="PIPELINE" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="assesTermal" type="smallint" column="ASSES_TERMAL" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="assesConsump" type="smallint" column="ASSES_CONSUMP" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="assesEco" type="smallint" column="ASSES_ECO" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="assesTr" type="smallint" column="ASSES_TR" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="assesTrMin" type="smallint" column="ASSES_TR_MIN" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="assesTrMax" type="smallint" column="ASSES_TR_MAX" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="sizingTr" type="smallint" column="SIZING_TR" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="sizingTrMin" type="smallint" column="SIZING_TR_MIN" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="sizingTrMax" type="smallint" column="SIZING_TR_MAX" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="sizingValues" type="smallint" column="SIZING_VALUES" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="sizingGraphe" type="smallint" column="SIZING_GRAPHE" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="sizingTempG" type="smallint" column="SIZING_TEMP_G" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="sizingTempV" type="smallint" column="SIZING_TEMP_V" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="sizingTempSample" type="smallint" column="SIZING_TEMP_SAMPLE" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="axe1X" type="float" column="AXE1_X" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="axe1Y" type="float" column="AXE1_Y" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="axe2X" type="float" column="AXE2_X" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="axe2Z" type="float" column="AXE2_Z" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="axe3Y" type="float" column="AXE3_Y" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="axe3Z" type="float" column="AXE3_Z" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="isochroneG" type="smallint" column="ISOCHRONE_G" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="isochroneV" type="smallint" column="ISOCHRONE_V" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="isochroneSample" type="smallint" column="ISOCHRONE_SAMPLE" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="point1X" type="float" column="POINT1_X" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="point1Y" type="float" column="POINT1_Y" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="point1Z" type="float" column="POINT1_Z" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="point2X" type="float" column="POINT2_X" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="point2Y" type="float" column="POINT2_Y" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="point2Z" type="float" column="POINT2_Z" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="point3X" type="float" column="POINT3_X" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="point3Y" type="float" column="POINT3_Y" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="point3Z" type="float" column="POINT3_Z" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="isovalueG" type="smallint" column="ISOVALUE_G" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="isovalueV" type="smallint" column="ISOVALUE_V" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="isovalueSample" type="smallint" column="ISOVALUE_SAMPLE" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="planX" type="float" column="PLAN_X" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="planY" type="float" column="PLAN_Y" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="planZ" type="float" column="PLAN_Z" precision="24" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="contour2dG" type="smallint" column="CONTOUR2D_G" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="contour2dSample" type="smallint" column="CONTOUR2D_SAMPLE" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="contour2dTempStep" type="float" column="CONTOUR2D_TEMP_STEP" precision="24" scale="0" nullable="true"/>
+    <field name="enthalpyV" type="smallint" column="ENTHALPY_V" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="enthalpyG" type="smallint" column="ENTHALPY_G" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="enthalpySample" type="smallint" column="ENTHALPY_SAMPLE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="destSurname" type="string" column="DEST_SURNAME" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="destName" type="string" column="DEST_NAME" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="destFunction" type="string" column="DEST_FUNCTION" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="destCoord" type="string" column="DEST_COORD" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="photoPath" type="string" column="PHOTO_PATH" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="customerLogo" type="string" column="CUSTOMER_LOGO" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="consSpecific" type="smallint" column="CONS_SPECIFIC" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consOverall" type="smallint" column="CONS_OVERALL" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consTotal" type="smallint" column="CONS_TOTAL" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consHour" type="smallint" column="CONS_HOUR" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consDay" type="smallint" column="CONS_DAY" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consWeek" type="smallint" column="CONS_WEEK" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consMonth" type="smallint" column="CONS_MONTH" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consYear" type="smallint" column="CONS_YEAR" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consEquip" type="smallint" column="CONS_EQUIP" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consPipe" type="smallint" column="CONS_PIPE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consTank" type="smallint" column="CONS_TANK" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="contour2dOutlineTime" type="float" column="CONTOUR2D_OUTLINE_TIME" precision="10" scale="0" nullable="true"/>
+    <field name="reportComment" type="text" column="REPORT_COMMENT" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="writerSurname" type="string" column="WRITER_SURNAME" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="writerName" type="string" column="WRITER_NAME" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="writerFunction" type="string" column="WRITER_FUNCTION" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="writerCoord" type="string" column="WRITER_COORD" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="repConsPie" type="boolean" column="REP_CONS_PIE" nullable="true"/>
+    <field name="contour2dTempMin" type="float" column="CONTOUR2D_TEMP_MIN" precision="24" scale="0" nullable="true"/>
+    <field name="contour2dTempMax" type="float" column="CONTOUR2D_TEMP_MAX" precision="24" scale="0" nullable="true"/>
+    <many-to-one field="idStudy" target-entity="Studies" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY" referenced-column-name="ID_STUDY"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

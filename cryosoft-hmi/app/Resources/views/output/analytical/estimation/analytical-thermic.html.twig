@@ -1,0 +1,238 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="/head-balance" aria-expanded="false">Preminary Results</a></li>
+                        <li class="/out-sizing-result"><a href="sizing_estimation.html" aria-expanded="false">Sizing Result</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Heat Balance
+                <small>Summary info</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Preminary Results</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <!-- Main row -->
+            <div class="row">
+                <!-- nav-tab-cus-Preminaty -->
+                <div class="nav-tabs-custom">
+                    <!-- tab-content Preminary -->
+                    <div class="tab-content">
+
+                        <!-- nav-tab-custome Calculate mode -->
+                        <div class="nav-tabs-custom">
+                            <!-- nav-tab calculate mode -->
+                            <ul class="nav nav-tabs">
+                                    <li class="pull-right header"><i class="fa fa-calculator"></i> Output</li>
+                            </ul>
+                            <!-- /.nav-tab calculate mode -->
+                            <!-- tab-content calculate mode -->
+                            <div class="tab-content">
+
+                                <!-- nav-tab-custom heat, consum, econo -->
+                                <div class="nav-tabs-custom">
+                                    <!-- nav-tab heat, consum, econo -->
+                                    <ul class="nav nav-tabs pull-right" style="background:#fff">
+                                        {% if ecoEnable == true %}
+                                        <li><a href="/analytical-economic">Economics</a></li>
+                                        {% endif %}
+                                        <li><a href="/analytical-consumption">Consumptions</a></li>
+                                        <li class="active"><a href="/head-balance">Heat Balance</a></li>
+                                    </ul>
+                                    <!-- /.nav-tab heat, consum, econo -->
+                                    <!-- tab-content heat, consum, econo  -->
+                                    <div class="tab-content" style="background:#fff">
+                                        <!-- tab-pane Heat -->
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="radio" class="control" name="TR" value="/head-balance?selectTR=2"{% if selectTR == 2 %} checked{% endif %}> Control Temperature 10°C (18°F) colder
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="checkbox icheck">
+                                                    <label>
+                                                        <input type="radio" class="control" name="TR" value="/head-balance"{% if selectTR == "" or selectTR == 1 %} checked{% endif %}> Control Temperature
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="radio" class="control" name="TR" value="/head-balance?selectTR=0"{% if selectTR == 0 %} checked{% endif %}> Control Temperature 10°C (18°F) warmer
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive" style="overflow: inherit;">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    Required Production Rate
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="input-group">
+                                                                    <input class="form-control" value="{{ objProduction.prodFlowRate }}" disabled type="text">
+                                                                    <span class="input-group-addon">(kg/h)</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td colspan="2">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    Real product mass per unit
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="input-group">
+                                                                    <input class="form-control" value="{{ prodElmtRealweight }}" disabled type="text">
+                                                                    <span class="input-group-addon">(kg)</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td colspan="2">
+                                                        <div class="row">
+                                                            <div class="col-md-7">
+                                                                <div class="form-group">
+                                                                    Initial Average Product temperature
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                <div class="input-group">
+                                                                    <input class="form-control" value="{{ objProduction.avgTInitial }}" disabled type="text">
+                                                                    <span class="input-group-addon">(°C )</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th rowspan="2" style="width:14%">Equipment</th>
+                                                    <th rowspan="2">Control temperature
+                                                        <br/>(°C )</th>
+                                                    <th rowspan="2">Residence / Dwell time
+                                                        <br/>(s)</th>
+                                                    <th rowspan="2">Product heat load
+                                                        <br/>(kj/kg)</th>
+                                                    <th rowspan="2">Final Average product temperature
+                                                        <br/> (°C )</th>
+                                                    <th colspan="3">Chosen product flowrate</th>
+                                                    <th rowspan="2">Precision of the high level calculation.
+                                                        <br/>(%)</th>
+                                                </tr>
+                                                <tr style="background-color: #fff">
+                                                    <th>Hourly production capacity
+                                                        <br/> (kg/h)</th>
+                                                    <th>Cryogen consumption (product + equipment heat load)
+                                                        <br/> (l/kg)</th>
+                                                    <th>Conveyor coverage or quantity of product per batch</th>
+                                                </tr>
+                                                {% for item in arrStudyEquipment %}
+                                                    
+                                                    {% if item.sEquipRunning == "running" %}
+                                                        {% set sCalculate = "disabled" %}
+                                                    {% else %}
+                                                        {% set sCalculate = item.sCalculate %}
+                                                    {% endif %}
+
+                                                    {% set inputName = "cb" ~ item.idStudyEquipments %}
+                                                <tr style="background: {{ item.sBackground }}">
+                                                    
+                                                    <td>
+                                                    
+                                                        <a href="javascript:;" {{ item.soption_Brain }} {% if item.shref_Brain != "#" %}class="output-refine-popup"{% endif %} data-url="{{ item.shref_Brain }}" data-idstudyequipments="{{ item.idStudyEquipments }}" data-brandmode="{{ brandModeRefine }}">{{ item.sEquipName }}</a>
+                                                    
+                                                    {% if item.sSpecificSize != null and item.sSpecificSize != "" %}
+                                                        {% if item.sEquipRunning == null and item.selectTR != 1 %}
+                                                        <br>
+                                                        <a href="javascript:;" class="output-equip-sizing" style="color:#f00" data-url="/equip-sizing" data-idstudyequipments="{{ item.idStudyEquipments }}" data-calculatemode="{{ objStudy.calculationMode }}" {{ item.soption_EqpSize }}>
+                                                            Specific equipment<br>{{ item.sSpecificSize }}
+                                                        </a>
+                                                        {% else %}
+                                                            <br>Specific equipment<br>{{ item.sSpecificSize }}
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    </td>
+  
+                                                    <td>
+                                                        {{ item.shref_TR|raw }}
+                                                        
+                                                    </td>
+                                                    <td>{{ item.sTS }}</td>
+                                                    <td>{{ item.sH }}</td>
+                                                    <td>{{ item.sTFP }}</td>
+                                                    <td>{{ item.sDHP }}</td>
+                                                    <td>{{ item.sConso }}</td>
+                                                    <td>{{ item.sTOC }}</td>
+                                                    <td>{{ item.sPrecision }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+
+                                        <!--/. tab-pane Heat -->
+                                    </div>
+                                    <!-- /.tab-content heat, consum, econo  -->
+                                </div>
+                                <!--/. nav-tab-custom heat, consum, econo -->
+                                <!-- /.tab-pane Estimation -->
+                            </div>
+                            <!-- /.tab-content calculate mode -->
+                        </div>
+                        <!-- /.nav-tab-custome Calculate mode -->
+
+                        <!-- /.tab-pane preminary -->
+                    </div>
+                    <!-- /.tab-content Preminary -->
+                </div>
+                <!--/. nav-tab-cus-Preminaty -->
+            </div>
+            <!-- /.close main row -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 3.0
+        </div>
+        <strong>Copyright &copy; 2017 <a href="#">CryoSoft</a>.</strong> All rights reserved.
+    </footer>
+
+
+</div>
+<!-- ./wrapper -->
+</body>
+{% endblock %}
+

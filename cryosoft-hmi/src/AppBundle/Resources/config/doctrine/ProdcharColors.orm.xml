@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ProdcharColors" table="prodchar_colors">
+    <indexes>
+      <index name="FK_PRODCHAR_COLORS_COLOR_PALETTE" columns="ID_COLOR"/>
+      <index name="FK_PRODCHAR_COLORS_PRODUCT" columns="ID_PROD"/>
+    </indexes>
+    <id name="idProdcharColors" type="integer" column="ID_PRODCHAR_COLORS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="layerOrder" type="integer" column="LAYER_ORDER" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idProd" target-entity="Product" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_PROD" referenced-column-name="ID_PROD"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idColor" target-entity="ColorPalette" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_COLOR" referenced-column-name="ID_COLOR"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

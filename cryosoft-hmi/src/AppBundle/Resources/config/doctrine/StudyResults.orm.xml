@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\StudyResults" table="study_results">
+    <indexes>
+      <index name="FK_STUDY_RESULTS_STUDIES" columns="ID_STUDY"/>
+    </indexes>
+    <id name="idStudyResults" type="integer" column="ID_STUDY_RESULTS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="bestEquipment" type="integer" column="BEST_EQUIPMENT" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="totalDwellingtime" type="float" column="TOTAL_DWELLINGTIME" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idStudy" target-entity="Studies" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY" referenced-column-name="ID_STUDY"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

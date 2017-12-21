@@ -1,0 +1,399 @@
+<div class="cart-box-container">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-primary">Optimum Calculation Mode</h4>
+    </div>
+
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <a href="javascript:;" class="btn btn-danger" data-dismiss="modal">Calcel</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                     <a href="javascript:;" class="btn btn-success">Calculate</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <a href="javascript:;" class="btn btn-primary" onclick="showSettings()">Setting</a>
+                </div>
+            </div>
+        </div>
+        
+            
+    </div>
+    <div class="modal-body" id="modal-body-refine" style="background:#fff;height:400px;max-height:450px">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Residence / Dwell time ({{ timeSymbol }})</th>
+                        <th>Control temperature ({{ temperatureSymbol }})</th>
+                        <th>Loading rate({{ percentSymbol }})</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">
+                            <table style="width: 100%">
+                                {% for key,value in arrLts %}
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="text" name="TS{{ key }}" value="{{ value.inputValue }}" class="form-control" {{ value.inputDisabled }}>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                {% if arrLts|length < nbMaxEqpPrm %}
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                {% endif %}
+                            </table>
+                        </td>
+                        <td>
+                            <table style="width: 100%">
+                                {% for key,value in arrLtr %}
+                                <tr>
+                                    <td>
+                                        {% if value.submitChange == true %}
+                                        <a href="#" class="bouton-contextuel" onclick="submitChangeTr()">
+                                            <img src="assets/dist/img/ref_equip/change_tr.gif" width="40" height="25" border="0" align="right" alt="">
+                                        </a>
+                                        {% endif %}
+                                        <div>
+                                            <input type="text" name="TR{{ key }}" value="{{ value.inputValue }}" class="form-control" {{ value.inputDisabled }}>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                {% if arrLtr|length < nbMaxEqpPrm %}
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                {% endif %}
+                            </table>
+                        </td>
+                        <td>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="text" value="{{ unitlfToc }}" class="form-control" {{ sdisableTOC }}>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Optimization required</th>
+                    <th>Temperature margin ({{ temperatureSymbol }})</th>
+                    <th>Enthalpy error ({{ percentSymbol }})</th>
+                    <th>Number of iterations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center">
+                        <div style="margin-top: 5px">
+                            <input type="checkbox" name="cbOptim" {{ scheckOptim }} onclick="checkingOptimisation()" {{ sdisableOptim }}>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="text" name="epsilonTemp" value="{{ epsilonTemp }}" class="form-control" {{ sdisableOptim }}>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="text" name="epsilonEnth" value="{{ epsilonEnth }}" class="form-control">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="text" name="nbOptimIter" value="{{ nbOptimIter }}" class="form-control">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="vertical-align: middle;">Time Step ({{ timeSymbol }})</th>
+                    <th rowspan="2" style="vertical-align: middle;width:29%">Precision of numerical modelling ({{ percentSymbol }})</th>
+                    <th colspan="2">Storage</th>
+                </tr>
+                <tr style="background-color:#fff">
+                    <th style="width:28%">Access to product graph and charts</th>
+                    <th>Step ({{ timeSymbol }})</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div>
+                            <input type="text" name="timestep" onchange="onchangeTimeStep()" onkeypress="pressenter( 'timestep' )" value="{{ timestep }}" class="form-control" {{ sdisableFields }}>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="text" name="Precision" value="{{ precision }}" class="form-control">
+                        </div>
+                    </td>
+                    <td>
+                        <div style="margin-top: 5px">
+                            <input type="checkbox" name="cbCharts" onclick="checkingStorage()" {{ scheckStorage }} {{ sdisableStorage }}>
+                        </div>
+                    </td>
+                    <td class="text-center">                      
+                        <div>
+                            <input type="text" name="storagestep" value="{{ storagestep }}" class="form-control" {{ sdisableStorage }}>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+        <div id="output-refine-setting" style="visibility:hidden;height:0;overflow:hidden">
+            <legend class="text-primary">Size condition</legend>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="2" style="width:30%">Activation</th>
+                        <th>Max of iterations</th>
+                        <th>Coef. of relaxation</th>
+                        <th colspan="4" style="width:40%">Temperature to stop ({{ temperatureSymbol }})</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">
+                            Horizontal
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-md-6 text-right">
+                                    <input type="radio" value="1" name="Hradiobutton"{% if calcParameters != "" and calcParameters.isHorizScan == 1 %} checked{% endif %} {{ sdisableFields }} style="margin: 0;vertical-align: middle;margin-right:5px"><span style="vertical-align:middle">Yes</span>
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <input type="radio" value="0" name="Hradiobutton"{% if calcParameters != "" and calcParameters.isHorizScan == 0 %} checked{% endif %} {{ sdisableFields }} style="margin: 0;vertical-align: middle;margin-right:5px"><span style="vertical-align:middle">No</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td rowspan="2" style="vertical-align: middle">
+                            <div>
+                                <input type="text" name="MaxIter" value="{{ maxIter }}" class="form-control" {{ sdisableFields }}>
+                            </div>
+                        </td>
+                        <td rowspan="2" style="vertical-align: middle">
+                            <div>
+                                <input type="text" name="RelaxCoef" value="{{ relaxCoef }}" class="form-control" {{ sdisableFields }}>
+                            </div>
+                        </td>
+                        <td>Surface</td>
+                        <td>Internal</td>
+                        <td>Bottom</td>
+                        <td>Average</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            Vertical
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-md-6 text-right">
+                                    <input type="radio"{% if calcParameters != "" and calcParameters.isVertScan == 1 %} checked{% endif %} {{ sdisableFields }} style="margin: 0;vertical-align: middle;margin-right:5px"><span style="vertical-align:middle">Yes</span>
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <input type="radio"{% if calcParameters != "" and calcParameters.isVertScan == 0 %} checked{% endif %} {{ sdisableFields }} style="margin: 0;vertical-align: middle;margin-right:5px"><span style="vertical-align:middle">No</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="text" name="TempPtSurf" value="{{ tempPtSurf }}" class="form-control" {{ sdisableFields }}>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="text" name="TempPtIn" value="{{ tempPtIn }}" class="form-control" {{ sdisableFields }}>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="text" name="TempPtBot" value="{{ tempPtBot }}" class="form-control" {{ sdisableFields }}>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="text" name="TempPtAvg" value="{{ tempPtAvg }}" class="form-control" {{ sdisableFields }}>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            
+            <legend class="text-primary">Following-up Point ({{ meshesSymbol }})</legend>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Surface</th>
+                            <th>Intern</th>
+                            <th>Bottom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width:33%">
+                                            <table style="width:100%;margin-bottom:10px">
+                                                <tr>
+                                                    <td style="width:20%" class="text-center">1</td>
+                                                    <td style="width:80%">
+                                                        <select name="select1" class="form-control" {{ sdisableFields }}>
+                                                            {% for i in select1 %}
+                                                            <option value="{{ i.value }}"{% if i.selected == true %} selected{% endif %}>{{ i.value }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table style="width:100%;margin-bottom:10px">
+                                                <tr>
+                                                    <td style="width:20%" class="text-center">2</td>
+                                                    <td style="width:80%">
+                                                        <select name="select2" class="form-control" {{ sdisableFields }}>
+                                                            {% for i in select2 %}
+                                                            <option value="{{ i.value }}"{% if i.selected == true %} selected{% endif %}>{{ i.value }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <td style="width:20%" class="text-center">3</td>
+                                                    <td style="width:80%">
+                                                        <select name="select3" class="form-control" {{ sdisableFields }}>
+                                                            {% for i in select3 %}
+                                                            <option value="{{ i.value }}"{% if i.selected == true %} selected{% endif %}>{{ i.value }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="width:33%">
+                                            <table style="width:100%;margin-bottom:10px">
+                                                <tr>
+                                                    <td style="width:20%" class="text-center">1</td>
+                                                    <td style="width:80%">
+                                                        <select name="select4" class="form-control" {{ sdisableFields }}>
+                                                            {% for i in select4 %}
+                                                            <option value="{{ i.value }}"{% if i.selected == true %} selected{% endif %}>{{ i.value }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table style="width:100%;margin-bottom:10px">
+                                                <tr>
+                                                    <td style="width:20%" class="text-center">2</td>
+                                                    <td style="width:80%">
+                                                        <select name="select5" class="form-control" {{ sdisableFields }}>
+                                                            {% for i in select5 %}
+                                                            <option value="{{ i.value }}"{% if i.selected == true %} selected{% endif %}>{{ i.value }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <td style="width:20%" class="text-center">3</td>
+                                                    <td style="width:80%">
+                                                        <select name="select6" class="form-control" {{ sdisableFields }}>
+                                                            {% for i in select6 %}
+                                                            <option value="{{ i.value }}"{% if i.selected == true %} selected{% endif %}>{{ i.value }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="width:33%">
+                                            <table style="width:100%;margin-bottom:10px">
+                                                <tr>
+                                                    <td style="width:20%" class="text-center">1</td>
+                                                    <td style="width:80%">
+                                                        <select name="select7" class="form-control" {{ sdisableFields }}>
+                                                            {% for i in select7 %}
+                                                            <option value="{{ i.value }}"{% if i.selected == true %} selected{% endif %}>{{ i.value }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table style="width:100%;margin-bottom:10px">
+                                                <tr>
+                                                    <td style="width:20%" class="text-center">2</td>
+                                                    <td style="width:80%">
+                                                        <select name="select8" class="form-control" {{ sdisableFields }}>
+                                                            {% for i in select8 %}
+                                                            <option value="{{ i.value }}"{% if i.selected == true %} selected{% endif %}>{{ i.value }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <td style="width:20%" class="text-center">3</td>
+                                                    <td style="width:80%">
+                                                        <select name="select9" class="form-control" {{ sdisableFields }}>
+                                                            {% for i in select9 %}
+                                                            <option value="{{ i.value }}"{% if i.selected == true %} selected{% endif %}>{{ i.value }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+     
+    </div>
+
+</div>

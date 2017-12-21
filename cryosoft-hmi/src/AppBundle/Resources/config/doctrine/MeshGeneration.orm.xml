@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\MeshGeneration" table="mesh_generation">
+    <indexes>
+      <index name="FK_MESH_GENERATION_PRODUCT" columns="ID_PROD"/>
+    </indexes>
+    <id name="idMeshGeneration" type="integer" column="ID_MESH_GENERATION">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="mesh1Fixed" type="boolean" column="MESH_1_FIXED" nullable="true"/>
+    <field name="mesh2Fixed" type="boolean" column="MESH_2_FIXED" nullable="true"/>
+    <field name="mesh3Fixed" type="boolean" column="MESH_3_FIXED" nullable="true"/>
+    <field name="mesh1Mode" type="smallint" column="MESH_1_MODE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mesh2Mode" type="smallint" column="MESH_2_MODE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mesh3Mode" type="smallint" column="MESH_3_MODE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mesh1Nb" type="integer" column="MESH_1_NB" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mesh2Nb" type="integer" column="MESH_2_NB" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mesh3Nb" type="integer" column="MESH_3_NB" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mesh1Size" type="float" column="MESH_1_SIZE" precision="10" scale="0" nullable="true"/>
+    <field name="mesh2Size" type="float" column="MESH_2_SIZE" precision="10" scale="0" nullable="true"/>
+    <field name="mesh3Size" type="float" column="MESH_3_SIZE" precision="10" scale="0" nullable="true"/>
+    <field name="mesh1Int" type="float" column="MESH_1_INT" precision="24" scale="0" nullable="true"/>
+    <field name="mesh2Int" type="float" column="MESH_2_INT" precision="24" scale="0" nullable="true"/>
+    <field name="mesh3Int" type="float" column="MESH_3_INT" precision="24" scale="0" nullable="true"/>
+    <field name="mesh1Ratio" type="float" column="MESH_1_RATIO" precision="24" scale="0" nullable="true"/>
+    <field name="mesh2Ratio" type="float" column="MESH_2_RATIO" precision="24" scale="0" nullable="true"/>
+    <field name="mesh3Ratio" type="float" column="MESH_3_RATIO" precision="24" scale="0" nullable="true"/>
+    <field name="best1Nb" type="integer" column="BEST_1_NB" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="best2Nb" type="integer" column="BEST_2_NB" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="best3Nb" type="integer" column="BEST_3_NB" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idProd" target-entity="Product" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_PROD" referenced-column-name="ID_PROD"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

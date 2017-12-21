@@ -1,0 +1,133 @@
+<div class="cart-box-container">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-primary">{{ sEquipName }}</h4>
+    </div>
+
+    
+    <div class="modal-body" style="background:#fff">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Residence / Dwell time ({{ timeSymbol }})</th>
+                        <th>Control temperature  ({{ temperatureSymbol }})</th>
+                        <th>Convection Setting  ({{ convectionSpeedSymbol }})</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="width:33.33%">
+                        	<table style="width:100%">
+                            {% if lTS != "" %}
+                        		{% for k,v in lTS %}
+                            		<tr>
+                            			<td class="text-center">
+                            				<input name="STS[]" value="{{ v.value|unitconvtime }}" type="text" class="form-control" {{ sdisableFields }}>
+                            			</td>
+                            		</tr>
+                        		{% endfor %}
+                            {% else %}
+                                <tr height="34"><td class="text-center">&nbsp;</td></tr>
+                            {% endif %}
+                            {% if lTS|length <= ldSetpointmax %}
+                                <tr height="34"><td class="text-center">&nbsp;</td></tr>
+                            {% endif %}
+                                <tr>
+                                    <td class="text-center">
+                                        <div id="errorMsgTs" class="text-center text-danger" style="min-height:38px;"></div>
+                                        <a href="javascript:;" id="tsbutton" class="btn btn-primary" data-min="{{ tsMin }}" data-max="{{ tsMax }}">Compute Residence/Dwell Time</a>
+                                    </td>
+                                </tr>
+                        	</table>                        
+                        </td>
+                        <td style="width:33.33%">
+                        	<table style="width:100%">
+                    		{% if lTR != "" %}
+                                {% for k,v in lTR %}
+                                    <tr>
+                                        <td class="text-center">
+                                            <input name="STR[]" value="{{ v.value|unitconvcontroltemperature }}" type="text" class="form-control">
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr height="34"><td class="text-center">&nbsp;</td></tr>
+                            {% endif %}
+                            {% if lTR|length <= ldSetpointmax %}
+                                <tr height="34"><td class="text-center">&nbsp;</td></tr>
+                            {% endif %}
+                                <tr>
+                                    <td class="text-center">
+                                        <div id="errorMsgTr" class="text-center text-danger" style="min-height:38px;"></div>
+                                        <a href="javascript:;" id="trbutton" class="btn btn-primary" data-min="{{ trMin }}" data-max="{{ trMax }}">Compute Control Temperature</a>
+                                    </td>
+                                </tr>
+                        	</table>                        
+                        </td>
+                        <td style="width:33.33%">
+                        	<table style="width:100%">
+                            {% if lVC != "" %}
+                                {% for k,v in lVC %}
+                                    <tr>
+                                        <td class="text-center">
+                                            <input name="SVC[]" value="{{ v.value|unitconvconvectionspeed }}" type="text" class="form-control">
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr height="34"><td class="text-center">&nbsp;</td></tr>
+                            {% endif %}
+                            {% if lVC|length <= ldSetpointmax %}
+                                <tr height="34"><td class="text-center">&nbsp;</td></tr>
+                            {% endif %}
+                            </table>                      
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        {% if lTE|length > 0 %}
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <td style="width:60%">
+                        Gas temperature({{ temperatureSymbol }})
+                    </td>
+                    <td style="width: 40%" class="text-center">
+                    {% for i in lTE %}
+                        <input name="STE{{ k }}" value="{{ v.value|unitconvexhausttemperature }}" type="text" class="form-control">
+                    {% endfor %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        {% endif %}
+
+        <input type="hidden" name="nbTS" value="{{ lTS|length }}">
+        <input type="hidden" name="nbTR" value="{{ lTR|length }}">
+        <input type="hidden" name="nbVC" value="{{ lVC|length }}">
+        <input type="hidden" name="nbTE" value="{{ lTE|length }}">
+
+        <div id="errorMsgPoppupTr" class="text-center text-danger"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="text-center">
+                    <a href="javascript:;" class="btn btn-danger" data-dismiss="modal">Calcel</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="text-center">
+                     <a href="javascript:;" class="btn btn-success" id="popupTrCaculation" data-id="{{ idStudyEquipments }}">Calculation</a>
+                </div>
+            </div>
+        </div>
+        
+            
+    </div>
+</div>

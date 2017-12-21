@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\EquipGenZone" table="equip_gen_zone">
+    <indexes>
+      <index name="FK_EQUIP_GEN_ZONE_EQUIP_GENERATION" columns="ID_EQUIPGENERATION"/>
+    </indexes>
+    <id name="idEquipGenZone" type="integer" column="ID_EQUIP_GEN_ZONE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="zoneNumber" type="integer" column="ZONE_NUMBER" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tempSensor" type="boolean" column="TEMP_SENSOR" nullable="true"/>
+    <field name="topAdiabat" type="boolean" column="TOP_ADIABAT" nullable="true"/>
+    <field name="bottomAdiabat" type="boolean" column="BOTTOM_ADIABAT" nullable="true"/>
+    <field name="leftAdiabat" type="boolean" column="LEFT_ADIABAT" nullable="true"/>
+    <field name="rightAdiabat" type="boolean" column="RIGHT_ADIABAT" nullable="true"/>
+    <field name="frontAdiabat" type="boolean" column="FRONT_ADIABAT" nullable="true"/>
+    <field name="rearAdiabat" type="boolean" column="REAR_ADIABAT" nullable="true"/>
+    <field name="topChange" type="smallint" column="TOP_CHANGE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="topPrm1" type="float" column="TOP_PRM1" precision="10" scale="0" nullable="true"/>
+    <field name="topPrm2" type="float" column="TOP_PRM2" precision="10" scale="0" nullable="true"/>
+    <field name="topPrm3" type="float" column="TOP_PRM3" precision="10" scale="0" nullable="true"/>
+    <field name="bottomChange" type="smallint" column="BOTTOM_CHANGE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="bottomPrm1" type="float" column="BOTTOM_PRM1" precision="10" scale="0" nullable="true"/>
+    <field name="bottomPrm2" type="float" column="BOTTOM_PRM2" precision="10" scale="0" nullable="true"/>
+    <field name="bottomPrm3" type="float" column="BOTTOM_PRM3" precision="10" scale="0" nullable="true"/>
+    <field name="leftChange" type="smallint" column="LEFT_CHANGE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="leftPrm1" type="float" column="LEFT_PRM1" precision="10" scale="0" nullable="true"/>
+    <field name="leftPrm2" type="float" column="LEFT_PRM2" precision="10" scale="0" nullable="true"/>
+    <field name="leftPrm3" type="float" column="LEFT_PRM3" precision="10" scale="0" nullable="true"/>
+    <field name="rightChange" type="smallint" column="RIGHT_CHANGE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="rightPrm1" type="float" column="RIGHT_PRM1" precision="10" scale="0" nullable="true"/>
+    <field name="rightPrm2" type="float" column="RIGHT_PRM2" precision="10" scale="0" nullable="true"/>
+    <field name="rightPrm3" type="float" column="RIGHT_PRM3" precision="10" scale="0" nullable="true"/>
+    <field name="frontChange" type="smallint" column="FRONT_CHANGE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="frontPrm1" type="float" column="FRONT_PRM1" precision="10" scale="0" nullable="true"/>
+    <field name="frontPrm2" type="float" column="FRONT_PRM2" precision="10" scale="0" nullable="true"/>
+    <field name="frontPrm3" type="float" column="FRONT_PRM3" precision="10" scale="0" nullable="true"/>
+    <field name="rearChange" type="smallint" column="REAR_CHANGE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="rearPrm1" type="float" column="REAR_PRM1" precision="10" scale="0" nullable="true"/>
+    <field name="rearPrm2" type="float" column="REAR_PRM2" precision="10" scale="0" nullable="true"/>
+    <field name="rearPrm3" type="float" column="REAR_PRM3" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idEquipgeneration" target-entity="EquipGeneration" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIPGENERATION" referenced-column-name="ID_EQUIPGENERATION"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

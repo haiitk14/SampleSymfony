@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div>
+		<!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="/settings/mesh" aria-expanded="false"> Mesh</a></li>
+                            <li class=""><a href="/settings/calculation" aria-expanded="false">Calculation</a></li>
+                            <li class=""><a href="/settings/result" aria-expanded="false">Result</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1> Mesh<small>Summary info</small></h1>
+                <ol class="breadcrumb">
+                    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">Mesh</li>
+                </ol>
+            </section>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success alert-dismissible btn-alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                    <span style="color:#ffffff";><strong>{{ message }}</strong></span>
+                </div>
+            {% endfor %}
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Main row -->
+                <div class="row">
+                    <div class="nav-tabs-custom">
+                        <div class="tab-content">
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <a href="#" class="pull-right" data-toggle="modal" data-target="#helpProduction" id="popoverData" data-placement="bottom" data-original-title="Help" data-trigger="manual">
+                                                <i class="fa fa-question-circle " style="font-size: 34px; padding: 0 13px;"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <form name="formMeshSetting" id="formMeshSetting" action="/settings/save" method="POST">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <h3>Default Mesh Sizes (irregular mode)</h3>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="padding-left">Dimension 1</th>
+                                                        <td>
+                                                            <div class="input-group ">
+                                                                <input type="text" id="_dimension1" name="_dimension1" class="form-control" placeholder="Dim1" aria-describedby="basic-addon2" size="9" maxlength="9" value="{{ dimension1 }}">
+                                                                <label class="input-group-addon" id="basic-addon2">mm</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="padding-left">Dimension 2</th>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <input type="text" id="_dimension2" name="_dimension2" class="form-control" placeholder="Dim2" aria-describedby="basic-addon2" size="9" maxlength="9" value="{{ dimension2 }}">
+                                                                <span class="input-group-addon" id="basic-addon2">mm</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="padding-left">Dimension 3</th>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <input type="text" id="_dimension3" name="_dimension3" class="form-control" placeholder="Dim3" aria-describedby="basic-addon2" size="9" maxlength="9" value="{{ dimension3 }}">
+                                                                <span class="input-group-addon" id="basic-addon2">mm</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="form-group button">
+                                            <button type="button" id="btnMeshSave" class="btn btn-primary btn-flat buttons">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row (main row) -->
+                <!-- click help -->
+                <div class="modal fade" id="helpProduction">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">Setting Page</h4>
+                            </div>
+                            <div class="modal-body">
+                                Help Mesh Setting
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./help -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        {{ include('includes/footer.html.twig') }}
+	</div>
+</body>
+
+{% endblock %}

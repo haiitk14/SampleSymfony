@@ -1,0 +1,602 @@
+{% extends 'basePacking.html.twig' %}
+{% block body %}
+    <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+      <div class="ajax-loader">
+        <img src="../../assets/dist/img/ajax-loader.gif" class="img-responsive" />
+      </div>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+                          <li class=""><a href="/home" aria-expanded="false">{{'Dashboard'|trans}}</a></li>
+                          <li class=""><a href="/definition" aria-expanded="false">{{'Definitition'|trans}}</a></li>
+                          <li class=""><a href="/production" aria-expanded="false">{{'Production'|trans}}</a></li>
+                          <li class=""><a href="/productChar" aria-expanded="false">{{'Product and characteristic'|trans}}</a></li>
+                          <li class=""><a href="/mesh" aria-expanded="false">{{'Mesh initial temperature'|trans}}</a></li>
+                          <li class="active"><a href="/packing" aria-expanded="false">{{'Packing'|trans}}</a></li>
+                          <li class=""><a href="/equipments" aria-expanded="false">{{'Equipment'|trans}}</a></li>
+                          <li class=""><a href="/line" aria-expanded="false">{{'Line'|trans}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    {{'Packing'|trans}}
+                    <small>{{'Summary info'|trans}}</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/home"><i class="fa fa-dashboard"></i> {{'Home'|trans}}</a></li>
+                    <li class="active">{{'Packing'|trans}}</li>
+                </ol>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Main row -->
+                <div class="row">
+                    <div class="nav-tabs-custom">
+                        <div class="tab-content">
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <div class="row">
+                                    <div class="col-md-5">
+                                      <input value="{{ namePacking }}" class="form-control input-radius" id="namePacking" name="_packingName" type="text" placeholder="Packing name" />
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                  <div class="row">
+                                    <div class="col-md-7">
+                                    </div>
+                                    <div class="col-md-4">
+                                      <span class="label label-danger">{{'Study Name:'|trans}} {{ studyName }}</span>
+                                    </div>
+                                    <div class="col-md-1">
+                                      <a href="#" class="pull-right" data-toggle="modal" data-target="#helpPack" id="popoverData" data-placement="bottom" data-original-title="Help" data-trigger="manual">
+                                        <i class="fa fa-question-circle " style="font-size: 34px; padding: 0 13px;"></i>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="box-body">
+                                        <table class="table table-bordered" >
+                                            <tr>
+                                                <th rowspan="2" style="width: 20%;">{{'Top'|trans}}</th>
+                                                <th style="width: 50%;">{{'Number of layer'|trans}}</th>
+                                                <th rowspan="2" style="width: 30%;">&nbsp;</th>
+                                            </tr>
+                                            <tr>
+                                              <td>
+                                                  <select id="showTop" data-placeholder="--Menu--" class="chosen-select">
+                                                  {% for i in 0..listNR_LAYERS%}
+                                                  {% if sumObjPackingLayerTop == i %}
+                                                    <option selected value="{{i}}">{{ i }}</option>
+                                                  {% else %}
+                                                      <option value="{{i}}">{{ i }}</option>
+                                                  {% endif %}
+                                                  {% endfor %}
+                                                  </select>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <th colspan="2">{{'Layer/Packing'|trans}}</th>
+                                              <th>{{'Thickness'|trans}}</th>
+                                          </tr>
+                                        </table>
+                                        <table id="top" class="table table-bordered" >
+                                          {% for layer in objPackingLayerTop %}
+                                          <tr id="top{{ loop.index }}" {% if sumObjPackingLayerTop >= 1 %} {% else %}
+                                              style="display: none" {% endif %} >
+                                              <td>{{ loop.index }}</td>
+                                                <td>
+                                                    <select data-placeholder="--Menu--" class="select-packing-top{{ loop.index }} chosen-select">
+                                                      {% for packingLayer in listLayer %}
+                                                      {% if layer.idPackingElmt.idPackingElmt == packingLayer.idTranslation %}
+                                                              <option selected='true' value="{{packingLayer.idTranslation}}">{{packingLayer.label}}</option>
+                                                      {% else %}
+                                                              <option value="{{packingLayer.idTranslation}}">{{packingLayer.label}}</option>
+                                                      {% endif %}
+                                                      {% endfor %}
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <input class="form-control input-radiusProD thickness-top{{ loop.index }} " type="text" name="Thickness" value="{{layer.thickness}}">
+                                                        <span class="input-group-addon" id="basic-addon2">um</span>
+                                                    </div>
+                                                </td>
+                                                </tr>
+                                          {% endfor %}
+
+                                          {% set still = sumObjPackingLayerTop+1 %}
+                                          {% for i in still..9 %}
+                                              <tr id="top{{ i }}" style="display: none">
+                                              <td>{{ i }}</td>
+                                                <td>
+                                                    <select data-placeholder="--Menu--" class="select-packing-top{{i}} chosen-select">
+                                                      {% for packingLayer in listLayer %}
+                                                            <option value="{{packingLayer.idTranslation}}">{{packingLayer.label}}</option>
+                                                      {% endfor %}
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <input class="form-control input-radiusProD thickness-top{{i}}" type="text" name="Thickness" value="{{packingThicknessDefault}}">
+                                                        <span class="input-group-addon" id="basic-addon2">um</span>
+                                                    </div>
+                                                </td>
+                                                </tr>
+                                          {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-1">
+
+                              </div>
+                              <div class="col-md-5">
+                                <img src="../../assets/dist/img/packing/sc.png">
+                              </div>
+                                <div class="col-md-6">
+                                    <div class="box-body">
+                                        <table class="table table-bordered"  >
+                                            <tr>
+                                                <th rowspan="2" style="width: 20%;">{{'Side'|trans}}</th>
+                                                <th style="width: 50%;">{{'Number of layer'|trans}}</th>
+                                                <th rowspan="2" style="width: 30%;">
+                                                    <select id="cmd-side" data-placeholder="--Menu--" class="chosen-select">
+                                                        <option value="0">{{'Specific'|trans}}</option>
+                                                        <option value="1">{{'Same top'|trans}}</option>
+                                                        <option value="2">{{'Same bottom'|trans}}</option>
+                                                    </select>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                              <td>
+                                                  <select id="showSide" data-placeholder="--Menu--" class="chosen-select">
+                                                      {% for i in 0..listNR_LAYERS%}
+                                                      {% if sumObjPackingLayerSide == i %}
+                                                        <option selected value="{{i}}">{{ i }}</option>
+                                                      {% else %}
+                                                          <option value="{{i}}">{{ i }}</option>
+                                                      {% endif %}
+                                                      {% endfor %}
+                                                  </select>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <th colspan="2">{{'Layer/Packing'|trans}}</th>
+                                              <th>{{'Thickness'|trans}}</th>
+                                          </tr>
+                                          </table>
+                                          <table id="side" class="table table-bordered">
+
+                                          {% for layer in objPackingLayerSide %}
+                                          <tr id="side{{ loop.index }}" {% if sumObjPackingLayerSide >= 1 %} {% else %}
+                                              style="display: none" {% endif %} >
+                                              <td>{{ loop.index }}</td>
+                                                <td>
+                                                    <select data-placeholder="--Menu--" class="select-packing-side{{ loop.index }} chosen-select">
+                                                      {% for packingLayer in listLayer %}
+                                                      {% if layer.idPackingElmt.idPackingElmt == packingLayer.idTranslation %}
+                                                              <option selected='true' value="{{packingLayer.idTranslation}}">{{packingLayer.label}}</option>
+                                                      {% else %}
+                                                              <option value="{{packingLayer.idTranslation}}">{{packingLayer.label}}</option>
+                                                      {% endif %}
+                                                      {% endfor %}
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <input class="form-control input-radiusProD thickness-side{{ loop.index }} " type="text" name="Thickness" value="{{layer.thickness}}">
+                                                        <span class="input-group-addon" id="basic-addon2">um</span>
+                                                    </div>
+                                                </td>
+                                                </tr>
+                                          {% endfor %}
+
+                                          {% set still = sumObjPackingLayerSide+1 %}
+                                          {% for i in still..9 %}
+                                              <tr id="side{{ i }}" style="display: none">
+                                              <td>{{ i }}</td>
+                                                <td>
+                                                    <select data-placeholder="--Menu--" class="select-packing-side{{i}} chosen-select">
+                                                      {% for packingLayer in listLayer %}
+                                                            <option value="{{packingLayer.idTranslation}}">{{packingLayer.label}}</option>
+                                                      {% endfor %}
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <input class="form-control input-radiusProD thickness-side{{i}}" type="text" name="Thickness" value="{{packingThicknessDefault}}">
+                                                        <span class="input-group-addon" id="basic-addon2">um</span>
+                                                    </div>
+                                                </td>
+                                                </tr>
+                                          {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="box-body">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th rowspan="2" style="width: 20%;">{{'Bottom'|trans}}</th>
+                                                <th style="width: 50%;">{{'Number of layer'|trans}}</th>
+                                                <th rowspan="2" style="width: 30%;">
+                                                    <select id="cmd-rear" data-placeholder="--Menu--" class="chosen-select">
+                                                        <option value="0">{{'Specific'|trans}}</option>
+                                                        <option value="1">{{'Same top'|trans}}</option>
+                                                    </select>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                              <td>
+                                                  <select id="showRear" data-placeholder="--Menu--" class="chosen-select">
+                                                      {% for i in 0..listNR_LAYERS%}
+                                                      {% if sumObjPackingLayerRear == i %}
+                                                        <option selected value="{{i}}">{{ i }}</option>
+                                                      {% else %}
+                                                          <option value="{{i}}">{{ i }}</option>
+                                                      {% endif %}
+                                                      {% endfor %}
+                                                  </select>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <th colspan="2">{{'Layer/Packing'|trans}}</th>
+                                              <th>{{'Thickness'|trans}}</th>
+                                          </tr>
+                                          </table>
+                                          <table id="rear" class="table table-bordered">
+
+                                          {% for layer in objPackingLayerRear %}
+                                          <tr id="rear{{ loop.index }}" {% if sumObjPackingLayerRear >= 1 %} {% else %}
+                                              style="display: none" {% endif %} >
+                                              <td>{{ loop.index }}</td>
+                                                <td>
+                                                    <select data-placeholder="--Menu--" class="select-packing-rear{{ loop.index }} chosen-select">
+                                                      {% for packingLayer in listLayer %}
+                                                      {% if layer.idPackingElmt.idPackingElmt == packingLayer.idTranslation %}
+                                                              <option selected='true' value="{{packingLayer.idTranslation}}">{{packingLayer.label}}</option>
+                                                      {% else %}
+                                                              <option value="{{packingLayer.idTranslation}}">{{packingLayer.label}}</option>
+                                                      {% endif %}
+                                                      {% endfor %}
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <input class="form-control input-radiusProD thickness-rear{{ loop.index }} " type="text" name="Thickness" value="{{layer.thickness}}">
+                                                        <span class="input-group-addon" id="basic-addon2">um</span>
+                                                    </div>
+                                                </td>
+                                                </tr>
+                                          {% endfor %}
+
+                                          {% set still = sumObjPackingLayerRear+1 %}
+                                          {% for i in still..9 %}
+                                              <tr id="rear{{ i }}" style="display: none">
+                                              <td>{{ i }}</td>
+                                                <td>
+                                                    <select data-placeholder="--Menu--" class="select-packing-rear{{i}} chosen-select">
+                                                      {% for packingLayer in listLayer %}
+                                                            <option value="{{packingLayer.idTranslation}}">{{packingLayer.label}}</option>
+                                                      {% endfor %}
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <input class="form-control input-radiusProD thickness-rear{{i}}" type="text" name="Thickness" value="{{packingThicknessDefault}}">
+                                                        <span class="input-group-addon" id="basic-addon2">um</span>
+                                                    </div>
+                                                </td>
+                                                </tr>
+                                          {% endfor %}
+                                        </table>
+                                        <button class="btn btn-primary btn-flat buttons margin" id="btn-save-packing" type="submit" ><i class="fa fa-check"></i> {{'Save'|trans}}</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.row (main row) -->
+                <!-- click help -->
+                <div class="modal fade" id="helpPack">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">{{'Packing page'|trans}}</h4>
+                            </div>
+                            <div class="modal-body">
+                                {{'Help packing page'|trans}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal">{{'Close'|trans}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./help -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 3.0
+            </div>
+            <strong>Copyright &copy; 2017 <a href="#">CryoSoft</a>.</strong> All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Create the tabs -->
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- Home tab content -->
+                <div class="tab-pane" id="control-sidebar-home-tab">
+                    <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Custom Template Design
+                                    <span class="label label-danger pull-right">70%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Update Resume
+                                    <span class="label label-success pull-right">95%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Laravel Integration
+                                    <span class="label label-warning pull-right">50%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Back End Framework
+                                    <span class="label label-primary pull-right">68%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+
+                </div>
+                <!-- /.tab-pane -->
+                <!-- Stats tab content -->
+                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+
+                <!-- /.tab-pane -->
+            </div>
+        </aside>
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    </body>
+{% endblock %}
+
+{% block javascripts_page %}
+<script type="text/javascript">
+$(function() {
+    //write here
+    $('#cmd-side').on('change', function(){
+        //empty target table
+        var value = $(this).val();
+        if (value < 1) {
+          return;
+        }
+        //if value=1 targer_name=top else rear
+        var target_name = (value == 1 ? 'top':'rear');
+          $("#side tr").remove();
+         //loop table to fill
+           $('#'+target_name+' tr').each(function() {
+               //console.log(el);
+               var old_tr = $(this);
+               var old_id = old_tr.attr('id');
+               var new_tr = old_tr.clone();
+               //rename target_name => side
+               if(old_id){
+                 var new_id = old_id.replace(target_name, 'side');
+                 new_tr.attr('id', new_id);
+               }
+               var old_html = new_tr.html();
+               //if value=1 replace top=side else rear=side
+               old_html = old_html.replace(value==1 ? /top/g : /rear/g, 'side');
+               new_tr.html(old_html);
+
+               $("#side").append(new_tr);
+               $("#side").find('.chosen-container').remove();
+           });
+           //copy number of layer
+            $('#showSide').val($('#show'+(value == 1 ? 'Top':'Rear')).val());
+            $('#showSide').trigger("chosen:updated");
+            $('.chosen-select').chosen({
+                width: "100%"
+            });
+    });
+    $('#cmd-rear').on('change', function(){
+        //empty target table
+        var value = $(this).val();
+        if (value < 1) {
+          return;
+        }
+        //if value=1 targer_name=top else rear
+        var target_name = (value == 1 ? 'top':'side');
+          $("#rear tr").remove();
+         //loop table to fill
+           $('#'+target_name+' tr').each(function() {
+               //console.log(el);
+               var old_tr = $(this);
+               var old_id = old_tr.attr('id');
+               var new_tr = old_tr.clone();
+               //rename target_name => side
+               if(old_id){
+                 var new_id = old_id.replace(target_name, 'rear');
+                 new_tr.attr('id', new_id);
+               }
+               var old_html = new_tr.html();
+               //if value=1 replace top=side else rear=side
+               old_html = old_html.replace(value==1 ? /top/g : /side/g, 'rear');
+               new_tr.html(old_html);
+
+               $("#rear").append(new_tr);
+               $("#rear").find('.chosen-container').remove();
+           });
+           //copy number of layer
+            $('#showRear').val($('#show'+(value == 1 ? 'Top':'Side')).val());
+            $('#showRear').trigger("chosen:updated");
+            $('.chosen-select').chosen({
+                width: "100%"
+            });
+    });
+
+
+});
+</script>
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+
+      $("#btn-save-packing").on('click',function(){
+      var arrTop=[],arrSide=[],arrRear=[],arrThickTop=[],arrThickSide=[],arrThickRear=[];
+        var numTop= $("#showTop").val();
+        for(var i=1 ; i<=numTop ;i++){
+          var s=$('.select-packing-top'+i).val();
+          var thick=$('.thickness-top'+i).val();
+          if((isNaN(thick) || thick == "" || thick < objMinMaxThickness.limitThicknessMin || thick > objMinMaxThickness.limitThicknessMax) && i != 9){
+              alert("Value out of thickness "+objMinMaxThickness.limitThicknessMin+" : "+objMinMaxThickness.limitThicknessMax);
+              $('.thickness-top'+i).focus();
+                $('.thickness-top'+i).val("");
+              return;
+          }
+          if(i==9 && (isNaN(thick) || thick == "")){
+            alert("Value out of thickness (numbers)");
+            $('.thickness-top'+i).focus();
+              $('.thickness-top'+i).val("");
+            return;
+          }
+            arrTop.push(s);
+            arrThickTop.push(thick);
+        }
+        var numSide= $("#showSide").val();
+        for(var i=1 ; i<=numSide ;i++){
+          var s=$('.select-packing-side'+i).val();
+          var thick=$('.thickness-side'+i).val();
+          if((isNaN(thick) || thick == "" || thick < objMinMaxThickness.limitThicknessMin || thick > objMinMaxThickness.limitThicknessMax) && i != 9){
+              alert("Value out of thickness "+objMinMaxThickness.limitThicknessMin+" : "+objMinMaxThickness.limitThicknessMax);
+              $('.thickness-side'+i).focus();
+                $('.thickness-side'+i).val("");
+              return;
+          }
+          if(i==9 && (isNaN(thick) || thick == "")){
+            alert("Value out of thickness (numbers)");
+            $('.thickness-side'+i).focus();
+              $('.thickness-side'+i).val("");
+            return;
+          }
+            arrSide.push(s);
+            arrThickSide.push(thick);
+        }
+        var numRear= $("#showRear").val();
+        for(var i=1 ; i<=numRear ;i++){
+            var s=$('.select-packing-rear'+i).val();
+          var thick=$('.thickness-rear'+i).val();
+          if((isNaN(thick) || thick == "" || thick < objMinMaxThickness.limitThicknessMin || thick > objMinMaxThickness.limitThicknessMax) && i != 9){
+              alert("Value out of thickness "+objMinMaxThickness.limitThicknessMin+" : "+objMinMaxThickness.limitThicknessMax);
+                $('.thickness-rear'+i).focus();
+                $('.thickness-rear'+i).val("");
+              return;
+          }
+          if(i==9 && (isNaN(thick) || thick == "")){
+            alert("Value out of thickness (numbers)");
+            $('.thickness-rear'+i).focus();
+              $('.thickness-rear'+i).val("");
+            return;
+          }
+            arrRear.push(s);
+            arrThickRear.push(thick);
+        }
+
+        var dataSend={
+          'namePacking':$("#namePacking").val(),
+          'arrTop':arrTop,
+          'arrSide':arrSide,
+          'arrRear':arrRear,
+          'arrThickTop':arrThickTop,
+          'arrThickSide':arrThickSide,
+          'arrThickRear':arrThickRear
+        };
+        // consol.log(dataSend);
+        getMethodData('/createPack3',dataSend,function(res){
+
+        });
+      })
+
+  })
+  var objMinMaxThickness="";
+  (function () {
+      getMethodData("/getAllMinMaxThickness",{},function(res){
+          objMinMaxThickness=res;
+          console.log(res);
+      });
+  }());
+</script>
+
+{% endblock %}

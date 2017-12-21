@@ -1,0 +1,52 @@
+{% extends "modal.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<body class="hold-transition login-page">
+
+  </div>
+
+      <div class="login-box">
+        <div class="login-logo">
+            <a href="home.html"><b>{{'CryoSoft'|trans}}</b> {{'Login'|trans}}</a>
+          </div>
+            <div class="login-box-body">
+                <p class="login-box-msg">{{'Sign in to start your session'|trans}}</p>
+              <form class="form-horizontal" role="form" method="POST" action="{{ path('security_login_check') }}">
+                {% if error %}
+                  <div class="alert alert-danger">
+                    {{ error.messageKey|trans(error.messageData) }}
+                  </div>
+                {% endif %}
+                  <div class="form_group has-feedback">
+                      <input class="form-control input-radius" style="text-transform: uppercase;" placeholder="User name" type="text" name="_username" value="{{ last_username }}">
+                      <span class="fa fa-user form-control-feedback"></span>
+                  </div><br>
+                  <div class="form_group has-feedback">
+                      <input type="password" class="form-control input-radius" name="_password" placeholder="Password">
+                      <span class="glyphicon glyphicon-lock form-control-feedback"></span></p>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-8">
+                          <div class="checkbox icheck" >
+                          </div>
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-xs-4">
+                          <button type="submit" class="btn btn-primary btn-block btn-flat">{{'Sign In'|trans}}</button>
+                      </div>
+                      <!-- /.col -->
+                  </div>
+              </form>
+
+                <a href="#">{{'I forgot my password'|trans}}</a><br>
+                {# <a href="/signup">Register a new membership</a> #}
+
+            </div>
+          <!-- /.login-box-body -->
+      </div>
+        <!-- /.login-box -->
+
+</body>
+{% endblock %}

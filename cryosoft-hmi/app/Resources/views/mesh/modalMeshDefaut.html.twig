@@ -1,0 +1,23 @@
+{% block body %}
+<form action="/MeshDef" method="post">
+	<div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th> {{'Dimension'|trans }}</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <th> {{'Nb of nodes'|trans }}</th>
+                    <td>21</td>
+                    <td>21</td>
+                    <td>21</td>
+                </tr>
+            </table>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-danger btn-flat button-block"><i class="fa fa-times"></i> {{'Close'|trans }}</button>
+    </div>
+</form>
+{% endblock %}

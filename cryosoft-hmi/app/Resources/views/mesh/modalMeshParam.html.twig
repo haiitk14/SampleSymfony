@@ -1,0 +1,155 @@
+{% block body %}
+	 <form method="post" action="/meshParam">
+	    <div class="row">
+	        <div class="col-md-6">
+	        	<img src="{{shape.shapepict}}"/>
+	        </div>
+
+	        <div class="col-md-6">
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <label> {{'Type of mesh'|trans }}</label>
+	                </div>
+	                <div class="check-box">
+		                <div class="col-md-4">
+	                        <input type="radio" name="meshMode" class="control" name="meshMode" value="0" {% if meshGenerate.getMesh1Mode == 0 %} checked {% endif %}>  {{'Regular'|trans }}
+		                </div>
+		                <div class="col-md-4">
+	                        <input type="radio" class="control" name="meshMode" {% if meshGenerate.getMesh1Mode == 1 %} checked {% endif %} value="1">  {{'Irregular'|trans }}
+		                </div>
+	            	</div>
+	            </div>
+				{% if  (shape.idShape == 1) or (shape.idShape == 6)   %}
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <label> {{'Mesh size 1'|trans }}</label>
+	                </div>
+					
+	                <div class="col-md-8">
+	                    <div class="input-group">
+	                        <input class="form-control input-radiusProD" name="meshSize1" disabled="" value="{{'Not Applicable'|trans}}" type="text" >
+	                        <span class="input-group-addon" id="basic-addon2">mm</span>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <br/>
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <label> {{'Mesh size 2'|trans }}</label>
+	                </div>
+
+	                <div class="col-md-8">
+	                    <div class="input-group">
+	                        <input class="form-control input-radiusProD" name="meshSize2" value="{{mesh2Size}}" type="text" >
+	                        <span class="input-group-addon" id="basic-addon2">mm</span>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <br/>
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <label> {{'Mesh size 3'|trans }}</label>
+	                </div>
+
+	                <div class="col-md-8">
+	                    <div class="input-group">
+	                        <input class="form-control input-radiusProD" type="text" disabled="" value="{{'Not Applicable'|trans}}" name="meshSize3">
+	                        <span class="input-group-addon" id="basic-addon2">mm</span>
+	                    </div>
+	                </div>
+	            </div>
+				{% endif %}
+				{% if  (shape.idShape == 2) or (shape.idShape == 9) or (shape.idShape == 3)  %}
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <label> {{'Mesh size 1'|trans }}</label>
+	                </div>
+					
+	                <div class="col-md-8">
+	                    <div class="input-group">
+	                        <input class="form-control input-radiusProD" name="meshSize1" value="{{mesh1Size}}" type="text" >
+	                        <span class="input-group-addon" id="basic-addon2">mm</span>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <br/>
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <label> {{'Mesh size 2'|trans }}</label>
+	                </div>
+
+	                <div class="col-md-8">
+	                    <div class="input-group">
+	                        <input class="form-control input-radiusProD" name="meshSize2" value="{{mesh2Size}}" type="text" >
+	                        <span class="input-group-addon" id="basic-addon2">mm</span>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <br/>
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <label> {{'Mesh size 3'|trans }}</label>
+	                </div>
+
+	                <div class="col-md-8">
+	                    <div class="input-group">
+	                        <input class="form-control input-radiusProD" value="{{mesh3Size}}" type="text" name="meshSize3">
+	                        <span class="input-group-addon" id="basic-addon2">mm</span>
+	                    </div>
+	                </div>
+	            </div>
+				{% endif %}
+				{% if  (shape.idShape == 4) or (shape.idShape == 5) or (shape.idShape == 7) or (shape.idShape == 8)  %}
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <label> {{'Mesh size 1'|trans }}</label>
+	                </div>
+					
+	                <div class="col-md-8">
+	                    <div class="input-group">
+	                        <input class="form-control input-radiusProD" name="meshSize1" value="{{mesh1Size}}" type="text" >
+	                        <span class="input-group-addon" id="basic-addon2">mm</span>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <br/>
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <label> {{'Mesh size 2'|trans }}</label>
+	                </div>
+
+	                <div class="col-md-8">
+	                    <div class="input-group">
+	                        <input class="form-control input-radiusProD" name="meshSize2" value="{{mesh2Size}}" type="text" >
+	                        <span class="input-group-addon" id="basic-addon2">mm</span>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <br/>
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <label> {{'Mesh size 3'|trans }}</label>
+	                </div>
+
+	                <div class="col-md-8">
+	                    <div class="input-group">
+	                        <input class="form-control input-radiusProD" type="text" disabled="" value="{{'Not Applicable'|trans}}" name="meshSize3">
+	                        <span class="input-group-addon" id="basic-addon2">mm</span>
+	                    </div>
+	                </div>
+	            </div>
+				{% endif %}
+	        </div>
+	    </div>
+	 <div class="modal-footer">
+	    <button type="button" class="btn btn-danger btn-flat pull-left buttons" data-dismiss="modal"><i class="fa fa-times"></i>  {{'Close'|trans }}</button>
+	    <button type="submit" class="btn btn-success btn-flat buttons"><i class="fa fa-check"></i>  {{'Confirm'|trans }}</button>
+	</div>
+	</form>
+{% endblock %}

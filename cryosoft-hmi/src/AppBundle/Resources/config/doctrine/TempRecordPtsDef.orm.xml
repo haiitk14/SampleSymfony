@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\TempRecordPtsDef" table="temp_record_pts_def">
+    <indexes>
+      <index name="FK_TEMP_RECORD_PTS_DEF_LN2USER" columns="ID_USER"/>
+    </indexes>
+    <id name="idTempRecordPtsDef" type="integer" column="ID_TEMP_RECORD_PTS_DEF">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="axis1PtTopSurfDef" type="smallint" column="AXIS1_PT_TOP_SURF_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis2PtTopSurfDef" type="smallint" column="AXIS2_PT_TOP_SURF_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis3PtTopSurfDef" type="smallint" column="AXIS3_PT_TOP_SURF_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis1PtIntPtDef" type="smallint" column="AXIS1_PT_INT_PT_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis2PtIntPtDef" type="smallint" column="AXIS2_PT_INT_PT_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis3PtIntPtDef" type="smallint" column="AXIS3_PT_INT_PT_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis1PtBotSurfDef" type="smallint" column="AXIS1_PT_BOT_SURF_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis2PtBotSurfDef" type="smallint" column="AXIS2_PT_BOT_SURF_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis3PtBotSurfDef" type="smallint" column="AXIS3_PT_BOT_SURF_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis2Ax1Def" type="smallint" column="AXIS2_AX_1_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis3Ax1Def" type="smallint" column="AXIS3_AX_1_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis1Ax2Def" type="smallint" column="AXIS1_AX_2_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis3Ax2Def" type="smallint" column="AXIS3_AX_2_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis1Ax3Def" type="smallint" column="AXIS1_AX_3_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis2Ax3Def" type="smallint" column="AXIS2_AX_3_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis1Pl23Def" type="smallint" column="AXIS1_PL_2_3_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis2Pl13Def" type="smallint" column="AXIS2_PL_1_3_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="axis3Pl12Def" type="smallint" column="AXIS3_PL_1_2_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nbStepsDef" type="smallint" column="NB_STEPS_DEF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="contour2dTempMinDef" type="float" column="CONTOUR2D_TEMP_MIN_DEF" precision="24" scale="0" nullable="true"/>
+    <field name="contour2dTempMaxDef" type="float" column="CONTOUR2D_TEMP_MAX_DEF" precision="24" scale="0" nullable="true"/>
+    <many-to-one field="idUser" target-entity="Ln2user" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_USER" referenced-column-name="ID_USER"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,645 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <body class="hold-transition skin-blue sidebar-mini">
+
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <div class="wrapper">
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+                            <li class=""><a href="/home/fromlogin" aria-expanded="false" >{{'Dashboard'|trans}}</a></li>
+
+                            <li class="active"><a href="/definition" aria-expanded="false">{{'Definitition'|trans}}</a></li>
+                            <li class=""><a id="productionLink" href="/production" aria-expanded="false" {% if studyCurr == null %} style="pointer-events: none" {% endif %}>{{'Production'|trans}}</a></li>
+                            <li class=""><a id="linkpro" href="/productChar" aria-expanded="false" {% if studyCurr == null %} style="pointer-events: none" {% endif %}>{{'Product and characteristic'|trans}}</a></li>
+                            <li class=""><a id="linkMesh" href="/mesh" aria-expanded="false" {% if studyCurr == null %} style="pointer-events: none" {% endif %}>{{'Mesh initial temperature'|trans}}</a></li>
+                            <li class=""><a id="linkPack" href="/packing" aria-expanded="false" {% if studyCurr == null %} style="pointer-events: none" {% endif %} >{{'Packing'|trans}}</a></li>
+                            <li class=""><a id="linkEqui" href="/equipments" aria-expanded="false" {% if studyCurr == null %} style="pointer-events: none" {% endif %}>{{'Equipment'|trans}}</a></li>
+                            <li class=""><a id="linkLine" href="/line" aria-expanded="false" {% if studyCurr == null %} style="pointer-events: none" {% endif %}>{{'Line'|trans}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    {{'Open Study'|trans}}
+                    <small>{{'Summary info'|trans}}</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="home"><i class="fa fa-dashboard"></i> {{'Home'|trans}}</a></li>
+                    <li><a href="open">{{'Open Study'|trans}}</a></li>
+                    <li class="active">{{'Open'|trans}}</li>
+
+                </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Main row -->
+                <div class="row">
+                    <div class="nav-tabs-custom">
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs pull-right">
+                                {# <li><a href="#" data-target="#modal-import" data-toggle="modal">{{'Import'|trans}}</a></li> #}
+                                <li class="active"><a href="/open">{{'Open'|trans}}</a></li>
+                                <li id="id-new-study" class=""><a href="/definition">{{'New'|trans}}</a></li>
+
+                            </ul>
+                            <div class="tab-content">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="row">
+                                            <div class="col-md-11">
+
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a href="#" class="pull-right" data-toggle="modal" data-target="#helpdefi" id="popoverData" data-placement="bottom" data-original-title="Help" data-trigger="manual">
+                                                    <i class="fa fa-question-circle " style="font-size: 34px; padding: 0 13px;"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                {% for flash_massage in app.session.flashbag.get('error') %}
+                                    <div class="col-md-12">
+                                        <div class="alert alert-danger alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                            <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+                                            <span style="color:#ffffff";><strong>{{flash_massage | trans }}</strong></span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                                </div>
+                                <!-- /.modal -->
+                                <form action="/open" id="load-form" method="post">
+                                    <div class="row style-background">
+                                        <div class="col-md-12">
+                                            <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <div class="form-group group">
+                                                        <label class="lableName" for="name" name="">{{'Who'|trans}}</label>
+                                                        <select id="id-select-user" name="_who" data-placeholder="-- None --" class="form-control chosen-select">
+                                                            <option></option>
+                                                            <option selected value="0">-- None --</option>
+
+                                                            {% for item in listUser %}
+                                                                {% if listSearchStudy.idUser == item.idUser %}
+                                                                    <option selected="true" value="{{ item.idUser }}">{{ item.usernam }}</option>
+                                                                {% else %}
+                                                                    <option value="{{ item.idUser }}">{{ item.usernam }}</option>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                     <div class="form-group group">
+                                                        <label class="lableName" for="name" name="">{{'Component family'|trans}}</label>
+                                                        <select id="id-select-comp-family" data-placeholder="-- None --" class="form-control chosen-select" name="_compfamily">
+                                                            <option></option>
+                                                            <option selected value="0">-- None --</option>
+
+                                                            {% for item in listFamily %}
+                                                                {% if listSearchStudy.idCompFamily == item.idTranslation %}
+                                                                    <option selected="true" value="{{ item.idTranslation }}">{{ item.label }}</option>
+                                                                {% else %}
+                                                                     <option value="{{ item.idTranslation }}">{{ item.label }}</option>
+                                                                 {% endif %}
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <div class="form-group group">
+                                                        <label class="lableName" for="name" name="">{{'Sub family'|trans}}</label>
+                                                        <select id="id-select-subfamily" data-placeholder="-- None --" class="form-control chosen-select" name="_compsubfamily">
+                                                            <option></option>
+                                                            <option selected value="0">-- None --</option>
+
+                                                            {% for item in listSubFamily %}
+                                                                {% if listSearchStudy.idCompSubFamily == item.idTranslation %}
+                                                                    <option selected="true" value="{{ item.idTranslation }}">{{ item.label }}</option>
+                                                                {% else %}
+                                                                    <option value="{{ item.idTranslation }}">{{ item.label }}</option>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group group">
+                                                        <label class="lableName" for="name" name="">{{'Component list'|trans}}</label>
+                                                        <select id="id-select-comp" data-placeholder="-- None --" class="form-control chosen-select" name="_comp">
+                                                            <option></option>
+                                                            <option selected value="0">-- None --</option>
+
+                                                            {% for item in listComponent %}
+                                                                {% if listSearchStudy.idComp == item.idTranslation %}
+                                                                    <option selected="true" value="{{ item.idTranslation }}">{{ item.label }}</option>
+                                                                {% else %}
+                                                                     <option value="{{ item.idTranslation }}">{{ item.label }}</option>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row style-background" style="margin-left: 0px">
+                                        <div class="col-md-12">
+                                            {% if errors is defined and errors|length > 0 %}
+                                                {% for error in errors %}
+                                                    <div class="alert alert-warning alert-dismissible">
+                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                        <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+                                                        <span style="color:#ffffff";><strong>{{ error.message }}</strong></span>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <!-- div col-md-12 -->
+                                            <div class="col-md-6" style="padding: 0 15px;">
+                                                <div class="form-group group">
+                                                    <span style="display: none" id="Stuname"> </span>
+                                                    <label class="style-label">
+                                                            <img src="../../assets/dist/img/Icon/info.svg"> {{'Infor:'|trans}}
+                                                    </label><br>
+                                                </div>
+                                                <div class="form-group group">
+                                                        <label>{{'Study name'|trans}}</label>
+                                                        <select id="studyNameLs" name="_idStudy" class="form-control chosen-select" >
+                                                           <option value="0">{{'Choose Study name'|trans}}</option>
+
+                                                            {% for item in listStudy %}
+
+                                                                {% if studyCurr != null %}
+
+                                                                    {% if studyCurr.idStudy == item.idStudy %}
+                                                                        <option selected="" class="{{ item.classOptionStudy }}" value="{{ item.idStudy }}">{{ item.studyName }}</option>
+                                                                    {% else %}
+                                                                        <option class="{{ item.classOptionStudy }}" value="{{ item.idStudy }}">{{ item.studyName }}</option>
+                                                                    {% endif %}
+
+                                                                {% else %}
+                                                                    <option class="{{ item.classOptionStudy }}" value="{{ item.idStudy }}">{{ item.studyName }}</option>
+
+                                                                {% endif %}
+
+                                                            {% endfor %}
+                                                        </select>
+                                                        <div>
+                                                            <label>{{'Comment : '|trans}}</label>
+                                                            <br/>
+                                                            {% if studyCurr != null %}
+                                                                <textarea type="text" name="_comment" class="form-control input-radius" id="comment" value="{{ studyCurr.commentTxt }}">{{ studyCurr.commentTxt }}</textarea>
+                                                            {% else %}
+                                                                <textarea type="text" name="_comment" class="form-control input-radius" id="comment"></textarea>
+
+                                                            {% endif %}
+
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label class="style-label">
+                                                                <img src="./assets/dist/img/Icon/Calculationmode.svg"> {{'Calculation mode'|trans}}
+                                                            </label>
+
+                                                            {% if studyCurr != null %}
+
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input {% if studyCurr.calculationMode == 1 %} checked="true" {% endif %} type="radio" id="estimation" value="1" name="mode" class="calcul-option"> {{'Estimation'|trans}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input {% if studyCurr.calculationMode == 3 %} checked="true" {% endif %} type="radio" id="optimum" value="3" name="mode" class="calcul-option"> {{'Optimum Equipment'|trans}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input {% if studyCurr.calculationMode == 2 %} checked="true" {% endif %} type="radio" id="select" value="2" name="mode" class="calcul-option"> {{'Selected Equipment'|trans}}
+                                                                    </label>
+                                                                </div>
+
+                                                            {% else %}
+
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input disabled="true" type="radio" id="estimation" value="1" name="mode" class="calcul-option"> {{'Estimation'|trans}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input disabled="true" type="radio" id="optimum" value="3" name="mode" class="calcul-option"> {{'Optimum Equipment'|trans}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input disabled="true" type="radio" id="select" value="2" name="mode" class="calcul-option"> {{'Selected Equipment'|trans}}
+                                                                    </label>
+                                                                </div>
+
+                                                            {% endif %}
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <div class="form-group">
+                                                            <label class="style-label">
+                                                                <img src="./assets/dist/img/Icon/option.svg"> {{'Option'|trans}}
+                                                            </label>
+
+                                                            {% if studyCurr != null %}
+
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input {% if studyCurr.optionEco %} checked="true" {% endif %} type="checkbox" value="1" name="_economicSave" id="id-eco-open" class="calcul-option class-eco"> {{'Economic'|trans}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input {% if studyCurr.optionCryopipeline %} checked="true" {% endif %} type="checkbox" value="1" name="_cryogenSave" id="id-cryogenic-pieline-open" class="calcul-option class-cryogenic-pieline"> {{'Cryogenic Pipeline'|trans}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input {% if studyCurr.chainingControls %} checked="true" {% endif %} type="checkbox" value="1" name="_chainingControlsSave" id="id-perform-chaining-open" class="calcul-option class-perform-chaining"> {{'Perform Chaining checks'|trans}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input {% if studyCurr.chainingAddCompEnable %} checked="true" {% endif %} type="checkbox" value="1" name="_chainingAddCompEnableSave" id="id-adding-component-new-open" class="calcul-option class-adding-component"> {{'Allow Adding components in child study'|trans}}
+                                                                    </label>
+                                                                </div>
+
+                                                            {% else %}
+
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input disabled="true" type="checkbox" value="1" name="_economicSave" id="id-eco-open" class="calcul-option class-eco"> {{'Economic'|trans}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input disabled="true" type="checkbox" value="1" name="_cryogenSave" id="id-cryogenic-pieline-open" class="calcul-option class-cryogenic-pieline"> {{'Cryogenic Pipeline'|trans}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input disabled="true" type="checkbox" value="1" name="_chainingControlsSave" id="id-perform-chaining-open" class="calcul-option class-perform-chaining"> {{'Perform Chaining checks'|trans}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox icheck">
+                                                                    <label>
+                                                                        <input disabled="true" type="checkbox" value="1" name="_chainingAddCompEnableSave" id="id-adding-component-new-open" class="calcul-option class-adding-component"> {{'Allow Adding components in child study'|trans}}
+                                                                    </label>
+                                                                </div>
+
+                                                            {% endif %}
+
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                    {% if studyCurr != null %}
+
+                                        {% if studyCurr.isStudyHasFamilly == true %}
+
+                                            <div class="col-md-12">
+                                                <div class="table-responsive">
+                                                   <table class="table table-bordered table-hover">
+
+                                                        <thead>
+                                                            <tr style="background:#eee">
+                                                                <th>Mother study</th>
+                                                                <th></th>
+                                                                <th>Current study</th>
+                                                                <th>Childs study</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+
+                                                            {% if studyCurr.isParent == true %}
+
+                                                                <td align="center">{{ studyCurr.chainingParent.studyName }}
+                                                                    <br>
+                                                                    {{ studyCurr.chainingParent.equipName}}
+                                                                </td>
+                                                                <td><i class="fa fa-play" aria-hidden="true"></i> </td>
+
+                                                            {% else %}
+
+                                                                <td></td>
+                                                                <td></td>
+
+                                                            {% endif %}
+
+                                                                <td>{{ studyCurr.studyNameCurr }}</td>
+                                                                <td>
+                                                                    <table style="width:100%">
+
+                                                                            {% for item in studyCurr.chainingChild %}
+                                                                            <tr>
+                                                                                <td style="width:40%;">{{ item.equipName }}</td>
+                                                                                <td style="width:20%;"><i class="fa fa-play" aria-hidden="true"></i></td>
+                                                                                <td style="width:40%;">{{ item.studyName }}</td>
+                                                                            </tr>
+                                                                            {% endfor %}
+
+
+                                                                    </table>
+
+                                                                </td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        {% endif %}
+
+                                        <div class="col-md-12">
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    <button {% if studyCurr.studyOfUser == false %} disabled="true" {% endif %} class="btn btn-primary btn-flat margin buttons" type="submit" id="update"><i class="fa fa-check"></i> {{'Save'|trans}}</button>
+                                                    <button {% if studyCurr.studyOfUser == false %} disabled="true" {% endif %} type="button" class="btn btn-danger btn-flat margin buttons" id="delete" name="del"><i class="fa fa-trash-o"></i> {{'Delete'|trans}}</button>
+                                                    {# <button class="btn bg-orange btn-flat margin buttons" type="button" name="export" data-toggle="modal" data-target="#modal-export"><i class="fa fa-file-excel-o"></i> {{'Export'|trans}}</button> #}
+                                                    <button type="button" class="btn btn-primary btn-flat margin buttons" data-toggle="modal" data-target="#modal-saveas" id="saveAs" name="saveAs"><i class="fa fa-check"></i> {{'Save As'|trans}}</button>
+                                                    <button {% if studyCurr.studyOfUser == false %} disabled="true" {% endif %} class="btn bg-purple btn-flat margin buttons" type="button" name="chain" id="id-btn-chaining"><i class="fa fa-chain"></i> {{ 'Chaining' | trans }}</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+
+                                    {% endif %}
+
+                                    </div>
+
+                                    <div class="modal modal-warning fade" id="modal-warning">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">{{'Confirm Action'|trans}}</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>{{'Are you sure to delete it!!!'|trans}}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline btn-flat pull-left buttons" data-dismiss="modal"><i class="fa fa-times"></i>{{'Cancel'|trans}}</button>
+                                                    <button type="submit" id="delete" name="deleteid" class="btn btn-outline btn-flat buttons"><i class="fa fa-check"></i>{{'Confirm'|trans}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="modal-warning-chaining">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">{{'Confirm Action'|trans}}</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p style="color: #FF6633; font-size: 15px">{{'The comment should not exceed 2000 characters \ Please modify and save the comment or it will be truncated …'|trans}}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger btn-flat pull-left buttons" data-dismiss="modal"><i class="fa fa-times"></i>{{'Cancel'|trans}}</button>
+                                                    <button type="button" id="id-btn-confirm-dialog-chaining" name="deleteid" class="btn btn-info btn-flat buttons"><i class="fa fa-check"></i>{{'Confirm'|trans}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="modal-saveas">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">{{'Save new as study'|trans}}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <label>{{'New Study'|trans}}</label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="_saveStName" style="color: black;" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger btn-flat pull-left buttons" data-dismiss="modal"><i class="fa fa-times"></i> {{'Cancel'|trans}}</button>
+                                                <button id="saveAs" type="submit" class="btn btn-success btn-flat buttons"><i class="fa fa-check"></i> {{'Confirm'|trans}}</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                </form>
+                                <!-- /.modal -->
+                                <div class="modal fade" id="modal-export">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">{{'Export File'|trans}}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <label>{{'Name of the file: '|trans}}</label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="saveText" style="color: black;" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div style="text-align: center;">
+                                                    <span style="color: red;">{{'The export process might take a while. To continue, click on export'|trans}}</span></div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger btn-flat pull-left buttons" data-dismiss="modal"><i class="fa fa-times"></i>{{'Close'|trans}}</button>
+                                                <button type="button" class="btn btn-success btn-flat buttons" data-toggle="modal" data-target="#modal-exportCon" data-dismiss="modal"><i class="fa fa-check"></i>{{'Export'|trans}}</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal -->
+                                <!-- confirm export -->
+                                <div class="modal fade" id="modal-exportCon">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">{{'Download Export File'|trans}}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div style="text-align: center;">
+                                                    <h4 style="color: red;">{{'TO DOWNLOAD THE EXPORT NOW, CLICK ON THE FOLLOWING LINK'|trans}}</h4>
+                                                    <br/>
+                                                    <a href="#">{{'patties for expeit validation'|trans}}</a>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal"><i class="fa fa-times"></i>{{'Close'|trans}}</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- ./ confirm export -->
+                                <!-- modal import -->
+                                <div class="modal fade" id="modal-import">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">{{'Import File'|trans}}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div style="text-align: center;">
+                                                    <h5 style="color: red;">{{'The import process might take a while'|trans}}</h5>
+                                                </div>
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered">
+                                                        <tr>
+                                                            <th>{{'Entity'|trans}}</th>
+                                                            <th>{{'Action'|trans}}</th>
+                                                            <th>{{'Delete'|trans}}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>esquimo.study.zip</td>
+                                                            <td><a href="#">{{'Import'|trans}}</a></td>
+                                                            <td class="fix-center"><a href="#" class="btn btn-block btn-danger btn-flat btn-lg buttonPro" type="delete" name="delete"><i class="w3-xxxlarge glyphicon glyphicon-remove" data-toggle="modal" data-target="#modal-delImport"></i></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>esquimo.study.zip</td>
+                                                            <td><a href="#">{{'Import'|trans}}</a></td>
+                                                            <td class="fix-center"><a href="#" class="btn btn-block btn-danger btn-flat btn-lg buttonPro" type="delete" name="delete"><i class="w3-xxxlarge glyphicon glyphicon-remove" data-toggle="modal" data-target="#modal-delImport"></i></a></td>
+                                                        </tr>
+
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal import -->
+                        </div>
+                        <!-- /.row (main row) -->
+                        <!-- click preferance user -->
+
+                        <!-- /. preferance user -->
+                        <!-- modal del import -->
+                        <div class="modal modal-warning fade" id="modal-delImport">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">{{'Confirm Action'|trans}}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label>{{'Are you sure to delete it!!!'|trans}}</label>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline btn-flat buttons pull-left" data-dismiss="modal"><i class="fa fa-times"></i>{{'Cancel'|trans}}</button>
+                                        <button type="button" class="btn btn-outline btn-flat buttons"><i class="fa fa-check"></i>{{'Confirm'|trans}}</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /. modal del import -->
+                        {% if studyCurr != null %}
+                        <div class="modal fade" id="modal-waring-delete-study">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+                                         <h3>Confirm the deletion</h3>
+                                    </div>
+                                    <div class="modal-body" style="color:#dd4b39">
+
+                                        {% if studyCurr.isStudyHasFamilly == true or studyCurr.isParent == true %}
+
+                                        <p>This study is part of chaining calculation. Deletion may erase important data for other studies</p>
+
+                                        {% endif %}
+
+                                        <p>Please confirm for the deletion of this study  ::::  {{ studyCurr.studyNameCurr}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button class="btn btn-danger" id="id-confirm-delete-study">Confirm</button>
+                                      <button data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 3.0
+            </div>
+            <strong>Copyright &copy; 2017 <a href="#">CryoSoft</a>.</strong> All rights reserved.
+        </footer>
+
+
+    </div>
+    </body>
+{% endblock %}

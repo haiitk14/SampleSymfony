@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Equipcharact" table="equipcharact">
+    <indexes>
+      <index name="IX_ID_EQUIP" columns="ID_EQUIP"/>
+    </indexes>
+    <id name="idEquipcharac" type="integer" column="ID_EQUIPCHARAC">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="xPosition" type="float" column="X_POSITION" precision="10" scale="0" nullable="true"/>
+    <field name="tempRegul" type="float" column="TEMP_REGUL" precision="10" scale="0" nullable="true"/>
+    <field name="alphaTop" type="float" column="ALPHA_TOP" precision="10" scale="0" nullable="true"/>
+    <field name="alphaBottom" type="float" column="ALPHA_BOTTOM" precision="10" scale="0" nullable="true"/>
+    <field name="alphaLeft" type="float" column="ALPHA_LEFT" precision="10" scale="0" nullable="true"/>
+    <field name="alphaRight" type="float" column="ALPHA_RIGHT" precision="10" scale="0" nullable="true"/>
+    <field name="alphaFront" type="float" column="ALPHA_FRONT" precision="10" scale="0" nullable="true"/>
+    <field name="alphaRear" type="float" column="ALPHA_REAR" precision="10" scale="0" nullable="true"/>
+    <field name="tempTop" type="float" column="TEMP_TOP" precision="10" scale="0" nullable="true"/>
+    <field name="tempBottom" type="float" column="TEMP_BOTTOM" precision="10" scale="0" nullable="true"/>
+    <field name="tempLeft" type="float" column="TEMP_LEFT" precision="10" scale="0" nullable="true"/>
+    <field name="tempRight" type="float" column="TEMP_RIGHT" precision="10" scale="0" nullable="true"/>
+    <field name="tempFront" type="float" column="TEMP_FRONT" precision="10" scale="0" nullable="true"/>
+    <field name="tempRear" type="float" column="TEMP_REAR" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idEquip" target-entity="Equipment" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIP" referenced-column-name="ID_EQUIP"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

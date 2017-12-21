@@ -1,0 +1,1742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="dd640463-bc19-445e-beaa-f583b4e8fad4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/packing/packing.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/packing/packing.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/packing/PackingController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/packing/PackingController.php" />
+=======
+    <list default="true" id="19999941-f3a8-4c1b-8840-34a850096ae4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+<<<<<<< HEAD
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/admintration/home.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/admintration/home.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/admintration/login.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/admintration/login.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/productchar/product-characteristic.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/productchar/product-characteristic.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/production/production.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/production/production.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/study/new-study.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/study/new-study.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/study/open-study.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/study/open-study.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/symfony_requirements" afterPath="$PROJECT_DIR$/bin/symfony_requirements" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ListController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ListController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/StudyController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/StudyController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/productCharacteristic/ProductChartController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/productCharacteristic/ProductChartController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Product.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Product.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/config.php" afterPath="$PROJECT_DIR$/web/config.php" />
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+<<<<<<< HEAD
+    <leaf>
+      <file leaf-file-name="ProfileController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Profile/ProfileController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="84" column="53" lean-forward="true" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
+              <folding>
+                <marker date="1506669312088" expanded="true" signature="3624:3627" ph="{...}" />
+=======
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ProductChartController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/productCharacteristic/ProductChartController.php">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="1071">
+              <caret line="94" column="16" lean-forward="false" selection-start-line="94" selection-start-column="18" selection-end-line="96" selection-end-column="23" />
+=======
+            <state relative-caret-position="255">
+              <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+              <folding>
+                <element signature="e#63#92#0#PHP" expanded="true" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="packing.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/packing/packing.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-488">
+              <caret line="644" column="68" lean-forward="false" selection-start-line="644" selection-start-column="68" selection-end-line="644" selection-end-column="68" />
+=======
+      <file leaf-file-name="login.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/admintration/login.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="22015">
+              <caret line="1295" column="1" lean-forward="false" selection-start-line="1295" selection-start-column="1" selection-end-line="1295" selection-end-column="1" />
+=======
+            <state relative-caret-position="330">
+              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product-characteristic.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/productchar/product-characteristic.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="17">
+              <caret line="175" column="29" lean-forward="false" selection-start-line="175" selection-start-column="29" selection-end-line="175" selection-end-column="29" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+              <folding />
+=======
+            <state relative-caret-position="240">
+              <caret line="882" column="35" lean-forward="false" selection-start-line="882" selection-start-column="35" selection-end-line="882" selection-end-column="42" />
+              <folding>
+                <element signature="e#45927#47377#0#HTML" expanded="false" />
+                <element signature="e#47508#47733#0#HTML" expanded="false" />
+                <element signature="e#47768#50957#0#HTML" expanded="false" />
+              </folding>
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="PackingController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/packing/PackingController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+              <folding>
+                <element signature="e#131#165#0#PHP" expanded="true" />
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="open-study.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/study/open-study.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3196">
+              <caret line="188" column="20" lean-forward="false" selection-start-line="188" selection-start-column="20" selection-end-line="188" selection-end-column="47" />
+              <folding>
+                <marker date="1507103540326" expanded="false" signature="7669:7686" ph="..." />
+                <marker date="1507103540326" expanded="false" signature="7805:7822" ph="..." />
+                <marker date="1507103540326" expanded="false" signature="7929:7946" ph="..." />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="ListController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ListController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+=======
+      <file leaf-file-name="ProductChartController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/productCharacteristic/ProductChartController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="16" column="64" lean-forward="false" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+              <folding>
+                <element signature="e#63#122#0#PHP" expanded="true" />
+              </folding>
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ListController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+              <folding>
+                <element signature="e#41#100#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewProductController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/NewProductController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modal.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/modal.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="36" lean-forward="false" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Customize.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/dist/css/Customize.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3774">
+              <caret line="222" column="13" lean-forward="false" selection-start-line="222" selection-start-column="13" selection-end-line="222" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+=======
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+<<<<<<< HEAD
+      <find>IdU</find>
+      <find>update</find>
+      <find>erorr</find>
+      <find>us.png</find>
+      <find>../../</find>
+      <find>Number of layer</find>
+      <find>Layer/Packing</find>
+      <find>select1</find>
+      <find>select2</find>
+      <find>select3</find>
+      <find>select4</find>
+      <find>select5</find>
+      <find>select6</find>
+      <find>select7</find>
+      <find>select8</find>
+      <find>select9</find>
+      <find>side1</find>
+      <find>side2</find>
+      <find>side3</find>
+      <find>side4</find>
+      <find>side5</find>
+      <find>side6</find>
+      <find>side7</find>
+      <find>side8</find>
+      <find>side9</find>
+      <find>Side</find>
+      <find>front</find>
+      <find>side</find>
+      <find>referUser</find>
+=======
+      <find>home.html</find>
+      <find>definition.html</find>
+      <find>.html</find>
+      <find>1e282c</find>
+      <find>1a2226</find>
+      <find>4b646f</find>
+      <find>2c3b41</find>
+      <find>222d32</find>
+      <find>3c8dbc</find>
+      <find>.main-header .logo</find>
+      <find>reset</find>
+      <find>hiden</find>
+      <find>produc</find>
+      <find>hidden</find>
+      <find>Daily production</find>
+      <find>helpdefi</find>
+      <find>helpProduction</find>
+      <find>Production</find>
+      <find>info</find>
+      <find>Summary info</find>
+      <find>&lt;img</find>
+      <find>Stuname</find>
+      <find>name1</find>
+      <find>#newPro</find>
+      <find>app.user</find>
+      <find>Session runing</find>
+      <find>newP</find>
+      <find>newProduct</find>
+      <find>shapeName</find>
+      <find>newPro</find>
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+    </findStrings>
+    <replaceStrings>
+      <replace>assets/dist/css/shape/img</replace>
+      <replace>assets/dist/img/shape</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/web/assets/dist/css/skins</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/web/assets/dist/css/AdminLTE.css" />
+        <option value="$PROJECT_DIR$/web/assets/bower_components/bootstrap/dist/css/bootstrap.css" />
+        <option value="$PROJECT_DIR$/web/assets/bower_components/bootstrap/less/breadcrumbs.less" />
+        <option value="$PROJECT_DIR$/web/assets/bower_components/bootstrap/less/pagination.less" />
+        <option value="$PROJECT_DIR$/web/assets/dist/css/chosen/bootstrap-chosen.css" />
+        <option value="$PROJECT_DIR$/app/Resources/views/ReferenceData/component_data_generate.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Unit.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/DimaResults.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/MonetaryCurrency.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Language.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" />
+        <option value="$PROJECT_DIR$/app/config/security.yml" />
+        <option value="$PROJECT_DIR$/app/config/services.yml" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Security/FormLoginAuthenticator.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/admintration/login.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" />
+=======
+        <option value="$PROJECT_DIR$/app/Resources/views/Profile/Profile.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/Profile/Equipment.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/Profile/Unit.html.twig" />
+        <option value="$PROJECT_DIR$/web/assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/RegisterController.php" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+        <option value="$PROJECT_DIR$/app/Resources/views/admintration/registration.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/Profile/ChangePass.html.twig" />
+        <option value="$PROJECT_DIR$/web/assets/dist/css/skins/_all-skins.min.css" />
+        <option value="$PROJECT_DIR$/app/Resources/views/modal.html.twig" />
+        <option value="$PROJECT_DIR$/web/assets/bower_components/bootstrap/less/input-groups.less" />
+        <option value="$PROJECT_DIR$/web/assets/dist/css/Customize.css" />
+        <option value="$PROJECT_DIR$/web/assets/dist/css/AdminLTE.min.css" />
+        <option value="$PROJECT_DIR$/app/Resources/views/productchart/product-characteristic.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/product-characteristic/ProductChartController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/admintration/home.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/study/new-study.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/StudyController.php" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/PackingLayer.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/packing/packing.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/packing/PackingController.php" />
+=======
+        <option value="$PROJECT_DIR$/app/Resources/views/study/open-study.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Product.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/production/production.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/productCharacteristic/ProductChartController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/admintration/login.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ListController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/productchar/product-characteristic.html.twig" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/symfony" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-cache-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/incenteev/composer-parameter-handler" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/sensiolabs/security-checker" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensio/distribution-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensio/generator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-apcu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+    </include_path>
+  </component>
+<<<<<<< HEAD
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="width" value="1366" />
+    <option name="height" value="743" />
+=======
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1" />
+    <option name="width" value="1442" />
+    <option name="height" value="876" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+<<<<<<< HEAD
+      <pane id="Scope" />
+      <pane id="Scratches" />
+=======
+<<<<<<< HEAD
+      <pane id="Scratches" />
+      <pane id="Scope" />
+=======
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admintration" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="default" type="2a2b976b:PhpTreeStructureProvider$1" />
+<<<<<<< HEAD
+=======
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="productchar" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="production" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Profile" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="study" type="2a2b976b:PhpTreeStructureProvider$1" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="packing" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Profile" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+<<<<<<< HEAD
+=======
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="productCharacteristic" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Security" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+<<<<<<< HEAD
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="packing" type="2a2b976b:PhpTreeStructureProvider$1" />
+=======
+              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="dist" type="2a2b976b:PhpTreeStructureProvider$1" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+<<<<<<< HEAD
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Profile" type="2a2b976b:PhpTreeStructureProvider$1" />
+=======
+              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="dist" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="cryosoft-hmi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryosoft-hmi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="dist" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="img" type="2a2b976b:PhpTreeStructureProvider$1" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+      <pane id="Scratches" />
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="node.js.detected.package.jscs" value="true" />
+    <property name="node.js.selected.package.jscs" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="19999941-f3a8-4c1b-8840-34a850096ae4" name="Default" comment="" />
+      <created>1506659589295</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1504662785309</updated>
+      <workItem from="1504662792142" duration="1800000" />
+      <workItem from="1504687397290" duration="3320000" />
+      <workItem from="1504748429377" duration="437000" />
+      <workItem from="1504748868213" duration="824000" />
+      <workItem from="1504749706167" duration="19004000" />
+      <workItem from="1504836317356" duration="5380000" />
+      <workItem from="1505796456611" duration="13925000" />
+      <workItem from="1506333021786" duration="1394000" />
+      <workItem from="1506481951975" duration="4787000" />
+      <workItem from="1506564715795" duration="29000" />
+      <workItem from="1506564769086" duration="16436000" />
+      <workItem from="1506653966619" duration="550000" />
+=======
+      <updated>1506659589295</updated>
+      <workItem from="1506659590540" duration="175000" />
+      <workItem from="1506996055054" duration="21870000" />
+<<<<<<< HEAD
+      <workItem from="1507082432937" duration="13118000" />
+      <workItem from="1507169361706" duration="5000" />
+=======
+      <workItem from="1507082432937" duration="12516000" />
+      <workItem from="1507107761990" duration="4501000" />
+      <workItem from="1507112272503" duration="2871000" />
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="79047000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="45456000" />
+=======
+    <option name="totallyTimeSpent" value="52221000" />
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1368" height="744" extended-state="7" />
+    <editor active="true" />
+    <layout>
+<<<<<<< HEAD
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18333334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.50277776" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987013" sideWeight="0.49722221" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2035139" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2532943" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987013" sideWeight="0.49722221" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987013" sideWeight="0.49722221" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2035139" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.093704246" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/draw/typescript-draw.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/draw/typescript-draw.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-filterrow.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-filterrow.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-nestedgrids.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-nestedgrids.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-grouping.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-grouping.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-filtering.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-filtering.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-editing.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-editing.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-paging.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/grid/typescript-grid-paging.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/knob/typescript-knob.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/knob/typescript-knob.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/menu/typescript-menu.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/menu/typescript-menu.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/tabs/typescript-tabs.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/tabs/typescript-tabs.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/tree/typescript-tree.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/tree/typescript-tree.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/chart/typescript-chart-columnlocaldata.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/chart/typescript-chart-columnlocaldata.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/chart/typescript-chart-polarseries.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/chart/typescript-chart-polarseries.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/chart/typescript-chart-donutseries.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/chart/typescript-chart-donutseries.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/chart/typescript-chart.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/chart/typescript-chart.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/gauge/typescript-gauge.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/gauge/typescript-gauge.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/input/typescript-input.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/input/typescript-input.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/panel/typescript_panel.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/panel/typescript_panel.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/button/typescript-button.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/button/typescript-button.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/editor/typescript-editor.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/editor/typescript-editor.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/kanban/typescript-kanban.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/kanban/typescript-kanban.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/layout/typescript-layout.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/layout/typescript-layout.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/loader/typescript-loader.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/loader/typescript-loader.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/navbar/typescript-navbar.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/navbar/typescript-navbar.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/rating/typescript-rating.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/rating/typescript-rating.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/ribbon/typescript-ribbon.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/ribbon/typescript-ribbon.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/slider/typescript-slider.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/slider/typescript-slider.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/window/typescript-window.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/window/typescript-window.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/docking/typescript-docking.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/docking/typescript-docking.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/listbox/typescript-listbox.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/listbox/typescript-listbox.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/popover/typescript-popover.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/popover/typescript-popover.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/toolbar/typescript-toolbar.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/toolbar/typescript-toolbar.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/tooltip/typescript-tooltip.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/tooltip/typescript-tooltip.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/treemap/typescript-treemap.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/treemap/typescript-treemap.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/bargauge/typescript-bargauge.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/bargauge/typescript-bargauge.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/calendar/typescript-calendar.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/calendar/typescript-calendar.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/checkbox/typescript-checkbox.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/checkbox/typescript-checkbox.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/combobox/typescript-combobox.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/combobox/typescript-combobox.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/dragdrop/typescript-dragdrop.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/dragdrop/typescript-dragdrop.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/expander/typescript-expander.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/expander/typescript-expander.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/listmenu/typescript-listmenu.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/listmenu/typescript-listmenu.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/sortable/typescript-sortable.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/sortable/typescript-sortable.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/splitter/typescript-splitter.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/splitter/typescript-splitter.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/tagcloud/typescript-tagcloud.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/tagcloud/typescript-tagcloud.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/textarea/typescript-textarea.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/textarea/typescript-textarea.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/treegrid/typescript-treegrid-virtualmode.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/treegrid/typescript-treegrid-virtualmode.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/treegrid/typescript-treegrid.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/treegrid/typescript-treegrid.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datatable/typescript-datatable-editing.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datatable/typescript-datatable-editing.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datatable/typescript-datatable-paging.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datatable/typescript-datatable-paging.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datatable/typescript-datatable-filtering.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datatable/typescript-datatable-filtering.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datatable/typescript-datatable-sorting.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datatable/typescript-datatable-sorting.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datatable/typescript-datatable.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datatable/typescript-datatable.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/dockpanel/typescript-dockpanel.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/dockpanel/typescript-dockpanel.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/scheduler/typescript-scheduler.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/scheduler/typescript-scheduler.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/scheduler/typescript-scheduler-resources.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/scheduler/typescript-scheduler-resources.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/scrollbar/typescript-scrollbar.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/scrollbar/typescript-scrollbar.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/validator/typescript-validator.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/validator/typescript-validator.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/fileupload/typescript-fileupload.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/fileupload/typescript-fileupload.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/scrollview/typescript-scrollview.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/scrollview/typescript-scrollview.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/bulletchart/typescript-bulletchart.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/bulletchart/typescript-bulletchart.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/buttongroup/typescript-buttongroup.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/buttongroup/typescript-buttongroup.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/colorpicker/typescript-colorpicker.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/colorpicker/typescript-colorpicker.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/lineargauge/typescript-lineargauge.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/lineargauge/typescript-lineargauge.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/maskedinput/typescript-maskedinput.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/maskedinput/typescript-maskedinput.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/numberinput/typescript-numberinput.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/numberinput/typescript-numberinput.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/progressbar/typescript-progressbar.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/progressbar/typescript-progressbar.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/radiobutton/typescript-radiobutton.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/radiobutton/typescript-radiobutton.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/complexinput/typescript-complexinput.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/complexinput/typescript-complexinput.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/dropdownlist/typescript-dropdownlist.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/dropdownlist/typescript-dropdownlist.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/notification/typescript-notification.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/notification/typescript-notification.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/switchbutton/typescript-switchbutton.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/switchbutton/typescript-switchbutton.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datetimeinput/typescript-datetimeinput.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/datetimeinput/typescript-datetimeinput.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/dockinglayout/typescript-dockinglayout.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/dockinglayout/typescript-dockinglayout.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/navigationbar/typescript-navigationbar.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/navigationbar/typescript-navigationbar.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/passwordinput/typescript-passwordinput.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/passwordinput/typescript-passwordinput.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/rangeselector/typescript-rangeselector.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/rangeselector/typescript-rangeselector.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/dropdownbutton/typescript-dropdownbutton.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/dropdownbutton/typescript-dropdownbutton.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/formattedinput/typescript-formattedinput.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/formattedinput/typescript-formattedinput.js.map" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/responsivepanel/typescript-responsivepanel.js" />
+        <option value="$PROJECT_DIR$/web/assets/jqwidgets/demos/typescript/responsivepanel/typescript-responsivepanel.js.map" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Ln2user.php">
+=======
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml" />
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="29" column="28" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/HttpFoundation/Request.php" />
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="39" column="44" lean-forward="false" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/productCharacteristics/productChar.html.twig" />
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Language.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="21" lean-forward="false" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/productCharacteristics/productCharPopup.html.twig" />
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProductCharacteristicsController.php" />
+    <entry file="file://$PROJECT_DIR$/web/assets/dist/css/adminlte.min.css.map">
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15545">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/dist/css/AdminLTE.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2873">
+          <caret line="169" column="16" lean-forward="false" selection-start-line="169" selection-start-column="16" selection-end-line="169" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/bower_components/bootstrap/dist/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42602">
+          <caret line="2506" column="0" lean-forward="true" selection-start-line="2506" selection-start-column="0" selection-end-line="2506" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/bower_components/bootstrap/less/breadcrumbs.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/bower_components/bootstrap/less/pagination.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/dist/css/chosen/bootstrap-chosen.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/dist/css/chosen/bootstrap-chosen.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="284" column="23" lean-forward="false" selection-start-line="284" selection-start-column="23" selection-end-line="284" selection-end-column="23" />
+<<<<<<< HEAD
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/ReferenceData/component_data_generate.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="241" column="52" lean-forward="false" selection-start-line="241" selection-start-column="52" selection-end-line="242" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Profile/Equipment.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Profile/Unit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+=======
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/ReferenceData/component_data_generate.html.twig" />
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Profile/Equipment.html.twig" />
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Profile/Unit.html.twig" />
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="496" column="0" lean-forward="false" selection-start-line="496" selection-start-column="0" selection-end-line="569" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="683" column="27" lean-forward="true" selection-start-line="683" selection-start-column="27" selection-end-line="683" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/dist/css/alt/AdminLTE-bootstrap-social.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RegisterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="-329">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+        <state relative-caret-position="1020">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/admintration/registration.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1938">
+          <caret line="114" column="59" lean-forward="false" selection-start-line="114" selection-start-column="59" selection-end-line="114" selection-end-column="59" />
+<<<<<<< HEAD
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/admintration/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="56" lean-forward="false" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
+=======
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Profile/Profile.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+<<<<<<< HEAD
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/admintration/home.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Profile/ChangePass.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+=======
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Profile/ChangePass.html.twig" />
+    <entry file="file://$PROJECT_DIR$/web/assets/dist/css/skins/_all-skins.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/dist/css/skins/_all-skins.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="49" column="37" lean-forward="false" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" />
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/UserType.php" />
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/admintration/login.html.twig">
+=======
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProductionController.php" />
+    <entry file="file://$PROJECT_DIR$/web/assets/bower_components/bootstrap/less/input-groups.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="64" column="3" lean-forward="true" selection-start-line="64" selection-start-column="3" selection-end-line="64" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/modal.html.twig" />
+    <entry file="file://$PROJECT_DIR$/web/assets/dist/css/AdminLTE.min.css">
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="170">
+          <caret line="10" column="51" lean-forward="false" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+=======
+        <state relative-caret-position="19560">
+          <caret line="1304" column="1" lean-forward="false" selection-start-line="1304" selection-start-column="1" selection-end-line="1304" selection-end-column="1" />
+          <folding>
+            <marker date="1507107738168" expanded="true" signature="235:253" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73028:73030" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73169:73241" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73298:73348" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73375:73422" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73393:73420" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73446:73509" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73536:73621" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73564:73619" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73723:73788" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73820:73865" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73892:73964" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73928:73962" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="73975:74096" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="74113:74134" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="74154:74243" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="74263:74307" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="74315:74423" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="74444:74513" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="74533:74560" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="74574:74722" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="74749:74949" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="74970:74996" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="75030:75094" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="75115:75141" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="75175:75239" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="75260:75286" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="75320:75384" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="75403:75602" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="75634:75834" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="75860:75886" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="75925:75989" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="76015:76041" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="76080:76144" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="76235:76299" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="76331:76392" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="76418:76498" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="76524:76604" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="76630:76710" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="76721:76809" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="76842:76930" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="76947:77035" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="77305:77355" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="77372:77460" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="77505:77593" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="77616:77704" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="78016:78066" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="78081:78169" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="78210:78298" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="78319:78407" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="78705:78755" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="78771:78859" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="78902:78990" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="79012:79100" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="79405:79455" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="79469:79557" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="79596:79684" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="79704:79792" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="80083:80133" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="80151:80239" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="80286:80374" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="80398:80486" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="80805:80855" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="80869:80954" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="80993:81081" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="81101:81189" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="81480:81527" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="81541:81629" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="81668:81756" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="81776:81864" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="82155:82205" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="82222:82310" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="82355:82443" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="82466:82554" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="82866:82916" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="82932:83020" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="83063:83151" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="83173:83261" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="83566:83616" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="83633:83721" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="83766:83854" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="83877:83965" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="84277:84327" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="84341:84429" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="84468:84556" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="84576:84664" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="84955:85005" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="85022:85110" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="85155:85243" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="85266:85354" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="85666:85716" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="85730:85818" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="85857:85945" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="85965:86053" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="86344:86394" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="86412:86497" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="86544:86629" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="86653:86738" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="87054:87101" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="87115:87203" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="87242:87330" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="87350:87438" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="87729:87779" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="87794:87882" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="87923:88011" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="88032:88120" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="88418:88468" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="88481:88569" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="88606:88694" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="88713:88801" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="89085:89135" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="89145:89233" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="89264:89352" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="89368:89456" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="89719:89769" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="89782:89870" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="89907:89995" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="90014:90102" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="90386:90436" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="90449:90576" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="90687:90774" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="90793:90820" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="90838:90864" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="90884:90911" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="90922:90956" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="91170:91206" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="91223:91293" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="91312:91367" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="91389:91475" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="91501:91687" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="91719:91856" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="91873:91982" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="92000:92207" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="92633:92729" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="92832:92887" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="93048:93127" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="93204:93289" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="93377:93427" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="93510:93546" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="94271:94301" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="94534:94589" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="94882:94982" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="95076:95138" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="96167:96188" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="96198:96218" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="96235:96262" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="96284:96308" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="96322:96347" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="96357:96380" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="96401:96467" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="96570:96646" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="96685:96718" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="97881:97942" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="97959:97992" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="98004:98045" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="98478:98522" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="98780:98824" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="98835:98879" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="98891:98935" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="98946:98990" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="99003:99047" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="99061:99105" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="99118:99162" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="99175:99219" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="99237:99298" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="99317:99358" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="99735:99779" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100048:100092" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100110:100154" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100173:100217" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100235:100279" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100299:100343" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100364:100408" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100428:100472" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100492:100536" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100562:100613" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100625:100658" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100673:100706" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100719:100752" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100765:100798" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100812:100842" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100861:100894" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100908:100941" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="100954:100987" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101000:101033" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101046:101079" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101093:101126" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101139:101172" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101187:101220" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101236:101269" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101284:101317" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101332:101365" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101379:101401" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101476:101495" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101561:101593" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101606:101634" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101648:101677" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101690:101718" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101731:101766" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="101946:102054" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="102062:102097" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="102187:102210" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="102224:102312" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="102332:102870" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="102896:103434" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="103454:103992" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="104012:104550" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="104572:105110" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="105132:105670" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="105691:106229" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="106248:106786" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="106807:107330" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="107352:107890" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="107929:107952" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108007:108042" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108057:108143" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108161:108231" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108246:108283" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108304:108323" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108337:108361" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108401:108441" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108498:108552" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108624:108669" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108693:108738" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108765:108805" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="108982:109005" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="109267:109292" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="109302:109339" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="109359:109384" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="109394:109433" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="109453:109479" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="109495:109546" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="109565:109616" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="109636:109737" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="109773:109855" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="109960:109977" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="110014:110033" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="110110:110265" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="110283:110364" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="110386:110437" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="110524:110589" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="110617:110647" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="110825:111103" ph="{...}" />
+            <marker date="1507107738168" expanded="true" signature="111152:111193" ph="{...}" />
+          </folding>
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/NewProductController.php" />
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ReferenceData/DataGenerate.php" />
+    <entry file="file://$PROJECT_DIR$/web/assets/dist/css/Customize.css">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="255">
+          <caret line="269" column="29" lean-forward="false" selection-start-line="269" selection-start-column="29" selection-end-line="269" selection-end-column="29" />
+          <folding>
+            <element signature="e#15324#15331#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#section#2;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h5#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#section#2;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#section#2;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h5#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#section#2;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#section#2;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <marker date="1506669312076" expanded="false" signature="13977:13992" ph="..." />
+            <marker date="1506669312076" expanded="false" signature="14662:14754" ph="..." />
+            <marker date="1506669312076" expanded="false" signature="29683:29689" ph="©" />
+            <marker date="1506669312076" expanded="false" signature="31017:31027" ph="..." />
+            <marker date="1506669312076" expanded="false" signature="31680:31690" ph="..." />
+            <marker date="1506669312076" expanded="false" signature="32349:32359" ph="..." />
+            <marker date="1506669312076" expanded="false" signature="33017:33027" ph="..." />
+          </folding>
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="221">
+          <caret line="64" column="3" lean-forward="true" selection-start-line="64" selection-start-column="3" selection-end-line="64" selection-end-column="3" />
+=======
+        <state relative-caret-position="631">
+          <caret line="241" column="1" lean-forward="false" selection-start-line="241" selection-start-column="1" selection-end-line="241" selection-end-column="1" />
+          <folding />
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="238">
+          <caret line="14" column="36" lean-forward="false" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+          <folding />
+=======
+        <state relative-caret-position="480">
+          <caret line="92" column="90" lean-forward="false" selection-start-line="92" selection-start-column="90" selection-end-line="92" selection-end-column="90" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="false" />
+          </folding>
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+=======
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Profile/ProfileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="3774">
+          <caret line="222" column="13" lean-forward="false" selection-start-line="222" selection-start-column="13" selection-end-line="222" selection-end-column="13" />
+          <folding />
+=======
+        <state relative-caret-position="713">
+          <caret line="126" column="7" lean-forward="false" selection-start-line="126" selection-start-column="7" selection-end-line="126" selection-end-column="7" />
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/study/open-study.html.twig">
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="22015">
+          <caret line="1295" column="1" lean-forward="false" selection-start-line="1295" selection-start-column="1" selection-end-line="1295" selection-end-column="1" />
+          <folding />
+=======
+        <state relative-caret-position="216">
+          <caret line="646" column="57" lean-forward="false" selection-start-line="646" selection-start-column="57" selection-end-line="646" selection-end-column="57" />
+          <folding>
+            <element signature="e#9740#9768#0#HTML" expanded="true" />
+            <element signature="e#10007#10035#0#HTML" expanded="true" />
+            <element signature="e#10169#10197#0#HTML" expanded="true" />
+            <element signature="e#10339#10367#0#HTML" expanded="true" />
+            <element signature="e#10502#10530#0#HTML" expanded="true" />
+            <element signature="e#10650#10678#0#HTML" expanded="true" />
+            <element signature="e#10795#10823#0#HTML" expanded="true" />
+            <element signature="e#14643#14664#0#HTML" expanded="true" />
+            <element signature="e#26963#29664#0#HTML" expanded="false" />
+            <element signature="e#29802#31528#0#HTML" expanded="false" />
+            <element signature="e#31674#35049#0#HTML" expanded="false" />
+            <element signature="e#35399#36487#0#HTML" expanded="false" />
+            <element signature="e#36602#38008#0#HTML" expanded="false" />
+            <marker date="1507110515918" expanded="true" signature="44707:44849" ph="{...}" />
+          </folding>
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="66" column="20" lean-forward="false" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/production/production.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-705">
+          <caret line="133" column="92" lean-forward="false" selection-start-line="133" selection-start-column="92" selection-end-line="133" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Shape.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="77" column="20" lean-forward="false" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1857">
+          <caret line="145" column="58" lean-forward="false" selection-start-line="145" selection-start-column="57" selection-end-line="145" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/productCharacteristic/ProductChartController.php">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="323">
+          <caret line="39" column="24" lean-forward="false" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/study/new-study.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="240" column="95" lean-forward="false" selection-start-line="240" selection-start-column="88" selection-end-line="240" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/study/open-study.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9043">
+          <caret line="255" column="96" lean-forward="false" selection-start-line="255" selection-start-column="88" selection-end-line="255" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="28" column="34" lean-forward="false" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Ln2user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="292" column="7" lean-forward="false" selection-start-line="292" selection-start-column="7" selection-end-line="292" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/admintration/registration.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="58" lean-forward="false" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Profile/Profile.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <marker date="1506669312076" expanded="true" signature="31:70" ph="{% block body ...%}" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="238">
+          <caret line="16" column="64" lean-forward="false" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+=======
+        <state relative-caret-position="255">
+          <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+          <folding>
+            <element signature="e#63#92#0#PHP" expanded="true" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/PackingLayer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="28" column="7" lean-forward="false" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/admintration/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ListController.php">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="2743">
+          <caret line="222" column="0" lean-forward="false" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <folding>
+            <marker date="1506669312076" expanded="true" signature="9392:9399" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ListController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="3196">
+          <caret line="188" column="20" lean-forward="false" selection-start-line="188" selection-start-column="20" selection-end-line="188" selection-end-column="47" />
+          <folding>
+            <marker date="1507103540326" expanded="false" signature="7669:7686" ph="..." />
+            <marker date="1507103540326" expanded="false" signature="7805:7822" ph="..." />
+            <marker date="1507103540326" expanded="false" signature="7929:7946" ph="..." />
+          </folding>
+=======
+        <state relative-caret-position="363">
+          <caret line="33" column="37" lean-forward="false" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+          <folding />
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Profile/ProfileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="337">
+          <caret line="84" column="53" lean-forward="true" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
+          <folding>
+            <marker date="1506669312088" expanded="true" signature="3624:3627" ph="{...}" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="1071">
+          <caret line="94" column="16" lean-forward="false" selection-start-line="94" selection-start-column="18" selection-end-line="96" selection-end-column="23" />
+          <folding>
+            <element signature="e#427#2483#0#Twig" expanded="false" />
+            <element signature="e#8777#18199#0#Twig" expanded="false" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+          </folding>
+=======
+        <state relative-caret-position="231">
+          <caret line="26" column="61" lean-forward="true" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/packing/packing.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-488">
+          <caret line="644" column="68" lean-forward="false" selection-start-line="644" selection-start-column="68" selection-end-line="644" selection-end-column="68" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/admintration/home.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7179">
+          <caret line="72" column="73" lean-forward="false" selection-start-line="72" selection-start-column="73" selection-end-line="72" selection-end-column="73" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+          <folding />
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/packing/PackingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+          <folding>
+            <element signature="e#131#165#0#PHP" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/productchar/product-characteristic.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="17">
+          <caret line="175" column="29" lean-forward="false" selection-start-line="175" selection-start-column="29" selection-end-line="175" selection-end-column="29" />
+          <folding />
+=======
+        <state relative-caret-position="240">
+          <caret line="882" column="35" lean-forward="false" selection-start-line="882" selection-start-column="35" selection-end-line="882" selection-end-column="42" />
+          <folding>
+            <element signature="e#45927#47377#0#HTML" expanded="false" />
+            <element signature="e#47508#47733#0#HTML" expanded="false" />
+            <element signature="e#47768#50957#0#HTML" expanded="false" />
+>>>>>>> fdb60303f0c75774699f0051373f88c17733f860
+          </folding>
+>>>>>>> 23feca0644099446a2011993e2cc60a326c8035f
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

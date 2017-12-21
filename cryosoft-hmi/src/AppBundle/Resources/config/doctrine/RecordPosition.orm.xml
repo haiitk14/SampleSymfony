@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\RecordPosition" table="record_position">
+    <indexes>
+      <index name="IX_ID_STUDY_EQP" columns="ID_STUDY_EQUIPMENTS"/>
+    </indexes>
+    <id name="idRecPos" type="integer" column="ID_REC_POS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="recordTime" type="float" column="RECORD_TIME" precision="24" scale="0" nullable="true"/>
+    <field name="averageTemp" type="float" column="AVERAGE_TEMP" precision="10" scale="0" nullable="true"/>
+    <field name="averageEnthVar" type="float" column="AVERAGE_ENTH_VAR" precision="10" scale="0" nullable="true"/>
+    <field name="enthalpyVar" type="float" column="ENTHALPY_VAR" precision="10" scale="0" nullable="true"/>
+    <field name="recordBuffer" type="boolean" column="RECORD_BUFFER" nullable="true"/>
+    <field name="recordState" type="boolean" column="RECORD_STATE" nullable="true"/>
+    <many-to-one field="idStudyEquipments" target-entity="StudyEquipments" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY_EQUIPMENTS" referenced-column-name="ID_STUDY_EQUIPMENTS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

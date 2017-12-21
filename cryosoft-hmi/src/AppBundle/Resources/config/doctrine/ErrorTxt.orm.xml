@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ErrorTxt" table="error_txt">
+    <indexes>
+      <index name="IDX_6FD71029AE6F8658" columns="CODE_LANGUE"/>
+    </indexes>
+    <id name="errCode" type="integer" column="ERR_CODE"/>
+    <id name="errComp" type="integer" column="ERR_COMP"/>
+    <id name="codeLangue" association-key="true"/>
+    <field name="errTxt" type="text" column="ERR_TXT" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <one-to-one field="codeLangue" target-entity="Language" fetch="LAZY">
+      <join-columns>
+        <join-column name="CODE_LANGUE" referenced-column-name="CODE_LANGUE"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

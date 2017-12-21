@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\CalculationParameters" table="calculation_parameters">
+    <indexes>
+      <index name="FK_CALCULATION_PARAMETERS_STUDY_EQUIPMENTS" columns="ID_STUDY_EQUIPMENTS"/>
+    </indexes>
+    <id name="idCalcParams" type="integer" column="ID_CALC_PARAMS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="horizScan" type="boolean" column="HORIZ_SCAN" nullable="true"/>
+    <field name="vertScan" type="boolean" column="VERT_SCAN" nullable="true"/>
+    <field name="maxItNb" type="integer" column="MAX_IT_NB" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="timeStepsNb" type="integer" column="TIME_STEPS_NB" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="relaxCoeff" type="float" column="RELAX_COEFF" precision="24" scale="0" nullable="true"/>
+    <field name="timeStep" type="float" column="TIME_STEP" precision="24" scale="0" nullable="true"/>
+    <field name="storageStep" type="integer" column="STORAGE_STEP" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="precisionLogStep" type="integer" column="PRECISION_LOG_STEP" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="stopTopSurf" type="float" column="STOP_TOP_SURF" precision="24" scale="0" nullable="true"/>
+    <field name="stopInt" type="float" column="STOP_INT" precision="24" scale="0" nullable="true"/>
+    <field name="stopBottomSurf" type="float" column="STOP_BOTTOM_SURF" precision="24" scale="0" nullable="true"/>
+    <field name="stopAvg" type="float" column="STOP_AVG" precision="24" scale="0" nullable="true"/>
+    <field name="studyAlphaTopFixed" type="boolean" column="STUDY_ALPHA_TOP_FIXED" nullable="true"/>
+    <field name="studyAlphaTop" type="float" column="STUDY_ALPHA_TOP" precision="10" scale="0" nullable="true"/>
+    <field name="studyAlphaBottomFixed" type="boolean" column="STUDY_ALPHA_BOTTOM_FIXED" nullable="true"/>
+    <field name="studyAlphaBottom" type="float" column="STUDY_ALPHA_BOTTOM" precision="10" scale="0" nullable="true"/>
+    <field name="studyAlphaLeftFixed" type="boolean" column="STUDY_ALPHA_LEFT_FIXED" nullable="true"/>
+    <field name="studyAlphaLeft" type="float" column="STUDY_ALPHA_LEFT" precision="10" scale="0" nullable="true"/>
+    <field name="studyAlphaRightFixed" type="boolean" column="STUDY_ALPHA_RIGHT_FIXED" nullable="true"/>
+    <field name="studyAlphaRight" type="float" column="STUDY_ALPHA_RIGHT" precision="10" scale="0" nullable="true"/>
+    <field name="studyAlphaFrontFixed" type="boolean" column="STUDY_ALPHA_FRONT_FIXED" nullable="true"/>
+    <field name="studyAlphaFront" type="float" column="STUDY_ALPHA_FRONT" precision="10" scale="0" nullable="true"/>
+    <field name="studyAlphaRearFixed" type="boolean" column="STUDY_ALPHA_REAR_FIXED" nullable="true"/>
+    <field name="studyAlphaRear" type="float" column="STUDY_ALPHA_REAR" precision="10" scale="0" nullable="true"/>
+    <field name="precisionRequest" type="float" column="PRECISION_REQUEST" precision="10" scale="0" nullable="true"/>
+    <field name="nbOptim" type="integer" column="NB_OPTIM" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="errorT" type="float" column="ERROR_T" precision="10" scale="0" nullable="true"/>
+    <field name="errorH" type="float" column="ERROR_H" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idStudyEquipments" target-entity="StudyEquipments" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY_EQUIPMENTS" referenced-column-name="ID_STUDY_EQUIPMENTS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

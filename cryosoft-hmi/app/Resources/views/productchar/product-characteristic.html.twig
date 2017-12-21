@@ -1,0 +1,747 @@
+{% extends "base.html.twig" %} {% block body %}
+<script type="text/javascript">
+</script>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <section class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+                            <li class=""><a href="/home/fromlogin" aria-expanded="false">{{'Dashboard'|trans}}</a></li>
+                            <li class=""><a href="/definition" aria-expanded="false">{{'Definitition'|trans}}</a></li>
+                            <li class=""><a href="/production" aria-expanded="false">{{'Production'|trans}}</a></li>
+                            <li class="active"><a href="#" aria-expanded="false">{{'Product and characteristic'|trans}}</a></li>
+                            <li class=""><a href="/mesh" aria-expanded="false">{{'Mesh initial temperature'|trans}}</a></li>
+                            <li class=""><a href="/packing" aria-expanded="false">{{'Packing'|trans}}</a></li>
+                            <li class=""><a href="/equipments" aria-expanded="false">{{'Equipment'|trans}}</a></li>
+                            <li class=""><a href="/line" aria-expanded="false">{{'Line'|trans}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    {{'Product Characteristics'|trans}}
+                    <small>{{'Summary info'|trans}}</small>
+                </h1>
+                <br/>
+                <ol class="breadcrumb">
+                    <li><a href="../../../home.html"><i class="fa fa-dashboard"></i> {{'Home'|trans}}</a></li>
+                    <li class="active">{{'Product Characteristics'|trans}}</li>
+                </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <span class="label label-danger">{{'Study Name:'|trans}} {{ studyName }}</span>
+                <!-- <input type="hidden" id="idStudyforPro" name="_idStudyforPro" value="{{ idStudy }}"> -->
+                <a href="#" class="pull-right" data-toggle="modal" data-target="#helpproCharac" id="popoverData" data-placement="bottom" data-original-title="Help" data-trigger="manual">
+                    <i class="fa fa-question-circle " style="font-size: 34px;"></i>
+                </a>
+                <div class="clearfix"></div>
+                <!-- Main row -->
+                <file class="row">
+                    {% for flash_massage in app.session.flashbag.get('product-char-success') %}
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-check"></i> {{'Alert!'|trans}}</h4>
+                        <span style="color:#ffffff" ;><strong>{{flash_massage}}</strong></span>
+                    </div>
+                    {% endfor %}
+                    <div class="nav-tabs-custom">
+                        <fieldset class="tab-content">
+                            <fieldset>
+                                <legend>
+                                    <h4 class="box-title"><i class="fa fa-tachometer margin-r-5"></i>
+                                            {{'Initial temperature of the product:'|trans}}</h4></legend>
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                        <tr style="background:#eee">
+                                            <th class="hide-column-prod table-prod hidden">{{'Product Name'|trans}}</th>
+                                            <th class="hide-column-prod table-prod hidden">{{'Shape Name'|trans}}</th>
+
+                                            <th class="hide-column-shape1 table-prod hidden">{{'Thickness'|trans}}</th>
+
+                                            <th class="hide-column-shape29 table-prod hidden">{{'Length'|trans}}</th>
+                                            <th class="hide-column-shape29 table-prod hidden">{{'Height'|trans}}</th>
+                                            <th class="hide-column-shape29 table-prod hidden">{{'Width'|trans}}</th>
+
+
+                                            <th class="hide-column-shape3 table-prod hidden" >{{'Height'|trans}}</th>
+                                            <th class="hide-column-shape3 table-prod hidden" >{{'Length'|trans}}</th>
+                                            <th class="hide-column-shape3 table-prod hidden">{{'Width'|trans}}</th>
+
+                                            <th class="hide-column-shape4 table-prod hidden" >{{'Diameter'|trans}}</th>
+                                            <th class="hide-column-shape4 table-prod hidden" >{{'Height'|trans}}</th>
+
+                                            <th class="hide-column-shape5 table-prod hidden" >{{'Diameter'|trans}}</th>
+                                            <th class="hide-column-shape5 table-prod hidden" >{{'Length'|trans}}</th>
+
+                                            <th class="hide-column-shape6 table-prod hidden" >{{'Diameter'|trans}}</th>
+
+                                            <th class="hide-column-shape7 table-prod hidden" >{{'Height'|trans}}</th>
+                                            <th class="hide-column-shape7 table-prod hidden" >{{'Diameter'|trans}}</th>
+
+                                            <th class="hide-column-shape8 table-prod hidden" >{{'Length'|trans}}</th>
+                                            <th class="hide-column-shape8 table-prod hidden" >{{'Diameter'|trans}}</th>
+
+
+
+
+
+                                            {% if showId_Shape is null and objCheckProdOcne.idShapeCheck is null %}
+                                            <th class="aaa">{{'Product name'|trans}}</th>
+                                            {% endif %}
+                                            {% if showId_Shape != null and objCheckProdOcne.idShapeCheck is null %}
+                                                {% if showId_Shape.idShape == 1%}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Thickness (cm)'|trans}}</th>
+
+                                                {% elseif showId_Shape.idShape == 2 or showId_Shape.idShape == 9 %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Length (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Heigth (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Width (cm)'|trans}}</th>
+
+                                                {% elseif showId_Shape.idShape == 3 %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Heigth (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Length (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Width (cm)'|trans}}</th>
+
+                                                {% elseif showId_Shape.idShape == 4  %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Diameter (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Heigth (cm)'|trans}}</th>
+
+                                                {% elseif showId_Shape.idShape == 5  %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Diameter (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Length (cm)'|trans}}</th>
+
+                                                {% elseif showId_Shape.idShape == 6 %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Diameter (cm)'|trans}}</th>
+
+                                                {% elseif showId_Shape.idShape == 7  %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Heigth (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Diameter (cm)'|trans}}</th>
+
+                                                {% elseif showId_Shape.idShape == 8  %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Length (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Diameter (cm)'|trans}}</th>
+                                            {% endif %}{% endif %}
+<!--  -->
+                                            {% if objCheckProdOcne.idShapeCheck != null and showId_Shape is null %}
+                                                {% if objCheckProdOcne.idShapeCheck==1 %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Thickness (cm)'|trans}}</th>
+
+                                                {% elseif objCheckProdOcne.idShapeCheck==2 or objCheckProdOcne.idShapeCheck==9 %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Length (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Heigth (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Width (cm)'|trans}}</th>
+
+                                                {% elseif objCheckProdOcne.idShapeCheck==3 %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Heigth (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Length (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Width (cm)'|trans}}</th>
+
+                                                {% elseif objCheckProdOcne.idShapeCheck==4 %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Diameter (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Heigth (cm)'|trans}}</th>
+
+                                                {% elseif objCheckProdOcne.idShapeCheck==5 %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Diameter (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Length (cm)'|trans}}</th>
+
+                                                {% elseif  objCheckProdOcne.idShapeCheck==6 %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Diameter (cm)'|trans}}</th>
+
+                                                {% elseif objCheckProdOcne.idShapeCheck==7 %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Heigth (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Diameter (cm)'|trans}}</th>
+
+                                                {% elseif objCheckProdOcne.idShapeCheck==8 %}
+                                                <th class="aaa">{{'Product name'|trans}}</th>
+                                                <th class="aaa">{{'Shape Name'|trans}}</th>
+                                                <th class="aaa">{{'Length (cm)'|trans}}</th>
+                                                <th class="aaa">{{'Diameter (cm)'|trans}}</th>
+                                            {% endif %} {% endif %}
+
+                                        </tr>
+                                        <tbody id="trNew" name="trNew">
+                                            <tr>
+                                                {% if showId_Shape is null %}
+                                                    {% if objCheckProdOcne.idShapeCheck is null %}
+                                                    <td><a href="#" data-toggle="modal" data-target="#newPro">{{'New Product'|trans}}</a></td>
+                                                    {% endif %}
+                                                {% else %} {% if showId_Shape.idShape == 1 %}
+                                                <td><a href="#"  data-toggle="modal" data-target="#newPro">{{ productName }}</a></td>
+                                                <td>{{ showId_Shape.label }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam2 }}</td>
+
+                                                {% elseif showId_Shape.idShape == 2 or showId_Shape.idShape == 9 %}
+                                                <td><a href="#"  data-toggle="modal" data-target="#newPro">{{ productName }}</a></td>
+                                                <td>{{ showId_Shape.label }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam1 }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam2 }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam3 }}</td>
+
+                                                {% elseif showId_Shape.idShape == 3 %}
+                                                <td><a href="#"  data-toggle="modal" data-target="#newPro">{{ productName }}</a></td>
+                                                <td>{{ showId_Shape.label }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam1 }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam2 }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam3 }}</td>
+
+                                                {% elseif showId_Shape.idShape == 4 %}
+                                                <td><a href="#" data-toggle="modal" data-target="#newPro">{{ productName }}</a></td>
+                                                <td>{{ showId_Shape.label }}</td>
+
+                                                <td>{{ showId_ProdELM.shapeParam1 }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam2 }}</td>
+
+                                                {% elseif showId_Shape.idShape == 5 %}
+                                                <td><a href="#" data-toggle="modal" data-target="#newPro">{{ productName }}</a></td>
+                                                <td>{{ showId_Shape.label }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam1 }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam2 }}</td>
+
+                                                {% elseif showId_Shape.idShape == 6 %}
+                                                <td><a href="#" data-toggle="modal" data-target="#newPro">{{ productName }}</a></td>
+                                                <td>{{ showId_Shape.label }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam2 }}</td>
+
+                                                {% elseif showId_Shape.idShape == 7 %}
+                                                <td><a href="#" data-toggle="modal" data-target="#newPro">{{ productName }}</a></td>
+                                                <td>{{ showId_Shape.label }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam1 }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam2 }}</td>
+
+                                                {% elseif showId_Shape.idShape == 8 %}
+                                                <td><a href="#" data-toggle="modal" data-target="#newPro">{{ productName }}</a></td>
+                                                <td>{{ showId_Shape.label }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam1 }}</td>
+                                                <td>{{ showId_ProdELM.shapeParam2 }}</td>
+                                                {% endif %} {% endif %}
+<!--  -->
+                                                {% if objCheckProdOcne.idShapeCheck != null and showId_Shape is null %}
+                                                    {% if objCheckProdOcne.idShapeCheck == 1 %}
+                                                    <td>
+                                                        <a href="#" onclick="getDataProduct('{{ objCheckProdOcne.idShapeCheck }}','','')" data-toggle="modal" data-target="#newPro">{{ objCheckProdOcne.nameproductcheck }}
+                                                        </a>
+                                                    </td>
+                                                    <td>{{ objCheckProdOcne.nameShapeCheck }}</td>
+                                                    <td>{{ objCheckProdOcne.dim2check }}</td>
+
+                                                    {% elseif objCheckProdOcne.idShapeCheck == 2 or objCheckProdOcne.idShapeCheck == 9 %}
+                                                    <td>
+                                                        <a href="#" onclick="getDataProduct('{{objCheckProdOcne.idShapeCheck}}','{{objCheckProdOcne.dim1check}}','{{objCheckProdOcne.dim3check}}')" data-toggle="modal" data-target="#newPro">{{ objCheckProdOcne.nameproductcheck }}</a>
+                                                    </td>
+                                                    <td>{{ objCheckProdOcne.nameShapeCheck }}</td>
+                                                    <td>{{ objCheckProdOcne.dim1check }}</td>
+                                                    <td>{{ objCheckProdOcne.dim2check }}</td>
+                                                    <td>{{ objCheckProdOcne.dim3check }}</td>
+
+                                                    {% elseif objCheckProdOcne.idShapeCheck == 3 %}
+                                                    <td>
+                                                        <a href="#" onclick="getDataProduct('{{objCheckProdOcne.idShapeCheck}}','{{objCheckProdOcne.dim1check}}','{{objCheckProdOcne.dim3check}}')"  data-toggle="modal" data-target="#newPro">{{ objCheckProdOcne.nameproductcheck }}</a>
+                                                    </td>
+                                                    <td>{{ objCheckProdOcne.nameShapeCheck }}</td>
+                                                    <td>{{ objCheckProdOcne.dim1check }}</td>
+                                                    <td>{{ objCheckProdOcne.dim2check }}</td>
+                                                    <td>{{ objCheckProdOcne.dim3check }}</td>
+
+                                                    {% elseif objCheckProdOcne.idShapeCheck == 4 %}
+                                                    <td>
+                                                        <a href="#" onclick="getDataProduct('{{objCheckProdOcne.idShapeCheck}}','{{objCheckProdOcne.dim1check}}','')" data-toggle="modal" data-target="#newPro">{{ objCheckProdOcne.nameproductcheck }}</a>
+                                                    </td>
+                                                    <td>{{ objCheckProdOcne.nameShapeCheck }}</td>
+                                                    <td>{{ objCheckProdOcne.dim1check }}</td>
+                                                    <td>{{ objCheckProdOcne.dim2check }}</td>
+
+                                                    {% elseif objCheckProdOcne.idShapeCheck == 5 %}
+                                                    <td>
+                                                        <a href="#" onclick="getDataProduct('{{objCheckProdOcne.idShapeCheck}}','{{objCheckProdOcne.dim1check}}'.'')" data-toggle="modal" data-target="#newPro">{{ objCheckProdOcne.nameproductcheck }}</a>
+                                                        </td>
+                                                    <td>{{ objCheckProdOcne.nameShapeCheck }}</td>
+                                                    <td>{{ objCheckProdOcne.dim1check }}</td>
+                                                    <td>{{ objCheckProdOcne.dim2check }}</td>
+
+                                                    {% elseif objCheckProdOcne.idShapeCheck == 6 %}
+                                                    <td><a href="#" onclick="getDataProduct('{{objCheckProdOcne.idShapeCheck}}','','')" data-toggle="modal" data-target="#newPro">{{ objCheckProdOcne.nameproductcheck }}</a></td>
+                                                    <td>{{ objCheckProdOcne.nameShapeCheck }}</td>
+                                                    <td>{{ objCheckProdOcne.dim2check}}</td>
+
+                                                    {% elseif objCheckProdOcne.idShapeCheck == 7 %}
+                                                    <td><a href="#" onclick="getDataProduct('{{objCheckProdOcne.idShapeCheck}}','{{objCheckProdOcne.dim1check}}'.'')" data-toggle="modal" data-target="#newPro">{{ objCheckProdOcne.nameproductcheck }}</a></td>
+                                                    <td>{{ objCheckProdOcne.nameShapeCheck }}</td>
+                                                    <td>{{ objCheckProdOcne.dim1check }}</td>
+                                                    <td>{{ objCheckProdOcne.dim2check }}</td>
+
+                                                    {% elseif objCheckProdOcne.idShapeCheck == 8 %}
+                                                    <td><a href="#" onclick="getDataProduct('{{objCheckProdOcne.idShapeCheck}}','{{objCheckProdOcne.dim1check}}'.'')" data-toggle="modal" data-target="#newPro">{{ objCheckProdOcne.nameproductcheck }}</a></td>
+                                                    <td>{{ objCheckProdOcne.nameShapeCheck }}</td>
+                                                    <td>{{ objCheckProdOcne.dim1check }}</td>
+                                                    <td>{{ objCheckProdOcne.dim2check }}</td>
+
+                                                {% endif %}{% endif %}
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <th width="30%" class="text-left"><b>{{'Calculated product mess(kg)'|trans}}</b></th>
+                                                    <th width="30%" class="text-left"><span class="label label-success product-mass">{{ prodElmtWeight }}</span></th>
+                                                    {% if showId_Shape is null %}
+                                                    <th width="20%" class="text-right" id="realmasslabel" style="display: none"><a href="#" data-target="#realPro" data-toggle="modal">{{'Real product mass per unit(kg)'|trans}}</a></th>
+                                                    <th class="text-right" id="realMass" name="realMass" style="display: none"><span class="label label-danger"></span></th>
+                                                    {% elseif showId_Shape.idShape %}
+                                                    <th width="20%" class="text-right" id="realmasslabel"><a href="#" data-target="#realPro" data-toggle="modal">{{'Real product mass per unit(kg)'|trans}}</a></th>
+                                                    <th class="text-right" id="realMass" name="realMass"><span class="label label-danger realmass">{{ prodElmtRealweight }}</span></th>
+                                                    {% endif %}
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </fieldset>
+                            <div class="clearfix"></div>
+
+                            <fieldset>
+                                <legend>
+                                    <h4 class="box-title"><i class="fa fa-cubes margin-r-5"></i>
+                                            {{'Initial temperature of the product components:'|trans}}</h4></legend>
+
+                                <!-- div row -->
+                                <div class="row">
+                                    <!-- div define colum                    -->
+                                    <div class="col-md-12 form-selectbox">
+                                        <!-- div devide colum 6 -->
+                                        <div class="col-md-5" style="padding: 0 15px;">
+                                            <!-- form devide colum 6 -->
+                                            <form class="form-horizontal inline">
+                                                <div class="form-group group">
+                                                    <label class="lableName" for="name" name="com_family">{{'Component family'|trans}}</label>
+                                                    <select id="comp-family" {{ componentList is null and objCheckProdOcne.idShapeCheck is null ? 'disabled' : ''}} {% if showId_Shape !=null %} {{showId_Shape.idShape==9 and countCompList==3 ? 'disabled': ''}} {% endif %} data-placeholder="-- None --" class="form-control chosen-select">
+                                                        <option></option>
+                                                        <option selected value="">-- None --</option>
+                                                        {% for item in listFamily %}
+                                                        <option value="{{ item.idTranslation }}">{{ item.label }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                                <div class="form-group group">
+                                                    <label class="lableName" name="water_per">{{'Water percentage:'|trans}}</label>
+                                                    <select id="water-percentage"  {{ componentList is null and objCheckProdOcne.idShapeCheck is null ? 'disabled' : ''}} {% if showId_Shape !=null %} {{showId_Shape.idShape==9 and countCompList==3 ? 'disabled': ''}} {% endif %} data-placeholder="-- None --" class="form-control chosen-select">
+                                                        <option></option>
+                                                        <option selected value="">-- None --</option>
+                                                        <option value="0">0 - 10 %</option>
+                                                        <option value="1">10 - 20 %</option>
+                                                        <option value="2">20 - 30 %</option>
+                                                        <option value="3">30 - 40 %</option>
+                                                        <option value="4">40 - 50 %</option>
+                                                        <option value="5">50 - 60 %</option>
+                                                        <option value="6">60 - 70 %</option>
+                                                        <option value="7">70 - 80 %</option>
+                                                        <option value="8">80 - 90 %</option>
+                                                        <option value="9">90 - 100 %</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                            <!-- close form -->
+                                            <!-- close devide colum 6 -->
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-5" style="padding: 0 15px;">
+                                            <!-- form devide colum 6 -->
+                                            <form class="form-horizontal inline" id="select-componentList" action="/getComponentToEml" method="post">
+                                                <div class="form-group group">
+                                                    <label class="lableName" for="name" name="sub_family">{{'Sub family:'|trans}}</label>
+                                                    <select id="sub-family" {{ componentList is null and objCheckProdOcne.idShapeCheck is null ? 'disabled' : ''}} {% if showId_Shape !=null %} {{showId_Shape.idShape==9 and countCompList==3 ? 'disabled': ''}} {% endif %} data-placeholder="-- None --" class="form-control chosen-select">
+                                                        <option></option>
+                                                        <option selected value="">-- None --</option>
+                                                        {% for item in listSubFamily %}
+                                                        <option value="{{ item.idTranslation }}">{{ item.label }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                                <div class="form-group group">
+                                                    <label class="lableName" name="com_list">{{'Component list:'|trans}}</label>
+                                                    <select id="component-list" {{ componentList is null and objCheckProdOcne.idShapeCheck is null ? 'disabled' : ''}} {% if showId_Shape !=null %} {{showId_Shape.idShape==9 and countCompList==3 ? 'disabled': ''}} {% endif %} data-placeholder="-- None --" class="form-control chosen-select" name="_component-list">
+                                                        <option></option>
+                                                        <option value="">-- None --</option>
+                                                        <optgroup id="group1" label="Select a component">
+                                                            {% for item in listComp %} {% if(item.compRelease != 6) %}
+                                                            <option value="{{ item.idTranslation }}">{{ item.label}}</option>
+                                                            {% endif %} {% endfor %}
+                                                        </optgroup>
+                                                        <optgroup id="group2" label="Sleeping component database">
+                                                            {% for item in listComp %} {% if(item.compRelease == 6) %}
+                                                            <option value="../../cryosoft/study_referencedata/reference_component">{{ item.label}} </option>
+                                                            {% endif %} {% endfor %}
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                            <!-- close form -->
+                                            <!-- close devide colum 6 -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <fieldset>
+                                    <div class="clearfix"></div>
+                                    <div style="height:30px"></div>
+                                    <div class="table-responsive">
+                                        <div class="box box-info">
+                                            <div class="box-body">
+                                                <table id="tableComponent" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>{{'Product component'|trans}}</th>
+                                                            <th>{{'Description'|trans}}</th>
+                                                            <th>{{'Specific Dim (cm)'|trans}}</th>
+                                                            <th>{{'Calculater mass (kg)'|trans}}</th>
+                                                            <th>{{'Real mass (kg)'|trans}}</th>
+                                                            <th>{{'Delete'|trans}}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table-list-component">
+                                                        {% if(componentList != null) %} {% for item in componentList %}
+
+                                                        <tr data-idProdEml="{{item.idProductElmt}}">
+                                                            <td><a href="#" class="nameComp-InList" data-decription="{{item.prodElmtName}}" data-idShape="{{item.idShape}}" data-target="#getName1" data-thick="{{ item.originalThick }}" data-weight="{{item.prodElmtWeight}}" data-realweight="{{ item.prodElmtRealweight  }}" data-toggle="modal"> {{ item.label }}</a></td>
+                                                            <td>{{item.prodElmtName}}</td>
+                                                            <td>
+                                                                <span class="thick-component">
+                                                        {{ item.originalThick }}</span>
+                                                            </td>
+                                                            <td><span class="weight-component">{{ item.prodElmtWeight != 0 ? item.prodElmtWeight : 'This unit does not allow enough precision'}}</span></td>
+                                                            <td>
+                                                                <span class="realweight-component">
+                                                        <a href="#" data-target="#modal-realweight-comp" data-toggle="modal" onclick="getRealWeightComp({{item.idProductElmt}},{{ item.prodElmtRealweight !=null ? item.prodElmtRealweight : 0 }},{{ item.prodElmtWeight != null ? item.prodElmtWeight : 0 }} )"
+                                                        >
+                                                            {{ item.prodElmtRealweight != 0 ? item.prodElmtRealweight : 'This unit does not allow enough precision' }}
+                                                        </a>
+                                                        </span>
+                                                    </td>
+                                                    <td class="fix-center">
+                                                        <a href="/delete-comp/{{item.idProductElmt}}" class="btn btn-block btn-danger btn-flat btn-lg buttonPro" type="delete" name="delete"><i class="w3-xxxlarge glyphicon glyphicon-remove"></i></a>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                                {% endif %}
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- click help -->
+                                    <div class="modal fade" id="helpproCharac">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">{{'Product Characteristics'|trans}}</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{'Help Product Characteristics'|trans}}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal"><i class="fa fa-times"></i> {{'Close'|trans}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ./help -->
+                                </fieldset>
+                            </fieldset>
+                        </fieldset>
+                    </div>
+                </file>
+            </section>
+
+        </div>
+    </section>
+    <!-- /.row (main row) -->
+    <!-- click help -->
+    <div class="modal fade" id="helpproCharac">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{'Product Characteristics'|trans}}</h4>
+                </div>
+                <div class="modal-body">
+                    {{'Help Product Characteristics'|trans}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal"><i class="fa fa-times"></i> {{'Close'|trans}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./help -->
+    <!-- modal new product -->
+    <form method="post" id="newProduct-form">
+        <div class="modal fade" id="newPro">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{'Product'|trans}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form_group" style="text-align: center">
+                                    {% if showId_Shape is null or showId_Shape.idShape == 1 %}
+                                    <img src="{{listShape[0].shapepict}}" id="img1" height="180" width="180">
+                                     {% elseif showId_Shape.idShape == 2 %}
+                                    <img src="{{showId_Shape.shapepict}}" id="img2" height="180" width="180">
+                                    {% elseif showId_Shape.idShape == 3 %}
+                                    <img src="{{showId_Shape.shapepict}}" id="img3" height="180" width="180">
+                                    {% elseif showId_Shape.idShape == 4 %}
+                                    <img src="{{showId_Shape.shapepict}}" id="img4" height="180" width="180">
+                                    {% elseif showId_Shape.idShape == 5 %}
+                                    <img src="{{showId_Shape.shapepict}}" id="img5" height="180" width="180">
+                                    {% elseif showId_Shape.idShape == 6 %}
+                                    <img src="{{showId_Shape.shapepict}}" id="img6" height="180" width="180">
+                                    {% elseif showId_Shape.idShape == 7 %}
+                                    <img src="{{showId_Shape.shapepict}}" id="img7" height="180" width="180">
+                                    {% elseif showId_Shape.idShape == 8 %}
+                                    <img src="{{showId_Shape.shapepict}}" id="img8" height="180" width="180">
+                                    {% elseif showId_Shape.idShape == 9 %}
+                                    <img src="{{showId_Shape.shapepict}}" id="img9" height="180" width="180">
+                                    {% endif %}
+
+                                    {% for item in listShape %}
+                                        <img src="{{ item.shapepict }}" style="display: none" id="img{{item.idShape}}" height="180" width="180">
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" id="productName" value="{{ componentList != null ? productName : 'New product' }}" name="_productName" class="form-control input-radius" placeholder="Product name">
+                                <br/>
+                                {% if showId_Shape != null %}
+                                    <input type="text" class="hidden" id="id-shape-old" value="{{showId_Shape.idShape}}">
+                                {% endif %}
+                                <div class="form-group">
+                                    <label>{{'Shape Name'|trans}}</label>
+                                    <select class="form-control input-radius" name="shape" id="shapeName" >
+                                        {% for shape in listShape %}
+                                        {% if(showId_Shape != null and shape.idShape==showId_Shape.idShape) %}
+                                        <option value="{{ showId_Shape.idShape }}" selected> {{ showId_Shape.label }}</option>
+                                        {% else %}
+                                        <option value="{{ shape.idShape }}"> {{ shape.label }}</option>
+                                        {% endif %} {% endfor %}
+                                    </select>
+                                </div>
+                                <br/> {% if showId_Shape is null %}
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D1" min="0" value="Not Applicabale" name="_D1" disabled>
+                                    <span class="input-group-addon" id="ba1">&ensp;cm&ensp;</span>
+                                </div>
+                                </br>
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D2" min="0" value="Not Applicabale" name="_D2" disabled>
+                                    <span class="input-group-addon" id="ba2">&ensp;cm&ensp;</span>
+                                </div>
+                                </br>
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D3" min="0" value="Not Applicabale" name="_D3" disabled>
+                                    <span class="input-group-addon" id="ba3">&ensp;cm&ensp;</span>
+                                </div>
+                                {% elseif showId_Shape.idShape == 1 or showId_Shape.idShape == 6 %}
+
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D1" value="Not Applicabale" min="0" name="_D1" disabled>
+                                    <span class="input-group-addon" id="ba1">&ensp;cm&ensp;</span>
+                                </div>
+                                </br>
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D2" value="Not Applicabale" min="0" name="_D2" disabled>
+                                    <span class="input-group-addon" id="ba2">&ensp;cm&ensp;</span>
+                                </div>
+                                </br>
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D3" value="Not Applicabale" min="0" name="_D3" disabled>
+                                    <span class="input-group-addon" id="ba3">&ensp;cm&ensp;</span>
+                                </div>
+
+                                {% elseif showId_Shape.idShape == 2 or showId_Shape.idShape == 3 or showId_Shape.idShape == 9 %}
+
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D1" value="{{ showId_ProdELM.shapeParam1 }}" min="0" name="_D1">
+                                    <span class="input-group-addon" id="ba1">&ensp;cm&ensp;</span>
+                                </div>
+                                </br>
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D2" min="0" name="_D2" value="Not Applicabale" disabled>
+                                    <span class="input-group-addon" id="ba2">&ensp;cm&ensp;</span>
+                                </div>
+                                </br>
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D3" value="{{ showId_ProdELM.shapeParam3 }}" min="0" name="_D3">
+                                    <span class="input-group-addon" id="ba3">&ensp;cm&ensp;</span>
+                                </div>
+                                {% elseif showId_Shape.idShape == 4 or showId_Shape.idShape == 5 or showId_Shape.idShape == 7 or showId_Shape.idShape == 8 %}
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D1" value="{{ showId_ProdELM.shapeParam1 }}" min="0" name="_D1">
+                                    <span class="input-group-addon" id="ba1">&ensp;cm&ensp;</span>
+                                </div>
+                                </br>
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D2" min="0" name="_D2" value="Not Applicabale" disabled>
+                                    <span class="input-group-addon" id="ba2">&ensp;cm&ensp;</span>
+                                </div>
+                                </br>
+                                <div class="input-group">
+                                    <input class="form-control input-radiusProD" type="text" id="D3" value="Not Applicabale" disabled min="0" name="_D3">
+                                    <span class="input-group-addon" id="ba3">&ensp;cm&ensp;</span>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-flat pull-left buttons" data-dismiss="modal"><i class="fa fa-times"></i> {{'Close'|trans}}</button>
+                        <button type="button" class="btn btn-success btn-flat pull-right buttons" id="createModiPro"><i class="fa fa-check"></i> {{'Confirm'|trans}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="modal fade" id="realPro" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{'Real product mass per unit'|trans}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form_group" style="text-align: center" name="proNames">
+                        <label style="color: red">{{ productName }}</label>
+                    </div>
+                    <div class="form_group">
+                        <input id="realProduct" name="_realProduct" type="text" placeholder="Input mass here" value="{{ prodElmtRealweight }}" class="form-control input-radius">
+                        <br/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="modifyReal-product" class="btn btn-info">{{'Confirm'|trans}}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{'Close'|trans}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- /. new product -->
+    <!-- product component name (change)-->
+    <div class="modal fade" id="getName1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form action="/updateThickness" id='confirm-updateThickness' method="post">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{'Product Component'|trans}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h3 id="name-Compent" style=""></h3>
+                        <input type="text" class="form-control" id="description" name="_description" placeholder="Description">
+                        <br/>
+                        <div class="input-group">
+                            <input class="form-control" id="specific-Dim" name="_specific-Dim" type="text" placeholder="Specific Dim">
+                            <span class="input-group-addon" id="basic-addon2">&ensp;cm&ensp;</span>
+                        </div>
+                        <input type="hidden" name="_idProdEml" class="idProdEml-Comp">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-flat pull-left buttons" data-dismiss="modal"><i class="fa fa-times"></i>{{' Close'|trans}}</button>
+                        <button type="button" id="idConfirm-Comp" class="btn btn-success btn-flat pull-right buttons"><i class="fa fa-check"></i>{{' Confirm'|trans}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /. product conponent -->
+    <div class="modal fade" id="modal-realweight-comp" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <form id="modal-edit-realmass-comp" action="/update-realweight-comp" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">{{'Real mass per unit'|trans}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form_group">
+                            <input id="in-weight-comp" placeholder="Input mass here" type="text" disabled class="form-control input-radius">
+                        </div>
+                        <br>
+                        <div class="form_group">
+                            <input id="in-realweight-comp" type="text" placeholder="Input mass here" class="form-control input-radius" name="_in-realweight-comp">
+                        </div>
+                        <div class="form_group">
+                            <input id="in-idProdEml-comp" type="hidden" name="_in-idProdEml-comp">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="confirm-realweight-comp" class="btn btn-info">{{'Confirm'|trans}}</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{'Close'|trans}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /. product conponent -->
+    </div>
+    <!-- /.content -->
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 3.0
+        </div>
+        <strong>Copyright &copy; 2017 <a href="#">CryoSoft</a>.</strong> All rights reserved.
+    </footer>
+</body>
+
+{% endblock %}

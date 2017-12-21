@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Production" table="production">
+    <indexes>
+      <index name="FK_PRODUCTION_STUDIES" columns="ID_STUDY"/>
+    </indexes>
+    <id name="idProduction" type="integer" column="ID_PRODUCTION">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="dailyProd" type="float" column="DAILY_PROD" precision="24" scale="0" nullable="true"/>
+    <field name="dailyStartup" type="float" column="DAILY_STARTUP" precision="24" scale="0" nullable="true"/>
+    <field name="weeklyProd" type="float" column="WEEKLY_PROD" precision="24" scale="0" nullable="true"/>
+    <field name="prodFlowRate" type="float" column="PROD_FLOW_RATE" precision="24" scale="0" nullable="true"/>
+    <field name="nbProdWeekPerYear" type="float" column="NB_PROD_WEEK_PER_YEAR" precision="24" scale="0" nullable="true"/>
+    <field name="ambientTemp" type="float" column="AMBIENT_TEMP" precision="24" scale="0" nullable="true"/>
+    <field name="ambientHum" type="float" column="AMBIENT_HUM" precision="24" scale="0" nullable="true"/>
+    <field name="avgTDesired" type="float" column="AVG_T_DESIRED" precision="24" scale="0" nullable="true"/>
+    <field name="avgTInitial" type="float" column="AVG_T_INITIAL" precision="24" scale="0" nullable="true"/>
+    <field name="approxDwellingTime" type="float" column="APPROX_DWELLING_TIME" precision="24" scale="0" nullable="true"/>
+    <many-to-one field="idStudy" target-entity="Studies" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY" referenced-column-name="ID_STUDY"/>
+      </join-columns>
+    </many-to-one>
+    <one-to-many field="idInitialTemp" target-entity="InitialTemperature" mapped-by="idProduction" fetch="LAZY" />
+  </entity>
+</doctrine-mapping>

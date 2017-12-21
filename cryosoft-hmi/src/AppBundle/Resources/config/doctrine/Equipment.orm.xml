@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Equipment" table="equipment">
+    <indexes>
+      <index name="FK_EQUIPMENT_EQUIPSERIES" columns="ID_EQUIPSERIES"/>
+      <index name="FK_EQUIPMENT_COOLING_FAMILY" columns="ID_COOLING_FAMILY"/>
+      <index name="FK_EQUIPMENT_LN2USER" columns="ID_USER"/>
+    </indexes>
+    <id name="idEquip" type="integer" column="ID_EQUIP">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idEquipgeneration" type="integer" column="ID_EQUIPGENERATION" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="equipName" type="string" column="EQUIP_NAME" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="equipVersion" type="float" column="EQUIP_VERSION" precision="24" scale="0" nullable="true"/>
+    <field name="equipRelease" type="smallint" column="EQUIP_RELEASE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="equipDate" type="datetime" column="EQUIP_DATE" nullable="true"/>
+    <field name="equipComment" type="string" column="EQUIP_COMMENT" length="2000" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="equippict" type="string" column="EQUIPPICT" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="std" type="boolean" column="STD" nullable="true"/>
+    <field name="eqpLength" type="float" column="EQP_LENGTH" precision="24" scale="0" nullable="true"/>
+    <field name="eqpWidth" type="float" column="EQP_WIDTH" precision="24" scale="0" nullable="true"/>
+    <field name="eqpHeight" type="float" column="EQP_HEIGHT" precision="24" scale="0" nullable="true"/>
+    <field name="modulLength" type="float" column="MODUL_LENGTH" precision="24" scale="0" nullable="true"/>
+    <field name="nbMaxModul" type="smallint" column="NB_MAX_MODUL" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nbTr" type="smallint" column="NB_TR" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nbTs" type="smallint" column="NB_TS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nbVc" type="smallint" column="NB_VC" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="buyingCost" type="float" column="BUYING_COST" precision="24" scale="0" nullable="true"/>
+    <field name="rentalCost" type="float" column="RENTAL_COST" precision="24" scale="0" nullable="true"/>
+    <field name="installCost" type="float" column="INSTALL_COST" precision="24" scale="0" nullable="true"/>
+    <field name="maxFlowRate" type="float" column="MAX_FLOW_RATE" precision="24" scale="0" nullable="true"/>
+    <field name="maxNozzlesByRamp" type="smallint" column="MAX_NOZZLES_BY_RAMP" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="maxRamps" type="smallint" column="MAX_RAMPS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="numberOfZones" type="integer" column="NUMBER_OF_ZONES" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tmpRegulMin" type="float" column="TMP_REGUL_MIN" precision="24" scale="0" nullable="true"/>
+    <field name="capabilities" type="bigint" column="CAPABILITIES" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="itemTr" type="integer" column="ITEM_TR" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="itemTs" type="integer" column="ITEM_TS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="itemVc" type="integer" column="ITEM_VC" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="itemPrecis" type="integer" column="ITEM_PRECIS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="itemTimestep" type="integer" column="ITEM_TIMESTEP" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="dllIdx" type="binary" column="DLL_IDX" nullable="true"/>
+    <field name="fatherDllIdx" type="binary" column="FATHER_DLL_IDX" nullable="true"/>
+    <field name="eqpImpIdStudy" type="integer" column="EQP_IMP_ID_STUDY" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="openByOwner" type="boolean" column="OPEN_BY_OWNER" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="idUser" target-entity="Ln2user" inversed-by="idEquip" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_USER" referenced-column-name="ID_USER"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEquipseries" target-entity="Equipseries" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIPSERIES" referenced-column-name="ID_EQUIPSERIES"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCoolingFamily" target-entity="CoolingFamily"  fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_COOLING_FAMILY" referenced-column-name="ID_COOLING_FAMILY"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

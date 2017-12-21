@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PrecalcLdgRatePrm" table="precalc_ldg_rate_prm">
+    <indexes>
+      <index name="FK_PRECALC_LDG_RATE_PRM_STUDIES" columns="ID_STUDY"/>
+    </indexes>
+    <id name="idPrecalcLdgRatePrm" type="integer" column="ID_PRECALC_LDG_RATE_PRM">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="lInterval" type="float" column="L_INTERVAL" precision="10" scale="0" nullable="true"/>
+    <field name="wInterval" type="float" column="W_INTERVAL" precision="10" scale="0" nullable="true"/>
+    <field name="precalcLdgTr" type="float" column="PRECALC_LDG_TR" precision="10" scale="0" nullable="true"/>
+    <field name="approxLdgRate" type="float" column="APPROX_LDG_RATE" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idStudy" target-entity="Studies" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY" referenced-column-name="ID_STUDY"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

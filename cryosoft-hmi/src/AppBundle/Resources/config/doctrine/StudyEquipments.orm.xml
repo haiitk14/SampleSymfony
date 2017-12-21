@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\StudyEquipments" table="study_equipments">
+    <indexes>
+      <index name="FK_STUDY_EQUIPMENTS_STUDIES" columns="ID_STUDY"/>
+      <index name="FK_STUDY_EQUIPMENTS_EQUIPMENT" columns="ID_EQUIP"/>
+    </indexes>
+    <id name="idStudyEquipments" type="integer" column="ID_STUDY_EQUIPMENTS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idExhGen" type="integer" column="ID_EXH_GEN" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idExhRes" type="integer" column="ID_EXH_RES" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idPipeGen" type="integer" column="ID_PIPE_GEN" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idPipeRes" type="integer" column="ID_PIPE_RES" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idEconomicResults" type="integer" column="ID_ECONOMIC_RESULTS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idStudEquipprofile" type="integer" column="ID_STUD_EQUIPPROFILE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idLayoutGeneration" type="integer" column="ID_LAYOUT_GENERATION" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idLayoutResults" type="integer" column="ID_LAYOUT_RESULTS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idCalcParams" type="integer" column="ID_CALC_PARAMS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="lineOrder" type="smallint" column="LINE_ORDER" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="stdeqpLength" type="float" column="STDEQP_LENGTH" precision="10" scale="0" nullable="true"/>
+    <field name="stdeqpWidth" type="float" column="STDEQP_WIDTH" precision="10" scale="0" nullable="true"/>
+    <field name="eqpInst" type="float" column="EQP_INST" precision="10" scale="0" nullable="true"/>
+    <field name="averageProductTemp" type="float" column="AVERAGE_PRODUCT_TEMP" precision="10" scale="0" nullable="true"/>
+    <field name="averageProductEnthalpy" type="float" column="AVERAGE_PRODUCT_ENTHALPY" precision="10" scale="0" nullable="true"/>
+    <field name="enthalpyVariation" type="float" column="ENTHALPY_VARIATION" precision="10" scale="0" nullable="true"/>
+    <field name="precis" type="float" column="PRECIS" precision="10" scale="0" nullable="true"/>
+    <field name="nbModul" type="smallint" column="NB_MODUL" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="stackingWarning" type="boolean" column="STACKING_WARNING" nullable="true"/>
+    <field name="enableConsPie" type="boolean" column="ENABLE_CONS_PIE" nullable="true"/>
+    <field name="equipStatus" type="integer" column="EQUIP_STATUS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="runCalculate" type="boolean" column="RUN_CALCULATE" nullable="true"/>
+    <field name="brainSavetodb" type="boolean" column="BRAIN_SAVETODB" nullable="true"/>
+    <field name="brainType" type="integer" column="BRAIN_TYPE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idStudy" target-entity="Studies" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY" referenced-column-name="ID_STUDY"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEquip" target-entity="Equipment" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIP" referenced-column-name="ID_EQUIP"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

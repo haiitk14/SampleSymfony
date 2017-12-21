@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\EcoResEqp" table="eco_res_eqp">
+    <indexes>
+      <index name="FK_ECO_RES_EQP_STUDY_EQUIPMENTS" columns="ID_STUDY_EQUIPMENTS"/>
+    </indexes>
+    <id name="idEcoResEqp" type="integer" column="ID_ECO_RES_EQP">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="ecoResEqpMp" type="float" column="ECO_RES_EQP_MP" precision="10" scale="0" nullable="true"/>
+    <field name="ecoResEqpTc" type="float" column="ECO_RES_EQP_TC" precision="10" scale="0" nullable="true"/>
+    <field name="ecoResEqpCc1" type="float" column="ECO_RES_EQP_CC1" precision="10" scale="0" nullable="true"/>
+    <field name="ecoResEqpCc2" type="float" column="ECO_RES_EQP_CC2" precision="10" scale="0" nullable="true"/>
+    <field name="ecoResEqpCc3" type="float" column="ECO_RES_EQP_CC3" precision="10" scale="0" nullable="true"/>
+    <field name="ecoResEqpCc4" type="float" column="ECO_RES_EQP_CC4" precision="10" scale="0" nullable="true"/>
+    <field name="ecoResEqpTcpk" type="float" column="ECO_RES_EQP_TCPK" precision="10" scale="0" nullable="true"/>
+    <field name="ecoResEqpTmfc" type="float" column="ECO_RES_EQP_TMFC" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idStudyEquipments" target-entity="StudyEquipments" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY_EQUIPMENTS" referenced-column-name="ID_STUDY_EQUIPMENTS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,288 @@
+/*
+ * Core: Overlap General Layout Style
+ * -------------------------
+ */
+.nav-tabs{
+  background-color:#fff;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    background-color: #f4f5f7;
+    border-radius: 0;
+}
+.buttons{
+	width: 150px;
+}
+th.padding-left{
+	padding-left: 50px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th, td {
+   text-align: center;
+}
+.colorLow{
+  width: 26px;
+  height: 26px;
+  background: #FF8140;
+
+}
+.colorHigh{
+  width: 26px;
+  height: 26px;
+  background: #FFC28C;
+
+}
+.colorMedi{
+  width: 26px;
+  height: 26px;
+  background: #FFE2B8;
+
+}
+a.btn.btn-block.btn-danger.btn-flat.btn-lg.buttonPro{
+  height: 30px;
+  width: 40px;
+  padding: 5px;
+}
+td.fix-center{
+  text-align: -moz-center;
+}
+table.scroll {
+width: 100%; /* Optional */
+/* border-collapse: collapse; */
+border-spacing: 0;
+border: 2px solid black;
+}
+table.scroll tbody,
+table.scroll thead {
+width: auto;
+display: block;
+
+}
+.Gbutton{
+text-align: center;
+}
+#table1{
+    display: none;
+}
+.modal .modal-footer {
+    max-height: 400px;
+    overflow-y: auto;
+}
+.modal .modal-body {
+    max-height: 450px;
+    overflow-y: auto;
+    background: #f4f5f7;
+}
+
+.ms-container{
+  background: transparent url('../../dist/img/switch.png') no-repeat 50% 50%;
+  width: 100%;
+}
+
+.ms-container:after{
+  content: ".";
+  display: block;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  clear: both;
+  min-height: 0;
+  visibility: hidden;
+}
+
+.ms-container .ms-selectable, .ms-container .ms-selection{
+  background: #fff;
+  color: #555555;
+  float: left;
+  width: 45%;
+}
+.ms-container .ms-selection{
+  float: right;
+}
+
+.ms-container .ms-list{
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  position: relative;
+  height: 200px;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.ms-container .ms-list.ms-focus{
+  border-color: rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  outline: 0;
+  outline: thin dotted \9;
+}
+
+.ms-container ul{
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+.ms-container .ms-optgroup-container{
+  width: 100%;
+}
+
+.ms-container .ms-optgroup-label{
+  margin: 0;
+  padding: 5px 0px 0px 5px;
+  cursor: pointer;
+  color: #999;
+}
+
+.ms-container .ms-selectable li.ms-elem-selectable,
+.ms-container .ms-selection li.ms-elem-selection{
+  border-bottom: 1px #eee solid;
+  padding: 2px 10px;
+  color: #555;
+  font-size: 14px;
+}
+
+.ms-container .ms-selectable li.ms-hover,
+.ms-container .ms-selection li.ms-hover{
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  background-color: #08c;
+}
+
+.ms-container .ms-selectable li.disabled,
+.ms-container .ms-selection li.disabled{
+  background-color: #eee;
+  color: #aaa;
+  cursor: text;
+}
+.custom-header{
+  text-align: center;
+  padding: 3px;
+  background: #000;
+  color: #fff;
+}
+#graph-value1, #graph-value2, #getGraph1,#graph-value3, #graph-value4, #getGraph2,#gasTemp1,#table1{
+    display: none;
+}
+#jqxChart{
+  width: 100%;
+  height: 100%;
+}
+a.disabled {
+  /* Make the disabled links grayish*/
+  color: gray;
+  /* And disable the pointer events */
+  pointer-events: none;
+}
+
+.container{
+  width:90%;
+  margin:auto;
+}
+div.scroll{
+  width:100%;
+  height:200px;
+  overflow:auto;
+}
+
+div.node{
+  text-align: center;
+}
+.title{
+  color: red;
+}
+.margins{
+  margin-right: 10px;
+  margin-left: 0px;
+}
+.button-block{
+  display: block;
+  width: 100%;
+}
+.input-radius{
+  border-radius: 8px !important;
+  background-color: #fff;
+}
+.input-radiusProD{
+  border-radius: 8px 0px 0px 8px  !important;
+  background-color: #fff;
+}
+.style-label{
+  font-size: 20px;
+  font-weight: bold;
+}
+.style-background{
+  background: #f4f5f7;
+}
+.style-li{
+  background: #00c0ef !important;
+}
+.tree img{
+  height: 20px;
+  width: 20px;
+}
+.button-color{
+  color: #aaa !important;
+}
+label{
+  font-weight:normal;
+}
+.style-th{
+  background: #fff
+}
+
+.box-title{
+  background: #00c0ef;
+  padding: 10px;
+  border-radius: 8px 8px 0px 0px;
+  color: #fff;
+}
+.style-td{
+  text-align: left;
+}
+
+.table > tbody + tbody {
+  border-top: 1px solid #ddd !important;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 3;
+  color: #fff;
+  cursor: default;
+  background-color: #00c0ef !important;
+  border-color: #00c0ef !important;
+}
+
+
+.ajax-loader {
+  visibility: hidden;
+  background-color: rgba(0,0,0,0.4);
+  position: absolute;
+  z-index: +1000 !important;
+  width: 100%;
+  height:100%;
+}
+
+.ajax-loader img {
+  position: relative;
+  top:50%;
+  left:50%;
+}

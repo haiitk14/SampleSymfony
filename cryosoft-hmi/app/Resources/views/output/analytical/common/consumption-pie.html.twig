@@ -1,0 +1,29 @@
+<div class="cart-box-container">
+
+    <div class="modal-header">
+        <button type="button" class="close" id="btnCloseConsumtionPieCharacter" data-idstudyequipments="{{ studyEquipment.idStudyEquipments }}">&times;</button>
+        <h4 class="modal-title text-primary text-center" style="color: #FF6633;font-weight: bold">{{ sEquipName }}</h4>
+    </div>
+
+    
+    <div class="modal-body" style="background:#fff">
+        <div id="canvas-holder-1" class="text-center" style="width:80%;margin: auto">
+            <canvas id="chart-area-comsumtion-pie"></canvas>
+        </div>
+        <div class="text-center" style="margin-top: 25px">
+        	<input type="checkbox" name="report_pie" value="1" {% if studyEquipment.enableConsPie == true %}checked{%endif%} style="margin:0;margin-right: 5px;vertical-align: middle"><span style="vertical-align: middle">Add this graph to the report</span>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <a href="javascript:;" class="btn btn-danger" id="btnCloseConsumtionPie" data-idstudyequipments="{{ studyEquipment.idStudyEquipments }}">Close</a>
+                </div>
+            </div>
+        </div>
+        
+            
+    </div>
+</div>

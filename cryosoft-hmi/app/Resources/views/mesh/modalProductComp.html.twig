@@ -1,0 +1,86 @@
+{% block body %}
+<form action="/modifyProdEmlIso" id="form-modal" role="form" method="post">
+    <input type="hidden" name="idProdcomp" value="{{idProdComponent}}">
+    <input type="hidden" name="position" value="{{position}}">
+    <h3 style="text-align: center;"><strong>{{'Product Component'|trans }}</strong></h3>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <label>{{'Product component'|trans }}</label>
+        </div>
+        <div class="col-md-6">
+            <label>{{idProdComps[0].getLabel}}</label>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-6">
+            <label>{{'Same temperature throught product'|trans }}</label>
+        </div>
+
+        <div class="col-md-6">
+            <div class="checkbox icheck">
+                <label>
+                    <input type="checkbox" id="uncheckMeshTempPoint" name="checkIsoProdEmlt" {% if (productEmlt.getProdElmtIso) %}checked{% endif %}> </label>
+            </div>
+        </div>
+
+    </div>
+    <div id="modal-initialProdComp" style="display: block">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <label>{{'Initial Temperature'|trans }}</label>
+            </div>
+
+            <div class="col-md-4">
+                <div class="input-group">
+                    {% if (productEmlt.getProdElmtIso) and (initialT[position * 13].getInitialT is null) %}
+                    <input class="form-control input-radiusProD" name="initialProdComp" type="text" value="{{'To be define'}}"> {% elseif (productEmlt.getProdElmtIso) and (initialT[position * 13].getInitialT is not null) %}
+                    <input class="form-control input-radiusProD" name="initialProdComp" type="text" value="{{initialT[position * 13].getInitialT}}">
+                    {% elseif (productEmlt.getProdElmtIso == 0) %}<input class="form-control input-radiusProD" name="initialProdComp" type="text" value="{{'Product non isothermal '| trans}}">
+                    {% endif %}
+                    <span class="input-group-addon" id="basic-addon2">°C</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-flat buttons pull-left" data-dismiss="modal"><i class="fa fa-times"></i> {{'Close'|trans }}</button>
+            <button class="btn btn-flat btn-success buttons pull-right" id="saveCheckIso" name="saveCheckIso" type="submit"><i class="fa fa-check"></i> {{'Confirm'|trans }}</button>
+        </div>
+    </div>
+<div style="display: none" id="modalMeshPoint">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>{{'Nodes'|trans }}</th>
+                            <th>{{'Temperature'|trans }} (°C)</th>
+                            <th></th>
+                        </tr>
+                        {% for index, meshPoints in meshPoint %}
+                        <tr>
+                            <td><a href="#">{{meshPoints.getMeshAxisPos}}</a></td>
+                            <td>
+                                <input type="number" name="meshTempPoints[]" value="{{initialT[position * 13].getInitialT}}" class="form-control input-radius ">
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                Graph
+            </div>
+        </div>
+        <div class="modal-footer">
+                <button type="reset" class="btn btn-danger btn-flat buttons"><i class="fa fa-eraser"></i>{{'Clear'|trans }} </button>
+                <button type="button" class="btn bg-olive btn-flat buttons"><i class="fa fa-building-o"></i>{{'Generate points'|trans }} </button>
+                <button type="submit" class="btn btn-success btn-flat buttons"><i class="fa fa-check"></i> {{'Confirm'|trans }}</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

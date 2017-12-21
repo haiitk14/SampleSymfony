@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %} {% block body %}
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#" aria-expanded="false">{{'Users'|trans}}</a></li>
+                            <li class=""><a href="/unitsManager" aria-expanded="false">{{'Unit'|trans}}</a></li>
+                            <li class=""><a href="/admin/_trans" aria-expanded="false">{{'Translation'|trans}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>{{'User - New'|trans}} <small>{{'Summary info'|trans}}</small></h1>
+                <ol class="breadcrumb">
+                    <li><a href="/home"><i class="fa fa-dashboard"></i> {{'Home'|trans}}</a></li>
+                    <li><a href="/newUser">{{'Users'|trans}}</a></li>
+                    <li class="active">{{'New'|trans}}</li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="nav-tabs-custom">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs pull-right">
+                            <li class="active"><a href="/connection">{{'Connection'|trans}}</a></li>
+                            <li class=""><a href="/loadUser">{{'Load'|trans}}</a></li>
+                            <li class=""><a href="/newUser">{{'New'|trans}}</a></li>
+                        </ul>
+                        <form class="form-inline" role="form" method="POST" action="/connection">
+                            <div class="tab-content">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="row">
+                                            <div class="col-md-11">
+
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a href="#" class="pull-right" data-toggle="modal" data-target="#helpdefi" id="popoverData" data-placement="bottom" data-original-title="Help" data-trigger="manual">
+                                                    <i class="fa fa-question-circle " style="font-size: 34px; padding: 0 13px;"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="box-body">
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{'Login'|trans}}</th>
+                                                    <th>{{'Connection Date'|trans}}</th>
+                                                    <th>{{'Disconnection Date'|trans}}</th>
+                                                    <th>{{'Period'|trans}}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                              {% for connection in connections %}
+                                                <tr>
+                                                    <td>{{connection.getIdUser().getUsernam()}}</td>
+                                                    <td>{{connection.dateConnection|tsformat}}</td>
+                                                    <td>{{connection.dateDisconnection|tsformat}}</td>
+                                                    <td>{{(connection.dateConnection)|duration(connection.dateDisconnection)}}</td>
+                                                </tr>
+                                              {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- div row -->
+                              </div>
+                        </form>
+            </section>
+            </div>
+</body>
+
+{% endblock %}

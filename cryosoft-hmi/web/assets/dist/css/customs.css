@@ -1,0 +1,72 @@
+.btn-alert-success {
+	width: 30%;
+    margin: auto;
+}
+
+.popup-warning {
+	background-color: #f39c12 !important;
+	color: #fff !important;
+	max-height: 450px;
+    overflow-y: auto;
+    border-color: #c87f0a;
+}
+
+.popup-warning .modal-body {
+	background-color: #f39c12 !important;
+}
+
+.txt-estimation {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    color: #FF6633;
+    font-weight: bold;
+    font-variant: small-caps;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.optimum-warning {
+	text-align: center; 
+	color: red;
+}
+
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.my-tooltip {
+    width:198px;
+    height:73px;
+    padding:5px 7px;
+    border:1px solid #ccc;
+    box-shadow: 0 0 1px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 1px rgba(0,0,0,.3);
+    border-radius:1px;
+    -webkit-border-radius:3px;
+    position:absolute;
+    top:5px;
+    left:70px;
+    background: #fff;
+    display:none;
+    z-index: 999;
+}
+.my-tooltip ul{
+    margin: 0;padding: 0;list-style: none;text-align: left
+}
+
+.btn-op {
+    width: auto;
+}
+
+.brain-left {
+    width: 50%;
+    float: left;
+}
+
+.brain-right {
+    width: 50%;
+    float: right;
+}

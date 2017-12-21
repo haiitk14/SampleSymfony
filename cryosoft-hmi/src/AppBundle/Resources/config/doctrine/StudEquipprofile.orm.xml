@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\StudEquipprofile" table="stud_equipprofile">
+    <indexes>
+      <index name="ID_STUDY_EQP" columns="ID_STUDY_EQUIPMENTS"/>
+    </indexes>
+    <id name="idStudEquipprofile" type="integer" column="ID_STUD_EQUIPPROFILE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="epXPosition" type="float" column="EP_X_POSITION" precision="10" scale="0" nullable="true"/>
+    <field name="epTempRegul" type="float" column="EP_TEMP_REGUL" precision="10" scale="0" nullable="true"/>
+    <field name="epAlphaTop" type="float" column="EP_ALPHA_TOP" precision="10" scale="0" nullable="true"/>
+    <field name="epAlphaBottom" type="float" column="EP_ALPHA_BOTTOM" precision="10" scale="0" nullable="true"/>
+    <field name="epAlphaLeft" type="float" column="EP_ALPHA_LEFT" precision="10" scale="0" nullable="true"/>
+    <field name="epAlphaRight" type="float" column="EP_ALPHA_RIGHT" precision="10" scale="0" nullable="true"/>
+    <field name="epAlphaFront" type="float" column="EP_ALPHA_FRONT" precision="10" scale="0" nullable="true"/>
+    <field name="epAlphaRear" type="float" column="EP_ALPHA_REAR" precision="10" scale="0" nullable="true"/>
+    <field name="epTempTop" type="float" column="EP_TEMP_TOP" precision="10" scale="0" nullable="true"/>
+    <field name="epTempBottom" type="float" column="EP_TEMP_BOTTOM" precision="10" scale="0" nullable="true"/>
+    <field name="epTempLeft" type="float" column="EP_TEMP_LEFT" precision="10" scale="0" nullable="true"/>
+    <field name="epTempRight" type="float" column="EP_TEMP_RIGHT" precision="10" scale="0" nullable="true"/>
+    <field name="epTempFront" type="float" column="EP_TEMP_FRONT" precision="10" scale="0" nullable="true"/>
+    <field name="epTempRear" type="float" column="EP_TEMP_REAR" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idStudyEquipments" target-entity="StudyEquipments" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY_EQUIPMENTS" referenced-column-name="ID_STUDY_EQUIPMENTS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

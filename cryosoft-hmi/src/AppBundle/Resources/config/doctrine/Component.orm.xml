@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Component" table="component">
+    <indexes>
+      <index name="FK_COMPONENT_LN2USER" columns="ID_USER"/>
+    </indexes>
+    <id name="idComp" type="integer" column="ID_COMP">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="compVersion" type="float" column="COMP_VERSION" precision="24" scale="0" nullable="true"/>
+    <field name="compRelease" type="smallint" column="COMP_RELEASE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="compDate" type="datetime" column="COMP_DATE" nullable="true"/>
+    <field name="compComment" type="string" column="COMP_COMMENT" length="2000" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="condDensMode" type="smallint" column="COND_DENS_MODE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="specificHeat" type="float" column="SPECIFIC_HEAT" precision="24" scale="0" nullable="true"/>
+    <field name="density" type="float" column="DENSITY" precision="24" scale="0" nullable="true"/>
+    <field name="protid" type="float" column="PROTID" precision="24" scale="0" nullable="true"/>
+    <field name="lipid" type="float" column="LIPID" precision="24" scale="0" nullable="true"/>
+    <field name="glucid" type="float" column="GLUCID" precision="24" scale="0" nullable="true"/>
+    <field name="water" type="float" column="WATER" precision="24" scale="0" nullable="true"/>
+    <field name="nonFrozenWater" type="float" column="NON_FROZEN_WATER" precision="24" scale="0" nullable="true"/>
+    <field name="salt" type="float" column="SALT" precision="24" scale="0" nullable="true"/>
+    <field name="air" type="float" column="AIR" precision="24" scale="0" nullable="true"/>
+    <field name="classType" type="smallint" column="CLASS_TYPE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="subFamily" type="integer" column="SUB_FAMILY" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fatType" type="smallint" column="FAT_TYPE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="compNature" type="smallint" column="COMP_NATURE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="freezeTemp" type="float" column="FREEZE_TEMP" precision="24" scale="0" nullable="true"/>
+    <field name="blsCode" type="string" column="BLS_CODE" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="compGenStatus" type="integer" column="COMP_GEN_STATUS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="compImpIdStudy" type="integer" column="COMP_IMP_ID_STUDY" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="openByOwner" type="boolean" column="OPEN_BY_OWNER" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="idUser" target-entity="Ln2user" inversed-by="idComp" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_USER" referenced-column-name="ID_USER"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

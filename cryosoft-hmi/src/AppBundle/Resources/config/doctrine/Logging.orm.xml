@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Logging" table="logging">
+    <id name="idLogging" type="integer" column="ID_LOGGING">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="logItem" type="integer" column="LOG_ITEM" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="logEnabled" type="boolean" column="LOG_ENABLED" nullable="true"/>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,107 @@
+{% extends 'modal.html.twig' %}
+{% block body %}
+    <h4>{{'Default selection for equipment page'|trans}}</h4>
+    <form method="Post" action="/profileEquipment">
+    <div class="form-group">
+
+        <div class="row">
+            <div class="col-md-4">
+                {{'Type of Refrigeration'|trans}}
+            </div>
+            <div class="col-md-8">
+                <select data-placeholder="--All--" class="form-control chosen-select" name="_refrigeration">
+                    {% for Refrigeration in refrigeration %}
+                    <option value="{{ Refrigeration.idTranslation }}" {{ value_energies == Refrigeration.idTranslation ? 'selected' : '' }}>{{Refrigeration.label}}</option>
+                    {% endfor %}
+
+                </select>
+
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                {{'Manufacturer'|trans}}
+            </div>
+            <div class="col-md-8">
+                <select data-placeholder="--All--" class="form-control chosen-select" name="_contructor">
+                    {% for Manufacturer in manufacturer %}
+                    <option value="{{ Manufacturer.constructor }}" {{ value_contructor == Manufacturer.constructor ? 'selected' : ''}}>{{Manufacturer.constructor}}</option>
+                    {% endfor %}
+
+                </select>
+
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+               {{'Equipment Series'|trans}}
+            </div>
+            <div class="col-md-8">
+                <select data-placeholder="--All--" class="form-control chosen-select" name="_series">
+                    {% for Series in series %}
+                    <option value="{{ Series.idTranslation }}" {{ value_family == Series.idTranslation ? 'selected' : '' }}>{{Series.label}}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                {{'Equipment origin'|trans}}
+            </div>
+            <div class="col-md-8">
+                <select data-placeholder="--All--" class="form-control chosen-select" name="_origin">
+                   {% for origin in origin %}
+                    <option value="{{ origin.idTranslation }}" {{ value_origin == origin.idTranslation ? 'selected' : '' }}>{{origin.label}}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                {{'Process type'|trans}}
+            </div>
+            <div class="col-md-8">
+                <select data-placeholder="--All--" class="form-control chosen-select" name="_process">
+                    {% for Process in process %}
+                    <option value="{{ Process.idTranslation }}" {{ value_processes == Process.idTranslation ? 'selected' : '' }}>{{Process.label}}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                {{'Model'|trans}}
+            </div>
+            <div class="col-md-8">
+                <select data-placeholder="--All--" class="form-control chosen-select" name="_model">
+                    {% for Model in model %}
+                    <option value="{{ Model.idTranslation }}" {{ value_series == Model.idTranslation ? 'selected' : '' }}>{{Model.label}}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+        </div>
+
+        <div class="form-group Gbutton">
+            
+            <button class="btn btn-flat btn-success buttons" type="submit"><i class="fa fa-check"></i> {{'Confirm'|trans}}</button>
+        </div>
+    </div>
+ </form>
+    <br>
+    <div class="form-group Gbutton">
+        <a href="/profile" class="btn btn-flat bg-navy buttons" >{{'Profile'|trans}}</a>
+        <a href="/change" class="btn btn-flat bg-navy buttons" >{{'Change Password'|trans}}</a>
+        <a href="/unit" class="btn btn-flat bg-navy buttons" >{{'Unit'|trans}}</a>
+        <a href="/profileEquipment" class="btn btn-flat bg-navy buttons" >{{'Equipment'|trans}}</a>
+    </div>
+
+{% endblock %}

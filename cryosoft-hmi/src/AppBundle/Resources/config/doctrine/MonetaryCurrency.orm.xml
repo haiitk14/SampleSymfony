@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\MonetaryCurrency" table="monetary_currency">
+    <id name="idMonetaryCurrency" type="integer" column="ID_MONETARY_CURRENCY">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="moneyText" type="string" column="MONEY_TEXT" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="moneySymb" type="string" column="MONEY_SYMB" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,84 @@
+{% extends 'modal.html.twig' %}
+{% block body %}
+    <div class="row">
+            <form action="/change" method="post">
+                {% for flash_massage in app.session.flashbag.get('error') %}
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-warning"></i> {{'Alert'|trans}}!</h4>
+                        <span style="color:#ffffff;";><strong>{{flash_massage}}</strong></span>
+                    </div>
+                    {#<br/><span style="color:red";><strong>{{flash_massage}}</strong></span>#}
+                {% endfor %}
+                {% for flash_massage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-check"></i> {{'Alert'|trans}}!</h4>
+                        <span style="color:#ffffff";><strong>{{flash_massage}}</strong></span>
+                    </div>
+                    {#<br/><span style="color:red";><strong>{{flash_massage}}</strong></span>#}
+                {% endfor %}
+                </span>
+                <table align="center">
+                    <tr height="50">
+                        <td>{{'Old Password'|trans}} :</td>
+                        <td><input class="form-control input-radius" type="password" name="_oldPass" id="_oldPass" required="required"></td>
+                    </tr>
+                    <tr height="50">
+                        <td>{{'New Passowrd'|trans}} :</td>
+                        <td><input class="form-control input-radius"  type="password" name="_newPass" id="_newPass" required="required"></td>
+                    </tr>
+                    <tr height="50">
+                        <td>{{'Confirm Password'|trans}} :</td>
+                        <td><input class="form-control input-radius"  type="password" name="_confirmPass" id="_confirmPass"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button class="btn btn-flat btn-success buttons" type="submit"><i class="fa fa-refresh"></i> {{'Change Password'|trans}}</button></td>
+                    </tr>
+                </table>
+
+            </form>
+        <br>
+        <div class="form-group Gbutton">
+            <a href="/profile" class="btn btn-flat bg-navy buttons" >{{'Profile'|trans}}</a>
+            <a href="/change" class="btn btn-flat bg-navy buttons" >{{'Change Password'|trans}}</a>
+            <a href="/unit" class="btn btn-flat bg-navy buttons" >{{'Unit'|trans}}</a>
+            <a href="/profileEquipment" class="btn btn-flat bg-navy buttons" >{{'Equipment'|trans}}</a>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{#{% block javascripts %}#}
+    {#<script type="text/javascript">#}
+        {#function valid()#}
+        {#{#}
+            {#if(document.chngpwd.opwd.value=="")#}
+            {#{#}
+                {#alert("Old Password Filed is Empty !!");#}
+                {#document.chngpwd.opwd.focus();#}
+                {#return false;#}
+            {#}#}
+            {#else if(document.chngpwd.npwd.value=="")#}
+            {#{#}
+                {#alert("New Password Filed is Empty !!");#}
+                {#document.chngpwd.npwd.focus();#}
+                {#return false;#}
+            {#}#}
+            {#else if(document.chngpwd.cpwd.value=="")#}
+            {#{#}
+                {#alert("Confirm Password Filed is Empty !!");#}
+                {#document.chngpwd.cpwd.focus();#}
+                {#return false;#}
+            {#}#}
+            {#else if(document.chngpwd.npwd.value!= document.chngpwd.cpwd.value)#}
+            {#{#}
+                {#alert("Password and Confirm Password Field do not match  !!");#}
+                {#document.chngpwd.cpwd.focus();#}
+                {#return false;#}
+            {#}#}
+            {#return true;#}
+        {#}#}
+    {#</script>#}
+{#{% endblock %}#}

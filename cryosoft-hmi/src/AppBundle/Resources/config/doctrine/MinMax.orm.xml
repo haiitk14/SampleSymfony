@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\MinMax" table="min_max">
+    <id name="idMinMax" type="integer" column="ID_MIN_MAX">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="limitItem" type="integer" column="LIMIT_ITEM" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="limitMax" type="float" column="LIMIT_MAX" precision="10" scale="0" nullable="true"/>
+    <field name="limitMin" type="float" column="LIMIT_MIN" precision="10" scale="0" nullable="true"/>
+    <field name="defaultValue" type="float" column="DEFAULT_VALUE" precision="10" scale="0" nullable="true"/>
+    <field name="comment" type="string" column="COMMENT" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

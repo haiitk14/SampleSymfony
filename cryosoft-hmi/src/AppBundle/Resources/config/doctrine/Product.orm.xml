@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Product" table="product">
+    <indexes>
+      <index name="FK_PRODUCT_STUDIES" columns="ID_STUDY"/>
+    </indexes>
+    <id name="idProd" type="integer" column="ID_PROD">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idMeshGeneration" type="integer" column="ID_MESH_GENERATION" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="prodname" type="string" column="PRODNAME" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prodIso" type="boolean" column="PROD_ISO" nullable="true"/>
+    <field name="prodWeight" type="float" column="PROD_WEIGHT" precision="10" scale="0" nullable="true"/>
+    <field name="prodRealweight" type="float" column="PROD_REALWEIGHT" precision="10" scale="0" nullable="true"/>
+    <field name="prodVolume" type="float" column="PROD_VOLUME" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idStudy" target-entity="Studies" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY" referenced-column-name="ID_STUDY"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

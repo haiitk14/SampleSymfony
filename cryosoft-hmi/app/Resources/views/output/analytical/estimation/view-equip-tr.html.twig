@@ -1,0 +1,43 @@
+<div class="cart-box-container">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-primary">{{ sEquipName }}</h4>
+    </div>
+
+    
+    <div class="modal-body" style="background:#fff">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Control temperature ({{ temperatureSymbol }})</th>
+                        <th>Residence / Dwell time ({{ timeSymbol }})</th>
+                    </tr>
+                </thead>
+                {% if rDimaResults != "" %}
+                <tbody>
+                    <tr>
+                        <td class="text-center">{{ rDimaResults.setpoint|unitconvexhausttemperature }}</td>
+                        <td class="text-center">{{ rDimaResults.dimaTs|unitconvtime }}</td>
+                    </tr>
+                </tbody>
+                {% endif %}
+            </table>
+        </div>
+   
+
+    </div>
+
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <a href="javascript:;" class="btn btn-danger" data-dismiss="modal">Calcel</a>
+                </div>
+            </div>
+        </div>
+        
+            
+    </div>
+</div>

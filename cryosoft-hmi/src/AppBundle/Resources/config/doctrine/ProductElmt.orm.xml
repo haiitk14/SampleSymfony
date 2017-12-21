@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ProductElmt" table="product_elmt">
+    <indexes>
+      <index name="FK_PRODUCT_ELMT_SHAPE" columns="ID_SHAPE"/>
+      <index name="FK_PRODUCT_ELMT_COMPONENT" columns="ID_COMP"/>
+      <index name="FK_PRODUCT_ELMT_PRODUCT" columns="ID_PROD"/>
+    </indexes>
+    <id name="idProductElmt" type="integer" column="ID_PRODUCT_ELMT">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="prodElmtName" type="string" column="PROD_ELMT_NAME" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="shapeParam1" type="float" column="SHAPE_PARAM1" precision="24" scale="0" nullable="true"/>
+    <field name="shapeParam2" type="float" column="SHAPE_PARAM2" precision="24" scale="0" nullable="true"/>
+    <field name="shapeParam3" type="float" column="SHAPE_PARAM3" precision="24" scale="0" nullable="true"/>
+    <field name="prodDehyd" type="float" column="PROD_DEHYD" precision="24" scale="0" nullable="true"/>
+    <field name="prodDehydCost" type="float" column="PROD_DEHYD_COST" precision="24" scale="0" nullable="true"/>
+    <field name="shapePos1" type="float" column="SHAPE_POS1" precision="24" scale="0" nullable="true"/>
+    <field name="shapePos2" type="float" column="SHAPE_POS2" precision="24" scale="0" nullable="true"/>
+    <field name="shapePos3" type="float" column="SHAPE_POS3" precision="24" scale="0" nullable="true"/>
+    <field name="prodElmtIso" type="boolean" column="PROD_ELMT_ISO" nullable="true"/>
+    <field name="originalThick" type="float" column="ORIGINAL_THICK" precision="10" scale="0" nullable="true"/>
+    <field name="nodeDecim" type="boolean" column="NODE_DECIM" nullable="true"/>
+    <field name="insertLineOrder" type="integer" column="INSERT_LINE_ORDER" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="prodElmtWeight" type="float" column="PROD_ELMT_WEIGHT" precision="10" scale="0" nullable="true"/>
+    <field name="prodElmtRealweight" type="float" column="PROD_ELMT_REALWEIGHT" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idShape" target-entity="Shape" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_SHAPE" referenced-column-name="ID_SHAPE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idProd" target-entity="Product" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_PROD" referenced-column-name="ID_PROD"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idComp" target-entity="Component" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_COMP" referenced-column-name="ID_COMP"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

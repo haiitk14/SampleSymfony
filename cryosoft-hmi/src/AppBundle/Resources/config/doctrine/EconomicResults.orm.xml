@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\EconomicResults" table="economic_results">
+    <indexes>
+      <index name="FK_ECONOMIC_RESULTS_STUDY_EQUIPMENTS" columns="ID_STUDY_EQUIPMENTS"/>
+    </indexes>
+    <id name="idEconomicResults" type="integer" column="ID_ECONOMIC_RESULTS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fluidConsumptionProduct" type="float" column="FLUID_CONSUMPTION_PRODUCT" precision="24" scale="0" nullable="true"/>
+    <field name="fluidConsumptionMatPerm" type="float" column="FLUID_CONSUMPTION_MAT_PERM" precision="24" scale="0" nullable="true"/>
+    <field name="fluidConsumptionMatGetcold" type="float" column="FLUID_CONSUMPTION_MAT_GETCOLD" precision="24" scale="0" nullable="true"/>
+    <field name="fluidConsumptionLinePerm" type="float" column="FLUID_CONSUMPTION_LINE_PERM" precision="24" scale="0" nullable="true"/>
+    <field name="fluidConsumptionLineGetcold" type="float" column="FLUID_CONSUMPTION_LINE_GETCOLD" precision="10" scale="0" nullable="true"/>
+    <field name="fluidConsumptionTank" type="float" column="FLUID_CONSUMPTION_TANK" precision="10" scale="0" nullable="true"/>
+    <field name="fluidConsumptionTotal" type="float" column="FLUID_CONSUMPTION_TOTAL" precision="24" scale="0" nullable="true"/>
+    <field name="fluidConsumptionPerKg" type="float" column="FLUID_CONSUMPTION_PER_KG" precision="24" scale="0" nullable="true"/>
+    <field name="fluidConsumptionDay" type="float" column="FLUID_CONSUMPTION_DAY" precision="24" scale="0" nullable="true"/>
+    <field name="fluidConsumptionMonth" type="float" column="FLUID_CONSUMPTION_MONTH" precision="24" scale="0" nullable="true"/>
+    <field name="fluidConsumptionYear" type="float" column="FLUID_CONSUMPTION_YEAR" precision="24" scale="0" nullable="true"/>
+    <field name="fluidConsumptionHour" type="float" column="FLUID_CONSUMPTION_HOUR" precision="24" scale="0" nullable="true"/>
+    <field name="fluidConsumptionWeek" type="float" column="FLUID_CONSUMPTION_WEEK" precision="24" scale="0" nullable="true"/>
+    <field name="costProduct" type="float" column="COST_PRODUCT" precision="24" scale="0" nullable="true"/>
+    <field name="costMatPerm" type="float" column="COST_MAT_PERM" precision="24" scale="0" nullable="true"/>
+    <field name="costMatGetcold" type="float" column="COST_MAT_GETCOLD" precision="24" scale="0" nullable="true"/>
+    <field name="costLinePerm" type="float" column="COST_LINE_PERM" precision="24" scale="0" nullable="true"/>
+    <field name="costLineGetcold" type="float" column="COST_LINE_GETCOLD" precision="24" scale="0" nullable="true"/>
+    <field name="costTank" type="float" column="COST_TANK" precision="24" scale="0" nullable="true"/>
+    <field name="costTotal" type="float" column="COST_TOTAL" precision="24" scale="0" nullable="true"/>
+    <field name="costKg" type="float" column="COST_KG" precision="24" scale="0" nullable="true"/>
+    <field name="costDay" type="float" column="COST_DAY" precision="24" scale="0" nullable="true"/>
+    <field name="costMonth" type="float" column="COST_MONTH" precision="24" scale="0" nullable="true"/>
+    <field name="costYear" type="float" column="COST_YEAR" precision="24" scale="0" nullable="true"/>
+    <field name="costHour" type="float" column="COST_HOUR" precision="24" scale="0" nullable="true"/>
+    <field name="costWeek" type="float" column="COST_WEEK" precision="24" scale="0" nullable="true"/>
+    <field name="percentProduct" type="float" column="PERCENT_PRODUCT" precision="24" scale="0" nullable="true"/>
+    <field name="percentEquipmentPerm" type="float" column="PERCENT_EQUIPMENT_PERM" precision="24" scale="0" nullable="true"/>
+    <field name="percentEquipmentDown" type="float" column="PERCENT_EQUIPMENT_DOWN" precision="24" scale="0" nullable="true"/>
+    <field name="percentLine" type="float" column="PERCENT_LINE" precision="24" scale="0" nullable="true"/>
+    <many-to-one field="idStudyEquipments" target-entity="StudyEquipments" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY_EQUIPMENTS" referenced-column-name="ID_STUDY_EQUIPMENTS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Compenth" table="compenth">
+    <indexes>
+      <index name="FK_COMPENTH_COMPENTH" columns="ID_COMP"/>
+    </indexes>
+    <id name="idCompenth" type="integer" column="ID_COMPENTH">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="comptemp" type="float" column="COMPTEMP" precision="24" scale="0" nullable="true"/>
+    <field name="compenth" type="float" column="COMPENTH" precision="24" scale="0" nullable="true"/>
+    <field name="compcond" type="float" column="COMPCOND" precision="24" scale="0" nullable="true"/>
+    <field name="compdens" type="float" column="COMPDENS" precision="24" scale="0" nullable="true"/>
+    <many-to-one field="idComp" target-entity="Component" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_COMP" referenced-column-name="ID_COMP"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

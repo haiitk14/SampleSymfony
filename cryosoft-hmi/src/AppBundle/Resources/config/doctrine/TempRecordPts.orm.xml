@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\TempRecordPts" table="temp_record_pts">
+    <indexes>
+      <index name="FK_TEMP_RECORD_PTS_STUDIES" columns="ID_STUDY"/>
+    </indexes>
+    <id name="idTempRecordPts" type="integer" column="ID_TEMP_RECORD_PTS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="axis1PtTopSurf" type="float" column="AXIS1_PT_TOP_SURF" precision="10" scale="0" nullable="true"/>
+    <field name="axis2PtTopSurf" type="float" column="AXIS2_PT_TOP_SURF" precision="10" scale="0" nullable="true"/>
+    <field name="axis3PtTopSurf" type="float" column="AXIS3_PT_TOP_SURF" precision="10" scale="0" nullable="true"/>
+    <field name="axis1PtIntPt" type="float" column="AXIS1_PT_INT_PT" precision="10" scale="0" nullable="true"/>
+    <field name="axis2PtIntPt" type="float" column="AXIS2_PT_INT_PT" precision="10" scale="0" nullable="true"/>
+    <field name="axis3PtIntPt" type="float" column="AXIS3_PT_INT_PT" precision="10" scale="0" nullable="true"/>
+    <field name="axis1PtBotSurf" type="float" column="AXIS1_PT_BOT_SURF" precision="10" scale="0" nullable="true"/>
+    <field name="axis2PtBotSurf" type="float" column="AXIS2_PT_BOT_SURF" precision="10" scale="0" nullable="true"/>
+    <field name="axis3PtBotSurf" type="float" column="AXIS3_PT_BOT_SURF" precision="10" scale="0" nullable="true"/>
+    <field name="axis2Ax1" type="float" column="AXIS2_AX_1" precision="10" scale="0" nullable="true"/>
+    <field name="axis3Ax1" type="float" column="AXIS3_AX_1" precision="10" scale="0" nullable="true"/>
+    <field name="axis1Ax2" type="float" column="AXIS1_AX_2" precision="10" scale="0" nullable="true"/>
+    <field name="axis3Ax2" type="float" column="AXIS3_AX_2" precision="10" scale="0" nullable="true"/>
+    <field name="axis1Ax3" type="float" column="AXIS1_AX_3" precision="10" scale="0" nullable="true"/>
+    <field name="axis2Ax3" type="float" column="AXIS2_AX_3" precision="10" scale="0" nullable="true"/>
+    <field name="axis1Pl23" type="float" column="AXIS1_PL_2_3" precision="10" scale="0" nullable="true"/>
+    <field name="axis2Pl13" type="float" column="AXIS2_PL_1_3" precision="10" scale="0" nullable="true"/>
+    <field name="axis3Pl12" type="float" column="AXIS3_PL_1_2" precision="10" scale="0" nullable="true"/>
+    <field name="nbSteps" type="smallint" column="NB_STEPS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="contour2dTempMin" type="float" column="CONTOUR2D_TEMP_MIN" precision="24" scale="0" nullable="true"/>
+    <field name="contour2dTempMax" type="float" column="CONTOUR2D_TEMP_MAX" precision="24" scale="0" nullable="true"/>
+    <many-to-one field="idStudy" target-entity="Studies" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY" referenced-column-name="ID_STUDY"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

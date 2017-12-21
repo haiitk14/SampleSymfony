@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\LayoutGeneration" table="layout_generation">
+    <indexes>
+      <index name="FK_LAYOUT_GENERATION_STUDY_EQUIPMENTS" columns="ID_STUDY_EQUIPMENTS"/>
+    </indexes>
+    <id name="idLayoutGeneration" type="integer" column="ID_LAYOUT_GENERATION">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="widthInterval" type="float" column="WIDTH_INTERVAL" precision="10" scale="0" nullable="true"/>
+    <field name="lengthInterval" type="float" column="LENGTH_INTERVAL" precision="10" scale="0" nullable="true"/>
+    <field name="prodPosition" type="boolean" column="PROD_POSITION" nullable="true"/>
+    <field name="shelvesWidth" type="float" column="SHELVES_WIDTH" precision="10" scale="0" nullable="true"/>
+    <field name="shelvesLength" type="float" column="SHELVES_LENGTH" precision="10" scale="0" nullable="true"/>
+    <field name="nbShelvesPerso" type="smallint" column="NB_SHELVES_PERSO" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="shelvesType" type="smallint" column="SHELVES_TYPE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idStudyEquipments" target-entity="StudyEquipments" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY_EQUIPMENTS" referenced-column-name="ID_STUDY_EQUIPMENTS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,496 @@
+<div class="cart-box-container">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><strong>{{'Calculate (Optimun Mode)'|trans}}</strong></h4>
+            </div>
+            <form name="formOptinumCalculate" method="POST" action="/calculate">
+            	<div class="modal-body">
+	                <div class="form-group Gbutton">
+	                    <button type="button" id="btnOptimumCalculate" class="btn bg-orange btn-flat buttons margin"
+	                    	data-toggle="modal" data-target="#calculateOpM" id="calculationClick" {{ sdisableFields }}>
+	                        <i class="fa fa-calculator">{{'Calculate'|trans}}</i>
+	                    </button>
+	                    <button type="button" id="btnSettingOptimum" class="btn bg-purple btn-flat buttons margin"
+	                    	onclick="showSetting();">
+	                        <i class="fa fa-gear">{{'Setting'|trans}}</i>
+	                    </button>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <h6 class="optimum-warning">{{'Warning: the average run time will be around 1 to 2 minutes per seleted equipment, or more for complicated products'|trans}}</h6>
+	                </br>
+	                <div class="table-responsive">
+	                    <div class="table-content-1">
+	                        <table class="table table-bordered">
+	                            <tr>
+	                                <th>{{'Optimization'|trans}}</th>
+	                                <th>{{'Temperature margin (°C)'|trans}}</th>
+	                                <th>{{'Enthalpy Error ( % )'|trans}}</th>
+	                                <th>{{'Number of iterations'|trans}}</th>
+	                            </tr>
+	                            <tr>
+	                                <td>
+	                                    <input type="checkbox" {{ scheckOptim }} name="cbOptim" onclick="checkingOptimisation({{sdisableNbOptim }});" {{ sdisableOptim }}>
+	                                </td>
+	                                <td>
+	                                    <div class="row">
+	                                        <div class="col-md-2"></div>
+	                                        <div class="col-md-8">
+	                                            <input type="text" class="form-control" name="epsilonTemp" size="9" maxlength="20"  placeholder="0.00" value="{{ _epsilonTemp }}" {{ sdisableOptim }}>
+	                                        </div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="row">
+	                                        <div class="col-md-2"></div>
+	                                        <div class="col-md-8">
+	                                            <input type="text" class="form-control" placeholder="0.00" name="epsilonEnth" size="9" maxlength="20" value="{{ _epsilonEnth }}" {{ sdisableOptim }}>
+	                                        </div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="row">
+	                                        <div class="col-md-2"></div>
+	                                        <div class="col-md-8">
+	                                            <input type="text" class="form-control" placeholder="0" name="nbOptimIter" size="9" maxlength="20" value="{{ _nbOptimIter }}" {{ sdisableNbOptim }}>
+	                                        </div>
+	                                    </div>
+	                                </td>
+	                            </tr>
+	                        </table>
+	                    </div>
+	                </div>
+	                <div class="table-responsive">
+	                    <div class="table-content-2">
+	                        <table class="table table-bordered">
+	                            <tr>
+	                                <th rowspan="2">{{'Time Step(s)'|trans}}</th>
+	                                <th rowspan="2">{{'Precision of numerical '|trans}}</br> {{'modeling (%)'|trans}}</th>
+	                                <th colspan="2">{{'Storage'|trans}}</th>
+	                            </tr>
+	                            <tr>
+	                                <td>{{'Access to product graph and charts'|trans}}</td>
+	                                <td>{{'Step (s)'|trans}}</td>
+	                            </tr>
+	                            <tr>
+	                                <td>
+	                                    <div class="row">
+	                                        <div class="col-md-2"></div>
+	                                        <div class="col-md-8">
+	                                            <input type="text" class="form-control" placeholder="N/A" name="timestep" size="9" maxlength="5" value="{{ _timeStep }}" {{ sdisableTimeStep }}>
+	                                        </div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                	<div class="row">
+	                                        <div class="col-md-2"></div>
+	                                        <div class="col-md-8">
+	                                            <input type="text" class="form-control" placeholder="N/A" name="precision" size="9" maxlength="5" value="{{ _precision }}" {{ sdisablePrecision }}>
+	                                        </div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <input type="checkbox" name="cbCharts" {{ scheckStorage }} onclick="checkingStorage({{ sdisableStorage }});" {{ sdisableStorage }}>
+	                                </td>
+	                                <td>
+	                                    <div class="row">
+	                                        <div class="col-md-2"></div>
+	                                        <div class="col-md-8">
+	                                            <input type="text" class="form-control" placeholder="0.00" name="storagestep" size="9" maxlength="20" value="{{ _storagestep }}" {{ sdisableStorage }}>
+	                                        </div>
+	                                    </div>
+	                                </td>
+	                            </tr>
+	                        </table>
+	                    </div>
+	                </div>
+	                <!-- click setting -->
+	                <div id="optinumFilter" style="display: none;">
+	                    <h4 style="text-align: left;"><lable>{{'Seized conditon'|trans}}</lable></h4>
+	                    <div class="table-responsive">
+	                        <table class="table table-bordered">
+	                            <tr>
+	                                <th colspan="3">{{'Activation'|trans}}</th>
+	                                <th rowspan="2">{{'Max of iterations'|trans}}</th>
+	                                <th rowspan="2">{{'Coef. of relaxation'|trans}}</th>
+	                                <th colspan="4">{{'Temperature to stop (°C)'|trans}}</th>
+	                            </tr>
+	                            <tr>
+	                                <td>{{'Horizontal'|trans}}</td>
+	                                <td>
+	                                    <div class="checkbox">
+	                                        <label>
+	                                            <input type="radio" class="control" value="1" name="hradiobutton" {{ _hRadioOn }} {{ sdisableFields }}> {{'Yes'|trans}}
+	                                        </label>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="checkbox">
+	                                        <label>
+	                                            <input type="radio" class="control" value="0" name="hradiobutton" {{ _hRadioOff }} {{ sdisableFields }}> {{'No'|trans}}
+	                                        </label>
+	                                    </div>
+	                                </td>
+	                                <td>{{'Surface'|trans}}</td>
+	                                <td>{{'Internal'|trans}}</td>
+	                                <td>{{'Bottom'|trans}}</td>
+	                                <td>{{'Average'|trans}}</td>
+	                            </tr>
+	                            <tr>
+	                                <td>{{'Vertical'|trans}}</td>
+	                                <td>
+	                                    <div class="checkbox">
+	                                        <label>
+	                                            <input type="radio" class="control" name="vradiobutton" value="1" {{ _vRadioOn }} {{ sdisableFields }}> {{'Yes'|trans}}
+	                                        </label>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="checkbox">
+	                                        <label>
+	                                            <input type="radio" class="control" name="vradiobutton" value="0" {{ _vRadioOff }} {{ sdisableFields }}> {{'No'|trans}}
+	                                        </label>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="row">
+	                                        <div class="col-md-10">
+	                                            <input type="text" class="form-control" placeholder="0.00"  name="maxIter" size="9" maxlength="5" value="{{ _maxIter }}" {{ sdisableFields }}>
+	                                        </div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="row">
+	                                        <div class="col-md-10">
+	                                            <input type="text" class="form-control" placeholder="0.00" name="relaxCoef" size="9" maxlength="5" value="{{ _relaxCoef }}" {{ sdisableFields }}>
+	                                        </div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="row">
+	                                        <div class="col-md-1"></div>
+	                                        <div class="col-md-10">
+	                                            <input type="text" class="form-control" placeholder="0.00" name="tempPtSurf" size="9" maxlength="9" value="{{ _tempPtSurf }}" {{ sdisableFields }}>
+	                                        </div>
+	                                        <div class="col-md-1"></div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="row">
+	                                        <div class="col-md-1"></div>
+	                                        <div class="col-md-10">
+	                                            <input type="text" class="form-control" placeholder="0.00" name="tempPtIn" size="9" maxlength="9" value="{{ _tempPtIn }}" {{ sdisableFields }}>
+	                                        </div>
+	                                        <div class="col-md-1"></div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="row">
+	                                        <div class="col-md-1"></div>
+	                                        <div class="col-md-10">
+	                                            <input type="text" class="form-control" placeholder="0.00" name="tempPtBot" size="9" maxlength="9" value="{{ _tempPtBot }}" {{ sdisableFields }}>
+	                                        </div>
+	                                        <div class="col-md-1"></div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="row">
+	                                        <div class="col-md-1"></div>
+	                                        <div class="col-md-10">
+	                                            <input type="text" class="form-control" placeholder="0.00" name="tempPtAvg" size="9" maxlength="9" value="{{ _tempPtAvg }}" {{ sdisableFields }}>
+	                                        </div>
+	                                        <div class="col-md-1"></div>
+	                                    </div>
+	                                </td>
+	                            </tr>
+	                        </table>
+	                        </br>
+	                        </br>
+	                    </div>
+	                    <h4 style="text-align: left;"><lable>{{'Following-up Point (mm)'|trans}}</lable></h4>
+	                    <div class="table-responsive">
+	                        <table class="table table-bordered">
+	                            <tr>
+	                                <th>{{'Surface'|trans}}</th>
+	                                <th>{{'Internal'|trans}}</th>
+	                                <th>{{'Bottom'|trans}}</th>
+	                            </tr>
+	                            <tr>
+	                                <td>
+	                                    <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label>1</label>
+                                            </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="col-md-7">
+	                                            <div class="form-group">
+                                                    <select data-placeholder="--Menu--" class="chosen-select" 
+                                                    	name="select1" {{ sdisableFields }}>
+                                                        {% for i in _select1 %}
+                                                        	<option value="{{ i.value }}"
+                                                        		{% if i.selected == true %} selected
+                                                        		{% endif %}>
+                                                        		{{ i.value }}
+                                                        	</option>
+                                                        {% endfor %}
+                                                    </select>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-3"></div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label>1</label>
+                                            </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="col-md-7">
+	                                            <div class="form-group">
+                                                    <select data-placeholder="--Menu--" class="chosen-select"
+                                                    name="select4" {{ sdisableFields }}>
+                                                        {% for i in _select4 %}
+                                                        	<option value="{{ i.value }}"
+                                                        		{% if i.selected == true %} selected
+                                                        		{% endif %}>
+                                                        		{{ i.value }}
+                                                        	</option>
+                                                        {% endfor %}
+                                                    </select>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-3"></div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label>1</label>
+                                            </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="col-md-7">
+	                                            <div class="form-group">
+                                                    <select data-placeholder="--Menu--" class="chosen-select"
+                                                    name="select7" {{ sdisableFields }}>
+                                                        {% for i in _select7 %}
+                                                        	<option value="{{ i.value }}"
+                                                        		{% if i.selected == true %} selected
+                                                        		{% endif %}>
+                                                        		{{ i.value }}
+                                                        	</option>
+                                                        {% endfor %}
+                                                    </select>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-3"></div>
+	                                    </div>
+	                                </td>
+	                            </tr>
+	                            <tr>
+	                                <td>
+	                                    <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label>2</label>
+                                            </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="col-md-7">
+	                                            <div class="form-group">
+                                                    <select data-placeholder="--Menu--" class="chosen-select"
+                                                    name="select2" {{ sdisableFields }}>
+                                                        {% for i in _select2 %}
+                                                        	<option value="{{ i.value }}"
+                                                        		{% if i.selected == true %} selected
+                                                        		{% endif %}>
+                                                        		{{ i.value }}
+                                                        	</option>
+                                                        {% endfor %}
+                                                    </select>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-3"></div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label>2</label>
+                                            </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="col-md-7">
+	                                            <div class="form-group">
+                                                    <select data-placeholder="--Menu--" class="chosen-select"
+                                                    name="select5" {{ sdisableFields }}>
+                                                        {% for i in _select5 %}
+                                                        	<option value="{{ i.value }}"
+                                                        		{% if i.selected == true %} selected
+                                                        		{% endif %}>
+                                                        		{{ i.value }}
+                                                        	</option>
+                                                        {% endfor %}
+                                                    </select>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-3"></div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label>2</label>
+                                            </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="col-md-7">
+	                                            <div class="form-group">
+                                                    <select data-placeholder="--Menu--" class="chosen-select"
+                                                    name="select8" {{ sdisableFields }}>
+                                                        {% for i in _select8 %}
+                                                        	<option value="{{ i.value }}"
+                                                        		{% if i.selected == true %} selected
+                                                        		{% endif %}>
+                                                        		{{ i.value }}
+                                                        	</option>
+                                                        {% endfor %}
+                                                    </select>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-3"></div>
+	                                    </div>
+	                                </td>
+	                            </tr>
+	                            <tr>
+	                                <td>
+	                                    <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label>3</label>
+                                            </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="col-md-7">
+	                                            <div class="form-group">
+                                                    <select data-placeholder="--Menu--" class="chosen-select"
+                                                    name="select3" {{ sdisableFields }}>
+                                                        {% for i in _select3 %}
+                                                        	<option value="{{ i.value }}"
+                                                        		{% if i.selected == true %} selected
+                                                        		{% endif %}>
+                                                        		{{ i.value }}
+                                                        	</option>
+                                                        {% endfor %}
+                                                    </select>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-3"></div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label>3</label>
+                                            </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="col-md-7">
+	                                            <div class="form-group">
+                                                    <select data-placeholder="--Menu--" class="chosen-select"
+                                                    name="select6" {{ sdisableFields }}>
+                                                        {% for i in _select6 %}
+                                                        	<option value="{{ i.value }}"
+                                                        		{% if i.selected == true %} selected
+                                                        		{% endif %}>
+                                                        		{{ i.value }}
+                                                        	</option>
+                                                        {% endfor %}
+                                                    </select>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-3"></div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label>3</label>
+                                            </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="col-md-7">
+	                                            <div class="form-group">
+                                                    <select data-placeholder="--Menu--" class="chosen-select" 
+                                                    name="select9" {{ sdisableFields }}>
+                                                        {% for i in _select9 %}
+                                                        	<option value="{{ i.value }}"
+                                                        		{% if i.selected == true %} selected
+                                                        		{% endif %}>
+                                                        		{{ i.value }}
+                                                        	</option>
+                                                        {% endfor %}
+                                                    </select>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-3"></div>
+	                                    </div>
+	                                </td>
+	                            </tr>
+	                        </table>
+	                        </br>
+	                        </br>
+	                    </div>
+	                </div>
+	                <!-- /. click setting -->
+	            </div>
+	            <!-- click calculate -->
+	            <div class="modal fade" id="calculateOpM" tabindex="-1">
+	                <div class="modal-dialog">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+	                            <h4 class="modal-title"><strong>{{'Calculate'|trans}}</strong></h4>
+	                        </div>
+	                        <div class="modal-body">
+	                            <div class="row">
+	                                <div class="col-md-1"></div>
+	                                <div class="col-md-10">
+	                                    <div class="box box-default">
+	                                        <div class="row">
+	                                            <div class="col-md-6">
+	                                                <div id="divfind">
+	                                                    <span id="print"></span>
+	                                                </div>
+	                                            </div>
+	                                            <div class="col-md-6">
+	                                                <div id="divfind">
+	                                                    <span id="process"></span>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="modal-footer">
+	                            <div class="form-group Gbutton">
+	                                <button type="button" class="btn btn-danger btn-flat button-block" data-toggle="modal" data-target="#alertStop" id="parent_met">{{'Stop'|trans}}</button>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+            </form>
+
+            <!-- /. click calculate -->
+             <div class="modal-footer">
+               <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal">{{'Close'|trans}}</button>
+           </div>
+
+        </div>
+    </div>
+</div>

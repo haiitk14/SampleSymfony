@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PipeGen" table="pipe_gen">
+    <indexes>
+      <index name="FK_PIPE_GEN_STUDY_EQUIPMENTS" columns="ID_STUDY_EQUIPMENTS"/>
+    </indexes>
+    <id name="idPipeGen" type="integer" column="ID_PIPE_GEN">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="insullineLenght" type="float" column="INSULLINE_LENGHT" precision="24" scale="0" nullable="true"/>
+    <field name="noinsullineLenght" type="float" column="NOINSULLINE_LENGHT" precision="24" scale="0" nullable="true"/>
+    <field name="elbows" type="integer" column="ELBOWS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tees" type="integer" column="TEES" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="insulValves" type="integer" column="INSUL_VALVES" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="noinsulValves" type="integer" column="NOINSUL_VALVES" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mathigher" type="boolean" column="MATHIGHER" nullable="false"/>
+    <field name="height" type="float" column="HEIGHT" precision="24" scale="0" nullable="true"/>
+    <field name="fluid" type="integer" column="FLUID" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pressure" type="float" column="PRESSURE" precision="10" scale="0" nullable="true"/>
+    <field name="gasTemp" type="float" column="GAS_TEMP" precision="24" scale="0" nullable="true"/>
+    <many-to-one field="idStudyEquipments" target-entity="StudyEquipments" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY_EQUIPMENTS" referenced-column-name="ID_STUDY_EQUIPMENTS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,292 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div>
+	    <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+                            <li class=""><a href="/settings/mesh" aria-expanded="false"> Mesh</a></li>
+                            <li class="active"><a href="/settings/calculation" aria-expanded="false">Calculation</a></li>
+                            <li class=""><a href="/settings/result" aria-expanded="false">Result</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>Wizard Calculation<small>Summary info</small></h1>
+                <ol class="breadcrumb">
+                    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">Calculation</li>
+                </ol>
+            </section>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success alert-dismissible btn-alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                    <span style="color:#ffffff";><strong>{{ message }}</strong></span>
+                </div>
+            {% endfor %}
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Main row -->
+                <div class="row">
+                    <div class="nav-tabs-custom">
+                        <div class="tab-content">
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <a href="#" class="pull-right" data-toggle="modal" data-target="#helpProduction" id="popoverData" data-placement="bottom" data-original-title="Help" data-trigger="manual">
+                                                <i class="fa fa-question-circle " style="font-size: 34px; padding: 0 13px;"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-1">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <form name="formCalculationSetting" id="formCalculationSetting" action="/settings/save" method="POST">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <h3>Seized condition</h3>
+                                        </div>
+                                        <div class="table table-responsive">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                    <th colspan="3">Activation</th>
+                                                    <th>Max of iterations</th>
+                                                    <th>Coef. of relaxation</th>
+                                                    <th>Precision of numerical modelling (%)</th>
+                                                    <th colspan="4">Temperature to stop (°C)</th>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Horizontal</td>
+                                                    <td><input type="radio" name="_hradiobutton" {{ isHorizScanDef }} value="1"> yes</td>
+                                                    <td><input type="radio" name="_hradiobutton" {{ isHorizScanDef1 }} value="0"> no</td>
+                                                    <td rowspan="2">
+                                                    	<input type="text" name="_maxIter" id="_maxIter" class="form-control" size="9" maxlength="9" value="{{ maxIter }}">
+                                                    </td>
+                                                    <td rowspan="2">
+                                                    	<input type="text" name="_relaxCoef" id="_relaxCoef" class="form-control" size="9" maxlength="9" value="{{ relaxCoef }}">
+                                                    </td>
+                                                    <td rowspan="2">
+                                                    	<input type="text" name="_precision" id="_precision" class="form-control" size="9" maxlength="9" value="{{ precision }}">             
+                                                    </td>
+                                                    <td>Suface</td>
+                                                    <td>Internal</td>
+                                                    <td>Bottom</td>
+                                                    <td>Average</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Vertical</td>
+                                                    <td><input type="radio" name="_vradiobutton" {{ isVertScanDef }} value="1"> yes</td>
+                                                    <td><input type="radio" name="_vradiobutton" {{ isVertScanDef1 }} value="0"> no</td>
+                                                    <td>
+                                                    	<input type="text" name="_r2Suface" id="_r2Suface" class="form-control" size="9" maxlength="9" value="{{ stopTopSurfDef }}">
+                                                    </td>
+                                                    <td>
+                                                    	<input type="text" name="_r2Internal" id="_r2Internal" class="form-control" size="9" maxlength="9" value="{{ stopIntDef }}">
+                                                    </td>
+                                                    <td>
+                                                    	<input type="text" name="_r2Bottom" id="_r2Bottom" class="form-control" size="9" maxlength="9" value="{{ stopBottomSurfDef }}">
+                                                    </td>
+                                                    <td>
+                                                    	<input type="text" name="_r2Average" id="_r2Average" class="form-control" size="9" maxlength="9" value="{{ stopAvgDef }}">
+                                                    </td>
+                                                  </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                         <h3>Alpha W/(M, °C)</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>Top</th>
+                                                    <th>Buttom</th>
+                                                    <th>Left</th>
+                                                    <th>Right</th>
+                                                    <th>Front</th>
+                                                    <th>Rear</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="checkbox" class="btn-primary alphaCheck" id="alphaCheck0" name="_isalpha0" value="0" {{ studyAlphaTopFixedDef }} onclick="activefield(this);">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="checkbox" class="custom-control-input" name="_isalpha1" id="alphaCheck1" value="1" {{ studyAlphaBottomFixedDef }} onclick="activefield(this);">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="checkbox" class="custom-control-input" name="_isalpha2" id="alphaCheck2" value="2" {{ studyAlphaLeftFixedDef }} onclick="activefield(this);">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="checkbox" class="custom-control-input" name="_isalpha3" id="alphaCheck3" value="3" {{ studyAlphaRightFixedDef }} onclick="activefield(this);">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="checkbox" class="custom-control-input" name="_isalpha4" id="alphaCheck4" value="4" {{ studyAlphaFrontFixedDef }} onclick="activefield(this);">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="checkbox" class="custom-control-input" name="_isalpha5" id="alphaCheck5" value="5" {{ studyAlphaRearFixedDef }} onclick="activefield(this);">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="_alphavalue0" id="_alphavalue0" class="form-control" id="_alphaCheck0" size="9" maxlength="20" placeholder="0.00" step="any" min="0" max="2" {{ disabledAlpha0 }} value="{{ alphavalue0 }}" required>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="_alphavalue1" id="_alphavalue1" class="form-control" id="_alphaChec1" size="9" maxlength="20" placeholder="0.00" {{ disabledAlpha1 }} value="{{ alphavalue1 }}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="_alphavalue2" id="_alphavalue2" class="form-control" id="_alphaCheck2" size="9" maxlength="20" placeholder="0.00" {{ disabledAlpha2 }} value="{{ alphavalue2 }}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="_alphavalue3" id="_alphavalue3" class="form-control" id="_alphaCheck3" size="9" maxlength="20" placeholder="0.00" {{ disabledAlpha3 }} value="{{ alphavalue3 }}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="_alphavalue4" id="_alphavalue4" class="form-control" id="_alphaCheck4" size="9" maxlength="20" placeholder="0.00"{{ disabledAlpha4 }} value="{{ alphavalue4 }}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3"></div>
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="_alphavalue5" id="_alphavalue5" class="form-control" id="_alphaCheck5" size="9" maxlength="20" placeholder="0.00" {{ disabledAlpha5 }} value="{{ alphavalue5 }}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <br/>
+                                        <h3>Step number</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Storage step</th>
+                                                        <th>Precision log step</th>
+                                                        <th>Time step (s)</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <td> 
+                                                        	<input type="text" name="_storageStep" id="_storageStep" class="form-control" size="9" maxlength="20" placeholder="0.00" value="{{ storagestep }}">
+                                                        </td>
+                                                        <td> 
+                                                        	<input type="text" name="_precisionStep" id="_precisionStep" class="form-control" size="9" maxlength="20" placeholder="0.00" value="{{ precisionlog }}">
+                                                        </td>
+                                                        <td> 
+                                                        	<input type="text" name="_timeStep" id="_timeStep" class="form-control" size="9" maxlength="20" placeholder="0.00" value="{{ timestep }}">
+                                                        </td>
+                                                      </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="form-group button">
+                                            <button type="button" id="btnCalculationSave" class="btn btn-primary btn-flat buttons">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row (main row) -->
+                <!-- click help -->
+                <div class="modal fade" id="helpProduction">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                               </button>
+                                <h4 class="modal-title">Setting Page</h4>
+                            </div>
+                            <div class="modal-body">
+                                Help calculation Setting
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./help -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        {{ include('includes/footer.html.twig') }}
+</body>
+
+{% endblock %}

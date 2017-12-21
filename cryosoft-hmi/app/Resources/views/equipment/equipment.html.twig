@@ -1,0 +1,1956 @@
+{% extends 'base.html.twig' %} {% block body %}
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
+<!-- <script src="./assets/js/js-equipment.js"></script>
+ -->
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+
+                            <li class=""><a href="/home/fromlogin" aria-expanded="false">{{ 'Dashboard' | trans}}</a></li>
+                            <li class=""><a href="/definition" aria-expanded="false">{{ 'Definitition' | trans }}</a></li>
+                            <li class=""><a href="/production" aria-expanded="false">{{ 'Production' | trans }}</a></li>
+                            <li class=""><a href="/productChar" aria-expanded="false">{{ 'Product and characteristic' | trans }}</a></li>
+                            <li class=""><a href="/mesh" aria-expanded="false">{{ 'Mesh initial temperature' | trans }}</a></li>
+                            <li class=""><a href="/packing" aria-expanded="false">{{ 'Packing' | trans }}</a></li>
+                            <li class="active"><a href="/equipments" aria-expanded="false">{{ 'Equipment' | trans }}</a></li>
+                            <li class=""><a href="/line" aria-expanded="false">{{ 'Line' | trans }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+        {{ 'Equipment' | trans}}
+        <small>{{ 'Summary info' | trans }}</small>
+      </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/home"><i class="fa fa-dashboard"></i>{{ 'Home' | trans }}</a></li>
+                    <li class="active">{{ 'Equipment' | trans }}</li>
+                </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <span class="label label-danger">{{ 'Study Name' | trans }} :  {{ studyName }}</span>
+                <!-- Main row -->
+                <div class="row">
+                    <div class="nav-tabs-custom">
+                        <div class="tab-content">
+                            <div class="row">
+                                <div class="col-md-6">
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="row">
+                                        <div class="col-md-11">
+
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="#" class="pull-right" data-toggle="modal" data-target="#helpEquipment" id="popoverData" data-placement="bottom" data-original-title="Help" data-trigger="manual">
+                                                <i class="fa fa-question-circle " style="font-size: 34px; padding: 0 13px;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           <!--  {% for flash_massage in app.session.flashbag.get('Noitce') %}
+                                <span style="color:red";><strong>{{flash_massage}}</strong></span>
+                            {% endfor %} -->
+
+                            {% for flash_massage in app.session.flashbag.get('WARNING') %}
+                            <div class="alert alert-warning alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'Warning' | trans }} !</h4>
+                                <span style="color:#ffffff" ;><strong>{{flash_massage}}</strong></span>
+                            </div>
+                            {% endfor %}
+                            <div class="row">
+                                <form id="idform-addEquipment" action="/addEquipment" method="post"> 
+                                    <div class="col-md-12">
+                                        <h4>{{ 'Selection criteria' | trans }}</h4>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="styled-select">
+                                                    <label class="" for="Type of Refrigeration">{{ 'Type of Refrigeration' | trans }} : </label>
+                                                    <select id="id-refrigeration" data-placeholder="-- All --" class="chosen-select" name="name-refrigeration">
+                                                        <option value="-1"></option>
+                                                        <option value="-1">-- All --</option>
+                                                        {% for item in ret.listRefrigeration %}
+                                                            {% if ret.valueDefault.userEnergy == item.idCoolingFamily %}
+                                                            <option selected value="{{ item.idCoolingFamily }}">{{ item.label }}</option>
+                                                            {% else %}
+                                                            <option value="{{ item.idCoolingFamily }}">{{ item.label }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="styled-select">
+                                                    <label class="" for="Manufacturer">{{ 'Manufacturer' | trans }} : </label>
+                                                    <select id="id-manufacturer" data-placeholder="-- All --" class="chosen-select base-refri" name="name-manufacturer">
+                                                        <option value="-1"></option>
+                                                        <option selected value="-1">-- All --</option>
+                                                         {% for item in ret.listManufacturer %}
+                                                            <option value="{{ item.constructor }}">{{ item.constructor }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="styled-select">
+                                                    <label class="" for="Equipment Series">{{ 'Equipment Series' | trans }}: </label>
+                                                    <select id="id-equipseries" data-placeholder="-- All --" class="chosen-select base-refri" name="name-equipseries">
+                                                        <option value="-1"></option>
+                                                        <option value="-1">-- All --</option>
+                                                        {% for item in ret.listEquipSeries %}
+                                                        {% if item.idFamily == ret.valueDefault.userFamily %}
+                                                            <option selected value="{{ item.idFamily }}">{{ item.label }}</option>
+                                                        {% else %}
+                                                            <option value="{{ item.idFamily }}">{{ item.label }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="styled-select">
+                                                    <label class="" for="Equipment origin">{{ 'Equipment origin' | trans }}: </label>
+                                                    <select id="id-equiporigin" data-placeholder="-- All --" class="chosen-select base-refri" name="name-equiporigin">
+                                                        <option value="-1"></option>
+                                                        <option value="-1">-- All --</option>
+                                                        {% for item in ret.listEquipOrigin %}
+                                                         {% if item.std == ret.valueDefault.userOrigine %}
+                                                            <option selected value="{{ item.std }}">{{ item.label }}</option>
+                                                        {% else %}
+                                                            <option value="{{ item.std }}">{{ item.label }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="styled-select">
+                                                    <label class="" for="Process type">{{ 'Process type' | trans }} : </label>
+                                                    <select id="id-processtype" data-placeholder="-- All --" class="chosen-select base-refri" name="name-processtype">
+                                                        <option value="-1"></option>
+                                                        <option value="-1">-- All --</option>
+                                                        {% for item in ret.listProcessType %}
+                                                        {% if item.batchProcess == ret.valueDefault.userProcess %}
+                                                            <option selected value="{{ item.batchProcess }}">{{ item.label }}</option>
+                                                        {% else %}
+                                                            <option value="{{ item.batchProcess }}">{{ item.label }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="styled-select">
+                                                    <label class="" for="Model">{{ 'Model' | trans }} : </label>
+                                                    <select id="id-model" data-placeholder="-- All --" class="chosen-select base-refri" name="name-model">
+                                                        <option value="-1"></option>
+                                                        <option value="-1">-- All --</option>
+                                                        {% for item in ret.listModel %}
+                                                        {% if item.idEquipseries == ret.valueDefault.userModel %}
+                                                            <option selected value="{{ item.idEquipseries }}">{{ item.label }}</option>
+                                                        {% else %}
+                                                            <option value="{{ item.idEquipseries }}">{{ item.label }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="styled-select">
+                                                    <label class="" for="Size">{{ 'Size' | trans }} : </label>
+                                                    <select id="id-size" data-placeholder="-- All --" class="chosen-select base-refri" name="name-size">
+                                                        <option value="-1"></option>
+                                                        <option selected value="-1">-- All --</option>
+                                                        {% for item in ret.listSize %}
+                                                            <option value="{{ item.eqpLength }}x{{ item.eqpWidth }}">{{ item.eqpLength }} x {{ item.eqpWidth }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                            {% if ret.listDisplay.optionEco %}
+                                                <div>
+                                                    <h4 style="margin-left: -16px">{{ 'Price of the Cryogen' | trans }}</h4>
+                                                    <div class="form-group">
+                                                        <label class="">{{ 'Define the price of Cryogen' | trans }}</label>
+                                                        <div class="input-group">
+                                                            <input class="form-control input-radiusProD" id="input-price-cryogen" type="text" placeholder="Input price" name="price-of-cryogen" value="{{ ret.energyPrice }}">
+                                                            <span class="input-group-addon" id="basic-addon2">&ensp;EURO&ensp;</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        
+                                            {% endif %}
+                                        </div>
+                                        <!-- div class="col-md-6" style="padding: 0 15px;" -->
+                                        <div class="col-md-6">
+                                            <form class="form-horizontalinline">
+                                                <h4><p class="h4-margin">{{ 'Search Results' | trans }}</p></h4>
+                                                <div class="table-responsive">
+                                                    <select id="id-equipment" class="form-control" size="13" style="width: 100%" name="name-equipment">
+                                                        <p  style=" padding: 10px; width: 345px; height: 276px;">
+                                                            {% for item in ret.listEquipment %}
+                                                                {% if item.checkModalESize is null %}
+                                                                    <option class="{{ item.classOption }}" value="{{ item.idEquip }}">{{ item.equipName }}
+                                                                    </option>
+                                                                {% else %}
+                                                                    <option class="pos-equipment-modal {{ item.classOption }}" value="{{ item.idEquip }}">{{ item.equipName }}
+                                                                    </option>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </p>
+                                                    </select>
+                                                </div>
+                                                <!-- div class="form-group" -->
+                                            </form>
+                                            {% if ret.listDisplay.loadingRate != 1 %}
+                                            <h4> <p class="">{{ 'Loading Rate' | trans }}</p></h4>
+                                            <label class="">{{ 'Spaces (Length and Width)' | trans }}</label>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control input-radiusProD" placeholder="0" id="input-equip-lenght" name="input-equip-lenght" type="text" value="{{ ret.loadingRateFrame.length }}">
+                                                                <span class="input-group-addon" id="basic-addon2">cm</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control input-radiusProD" placeholder="0" id="input-equip-width" name="input-equip-width" type="text" value="{{ ret.loadingRateFrame.width }}">
+                                                                <span class="input-group-addon" id="basic-addon2">cm</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                            <!-- form class="form-horizontal inline" -->
+                                        </div>
+                                        <!-- div class="col-md-6" -->
+                                    </div>
+                                    <!-- div class="col-md-12" -->
+                                </form>
+                            </div>
+                            <!-- div class="row" -->
+                            <div id="first">
+                                <h4>{{ 'Selected Equipment' | trans }}</h4>
+                                <form action="/recalculateEquipment" id="form-select-equipment" method="post" class="form-horizontal inline">
+                                    <div class="form-group gButton" style="margin-left: -10px;">
+                                        <button class="btn bg-orange margin btn-flat" type="submit"><i class="fa fa-calculator"></i> {{ 'Recalculate equipment parameter' | trans }}</button>
+                                        {% if ret.listDisplay.unselect == 2 %}
+                                        <button class="btn bg-orange margin btn-flat" id="btn-unseletect-all" type="button"><i class="fa fa-refresh"></i> {{ 'Unseletect All' | trans }}</button>
+                                        {% endif %}
+                                    </div>
+                                </form>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>No</th>
+                                            {% if ret.listDisplay.unselect == 2 %}
+                                            <th>{{ 'Calculate' | trans }}</th>
+                                            {% endif %}
+                                            <th>{{ 'Name' | trans }}</th>
+                                            <th>{{ 'Product orientation' | trans }}</th>
+                                            <th>{{ 'Residence' | trans }}/{{ 'dwelling time' | trans }} (s)</th>
+                                            <th>{{ 'Control' | trans }}</br> {{ 'temperature' | trans }} (C)</th>
+                                            <th>{{ 'Convection' | trans }}</br> {{ 'setting' | trans }} (Hz)</th>
+                                            <th>{{ 'Conveyor coverage or' | trans }} </br>{{ 'quantity of product' | trans }}</br> {{ 'per batch' | trans }}</th>
+                                            <th>{{ 'Delete' | trans }}</th>
+                                        </tr>
+                                        {% if ret.listStudyEquip != null %}
+                                        {% set no=0 %}
+                                        {% for item in ret.listStudyEquip %}
+                                        {% set no = no+1%}
+                                        <tr id="{{item.idStudyEquipments}}" data-nameequipment="{{ item.studyEquipName }}">
+                                            <td><a href="#" class="id-no-modal" data-id="{{ item.idStudyEquipments }}" >{{no}}</a></td>
+                                            {% if ret.listDisplay.unselect == 2 %}
+                                            <td>
+                                                <div class="checkbox icheck" >
+                                                    <label>
+                                                    {% if item.brainType == 0 %}
+                                                        {% if (item.equipStatus ==0 or item.equipStatus==1) and (item.runCalculate == 1)  %}
+                                                            <input type="checkbox" class="input-checked-economic" checked="checked" name="option1" class="first" value="{{ item.idStudyEquipments }}"> {{ 'Economic' | trans }}
+                                                        
+                                                        {% else %}
+                                                            <input type="checkbox" class="input-checked-economic" name="option1" value="{{ item.idStudyEquipments }}" class="first"> {{ 'Economic' | trans }}
+                                                        {% endif %}
+                                                    {% else %}
+                                                        <input type="checkbox" class="input-checked-economic" name="option1" value="{{ item.idStudyEquipments }}" class="first"> {{ 'Economic' | trans }}
+                                                    {% endif %}
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            {% endif %}
+                                            <td>
+                                            {% if item.checkModalName == 1 %}
+                                                <a href="#" class="id-study-equip-name" data-idequip="{{ item.idStudyEquipments }}" >{{ item.studyEquipName }}</a>
+                                            {% else %}
+                                                <p style="color: #00c0ef">{{ item.studyEquipName }}</p>
+                                            {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if item.checkModalOrientation == 1 %}
+                                                     <a href="#" class="id-study-equip-orientation" data-idequip="{{ item.idStudyEquipments }}" >{{ item.orientation }}</a>
+                                                {% else %}
+                                                    <p style="color: #00c0ef">{{ item.orientation }}</p>
+                                                {% endif %}
+                                            </td>                                            
+                                            <td>{{ item.tr | raw}}</td>
+                                            <td>{{ item.ts | raw}}</td>
+                                            <td>{{ item.vc | raw}}</td>
+                                            <td><a href="#" class="id-study-equip-conveyor">{{ item.conveyor | raw}} </a>
+                                            </td>
+                                            <td>
+                                                <a href="/delStudyEquip/{{item.idStudyEquipments}}" style="height: 30px; width: 40px; padding: 5px;" class="btn btn-block btn-danger btn-flat btn-lg" type="button" ><i class="w3-xxxlarge glyphicon glyphicon-remove"></i></a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        {% endif %}
+                                        
+                                    </table>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+                               {#  <div class="form-group button">
+                                    <button class="btn btn-primary btn-flat buttons " type="submit" name="save" data-toggle="modal" data-target="#modal-infoSaveE"><i class="fa fa-check"></i> {{ 'Save' | trans }}</button>
+                                </div> #}
+                                <div class="modal fade" id="modal-infoSaveE">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">{{ 'Confirm Action' | trans }}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label>{{ 'All Items saved' | trans }} !!</label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="form-group Gbutton">
+                                                    <form class="form-inline">
+                                                        <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal">{{ 'Close' | trans }}</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.row (main row) -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- equipment size  -->
+        <div class="modal fade" id="modal-equip-size">
+            <div class="modal-dialog">
+                <form action="/updateEquipmentSize" method="post" id="id-form-equip-size">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title" style="color: #00c0ef; font-weight: bold">{{ 'Mechanical Equipment Configuration' | trans }}</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p style="text-align: center; color: #ff851b;font-weight: bold">{{ 'In order to get correct product flow rate calculation (sizing), you must indicate the length and with of the equipment you want to simulate' | trans }}.</p>            
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>{{ 'Length' | trans }} (m)</th>
+                                    <th>{{ 'Width' | trans }} (m)</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                         <input type="text" class="form-control input-equip-size-lenght" name="_input-equip-size-lenght">
+                                    </td>
+                                    <td>
+                                         <input type="text" class="form-control input-equip-size-width" name="_input-equip-size-width">
+                                    </td>
+                                  </tr>                              
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="text" class="hidden idSE" name="_idSE">
+                            <button type="button" class="btn btn-danger btn-flat buttons pull-left" class="btn-cancel-lenght-width" data-dismiss="modal"><i class="fa fa-times"></i> {{ 'Cancel' | trans }}</button>
+                            <button type="button" id="btn-confirm-equipsize" class="btn btn-success btn-flat buttons "><i class="fa fa-check"></i> {{ 'Confirm' | trans }}</button>
+                        </div>
+                    </div>
+                        <!-- /.modal-content -->
+                </form>
+            </div>
+                <!-- /.modal-dialog -->
+        </div>
+        <div class="modal fade" id="modal-equip-std-eqp-prodposition">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{ 'Confirm Action' | trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal inline" id="id-form-prod-position" action="/eventConfirmProdPosition" method="post">
+                            <label>
+                                <h4 align="center" style="color: #ff851b; font-weight: bold;" class="name-equipment-modal-prodposition">  </h4>
+                                <input type="hidden" class="prodposition_idse" name="_idSE">
+                            </label> 
+                                <select class="form-control prodposition-select" name="_orientation" style="margin-top: 20px;">
+                                    <option value="1">Parallel</option>
+                                    {% if ret.listDisplay.loadingRate != 1 %}
+                                        <option value="0">Perpendicular</option>
+                                    {% endif %}
+                                </select>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-flat buttons pull-left btn-cancel-prodposition"><i class="fa fa-times"></i> {{ 'Cancel' | trans }}</button>
+                        <button type="button" class="btn btn-success btn-flat buttons btn-confirm-prodposition"><i class="fa fa-check"></i> {{ 'Confirm' | trans }}</button>
+                    </div>
+                </div>
+                    <!-- /.modal-content -->
+            </div>
+                <!-- /.modal-dialog -->
+        </div>
+
+        <div class="modal fade" id="modal-equip-lenght-width">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{ 'Confirm Action' | trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal inline">
+                            <label>
+                                <h4 align="center"><i style="color: red;" class="fa fa-exclamation-triangle"> {{ 'Belt occupation rate as changed' | trans }}.<br>
+{{ 'All results for all equipments will no more be valid and will be erased' | trans }}.<br>
+{{ 'Do you still want to change the loading rate' | trans }} ? </i></h3>
+                            </label>              
+                         </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-flat buttons pull-left" class="btn-cancel-lenght-width" data-dismiss="modal"><i class="fa fa-times"></i>{{ 'Cancel' | trans }}</button>
+                        <button type="button" id="btn-confirm-lenght-width" class="btn btn-success btn-flat buttons "><i class="fa fa-check"></i> {{ 'Confirm' | trans }}</button>
+                    </div>
+                </div>
+                    <!-- /.modal-content -->
+            </div>
+                <!-- /.modal-dialog -->
+        </div>
+        <!-- modal delete equip in study euipment -->
+        <div class="modal modal-warning fade" id="modal-infoDel">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title">{{ 'Confirm Action' | trans }}</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <label>{{ 'Are you sure to delete it' | trans }} !!!</label>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal"><i class="fa fa-times"></i>{{ 'Cancel' | trans }}</button>
+                                                            <button id="btn-confirm-delete-study-equip" type="button" class="btn btn-outline"><i class="fa fa-check" ></i>{{ 'Confirm' | trans }}</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- modal calculate -->
+        <div class="modal fade" id="demo-1" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title caps"><strong>{{ 'Calculate' | trans }}</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ 'Choose calculation mode' | trans }}....
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dange btn-flatr" data-dismiss="modal">{{ 'Close' | trans }}</button>
+                        <button type="button" class="btn btn bg-olive btn-flat" data-toggle="modal" data-target="#estimation" data-dismiss="modal" data-backdrop="static" data-keyboard="false">{{ 'Estimation mode' | trans }}</button>
+                        <button type="button" class="btn bg-maroon btn-flat" data-toggle="modal" data-target="#optimun" data-dismiss="modal" data-backdrop="static" data-keyboard="false">{{ 'Optimum mode' | trans }}</button>
+                        <button type="button" class="btn bg-navy btn-flat" data-toggle="modal" data-target="#select" data-dismiss="modal" data-backdrop="static" data-keyboard="false">{{ 'Selected mode' | trans }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- estimation mode -->
+        <div class="modal fade" id="estimation" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title caps"><strong>{{ 'Calculate' | trans }} ({{ 'Estimation Mode' | trans }})</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ 'LAUNCH THE PRELIMINARY CALCULATION' | trans }}
+                        <!-- confirm success -->
+                        <div style="text-align: center;">
+                            <!-- <img src="../../../dist/img/traffic-light.png"> -->
+                            <h1> <a id="demoSuc" href="../../cryosoft/study_results/preminary_estimation.html" style="color:red;"></a></h1>
+                        </div>
+
+                        <!-- /.confirm success -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dange btn-flatr" data-dismiss="modal">{{ 'Close' | trans }}</button>
+                        <button type="button" class="btn btn-warning btn-flat" data-toggle="modal" data-target="#conFail" data-dismiss="modal">{{ 'Confirm (if error)' | trans }}</button>
+                        <button type="button" class="btn btn-success btn-flat" onclick='document.getElementById("demoSuc").innerHTML = "Click to displayes Result"'>{{ 'Confirm' | trans }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- confirm (error) -->
+        <div class="modal modal-warning fade" id="conFail" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title caps"><strong>{{ 'Calculate' | trans }}</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        <h1 style="text-align: center;">{{ 'Warning' | trans }} </h1></br>
+                        {{ 'Error(s) occured on one more equiqment. Please check details in calculation status page.' | trans }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-flat buttons" data-toggle="modal" data-target="#estimation" data-dismiss="modal">{{ 'Back' | trans }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /. confirm error -->
+        <!-- /.estimation -->
+        <!-- optimun mode -->
+        <div class="modal fade" id="optimun" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><strong>{{ 'Calculate (Optimun Mode)' | trans }}</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group Gbutton">
+                            <button type="button" class="btn bg-orange btn-flat buttons margin" data-toggle="modal" data-target="#calculateOpM" id="calculationClick"><i class="fa fa-calculator"> {{ 'Calculate' | trans }}</i></button>
+                            <button type="button" class="btn bg-purple btn-flat buttons margin" onclick="show(1);"><i class="fa fa-gear"> {{ 'Setting' | trans }} </i></button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <h6 style="text-align: center; color: red;">{{ 'Warning: the average run time will be around 1 to 2 minutes per seleted equipment, or more for complicated products' | trans }}</h6>
+                        </br>
+                        <div class="table-responsive">
+                            <div class="table-content-1">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>{{ 'Optimization' | trans }}</th>
+                                        <th>{{ 'Temperature margin' | trans }} (°C)</th>
+                                        <th>{{ 'Enthalpy Error' | trans }} ( % )</th>
+                                        <th>{{ 'Number of iterations' | trans }}</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="0" name="" disabled="true">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <div class="table-content-2">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th rowspan="2">{{ 'Time Step' | trans }}(s)</th>
+                                        <th rowspan="2">{{ 'Precision of numerical' | trans }} </br> {{ 'modeling' | trans }} (%)</th>
+                                        <th colspan="2">{{ 'Storage' | trans }}</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ 'Access to product graph and charts' | trans }}</td>
+                                        <td>{{ 'Step' | trans }} (s )</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="N/A" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <input type="checkbox" name="" disabled="true">
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="" disabled="true">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- click setting -->
+                        <div id="table1">
+                            <h4 style="text-align: left;"><lable> {{ 'Seized conditon' | trans }}</lable></h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th colspan="3">{{ 'Activation' | trans }}</th>
+                                        <th rowspan="2">{{ 'Max of iterations' | trans }}</th>
+                                        <th rowspan="2">{{ 'Coef. of relaxation' | trans }}</th>
+                                        <th colspan="4">{{ 'Temperature to stop' | trans }} (°C)</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ 'Horizontal' | trans }}</td>
+                                        <td>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="radio" class="control" name="yesno1" checked> Yes
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="radio" class="control" name="yesno1"> No
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>{{ 'Surface' | trans }}</td>
+                                        <td>{{ 'Internal' | trans }}</td>
+                                        <td>{{ 'Bottom' | trans }}</td>
+                                        <td>{{ 'Average' | trans }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ 'Vertical' | trans }}</td>
+                                        <td>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="radio" class="control" name="yesno2" checked> Yes
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="radio" class="control" name="yesno2"> No
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="">
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="">
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="">
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="">
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                </br>
+                                </br>
+                            </div>
+                            <h4 style="text-align: left;"><lable>{{ 'Following-up Point' | trans }} (mm)</lable></h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>{{ 'Surface' | trans }}</th>
+                                        <th>{{ 'Internal' | trans }}</th>
+                                        <th>{{ 'Bottom' | trans }}</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="col-md-1">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <label>1</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <form class="form-inline">
+                                                            <select data-placeholder="--Menu--" class="chosen-select">
+                                                                <option value=""></option>
+                                                                <option value="">MenuItem</option>
+                                                                <option value="">MenuItem 1</option>
+                                                                <option value="">MenuItem 2</option>
+                                                                <option value="">MenuItem 3</option>
+                                                            </select>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="col-md-1">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <label>1</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <form class="form-inline">
+                                                            <select data-placeholder="--Menu--" class="chosen-select">
+                                                                <option value=""></option>
+                                                                <option value="">MenuItem</option>
+                                                                <option value="">MenuItem 1</option>
+                                                                <option value="">MenuItem 2</option>
+                                                                <option value="">MenuItem 3</option>
+                                                            </select>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="col-md-1">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <label>1</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <form class="form-inline">
+                                                            <select data-placeholder="--Menu--" class="chosen-select">
+                                                                <option value=""></option>
+                                                                <option value="">MenuItem</option>
+                                                                <option value="">MenuItem 1</option>
+                                                                <option value="">MenuItem 2</option>
+                                                                <option value="">MenuItem 3</option>
+                                                            </select>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="col-md-1">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <label>2</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <form class="form-inline">
+                                                            <select data-placeholder="--Menu--" class="chosen-select">
+                                                                <option value=""></option>
+                                                                <option value="">MenuItem</option>
+                                                                <option value="">MenuItem 1</option>
+                                                                <option value="">MenuItem 2</option>
+                                                                <option value="">MenuItem 3</option>
+                                                            </select>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="col-md-1">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <label>2</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <form class="form-inline">
+                                                            <select data-placeholder="--Menu--" class="chosen-select">
+                                                                <option value=""></option>
+                                                                <option value="">MenuItem</option>
+                                                                <option value="">MenuItem 1</option>
+                                                                <option value="">MenuItem 2</option>
+                                                                <option value="">MenuItem 3</option>
+                                                            </select>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="col-md-1">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <label>2</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <form class="form-inline">
+                                                            <select data-placeholder="--Menu--" class="chosen-select">
+                                                                <option value=""></option>
+                                                                <option value="">MenuItem</option>
+                                                                <option value="">MenuItem 1</option>
+                                                                <option value="">MenuItem 2</option>
+                                                                <option value="">MenuItem 3</option>
+                                                            </select>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                </br>
+                                </br>
+                            </div>
+                        </div>
+                        <!-- /. click setting -->
+                    </div>
+                    <!-- click calculate -->
+                    <div class="modal fade" id="calculateOpM" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+                                    <h4 class="modal-title"><strong>{{ 'Calculate' | trans }}</strong></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <div class="box box-default">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div id="divfind">
+                                                            <span id="print"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div id="divfind">
+                                                            <span id="process"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="form-group Gbutton">
+                                        <button type="button" class="btn btn-danger btn-flat button-block" data-toggle="modal" data-target="#alertStop" id="parent_met">{{ 'Stop' | trans }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /. click calculate -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal">{{ 'Close' | trans }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  Select mode -->
+        <div class="modal fade" id="select" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title caps"><strong>{{ 'Calculate (Selete Mode)' | trans }}</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group Gbutton">
+                            <button type="button" class="btn bg-orange btn-flat buttons margin" data-toggle="modal" data-target="#calculateSlM" id="calculationSel"><i class="fa fa-calculator"> {{ 'Calculate' | trans }}</i></button>
+                            <button type="button" class="btn bg-purple btn-flat buttons margin"><i class="fa fa-gear">  {{ 'Setting' | trans }} </i></button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="table-responsive">
+                            <div class="table-content-1">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>{{ 'Residence / Dwell time' | trans }} (s)</th>
+                                        <th>{{ 'Control temperature' | trans }} (°C)</th>
+                                        <th>{{ 'Loading rate' | trans }} (%)</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="" disabled="true">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="" disabled="true">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="0" name="" disabled="true">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <div class="table-content-1">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>{{ 'Optimization' | trans }}</th>
+                                        <th>{{ 'Temperature margin' | trans }} (°C)</th>
+                                        <th>{{ 'Enthalpy Error' | trans }} ( % )</th>
+                                        <th>{{ 'Number of iterations' | trans }}</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="0" name="" disabled="true">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <div class="table-content-2">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th rowspan="2">{{ 'Time Step' | trans }} (s)</th>
+                                        <th rowspan="2">{{ 'Precision of numerical' | trans }} </br> {{ 'modeling' | trans }} (%)</th>
+                                        <th colspan="2">{{ 'Storage' | trans }}</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ 'Access to product graph and charts' | trans }}</td>
+                                        <td>{{ 'Step' | trans }} (s )</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="N/A" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="0.00" name="" disabled="true">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal">{{ 'Close' | trans }}</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.select mode -->
+        </div>
+        <!-- click preferance user -->
+        <div class="modal fade" id="preferUser">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{ 'User Preferences' | trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>{{ 'Password' | trans }}</label>
+                                <input type="text" name="oldPass" placeholder="Old Password" class="form-control">
+                                <br/>
+                                <input type="text" name="newPass" placeholder="New Password" class="form-control">
+                                <br/>
+                                <input type="text" name="conPass" placeholder="Confirm Password" class="form-control">
+                            </div>
+                            <div class="col-md-6"> {{ 'Language and monetary unit' | trans }}
+                                <div class="form-group">
+                                    <label>{{ 'Language' | trans }}</label>
+                                    <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                        <option></option>
+                                        <option>MenuItem1</option>
+                                        <option>MenuItem2</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{ 'Monetary' | trans }}</label>
+                                    <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                        <option></option>
+                                        <option>MenuItem1</option>
+                                        <option>MenuItem2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group Gbutton">
+                                <button class="btn btn-flat btn-danger buttons margin" data-dismiss="modal"><i class="fa fa-times"></i> {{ 'Cancel' | trans }}</button>
+                                <button class="btn btn-flat btn-success buttons"><i class="fa fa-check"></i> {{ 'Confirm' | trans }}</button>
+                            </div>
+                        </div>
+                        <h4>Units</h4>
+                        <div class="table-responsive">
+                            <div class="row">
+                                <div class="col-md-6" style="background: #eee">
+                                    <h5 style="text-align: center;"><strong>{{ 'Type' | trans }}</strong></h5>
+                                </div>
+                                <div class="col-md-6" style="background: #eee">
+                                    <h5 style="text-align: center;"><strong>{{ 'Sympol' | trans }}</strong></h5>
+                                </div>
+                            </div>
+                            <div style="width:100%; height:200px; overflow:auto;">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td colspan="2">{{ 'Conductivity' | trans }}</td>
+                                        <td colspan="2">
+                                            <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                                <option></option>
+                                                <option>MenuItem1</option>
+                                                <option>MenuItem2</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">{{ 'Consumption unit' | trans }}</td>
+                                        <td colspan="2">
+                                            <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                                <option></option>
+                                                <option>MenuItem1</option>
+                                                <option>MenuItem2</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">{{ 'Consumption unit' | trans }} (CO2)</td>
+                                        <td colspan="2">
+                                            <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                                <option></option>
+                                                <option>MenuItem1</option>
+                                                <option>MenuItem2</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">{{ 'Consumption unit' | trans }} (LN2)</td>
+                                        <td colspan="2">
+                                            <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                                <option></option>
+                                                <option>MenuItem1</option>
+                                                <option>MenuItem2</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">{{ 'Heat Losses per hour' | trans }}</td>
+                                        <td colspan="2">
+                                            <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                                <option></option>
+                                                <option>MenuItem1</option>
+                                                <option>MenuItem2</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="form-group Gbutton">
+                                    <button class="btn btn-flat btn-danger buttons margin" data-dismiss="modal"><i class="fa fa-times"></i> {{ 'Cancel' | trans }}</button>
+                                    <button class="btn btn-flat btn-success buttons"><i class="fa fa-check"></i> {{ 'Confirm' | trans }}</button>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>{{ 'Default selection for equipment page' | trans }}</h4>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{ 'Type of Refrigeration' | trans }}
+                                </div>
+                                <div class="col-md-8">
+                                    <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                        <option></option>
+                                        <option>MenuItem1</option>
+                                        <option>MenuItem2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{ 'Manufacturer' | trans }}
+                                </div>
+                                <div class="col-md-8">
+                                    <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                        <option></option>
+                                        <option>MenuItem1</option>
+                                        <option>MenuItem2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{ 'Equipment Series' | trans }}
+                                </div>
+                                <div class="col-md-8">
+                                    <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                        <option></option>
+                                        <option>MenuItem1</option>
+                                        <option>MenuItem2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{ 'Equipment origin' | trans }}
+                                </div>
+                                <div class="col-md-8">
+                                    <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                        <option></option>
+                                        <option>MenuItem1</option>
+                                        <option>MenuItem2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{ 'Process type' | trans }}
+                                </div>
+                                <div class="col-md-8">
+                                    <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                        <option></option>
+                                        <option>MenuItem1</option>
+                                        <option>MenuItem2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{ 'Model' | trans }}
+                                </div>
+                                <div class="col-md-8">
+                                    <select data-placeholder="--Menu--" class="form-control chosen-select">
+                                        <option></option>
+                                        <option>MenuItem1</option>
+                                        <option>MenuItem2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group Gbutton">
+                                <button class="btn btn-flat btn-danger buttons margin" data-dismiss="modal"><i class="fa fa-times"></i> {{ 'Cancel' | trans }}</button>
+                                <button class="btn btn-flat btn-success buttons"><i class="fa fa-check"></i> {{ 'Confirm' | trans }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /. preferance user -->
+        <!-- click help -->
+        <div class="modal fade" id="helpEquipment">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{ 'Equipment Page' | trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ 'Help Equipment' | trans }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal">{{ 'Close' | trans }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./help -->
+        <!-- Conveyor coverage  -->
+        <div class="modal fade" id="paramEqui">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{ 'Equipment Pagrameter setting' | trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ 'Have two case' | trans }}
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group Gbutton">
+                            <form class="form-inline">
+                                <button type="button" class="btn bg-orange btn-flat margin buttons" data-target="#tunnel" data-toggle="modal" data-dismiss="modal">{{ 'Case of a tunnel' | trans }}</button>
+                                <button type="button" class="btn bg-maroon btn-flat  buttons" data-target="#cell" data-toggle="modal" data-dismiss="modal">{{ 'Case of a cell' | trans }}</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.Conveyor coverage  -->
+        <!-- case of a tunnel -->
+        <div class="modal fade" id="tunnel">
+            <div class="modal-dialog modal-lg">
+                <form action="/saveTop" method="post" id="from-modal-conveyor">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">{{ 'Equipment Pagrameter setting' | trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h3 style="color: #ff851b; font-weight: bold;" class="title name-equipment-modal-prodposition"></h3>
+                            <input type="hidden" class="idSE" name="_idSE">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h4 style="font-weight: bold;"><i class="fa fa-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; Input</h4>
+                                    <label class="checkdisplayspaces">{{ 'Spaces (Length x Width)' | trans }}</label>
+                                    <div class="row">
+                                        <div class="checkdisplayspaces">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input class="form-control" id="input-intervalslength" name="_intervalslength" placeholder="0.0" type="text">
+                                                        <span class="input-group-addon">cm</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input class="form-control" id="input-intervalswidth" name="_intervalswidth" placeholder="0.0" type="text">
+                                                        <span class="input-group-addon" >cm</span>
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                        <div class="col-md-12" >
+                                            <label>{{ 'Orientation' | trans }}</label>
+                                            <select class="form-control prodposition-select" name="_orientation" >
+                                                <option value="1">Parallel</option>
+                                                {% if ret.listDisplay.loadingRate != 1 %}
+                                                    <option value="0">Perpendicular</option>
+                                                {% endif %}
+                                            </select>
+                                        </div>
+                                        {% if ret.listDisplay.loadingRate == 1 %}
+                                            <div class="col-md-12" >
+                                                <p style="color: red; text-align: center;">{{ 'You must use a Parallel position for a slab' | trans }}</p>
+                                            </div>
+                                        {% endif %}
+                                        <div class="checkDisplayShelves hidden">
+                                            <div class="col-md-12">
+                                                <label>{{ 'Shelves' | trans }}</label>
+                                                <select class="form-control" id="shelves-select-equip" name="_shelves" >
+                                                    <option value="0">Euronorm</option>
+                                                    <option value="1">Gastronorm</option>
+                                                    <option value="2">UserDefined</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>{{ 'Dimensions (Length x Width)' | trans }}</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input class="form-control" id="input-length-shelves" name="_lengthshelves" placeholder="0.0" type="text">
+                                                        <span class="input-group-addon" id="basic-addon2">cm</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input class="form-control" id="input-width-shelves" name="_widthshelves" placeholder="0.0" type="text">
+                                                        <span class="input-group-addon" id="basic-addon2">cm</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>{{ 'Number of shelves' | trans }}</label>
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input class="form-control" id="input-numberof-shelves" name="_numberofshelves" placeholder="0.0" value="0" type="text">
+                                                        <span class="input-group-addon">cm</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 checkdisplayspaces" style="margin-top: 20px;">
+                                             <button type="button" id="btn-calculate-conveyor" class="btn btn-warning btn-flat col-md-4"><i class="fa fa-calculator"></i> {{ 'Calculate' | trans }}</button>
+                                        </div>
+                                    </div>
+                                    <div class="checkdisplayspaces">
+                                        <h4 style="font-weight: bold;"><i class="fa fa-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; {{ 'Output' | trans }}</h4>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th class="th-output-first">{{ 'Width of spaces' | trans }} (cm)</th>
+                                                    <th class="th-output-second">{{ 'Number of items per metter run' | trans }}</th>
+                                                    <th>{{ 'Number of itmes in belt width' | trans }}</th>
+                                                    <th>{{ 'Conveyor coverage or quantity of product per batch' | trans }}</th>
+                                                </tr>
+                                                <tr class="tr-table-output">
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <label>{{ 'Belt coverage' | trans }}</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control" id="input-belt-converage" name="_input-belt-converage" placeholder="0.0" type="text">
+                                            <span class="input-group-addon" id="basic-addon2">%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3>{{ 'Layout' | trans }}</h3>
+                                    <img src="./assets/img/std_equipment.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-flat pull-left buttons" data-dismiss="modal">{{ 'Cancel' | trans }}</button>
+                            <button type="button" class="btn btn-success btn-flat  buttons" id="btn-confirm-conveyor">{{ 'Confirm' | trans }}</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        <!-- /. case of a tunnel -->
+        <!-- case of a cell -->
+        <div class="modal fade " id="cell ">
+            <div class="modal-dialog modal-lg ">
+                <div class="modal-content ">
+                    <div class="modal-header ">
+                        <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
+                            <span aria-hidden="true ">&times;</span></button>
+                        <h4 class="modal-title ">{{ 'Equipment Pagrameter setting' | trans }}</h4>
+                    </div>
+                    <div class="modal-body ">
+                        <h3 class="title ">{{ 'Name equipment' | trans }}</h3>
+                        <div class="row ">
+                            <div class="col-md-6 ">
+                                <h4>{{ 'Input' | trans }}</h4>
+                                <label class=" ">{{ 'Spaces (Length and Width)' | trans }}</label>
+                                <div class="row ">
+                                    <div class="col-md-6 ">
+                                        <div class="form-group ">
+                                            <form class="form-inline ">
+                                                <div class="input-group ">
+                                                    <input class="form-control " placeholder="00.0 " type="text ">
+                                                    <span class="input-group-addon " id="basic-addon2 ">cm</span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="form-group ">
+                                            <form class="form-inline ">
+                                                <div class="input-group ">
+                                                    <input class="form-control " placeholder="00.0 " type="text ">
+                                                    <span class="input-group-addon " id="basic-addon2 ">cm</span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <label>{{ 'Orientation' | trans }}</label>
+                                <select data-placeholder="--Menu-- " class="form-control chosen-select ">
+                                    <option></option>
+                                    <option>MenuItem1</option>
+                                    <option>MenuItem2</option>
+                                </select>
+                                <label>{{ 'Shelves' | trans }}</label>
+                                <select data-placeholder="--Menu-- " class="form-control chosen-select ">
+                                    <option></option>
+                                    <option>MenuItem1</option>
+                                    <option>MenuItem2</option>
+                                </select>
+                                <label class=" ">{{ 'Dimensions (Length and Width)' | trans }}</label>
+                                <div class="row ">
+                                    <div class="col-md-6 ">
+                                        <div class="form-group ">
+                                            <form class="form-inline ">
+                                                <div class="input-group ">
+                                                    <input class="form-control " placeholder="00.0 " type="text " disabled="true ">
+                                                    <span class="input-group-addon " id="basic-addon2 ">cm</span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="form-group ">
+                                            <form class="form-inline ">
+                                                <div class="input-group ">
+                                                    <input class="form-control " placeholder="00.0 " type="text " disabled="true ">
+                                                    <span class="input-group-addon " id="basic-addon2 ">cm</span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <label>{{ 'Number of shelves' | trans }}</label>
+                                <input type="text " name=" " class="form-control ">
+                                <br/>
+                                <div class="form-group ">
+                                    <button class="btn bg-orange btn-flat buttons pull-right "><i class="fa fa-calculator "></i> {{ 'Calculate' | trans }}</button>
+                                </div>
+                                </br>
+                                <h4>{{ 'Output' | trans }}</h4>
+                                <div class="table-responsive ">
+                                    <table class="table table-bordered ">
+                                        <tr>
+                                            <th>{{ 'Width of spaces' | trans }} (cm)</th>
+                                            <th>{{ 'Number of items per metter run' | trans }}</th>
+                                            <th>{{ 'Number of itmes in belt width' | trans }}</th>
+                                            <th>{{ 'Conveyor coverage or quantity of product per batch' | trans }}</th>
+                                        </tr>
+                                        <tr>
+                                            <td>11.0</td>
+                                            <td>45.0</td>
+                                            <td>65.9</td>
+                                            <td>00.4</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <label>{{ 'Belt coverage' | trans }}</label>
+                                <div class="form-group ">
+                                    <div class="input-group ">
+                                        <input class="form-control " placeholder="00.0 " type="text ">
+                                        <span class="input-group-addon " id="basic-addon2 ">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <h1>{{ 'Layout' | trans }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button " class="btn btn-danger btn-flat pull-left buttons " data-dismiss="modal ">{{ 'Cancel' | trans }}</button>
+                        <button type="button " class="btn btn-success btn-flat buttons ">{{ 'Confirm' | trans }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /. case of a cell -->
+        <!-- param equipment-->
+        <div class="modal fade" id="calculate">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{ 'Calculate' | trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ 'Chosse calculation' | trans }}
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group Gbutton">
+                            <form class="form-inline">
+                                <button type="button" class="btn bg-olive btn-flat buttons margin" data-target="#paramestimation" data-toggle="modal" data-dismiss="modal">{{ 'Estimation mode' | trans }}</button>
+                                <button type="button" class="btn bg-maroon btn-flat" data-target="#paramOS" data-toggle="modal" data-dismiss="modal">{{ 'Optimun & Select mode' | trans }}</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /. param equipment -->
+        
+        <!-- param equipment Optimun-->
+        <div class="modal fade" id="paramOS">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{ 'Estimation mode' | trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>{{ 'Opperating Setting' | trans }}</h4>
+                        <form action="/setEquipmentData" id="id-form-opperating-setting" method="post">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>{{ 'Residence/ Dwell time' | trans }} (s)</th>
+                                        <th>{{ 'Control temperature' | trans }} (°C)</th>
+                                        <th>{{ 'Convection Setting' | trans }} (Hz)</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3" id="id-image-iconequip">
+                                                    
+                                                </div>
+
+                                                <div class="col-md-6" id="id-dwell-time">
+                                                    
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6" id="id-control-temper">
+                                                    
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6" id="id-convection-setting">
+                                                    
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                        {% if ret.listDisplay.unselect == 2 %}
+                                            <div class="form-group Gbutton">
+                                                <button class="btn btn-flat bg-purple" type="button" id="btn-ConTemper"> {{ 'Compute Control Temperature' | trans }}</button>
+                                            </div>
+                                        {% endif %}
+                                        </td>
+                                        <td>
+                                        {% if ret.listDisplay.unselect == 2 %}
+                                            <div class="form-group Gbutton">
+                                                <button class="btn btn-flat bg-navy " type="button" id="btn-Residence"> {{ 'Compute Residence/ Dwell Time' | trans }}</button>
+                                            </div>
+                                        {% endif %}
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <h4>Alpha W/(M, °C)</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>{{ 'Top' | trans }}</th>
+                                        <th>{{ 'Buttom' | trans }}</th>
+                                        <th>{{ 'Left' | trans }}</th>
+                                        <th>{{ 'Right' | trans }}</th>
+                                        <th>{{ 'Front' | trans }}</th>
+                                        <th>{{ 'Rear' | trans }}</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="checkbox" class="checkbox-top ">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="checkbox" class="checkbox-buttom" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="checkbox" class="checkbox-left" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="checkbox" class="checkbox-right" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="checkbox" class="checkbox-front" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="checkbox" class="checkbox-rear" name="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="text" name="" disabled=""  class="form-control input-top input-modal-alpha" placeholder="0.0">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="text" name="" disabled="" class="form-control input-buttom input-modal-alpha" placeholder="0.0">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="text" name="" disabled="" class="form-control input-left input-modal-alpha" placeholder="0.0">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="text" name="" disabled="" class="form-control input-right input-modal-alpha" placeholder="0.0">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="text" name="" disabled="" class="form-control input-front input-modal-alpha" placeholder="0.0">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input type="text" name="" disabled="" class="form-control input-rear input-modal-alpha" placeholder="0.0">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="hidden frame-gastemperature">
+                                <h4>{{ 'Gas Temperature' | trans }}</h4>
+                                <div class="table-responsive" style="height: 150px">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td>{{ 'Gas temperature' | trans }}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <form class="form-inline">
+                                                                <div class="input-group">
+                                                                    <input class="form-control input-modal-gas" placeholder="0.0" type="text">
+                                                                    <span class="input-group-addon" id="basic-addon2">cm</span>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <a href="#" id="help-gastemperature">
+                                                        <i class="fa fa-question-circle " style="font-size: 34px;"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="table-responsive hidden table-gastemperature" >
+                                <div>
+                                    <h4>{{ 'Gas Temperature' | trans }} - <span class="pos-name-euiqpment"></span></h4>
+                                    <label class="title">NB: {{ 'data given for a input temperature of product equal to' | trans }} +20°C</label>
+                                    <table class="table table-responsive" id="posshow-table-gastemperature">
+                                        
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-group Gbutton">
+                        <button type="button" class="btn btn-danger btn-flat buttons margin" data-dismiss="modal">{{ 'Cancel' | trans }}</button>
+                        <button type="button" class="btn btn-success btn-flat buttons" id="id-confirm-modal-opperating-setting">{{ 'Confirm' | trans }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/. param equipment Optimun-->
+    <!-- ./ modal calculate -->
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 3.0
+        </div>
+        <strong>Copyright &copy; 2017 <a href="#">CryoSoft</a>.</strong> All rights reserved.
+    </footer>
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+            <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- Home tab content -->
+            <div class="tab-pane" id="control-sidebar-home-tab">
+                <h3 class="control-sidebar-heading">{{ 'Tasks Progress' | trans }}</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript:void(0)">
+                            <h4 class="control-sidebar-subheading">
+                {{ 'Custom Template Design' | trans }}
+                <span class="label label-danger pull-right">70%</span>
+              </h4>
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <h4 class="control-sidebar-subheading">
+                {{ 'Update Resume' | trans }}
+                <span class="label label-success pull-right">95%</span>
+              </h4>
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <h4 class="control-sidebar-subheading">
+                {{ 'Laravel Integration' | trans }}
+                <span class="label label-warning pull-right">50%</span>
+              </h4>
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <h4 class="control-sidebar-subheading">
+                {{ 'Back End Framework' | trans }}
+                <span class="label label-primary pull-right">68%</span>
+              </h4>
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+            </div>
+            <!-- /.tab-pane -->
+            <!-- Stats tab content -->
+            <div class="tab-pane" id="control-sidebar-stats-tab">{{ 'Stats Tab Content' | trans }}</div>
+            <!-- /.tab-pane -->
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+</body>
+{% endblock %}

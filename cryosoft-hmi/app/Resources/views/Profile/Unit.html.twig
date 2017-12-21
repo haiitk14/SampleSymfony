@@ -1,0 +1,411 @@
+{% extends 'modal.html.twig' %}
+{% block body %}
+
+
+    <h4>{{'Units'|trans}}</h4>
+<form  action="/createUnit" method="post">
+
+    <div class="table-responsive">
+        <div class="row">
+            <div class="col-md-6" style="background: #eee">
+                <h5 style="text-align: center;"><strong>{{'Type'|trans}}</strong></h5>
+            </div>
+            <div class="col-md-6" style="background: #eee">
+                <h5 style="text-align: center;"><strong>{{'Symbol'|trans}}</strong></h5>
+            </div>
+        </div>
+        <div style="width:100%; height:200px; overflow:auto;">
+            <table class="table table-bordered">
+                <tr>
+                    <td colspan="2">{{'Conductivity'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConductivity in conductivity %}
+                                <option value="{{unitConductivity.idUnit}}" {{typeCond.getIdUnit == unitConductivity.idUnit ? 'selected' : ''}}>{{unitConductivity.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Consumption unit'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConsumptionUnit in consumptionUnit %}
+                                <option value="{{unitConsumptionUnit.idUnit}}" {{typeCons.getIdUnit == unitConsumptionUnit.idUnit ? 'selected' : ''}}>{{unitConsumptionUnit.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Consumption unit(CO2)'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConsumptionUnitCO2 in consumptionUnitCO2 %}
+                                <option value="{{unitConsumptionUnitCO2.idUnit}}" {{typeConsumptionUnitCO2.getIdUnit == unitConsumptionUnitCO2.idUnit ? 'selected' : ''}}>{{unitConsumptionUnitCO2.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Consumption unit(LN2)'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConsumpUnitLN2 in consumptionUnitLN2 %}
+                                <option value="{{unitConsumpUnitLN2.idUnit}}" {{typeConsumptionUnitLN2.getIdUnit == unitConsumpUnitLN2.idUnit ? 'selected' : ''}}>{{unitConsumpUnitLN2.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Heat Losses per hour'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConsumpMainTien in consumpMainTien %}
+                                <option value="{{unitConsumpMainTien.idUnit}}" {{typeConsumpMainTien.getIdUnit == unitConsumpMainTien.idUnit ? 'selected' : ''}}>{{unitConsumpMainTien.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Heat Losses per hour (CO2)'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConsumpMainTienCo2 in consumpMainTienCo2 %}
+                                <option value="{{unitConsumpMainTienCo2.idUnit}}" {{typeConsumpMainTienCo2.getIdUnit == unitConsumpMainTienCo2.idUnit ? 'selected' : ''}}>{{unitConsumpMainTienCo2.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Heat Losses per hour (LN2)'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConsumpMainTienLN2 in consumpMainTienLN2 %}
+                                <option value="{{unitConsumpMainTienLN2.idUnit}}" {{typeConsumpMainTienLN2.getIdUnit == unitConsumpMainTienLN2.idUnit ? 'selected' : ''}}>{{unitConsumpMainTienLN2.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Cooldown'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConsumpMef in consumpMef %}
+                                <option value="{{unitConsumpMef.idUnit}}" {{typeConsumpMef.getIdUnit == unitConsumpMef.idUnit ? 'selected' : ''}}>{{unitConsumpMef.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Cooldown (CO2)'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConsumpMefCo2 in consumpMefCo2 %}
+                                <option value="{{unitConsumpMefCo2.idUnit}}" {{typeConsumpMefCo2.getIdUnit == unitConsumpMefCo2.idUnit ? 'selected' : ''}}>{{unitConsumpMefCo2.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Cooldown (LN2)'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConsumpMefLN2 in consumpMefLN2 %}
+                                <option value="{{unitConsumpMefLN2.idUnit}}" {{typeConsumpMefLN2.getIdUnit == unitConsumpMefLN2.idUnit ? 'selected' : ''}}>{{unitConsumpMefLN2.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Convection coef'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConvCoeff in convCoeff %}
+                                <option value="{{unitConvCoeff.idUnit}}" {{typeConvCoeff.getIdUnit == unitConvCoeff.idUnit ? 'selected' : ''}}>{{unitConvCoeff.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Convection speed'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitConvSpeed in convSpeed %}
+                                <option value="{{unitConvSpeed.idUnit}}" {{typeConvSpeed.getIdUnit == unitConvSpeed.idUnit ? 'selected' : ''}}>{{unitConvSpeed.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Density'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitDensity in density %}
+                                <option value="{{unitDensity.idUnit}}" {{typeDensity.getIdUnit == typeDensity.idUnit ? 'selected' : ''}}>{{unitDensity.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Enthalpy'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitEnthalpy in enthalpy %}
+                                <option value="{{unitEnthalpy.idUnit}}" {{typeEnthalpy.getIdUnit == unitEnthalpy.idUnit ? 'selected' : ''}}>{{unitEnthalpy.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">{{'Equipment dimension'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitEquipDemension in equipDemension %}
+                                <option value="{{unitEquipDemension.idUnit}}" {{typeEquipDemension.getIdUnit == unitEquipDemension.idUnit ? 'selected' : ''}}>{{unitEquipDemension.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Evaporation'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitEvapora in evaporation %}
+                                <option value="{{unitEvapora.idUnit}}" {{typeEnthalpy.getIdUnit == unitEvapora.idUnit ? 'selected' : ''}}>{{unitEvapora.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Fluid flow'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitFluid in fluidFlow %}
+                                <option value="{{unitFluid.idUnit}}" {{typeFluidFlow.getIdUnit == unitFluid.idUnit ? 'selected' : ''}}>{{unitFluid.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Length'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitLength in length %}
+                                <option value="{{unitLength.idUnit}}" {{typeLength.getIdUnit == unitLength.idUnit ? 'selected' : ''}}>{{unitLength.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Line'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitLine in line %}
+                                <option value="{{unitLine.idUnit}}" {{typeLine.getIdUnit == unitLine.idUnit ? 'selected' : ''}}>{{unitLine.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Losses in get cold (Line)'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitLosser1 in losser1 %}
+                                <option value="{{unitLosser1.idUnit}}" {{typeLosser1.getIdUnit == unitLosser1.idUnit ? 'selected' : ''}}>{{unitLosser1.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Permanent Heat losses (Line)'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitLosser2 in losser2 %}
+                                <option value="{{unitLosser2.idUnit}}" {{typeLosser2.getIdUnit == unitLosser2.idUnit ? 'selected' : ''}}>{{unitLosser2.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Mass'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitMass in mass %}
+                                <option value="{{unitMass.idUnit}}" {{typeMass.getIdUnit == unitMass.idUnit ? 'selected' : ''}}>{{unitMass.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'unit of mass (consumption)'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitMassPerUnit in massPerUnit %}
+                                <option value="{{unitMassPerUnit.idUnit}}" {{typeMassPerUnit.getIdUnit == unitMassPerUnit.idUnit ? 'selected' : ''}}>{{unitMassPerUnit.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Material Rise'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitMaterialRise in materialRise %}
+                                <option value="{{unitMaterialRise.idUnit}}" {{typeMaterialRise.getIdUnit == unitMaterialRise.idUnit ? 'selected' : ''}}>{{unitMaterialRise.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Mesh cut'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitMeshCut in meshCut %}
+                                <option value="{{unitMeshCut.idUnit}}" {{typeMeshCut.getIdUnit == unitMeshCut.idUnit ? 'selected' : ''}}>{{unitMeshCut.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Pressure'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitPressure in pressure %}
+                                <option value="{{unitPressure.idUnit}}" {{typePressure.getIdUnit == unitPressure.idUnit ? 'selected' : ''}}>{{unitPressure.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Product dimension - product chart'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitProductChartDemension in productChartDemension %}
+                                <option value="{{unitProductChartDemension.idUnit}}" {{typeProductChartDemension.getIdUnit == unitProductChartDemension.idUnit ? 'selected' : ''}}>{{unitProductChartDemension.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Product flow'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitProductFlow in productFlow %}
+                                <option value="{{unitProductFlow.idUnit}}" {{typeProductFlow.getIdUnit == unitProductFlow.idUnit ? 'selected' : ''}}>{{unitProductFlow.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Product dimension'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitProductDemension in productDemension %}
+                                <option value="{{unitProductDemension.idUnit}}" {{typeProductDemension.getIdUnit == unitProductDemension.idUnit ? 'selected' : ''}}>{{unitProductDemension.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'CO2 tank capacity'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitTankCapacity in tankCapacity %}
+                                <option value="{{unitTankCapacity.idUnit}}" {{typeTankCapacity.getIdUnit == unitTankCapacity.idUnit ? 'selected' : ''}}>{{unitTankCapacity.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'LN2 tank capacity'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitTankCapacityLN2 in tankCapacityLN2 %}
+                                <option value="{{unitTankCapacityLN2.idUnit}}" {{typeTankCapacityLN2.getIdUnit == unitTankCapacityLN2.idUnit ? 'selected' : ''}}>{{unitTankCapacityLN2.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Slopes position'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitSlopesPosistion in slopesPosistion %}
+                                <option value="{{unitSlopesPosistion.idUnit}}" {{typeSlopesPosistion.getIdUnit == unitSlopesPosistion.idUnit ? 'selected' : ''}}>{{unitSlopesPosistion.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Specific Heat'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitSpecificHeat in specificHeat %}
+                                <option value="{{unitSpecificHeat.idUnit}}" {{typeSpecificHeat.getIdUnit == unitSpecificHeat.idUnit ? 'selected' : ''}}>{{unitSpecificHeat.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Temperature'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitTemperature in temperature %}
+                                <option value="{{unitTemperature.idUnit}}" {{typeTemperature.getIdUnit == unitTemperature.idUnit ? 'selected' : ''}}>{{unitTemperature.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Thickness packing'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitThickPacking in thickPacking %}
+                                <option value="{{unitThickPacking.idUnit}}" {{typeThickPacking.getIdUnit == unitThickPacking.idUnit ? 'selected' : ''}}>{{unitThickPacking.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Time'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitTime in time %}
+                                <option value="{{unitTime.idUnit}}" {{typeTime.getIdUnit == unitTime.idUnit ? 'selected' : ''}}>{{unitTime.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{'Carpet/Sieve width'|trans}}</td>
+                    <td colspan="2">
+                        <select name="userunit[]" data-placeholder="--Menu--" class="form-control chosen-select">
+                            {% for unitCaper in caper %}
+                                <option value="{{unitCaper.idUnit}}" {{typeCaper.getIdUnit == unitCaper.idUnit ? 'selected' : ''}}>{{unitCaper.symbol}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="row">
+            <div class="form-group Gbutton">
+                
+                <button type="submit" class="btn btn-flat btn-success buttons"><i class="fa fa-check"></i>{{'Confirm'|trans}} </button>
+            </div>
+        </div>
+    </div>
+</form>
+    <br>
+    <div class="form-group Gbutton">
+        <a href="/profile" class="btn btn-flat bg-navy buttons" >{{'Profile'|trans}}</a>
+        <a href="/change" class="btn btn-flat bg-navy buttons" >{{'Change Password'|trans}}</a>
+        <a href="/unit" class="btn btn-flat bg-navy buttons" >{{'Unit'|trans}}</a>
+        <a href="/profileEquipment" class="btn btn-flat bg-navy buttons" >{{'Equipment'|trans}}</a>
+    </div>
+
+
+
+{% endblock %}

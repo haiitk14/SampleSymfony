@@ -1,0 +1,140 @@
+{% extends 'modal.html.twig' %}
+
+
+{% block body %}
+{#<div class="container">#}
+  {#<div class="row">#}
+        {#<div class="panel panel-default">#}
+          {#<div class="panel-heading">Register</div>#}
+          {#<div class="panel-body">#}
+              {#<form class="form-inline" role="form" method="POST" action="/signup">#}
+                  {#{% if errors is defined and errors|length > 0 %}#}
+                      {#{% for error in errors %}#}
+                          {#<div class="alert alert-warning alert-dismissible">#}
+                              {#<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>#}
+                              {#<h4><i class="icon fa fa-warning"></i> Alert!</h4>#}
+                              {#<span style="color:#ffffff";><strong>{{ error.message }}</strong></span>#}
+                          {#</div>#}
+                      {#{% endfor %}#}
+                  {#{% endif %}#}
+                  {#{% for flash_massage in app.session.flashbag.get('Noitce') %}#}
+                      {#<div class="alert alert-warning alert-dismissible">#}
+                          {#<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>#}
+                          {#<h4><i class="icon fa fa-warning"></i> Alert!</h4>#}
+                          {#<span style="color:#ffffff";><strong>{{flash_massage}}</strong></span>#}
+                      {#</div>#}
+                      {#<br/><span style="color:red";><strong>{{flash_massage}}</strong></span>#}
+                  {#{% endfor %}#}
+            {#<div class="form_group">#}
+                {#<label>User name</label>#}
+                {#<input class="form-control" style="width: 100%;" type="text" placeholder="User name" name="_name" value="{{ user_info.getUsernam }}" />#}
+            {#</div></br>#}
+            {#<div class="form_group">#}
+                {#<label>Password</label>#}
+                {#<input class="form-control" style="width: 100%;" type="password" name="_pass" minlength="6">#}
+            {#</div></br>#}
+
+            {#<div class="form_group">#}
+                {#<label>Confirm Password</label>#}
+                {#<input class="form-control" style="width: 100%;" type="password" name="_repass">#}
+            {#</div></br>#}
+              {#<div class="form_group">#}
+                  {#<label>Track Level</label>#}
+                      {#<input class="form-control" style="width: 100%;" type="number" name="_trackLevel" min="0" max="16" value="{{ user_info.getTraceLevel }}"/>#}
+              {#</div></br>#}
+            {#<div class="form-group">#}
+                    {#<button type="submit" class="btn btn-primary btn-flat ">#}
+                        {#<i class="fa fa-btn fa-user"></i> Register#}
+                    {#</button>#}
+            {#</div>#}
+              {#</form>#}
+          {#</div>#}
+        {#</div>#}
+  {#</div>#}
+{#</div>#}
+
+
+
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="/login"><b>CryoSoft</b> {{'Register'|trans}}</a>
+        </div>
+
+        <div class="register-box-body">
+            <p class="login-box-msg">{{'Register a new membership'|trans}}</p>
+
+            <form class="form-inline" role="form" method="POST" action="/signup">
+                {% if errors is defined and errors|length > 0 %}
+                    {% for error in errors %}
+                        <div class="alert alert-warning alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="icon fa fa-warning"></i> {{'Alert!'|trans}}</h4>
+                            <span style="color:#ffffff";><strong>{{ error.message }}</strong></span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% for flash_massage in app.session.flashbag.get('Noitce') %}
+                    <div class="alert alert-warning alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-warning"></i> {{'Alert!'|trans}}</h4>
+                        <span style="color:#ffffff";><strong>{{flash_massage}}</strong></span>
+                    </div>
+                    {#<br/><span style="color:red";><strong>{{flash_massage}}</strong></span>#}
+                {% endfor %}
+                {#<div class="form_group">#}
+                    {#<label>User name</label>#}
+                    {#<input class="form-control" style="width: 100%;" type="text" placeholder="User name" name="_name" value="{{ user_info.getUsernam }}" />#}
+                {#</div></br>#}
+                {#<div class="form_group">#}
+                    {#<label>Password</label>#}
+                    {#<input class="form-control" style="width: 100%;" type="password" name="_pass" minlength="6">#}
+                {#</div></br>#}
+
+                {#<div class="form_group">#}
+                    {#<label>Confirm Password</label>#}
+                    {#<input class="form-control" style="width: 100%;" type="password" name="_repass">#}
+                {#</div></br>#}
+                {#<div class="form_group">#}
+                    {#<label>Track Level</label>#}
+                    {#<input class="form-control" style="width: 100%;" type="number" name="_trackLevel" min="0" max="16" value="{{ user_info.getTraceLevel }}"/>#}
+                {#</div>#}
+
+                <div class="form_group has-feedback">
+                    <input class="form-control input-radius" style="width: 100%;" type="text" placeholder="User name" name="_name" value="{{ user_info.getUsernam }}" />
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span></p>
+                </div>
+                <div class="form_group has-feedback">
+                    <input class="form-control input-radius" style="width: 100%;" type="password" placeholder="Password" name="_pass" minlength="6">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span></p>
+                </div>
+                <div class="form_group has-feedback">
+                    <input class="form-control input-radius" style="width: 100%;" type="password" placeholder="Confirm Password" name="_repass">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span></p>
+                </div>
+                <div class="form_group has-feedback">
+                    <input class="form-control input-radius" style="width: 100%;" type="number" placeholder="Track Level (1-16)" name="_trackLevel" min="0" max="16" value="{{ user_info.getTraceLevel }}"/>
+                    <span class="glyphicon glyphicon-log-in form-control-feedback"></span></p>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox icheck">
+
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-flat ">
+                            <i class="fa fa-btn fa-user"></i> {{'Register'|trans}}
+                        </button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+            <a href="/login" class="text-center">{{'I already have a membership'|trans}}</a>
+        </div>
+        <!-- /.form-box -->
+    </div>
+    <!-- /.register-box -->
+{% endblock %}

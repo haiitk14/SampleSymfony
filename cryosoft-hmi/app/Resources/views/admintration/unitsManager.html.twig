@@ -1,0 +1,697 @@
+{% extends 'base.html.twig' %} {% block body %}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="./assets/js/userAdmin.js"></script>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+                            <li class=""><a href="/newUser" aria-expanded="false">{{'Users'|trans}}</a></li>
+                            <li class="active"><a href="#" aria-expanded="false">{{'Unit'|trans}}</a></li>
+                            <li class=""><a href="/admin/_trans" aria-expanded="false">{{'Translation'|trans}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>{{'User - Manager'|trans}}<small>{{'Summary info'|trans}}</small></h1>
+                <ol class="breadcrumb">
+                    <li><a href="/home"><i class="fa fa-dashboard"></i> {{'Home'|trans}}</a></li>
+                    <li><a href="/unitsManager">{{'Unit'|trans}}</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="nav-tabs-custom">
+                        <div class="row style-background">
+                            <form class="form-inline" role="form" method="POST" action="/newUser">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th rowspan="2">{{'Value type'|trans}}</th>
+                                        <th>{{'Kernel reference'|trans}}</th>
+                                        <th colspan="3">{{'Unit references'|trans}}</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'Symbol'|trans}}</td>
+                                        <td>{{'Symbol'|trans}}</td>
+                                        <td>{{'A'|trans}}</td>
+                                        <td>{{'B'|trans}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalMoneyPage" 
+                                          data-symbol="{{money[0].getMoneySymb}}" data-idunit="{{money[0].getIdMonetaryCurrency}}" id="labelMoney" data-unita="{{money[0].getMoneyText}}" data-bunitb="" class="modalMoneyPage" >{{'Price'|trans}}</a></td>
+                                        <td>{{money[0].getMoneySymb}}</td>
+                                        <td>
+                                            <select name="_price_choose" class="form-control chosen-select unit">
+                                                {% for money in money %}
+                                                <option value="{{money.idMonetaryCurrency}}" data-label="#labelMoney" data-idunit="#idunit" data-symbol="#symbol" data-unita="#unita" data-aid="" data-bid="" data-table="money" >{{money.moneyText}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{conductivity[0].getSymbol}}" data-idunit="{{conductivity[0].getIdUnit}}_{{conductivity[0].getTypeUnit}}" data-unita="{{conductivity[0].getCoeffA}}" data-bunitb="{{conductivity[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Conductivity'|trans}}</a></td>
+                                        <td>{{conductivity[0].getSymbol}}</td>
+                                        <td>
+                                            <select id="conductivity" class="form-control chosen-select unit">
+                                                {% for index, conductivity in conductivity %}
+                                                <option value="{{conductivity.getIdUnit}}_{{conductivity.getTypeUnit}}" data-aid="#conCoeffA" data-bid="#conCoeffB" data-label="#conductivityLabel" data-table="unit"> {{conductivity.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="conCoeffA" id="conCoeffA" value="{{conductivity[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="conCoeffB" id="conCoeffB" value="{{conductivity[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{consumptionUnit[0].getSymbol}}" data-idunit="{{consumptionUnit[0].getIdUnit}}_{{consumptionUnit[0].getTypeUnit}}" data-unita="{{consumptionUnit[0].getCoeffA}}" data-bunitb="{{consumptionUnit[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Consumption unit'|trans}}</a></td>
+                                        <td>{{consumptionUnit[0].getSymbol}}</td>
+                                        <td>
+                                            <select id="consumptionUnit" class="form-control chosen-select">
+                                                {% for index, consumptionUnit in consumptionUnit %}
+                                                <option value="{{consumptionUnit.getIdUnit}}_{{consumptionUnit.getTypeUnit}}" data-aid="#conUCoeffA" data-bid="#conUCoeffB"  data-label="#conductivityLabel"> {{consumptionUnit.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conUCoeffA" name="conUCoeffA" value="{{consumptionUnit[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conUCoeffB" name="conUCoeffB" value="{{consumptionUnit[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{consumptionUnitCO2[0].getSymbol}}" data-idunit="{{consumptionUnitCO2[0].getIdUnit}}_{{consumptionUnitCO2[0].getTypeUnit}}" data-unita="{{consumptionUnitCO2[0].getCoeffA}}" data-bunitb="{{consumptionUnitCO2[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Consumption unit (CO2)'|trans}}</a></td>
+                                        <td>{{consumptionUnitCO2[0].getSymbol}}</td>
+                                        <td>
+                                            <select id="consumptionUnitCO2" class="form-control chosen-select">
+                                                {% for index, consumptionUnitCO2 in consumptionUnitCO2 %}
+                                                <option value="{{consumptionUnitCO2.getIdUnit}}_{{consumptionUnitCO2.getTypeUnit}}" data-aid="#conUCo2CoeffA" data-bid="#conUCo2CoeffB" data-label="#conductivityLabel"> {{consumptionUnitCO2.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conUCo2CoeffA" name="conUCo2CoeffA" value="{{consumptionUnitCO2[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conUCo2CoeffB" name="conUCo2CoeffB" value="{{consumptionUnitCO2[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{consumptionUnitLN2[0].getSymbol}}" data-idunit="{{consumptionUnitLN2[0].getIdUnit}}_{{consumptionUnitLN2[0].getTypeUnit}}" data-unita="{{consumptionUnitLN2[0].getCoeffA}}" data-bunitb="{{consumptionUnitLN2[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Consumption unit (LN2)'|trans}}</a></td>
+                                        <td>{{consumptionUnitLN2[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, consumptionUnitLN2 in consumptionUnitLN2 %}
+                                                <option value="{{consumptionUnitLN2.getIdUnit}}_{{consumptionUnitLN2.getTypeUnit}}" data-aid="#conULN2CoeffA" data-bid="#conULN2CoeffB" data-label="#conductivityLabel"> {{consumptionUnitLN2.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conULN2CoeffA" name="conULN2CoeffA" value="{{consumptionUnitLN2[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conULN2CoeffB" name="conULN2CoeffB" value="{{consumptionUnitLN2[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{consumpMainTien[0].getSymbol}}" data-idunit="{{consumpMainTien[0].getIdUnit}}_{{consumpMainTien[0].getTypeUnit}}" data-unita="{{consumpMainTien[0].getCoeffA}}" data-bunitb="{{consumpMainTien[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Heat losses per hour'|trans}}</a></td>
+                                        <td>{{consumpMainTien[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, consumpMainTien in consumpMainTien %}
+                                                <option value="{{consumpMainTien.getIdUnit}}_{{consumpMainTien.getTypeUnit}}" data-aid="#conMTCoeffA" data-bid="#conMTCoeffB" data-label="#conductivityLabel"> {{consumpMainTien.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMTCoeffA" name="conMTCoeffA" value="{{consumpMainTien[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMTCoeffB" name="conMTCoeffB" value="{{consumpMainTien[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{consumpMainTienCo2[0].getSymbol}}" data-idunit="{{consumpMainTienCo2[0].getIdUnit}}_{{consumpMainTienCo2[0].getTypeUnit}}" data-unita="{{consumpMainTienCo2[0].getCoeffA}}" data-bunitb="{{consumpMainTienCo2[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Heat losses per hour (CO2)'|trans}}</a></td>
+                                        <td>{{consumpMainTienCo2[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, consumpMainTienCo2 in consumpMainTienCo2 %}
+                                                <option value="{{consumpMainTienCo2.getIdUnit}}_{{consumpMainTienCo2.getTypeUnit}}" data-aid="#conMTCo2CoeffA" data-bid="#conMTCo2CoeffB" data-label="#conductivityLabel"> {{consumpMainTienCo2.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMTCo2CoeffA" name="conMTCo2CoeffA" value="{{consumpMainTienCo2[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMTCo2CoeffB" name="conMTCo2CoeffB" value="{{consumpMainTienCo2[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{consumpMainTienLN2[0].getSymbol}}" data-idunit="{{consumpMainTienLN2[0].getIdUnit}}_{{consumpMainTienLN2[0].getTypeUnit}}" data-unita="{{consumpMainTienLN2[0].getCoeffA}}" data-bunitb="{{consumpMainTienLN2[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Heat losses per hour (LN2)'|trans}}</a></td>
+                                        <td>{{consumpMainTienLN2[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, consumpMainTienLN2 in consumpMainTienLN2 %}
+                                                <option value="{{consumpMainTienLN2.getIdUnit}}_{{consumpMainTienLN2.getTypeUnit}}" data-aid="#conMTLn2CoeffA" data-bid="#conMTLn2CoeffB" data-label="#conductivityLabel"> {{consumpMainTienLN2.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMTLn2CoeffA" name="conMTLn2CoeffA" value="{{consumpMainTienLN2[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMTLn2CoeffB" name="conMTLn2CoeffB" value="{{consumpMainTienLN2[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{consumpMef[0].getSymbol}}" data-idunit="{{consumpMef[0].getIdUnit}}_{{consumpMef[0].getTypeUnit}}" data-unita="{{consumpMef[0].getCoeffA}}" data-bunitb="{{consumpMef[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Cooldown'|trans}}</a></td>
+                                        <td>{{consumpMef[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, consumpMef in consumpMef %}
+                                                <option value="{{consumpMef.getIdUnit}}_{{consumpMef.getTypeUnit}}" data-aid="#conMefCoeffA" data-bid="#conMefCoeffB" data-label="#conductivityLabel"> {{consumpMef.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMefCoeffA" name="conMefCoeffA" value="{{consumpMef[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMefCoeffB" name="conMefCoeffB" value="{{consumpMef[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{consumpMefCo2[0].getSymbol}}" data-idunit="{{consumpMefCo2[0].getIdUnit}}_{{consumpMefCo2[0].getTypeUnit}}" data-unita="{{consumpMefCo2[0].getCoeffA}}" data-bunitb="{{consumpMefCo2[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Cooldown (CO2)'|trans}}</a></td>
+                                        <td>{{consumpMefCo2[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, consumpMefCo2 in consumpMefCo2 %}
+                                                <option value="{{consumpMefCo2.getIdUnit}}_{{consumpMefCo2.getTypeUnit}}" data-aid="#conMefCo2CoeffA" data-bid="#conMefCo2CoeffB" data-label="#conductivityLabel"> {{consumpMefCo2.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMefCo2CoeffA" name="conMefCo2CoeffA" value="{{consumpMefCo2[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMefCo2CoeffB" name="conMefCo2CoeffB" value="{{consumpMefCo2[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{consumpMefLN2[0].getSymbol}}" data-idunit="{{consumpMefLN2[0].getIdUnit}}_{{consumpMefLN2[0].getTypeUnit}}" data-unita="{{consumpMefLN2[0].getCoeffA}}" data-bunitb="{{consumpMefLN2[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Cooldown (LN2)'|trans}}</a></td>
+                                        <td>{{consumpMefLN2[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, consumpMefLN2 in consumpMefLN2 %}
+                                                <option value="{{consumpMefLN2.getIdUnit}}_{{consumpMefLN2.getTypeUnit}}" data-aid="#conMefLn2CoeffA" data-bid="#conMefLn2CoeffB" data-label="#conductivityLabel"> {{consumpMefLN2.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMefLn2CoeffA" name="conMefLn2CoeffA" value="{{consumpMefLN2[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conMefLn2CoeffB" name="conMefLn2CoeffB" value="{{consumpMefLN2[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{convCoeff[0].getSymbol}}" data-idunit="{{convCoeff[0].getIdUnit}}_{{convCoeff[0].getTypeUnit}}" data-unita="{{convCoeff[0].getCoeffA}}" data-bunitb="{{convCoeff[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Convection coef'|trans}}</a></td>
+                                        <td>{{convCoeff[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, convCoeff in convCoeff %}
+                                                <option value="{{convCoeff.getIdUnit}}_{{convCoeff.getTypeUnit}}" data-aid="#convectionCoeffA" data-bid="#convectionCoeffB" data-label="#conductivityLabel"> {{convCoeff.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="convectionCoeffA" name="convectionCoeffA" value="{{convCoeff[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="convectionCoeffB" name="convectionCoeffB" value="{{convCoeff[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{convSpeed[0].getSymbol}}" data-idunit="{{convSpeed[0].getIdUnit}}_{{convSpeed[0].getTypeUnit}}" data-unita="{{convSpeed[0].getCoeffA}}" data-bunitb="{{convSpeed[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Convection speed'|trans}}</a></td>
+                                        <td>{{convSpeed[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, convSpeed in convSpeed %}
+                                                <option value="{{convSpeed.getIdUnit}}_{{convSpeed.getTypeUnit}}" data-aid="#conSpeedCoeffA" data-bid="#conSpeedCoeffB" data-label="#conductivityLabel"> {{convSpeed.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conSpeedCoeffA" name="conSpeedCoeffA" value="{{convSpeed[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="conSpeedCoeffB" name="conSpeedCoeffB" value="{{convSpeed[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{density[0].getSymbol}}" data-idunit="{{density[0].getIdUnit}}_{{density[0].getTypeUnit}}" data-unita="{{density[0].getCoeffA}}" data-bunitb="{{density[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Density'|trans}}</a></td>
+                                        <td>{{density[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, density in density %}
+                                                <option value="{{density.getIdUnit}}_{{density.getTypeUnit}}" data-aid="#densityCoeffA" data-bid="#densityCoeffB" data-label="#conductivityLabel"> {{density.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="densityCoeffA" name="densityCoeffA" value="{{density[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="densityCoeffB" name="densityCoeffB" value="{{density[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{enthalpy[0].getSymbol}}" data-idunit="{{enthalpy[0].getIdUnit}}_{{enthalpy[0].getTypeUnit}}" data-unita="{{enthalpy[0].getCoeffA}}" data-bunitb="{{enthalpy[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Enthalpy'|trans}}</a></td>
+                                        <td>{{enthalpy[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, enthalpy in enthalpy %}
+                                                <option value="{{enthalpy.getIdUnit}}_{{enthalpy.getTypeUnit}}" data-aid="#enthalpyCoeffA" data-bid="#enthalpyCoeffB" data-label="#conductivityLabel"> {{enthalpy.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="enthalpyCoeffA" name="enthalpyCoeffA" value="{{enthalpy[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="enthalpyCoeffB" name="enthalpyCoeffB" value="{{enthalpy[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{equipDemension[0].getSymbol}}" data-idunit="{{equipDemension[0].getIdUnit}}_{{equipDemension[0].getTypeUnit}}" data-unita="{{equipDemension[0].getCoeffA}}" data-bunitb="{{equipDemension[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Equipment dimension'|trans}}</a></td>
+                                        <td>{{equipDemension[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, equipDemension in equipDemension %}
+                                                <option value="{{equipDemension.getIdUnit}}_{{equipDemension.getTypeUnit}}" data-aid="#equipDCoeffA" data-bid="#equipDCoeffB" data-label="#conductivityLabel"> {{equipDemension.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="equipDCoeffA" name="equipDCoeffA" value="{{equipDemension[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="equipDCoeffB" name="equipDCoeffB" value="{{equipDemension[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{evaporation[0].getSymbol}}" data-idunit="{{evaporation[0].getIdUnit}}_{{evaporation[0].getTypeUnit}}" data-unita="{{evaporation[0].getCoeffA}}" data-bunitb="{{evaporation[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Evaporation'|trans}}</a></td>
+                                        <td>{{evaporation[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, evaporation in evaporation %}
+                                                <option value="{{evaporation.getIdUnit}}_{{evaporation.getTypeUnit}}" data-aid="#evaporationCoeffA" data-bid="#evaporationCoeffB" data-label="#conductivityLabel"> {{evaporation.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="evaporationCoeffA" name="evaporationCoeffA" value="{{evaporation[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="evaporationCoeffD" name="evaporationCoeffB" value="{{evaporation[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{fluidFlow[0].getSymbol}}" data-idunit="{{fluidFlow[0].getIdUnit}}_{{fluidFlow[0].getTypeUnit}}" data-unita="{{fluidFlow[0].getCoeffA}}" data-bunitb="{{fluidFlow[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Fluid flow'|trans}}</a></td>
+                                        <td>{{fluidFlow[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, fluidFlow in fluidFlow %}
+                                                <option value="{{fluidFlow.getIdUnit}}_{{fluidFlow.getTypeUnit}}" data-aid="#fluidFCoeffA" data-bid="#fluidFCoeffB" data-label="#conductivityLabel"> {{fluidFlow.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="fluidFCoeffA" name="fluidFCoeffA" value="{{fluidFlow[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="fluidFCoeffB" name="fluidFCoeffB" value="{{fluidFlow[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{length[0].getSymbol}}" data-idunit="{{length[0].getIdUnit}}_{{length[0].getTypeUnit}}" data-unita="{{length[0].getCoeffA}}" data-bunitb="{{length[0].getCoeffB}}" class="modalPage" id="conductivityLabel" data-type="{{conductivity[0].getTypeUnit}}">{{'Length'|trans}}</a></td>
+                                        <td>{{length[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, length in length %}
+                                                <option value="{{length.getIdUnit}}_{{length.getTypeUnit}}" data-aid="#lengthCoeffA" data-bid="#lengthCoeffB" data-label="#conductivityLabel"> {{length.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="lengthCoeffA" name="lengthCoeffA" value="{{length[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="lengthCoeffB" name="lengthCoeffB" value="{{length[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{line[0].getSymbol}}" data-idunit="{{line[0].getIdUnit}}_{{line[0].getTypeUnit}}" data-unita="{{line[0].getCoeffA}}" data-bunitb="{{line[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Line'|trans}}</a></td>
+                                        <td>{{line[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, line in line %}
+                                                <option value="{{line.getIdUnit}}_{{line.getTypeUnit}}" data-aid="#lineCoeffA" data-bid="#lineCoeffB" data-label="#conductivityLabel"> {{line.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="lineCoeffA" name="lineCoeffA" value="{{line[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="lineCoeffB" name="lineCoeffB" value="{{line[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{losser1[0].getSymbol}}" data-idunit="{{losser1[0].getIdUnit}}_{{losser1[0].getTypeUnit}}" data-unita="{{losser1[0].getCoeffA}}" data-bunitb="{{losser1[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Losses in get cold (Line)'|trans}}</a></td>
+                                        <td>{{losser1[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, losser1 in losser1 %}
+                                                <option value="{{losser1.getIdUnit}}_{{losser1.getTypeUnit}}" data-aid="#losser1CoeffA" data-bid="#losser1CoeffB" data-label="#conductivityLabel"> {{losser1.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="losser1CoeffA" name="losser1CoeffA" value="{{losser1[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="losser1CoeffB" name="losser1CoeffB" value="{{losser1[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{losser2[0].getSymbol}}" data-idunit="{{losser2[0].getIdUnit}}_{{losser2[0].getTypeUnit}}" data-unita="{{losser2[0].getCoeffA}}" data-bunitb="{{losser2[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Permanent Heat losses (Line)'|trans}}</a></td>
+                                        <td>{{losser2[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, losser2 in losser2 %}
+                                                <option value="{{losser2.getIdUnit}}_{{losser2.getTypeUnit}}" data-aid="#losser2CoeffA" data-bid="#losser2CoeffB" data-label="#conductivityLabel"> {{losser2.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="losser2CoeffA" name="losser2CoeffA" value="{{losser2[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="losser2CoeffB" name="losser2CoeffB" value="{{losser2[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{mass[0].getSymbol}}" data-idunit="{{mass[0].getIdUnit}}_{{mass[0].getTypeUnit}}" data-unita="{{mass[0].getCoeffA}}" data-bunitb="{{mass[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Mass'|trans}}</a></td>
+                                        <td>{{mass[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, mass in mass %}
+                                                <option value="{{mass.getIdUnit}}_{{mass.getTypeUnit}}" data-aid="#massCoeffA" data-bid="#massCoeffB" data-label="#conductivityLabel"> {{mass.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="massCoeffA" name="massCoeffA" value="{{mass[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="massCoeffB" name="massCoeffB" value="{{mass[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{massPerUnit[0].getSymbol}}" data-idunit="{{massPerUnit[0].getIdUnit}}_{{massPerUnit[0].getTypeUnit}}" data-unita="{{massPerUnit[0].getCoeffA}}" data-bunitb="{{massPerUnit[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Unit of mass (consumption)'|trans}}</a></td>
+                                        <td>{{massPerUnit[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, massPerUnit in massPerUnit %}
+                                                <option value="{{massPerUnit.getIdUnit}}_{{massPerUnit.getTypeUnit}}" data-aid="#massUCoeffA" data-bid="#massUCoeffB" data-label="#conductivityLabel"> {{massPerUnit.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="massUCoeffA" name="massUCoeffA" value="{{massPerUnit[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="massUCoeffB" name="massUCoeffB" value="{{massPerUnit[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{materialRise[0].getSymbol}}" data-idunit="{{materialRise[0].getIdUnit}}_{{materialRise[0].getTypeUnit}}" data-unita="{{materialRise[0].getCoeffA}}" data-bunitb="{{materialRise[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Material Rise'|trans}}</a></td>
+                                        <td>{{materialRise[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, materialRise in materialRise %}
+                                                <option value="{{materialRise.getIdUnit}}_{{materialRise.getTypeUnit}}" data-aid="#materialRCoeffA" data-bid="#materialRCoeffB" data-label="#conductivityLabel"> {{materialRise.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="materialRCoeffA" name="materialRCoeffA" value="{{materialRise[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="materialRCoeffB" name="materialRCoeffB" value="{{materialRise[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{meshCut[0].getSymbol}}" data-idunit="{{meshCut[0].getIdUnit}}_{{meshCut[0].getTypeUnit}}" data-unita="{{meshCut[0].getCoeffA}}" data-bunitb="{{meshCut[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Mesh cut'|trans}}</a></td>
+                                        <td>{{meshCut[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, meshCut in meshCut %}
+                                                <option value="{{meshCut.getIdUnit}}_{{meshCut.getTypeUnit}}" data-aid="#meshCutCoeffA" data-bid="#meshCutCoeffB" data-label="#conductivityLabel"> {{meshCut.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="meshCutCoeffA" name="meshCutCoeffA" value="{{meshCut[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="meshCutCoeffB" name="meshCutCoeffB" value="{{meshCut[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{pressure[0].getSymbol}}" data-idunit="{{pressure[0].getIdUnit}}_{{pressure[0].getTypeUnit}}" data-unita="{{pressure[0].getCoeffA}}" data-bunitb="{{pressure[0].getCoeffB}}" class="modalPage" id="conductivityLabel" data-type="{{conductivity[0].getTypeUnit}}">{{'Pressure'|trans}}</a></td>
+                                        <td>{{pressure[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, pressure in pressure %}
+                                                <option value="{{pressure.getIdUnit}}_{{pressure.getTypeUnit}}" data-aid="#pressureCoeffA" data-bid="#pressureCoeffB" data-label="#conductivityLabel"> {{pressure.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="pressureCoeffA" name="pressureCoeffA" value="{{pressure[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="pressureCoeffB" name="pressureCoeffB" value="{{pressure[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{productChartDemension[0].getSymbol}}" data-idunit="{{productChartDemension[0].getIdUnit}}_{{productChartDemension[0].getTypeUnit}}" data-unita="{{productChartDemension[0].getCoeffA}}" data-bunitb="{{productChartDemension[0].getCoeffB}}" class="modalPage" id="conductivityLabel" data-type="{{conductivity[0].getTypeUnit}}">{{'Product dimension - product chart'|trans}}</a></td>
+                                        <td>{{productChartDemension[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, productChartDemension in productChartDemension %}
+                                                <option value="{{productChartDemension.getIdUnit}}_{{productChartDemension.getTypeUnit}}" data-aid="#productChartDCoeffA" data-bid="#productChartDCoeffB" data-label="#conductivityLabel"> {{productChartDemension.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="productChartDCoeffA" name="productChartDCoeffA" value="{{productChartDemension[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="productChartDCoeffB" name="productChartDCoeffB" value="{{productChartDemension[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{productFlow[0].getSymbol}}" data-idunit="{{productFlow[0].getIdUnit}}_{{productFlow[0].getTypeUnit}}" data-unita="{{productFlow[0].getCoeffA}}" data-bunitb="{{productFlow[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Product flow'|trans}}</a></td>
+                                        <td>{{productFlow[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, productFlow in productFlow %}
+                                                <option value="{{productFlow.getIdUnit}}_{{productFlow.getTypeUnit}}" data-aid="#productFCoeffA" data-bid="#productFCoeffB" data-label="#conductivityLabel"> {{productFlow.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="productFCoeffA" name="productFCoeffA" value="{{productFlow[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="productFCoeffB" name="productFCoeffB" value="{{productFlow[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{productDemension[0].getSymbol}}" data-idunit="{{productDemension[0].getIdUnit}}_{{productDemension[0].getTypeUnit}}" data-unita="{{productDemension[0].getCoeffA}}" data-bunitb="{{productDemension[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Product dimension'|trans}}</a></td>
+                                        <td>{{productDemension[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, productDemension in productDemension %}
+                                                <option value="{{productDemension.getIdUnit}}_{{productDemension.getTypeUnit}}" data-aid="#productDeCoeffA" data-bid="#productDeCoeffB" data-label="#conductivityLabel"> {{productDemension.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="productDeCoeffA" name="productDeCoeffA" value="{{productDemension[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="productDeCoeffB" name="productDeCoeffB" value="{{productDemension[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{tankCapacity[0].getSymbol}}" data-idunit="{{tankCapacity[0].getIdUnit}}_{{tankCapacity[0].getTypeUnit}}" data-unita="{{tankCapacity[0].getCoeffA}}" data-bunitb="{{tankCapacity[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'CO2 tank capacity'|trans}}</a></td>
+                                        <td>{{tankCapacity[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, tankCapacity in tankCapacity %}
+                                                <option value="{{tankCapacity.getIdUnit}}_{{tankCapacity.getTypeUnit}}" data-aid="#tankCCoeffA" data-bid="#tankCCoeffB" data-label="#conductivityLabel"> {{tankCapacity.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="tankCCoeffA" name="tankCCoeffA" value="{{tankCapacity[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="tankCCoeffB" name="tankCCoeffB" value="{{tankCapacity[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{tankCapacityLN2[0].getSymbol}}" data-idunit="{{tankCapacityLN2[0].getIdUnit}}_{{tankCapacityLN2[0].getTypeUnit}}" data-unita="{{tankCapacityLN2[0].getCoeffA}}" data-bunitb="{{tankCapacityLN2[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'LN2 tank capacity'|trans}}</a></td>
+                                        <td>{{tankCapacityLN2[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, tankCapacityLN2 in tankCapacityLN2 %}
+                                                <option value="{{tankCapacityLN2.getIdUnit}}_{{tankCapacityLN2.getTypeUnit}}" data-aid="#tankCLn2CoeffA" data-bid="#tankCLn2CoeffB" data-label="#conductivityLabel"> {{tankCapacityLN2.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="tankCLn2CoeffA" name="tankCLn2CoeffA" value="{{tankCapacityLN2[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="tankCLn2CoeffB" name="tankCLn2CoeffB" value="{{tankCapacityLN2[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{slopesPosistion[0].getSymbol}}" data-idunit="{{slopesPosistion[0].getIdUnit}}_{{slopesPosistion[0].getTypeUnit}}" data-unita="{{slopesPosistion[0].getCoeffA}}" data-bunitb="{{slopesPosistion[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Slopes position'|trans}}</a></td>
+                                        <td>{{slopesPosistion[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, slopesPosistion in slopesPosistion %}
+                                                <option value="{{slopesPosistion.getIdUnit}}_{{slopesPosistion.getTypeUnit}}" data-aid="#slopesPCoeffA" data-bid="#slopesPCoeffB" data-label="#conductivityLabel"> {{slopesPosistion.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="slopesPCoeffA" name="slopesPCoeffA" value="{{slopesPosistion[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="slopesPCoeffB" name="slopesPCoeffB" value="{{slopesPosistion[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{specificHeat[0].getSymbol}}" data-idunit="{{specificHeat[0].getIdUnit}}_{{specificHeat[0].getTypeUnit}}" data-unita="{{specificHeat[0].getCoeffA}}" data-bunitb="{{specificHeat[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Specific Heat'|trans}}</a></td>
+                                        <td>{{specificHeat[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, specificHeat in specificHeat %}
+                                                <option value="{{specificHeat.getIdUnit}}_{{specificHeat.getTypeUnit}}" data-aid="#specificHCoeffA" data-bid="#specificHCoeffB" data-label="#conductivityLabel"> {{specificHeat.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="specificHCoeffA" name="specificHCoeffA" value="{{specificHeat[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="specificHCoeffB" name="specificHCoeffB" value="{{specificHeat[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{temperature[0].getSymbol}}" data-idunit="{{temperature[0].getIdUnit}}_{{temperature[0].getTypeUnit}}" data-unita="{{temperature[0].getCoeffA}}" data-bunitb="{{temperature[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Temperature'|trans}}</a></td>
+                                        <td>{{temperature[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, temperature in temperature %}
+                                                <option value="{{temperature.getIdUnit}}_{{temperature.getTypeUnit}}" data-aid="#temperCoeffA" data-bid="#temperCoeffB" data-label="#conductivityLabel"> {{temperature.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="temperCoeffA" name="temperCoeffA" value="{{temperature[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="temperCoeffB" name="temperCoeffB" value="{{temperature[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{thickPacking[0].getSymbol}}" data-idunit="{{thickPacking[0].getIdUnit}}_{{thickPacking[0].getTypeUnit}}" data-unita="{{thickPacking[0].getCoeffA}}" data-bunitb="{{thickPacking[0].getCoeffB}}" class="modalPage" data-type="{{conductivity[0].getTypeUnit}}" id="conductivityLabel">{{'Thickness packing'|trans}}</a></td>
+                                        <td>{{thickPacking[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, thickPacking in thickPacking %}
+                                                <option value="{{thickPacking.getIdUnit}}_{{thickPacking.getTypeUnit}}" data-aid="#thickPCoeffA" data-bid="#thickPCoeffB" data-label="#conductivityLabel"> {{thickPacking.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="thickPCoeffA" name="thickPCoeffA" value="{{thickPacking[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="thickPCoeffB" name="thickPCoeffB" value="{{thickPacking[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{time[0].getSymbol}}" data-idunit="{{time[0].getIdUnit}}_{{time[0].getTypeUnit}}" data-unita="{{time[0].getCoeffA}}" data-bunitb="{{time[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Time'|trans}}</a></td>
+                                        <td>{{time[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, time in time %}
+                                                <option value="{{time.getIdUnit}}_{{time.getTypeUnit}}" data-aid="#timeCoeffA" data-bid="#timeCoeffB" data-label="#conductivityLabel"> {{time.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="timeCoeffA" name="timeCoeffA" value="{{time[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="timeCoeffB" name="timeCoeffB" value="{{time[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="javascript:;" data-url="/modalUnitPage" data-symbol="{{caper[0].getSymbol}}" data-idunit="{{caper[0].getIdUnit}}_{{caper[0].getTypeUnit}}" data-unita="{{caper[0].getCoeffA}}" data-bunitb="{{caper[0].getCoeffB}}" data-type="{{conductivity[0].getTypeUnit}}" class="modalPage" id="conductivityLabel">{{'Carper/Sieve width'|trans}}</a></td>
+                                        <td>{{caper[0].getSymbol}}</td>
+                                        <td>
+                                            <select name="" class="form-control chosen-select">
+                                                {% for index, caper in caper %}
+                                                <option value="{{caper.getIdUnit}}_{{caper.getTypeUnit}}" data-aid="#caperCoeffA" data-bid="#caperCoeffB" data-label="#conductivityLabel"> {{caper.getSymbol}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="caperCoeffA" name="caperCoeffA" value="{{caper[0].getCoeffA}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="caperCoeffB" name="caperCoeffB" value="{{caper[0].getCoeffB}}" class="form-control input-radius" disabled="">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

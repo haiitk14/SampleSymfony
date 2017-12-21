@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Consumptions" table="consumptions">
+    <indexes>
+      <index name="FK_CONSUMPTIONS_EQUIPMENT" columns="ID_EQUIP"/>
+    </indexes>
+    <id name="idConsumptions" type="integer" column="ID_CONSUMPTIONS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="temperature" type="binary" column="TEMPERATURE" nullable="true"/>
+    <field name="consumptionPerm" type="binary" column="CONSUMPTION_PERM" nullable="true"/>
+    <field name="consumptionGetcold" type="binary" column="CONSUMPTION_GETCOLD" nullable="true"/>
+    <many-to-one field="idEquip" target-entity="Equipment" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIP" referenced-column-name="ID_EQUIP"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

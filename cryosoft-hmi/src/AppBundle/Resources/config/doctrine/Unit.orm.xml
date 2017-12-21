@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Unit" table="unit">
+    <id name="idUnit" type="integer" column="ID_UNIT">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="typeUnit" type="integer" column="TYPE_UNIT" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="symbol" type="string" column="SYMBOL" length="22" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="coeffA" type="float" column="COEFF_A" precision="10" scale="0" nullable="true"/>
+    <field name="coeffB" type="float" column="COEFF_B" precision="10" scale="0" nullable="true"/>
+    <many-to-many field="idUser" target-entity="Ln2user" mapped-by="idUnit" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Shape" table="shape">
+    <id name="idShape" type="integer" column="ID_SHAPE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="shapecode" type="integer" column="SHAPECODE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="shapepict" type="string" column="SHAPEPICT" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sym1" type="boolean" column="SYM_1" nullable="true"/>
+    <field name="sym2" type="boolean" column="SYM_2" nullable="true"/>
+    <field name="sym3" type="boolean" column="SYM_3" nullable="true"/>
+    <field name="axisym1" type="boolean" column="AXISYM_1" nullable="true"/>
+    <field name="axisym2" type="boolean" column="AXISYM_2" nullable="true"/>
+    <field name="axisym3" type="boolean" column="AXISYM_3" nullable="true"/>
+  </entity>
+</doctrine-mapping>

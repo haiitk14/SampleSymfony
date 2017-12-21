@@ -1,0 +1,287 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs">
+                            <li class=""><a href="/home/fromlogin" aria-expanded="false" >{{'Dashboard'|trans}}</a></li>
+                            <li class="active"><a href="/definition" aria-expanded="false">{{'Definitition'|trans}}</a></li>
+                            <li class=""><a id="productionLink" href="/production" aria-expanded="false" style="pointer-events: none">{{'Production'|trans}}</a></li>
+                            <li class=""><a id="linkpro" href="/productChar" aria-expanded="false" style="pointer-events: none">{{'Product and characteristic'|trans}}</a></li>
+                            <li class=""><a id="linkMesh" href="/mesh" aria-expanded="false" style="pointer-events: none">{{'Mesh initial temperature'|trans}}</a></li>
+                            <li class=""><a id="linkPack" href="/packing" aria-expanded="false" style="pointer-events: none">{{'Packing'|trans}}</a></li>
+                            <li class=""><a id="linkEqui" href="/equipments" aria-expanded="false" style="pointer-events: none">{{'Equipment'|trans}}</a></li>
+                            <li class=""><a id="linkLine" href="/line" aria-expanded="false" style="pointer-events: none">{{'Line'|trans}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                {{'New Study'|trans}}
+                <small>{{'Summary info'|trans}}</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/home"><i class="fa fa-dashboard"></i>{{'Home'|trans}}</a></li>
+                <li><a href="/definition">{{'New Study'|trans}}</a></li>
+                <li class="active">{{'New'|trans}}</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Main row -->
+            <div class="row">
+                <div class="nav-tabs-custom">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs pull-right">
+                            {# <li><a href="#" data-target="#modal-import" data-toggle="modal">{{'Import'|trans}}</a></li> #}
+                            <li><a id="id-open-study" href="/open">{{'Open'|trans}}</a></li>
+                            <li class="active"><a href="/definition">{{'New'|trans}}</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <!-- small tab new -->
+                            <div class="tab-pane active" id="tab_3-2">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="row">
+                                            <div class="col-md-11">
+                                                <a href="#" class="pull-right" data-toggle="modal" data-target="#helpdefi" id="popoverData" data-placement="bottom" data-original-title="Help" data-trigger="manual">
+                                                    <i class="fa fa-question-circle " style="font-size: 34px; padding: 0 13px;"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a href="#" class="pull-right" data-toggle="modal" data-target="#modal-infodefi" id="popoverData1" data-placement="bottom" data-original-title="Info" data-trigger="manual">
+                                                    <i class="fa fa-info-circle " style="font-size: 34px;"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- div row -->
+                                <form role="form" method="POST" action="/definition">
+                                    {% for flash_massage in app.session.flashbag.get('error') %}
+                                        <div class="alert alert-danger alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                            <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+                                            <span style="color:#ffffff";><strong>{{flash_massage}}</strong></span>
+                                        </div>
+                                    {% endfor %}
+
+                                    
+
+                                    {% for flash_massage in app.session.flashbag.get('mess-success') %}
+                                        <div class="alert alert-success alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                            <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                                            <span style="color:#ffffff";><strong>{{flash_massage}}</strong></span>
+                                        </div>
+                                        {#<br/><span style="color:red";><strong>{{flash_massage}}</strong></span>#}
+                                    {% endfor %}
+                                    <div class="row">
+                                        <!-- div define colum                    -->
+                                        <div class="col-md-12">
+                                            <!-- div devide colum 6 -->
+                                            <div class="col-md-6" style="padding: 0 15px;">
+                                                <!-- form devide colum 6 -->
+                                                    <div class="form-group group">
+                                                        <label class="style-label">
+                                                            <img src="../../assets/dist/img/Icon/info.svg"> {{'Infor'|trans}}
+                                                        </label>
+                                                        <br>
+                                                        <label>
+                                                            {{'Study name'|trans}}
+                                                        </label>
+                                                        <input class="form-control input-radius" id="name" name="_studyName" type="text" />
+
+                                                    </div>
+
+                                                    <div class="form-group group">
+                                                        <label>
+                                                            {{'Comment'|trans}}
+                                                        </label>
+                                                        <textarea class="form-control input-radius" name="_comment" type="text"></textarea>
+                                                    </div>
+                                                <!-- close form -->
+                                                <!-- close devide colum 6 -->
+                                            </div>
+                                            <!-- div devide colum 6 -->
+                                            <div class="col-md-6">
+                                                <!-- form divide colum 6 -->
+                                                    <!-- divide small colum 5/12 -->
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label class="style-label">
+                                                                <img src="./assets/dist/img/Icon/Calculationmode.svg"> {{'Calculation mode'|trans}}
+                                                            </label>
+                                                            <div class="checkbox icheck">
+                                                                <label>
+                                                                    <input type="radio" name="r1" value="1" > {{'Estimation'|trans}}
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox icheck">
+                                                                <label class=" ">
+                                                                    <input type="radio" checked  name="r1" value="3"> {{'Optimum Equipment'|trans}}
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox icheck">
+                                                                <label class=" ">
+                                                                    <input type="radio" name="r1" value="2"> {{'Selected Equipment'|trans}}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <!-- close small devide -->
+                                                <!-- devide small colum 7/12 -->
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <label class="style-label">
+                                                            <img src="./assets/dist/img/Icon/option.svg"> {{'Option'|trans}}
+                                                        </label>
+                                                        <div class="checkbox icheck">
+                                                            <label class=" ">
+                                                                <input type="checkbox" name="_econo" class="class-eco" id="id-eco-new" value="1"> {{'Economic'|trans}}
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox icheck">
+                                                            <label class=" ">
+                                                                <input type="checkbox" name="_cyogen" class="class-cryogenic-pieline" id="id-cryogenic-pieline-new" value="2"> {{'Cryogenic Pipeline'|trans}}
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox icheck">
+                                                            <label class=" ">
+                                                                <input type="checkbox" name="_chainingControls" class="class-perform-chaining" id="id-perform-chaining-new" value="3"> {{'Perform Chaining checks'|trans}}
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox icheck">
+                                                            <label class=" ">
+                                                                <input type="checkbox" name="_chainingAddCompEnable" class="class-adding-component" id="id-adding-component-new" value="4"> {{'Allow Adding components in child study'|trans}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group button">
+                                            <button class="btn btn-primary btn-flat buttons margin" type="submit" ><i class="fa fa-check"></i> {{'Save'|trans}}</button>
+                                            <button class="btn btn-flat buttons button-color" type="reset" name="reset"><i class="fa fa-refresh"></i> {{'Reset'|trans}}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row (main row) -->
+                    <!-- click help -->
+                    <div class="modal fade" id="helpdefi">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Definition Page</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Help definition
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./help -->
+                    <!-- modal import -->
+                    <div class="modal fade" id="modal-import">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">{{'Import File'|trans}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div style="text-align: center;">
+                                        <h5 style="color: red;">{{'The import process might take a while'|trans}}</h5>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>{{'Entity'|trans}}</th>
+                                                <th>{{'Action'|trans}}</th>
+                                                <th>{{'Delete'|trans}}</th>
+                                            </tr>
+                                            <tr>
+                                                <td>esquimo.study.zip</td>
+                                                <td><a href="#">{{'Import'|trans}}</a></td>
+                                                <td class="fix-center"><a href="#" class="btn btn-block btn-danger btn-flat btn-lg buttonPro" type="delete" name="delete"><i class="w3-xxxlarge glyphicon glyphicon-remove" data-toggle="modal" data-target="#modal-delImport"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>esquimo.study.zip</td>
+                                                <td><a href="#">{{'Import'|trans}}</a></td>
+                                                <td class="fix-center"><a href="#" class="btn btn-block btn-danger btn-flat btn-lg buttonPro" type="delete" name="delete"><i class="w3-xxxlarge glyphicon glyphicon-remove" data-toggle="modal" data-target="#modal-delImport"></i></a></td>
+                                            </tr>
+
+                                        </table>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger btn-flat button-block" data-dismiss="modal"><i class="fa fa-times"></i>{{'Close'|trans}}</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- modal del import -->
+                    <div class="modal modal-warning fade" id="modal-delImport">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">{{'Confirm Action'|trans}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <label>{{'Are you sure to delete it!!!'|trans}}</label>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline btn-flat buttons pull-left" data-dismiss="modal"><i class="fa fa-times"></i>{{'Cancel'|trans}}</button>
+                                    <button type="button" class="btn btn-outline btn-flat buttons"><i class="fa fa-check"></i>{{'Confirm'|trans}}</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /. modal del import -->
+                </div></div></section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 3.0
+        </div>
+        <strong>Copyright &copy; 2017 <a href="#">CryoSoft</a>.</strong> All rights reserved.
+    </footer>
+
+
+</div>
+<!-- ./wrapper -->
+</body>
+{% endblock %}

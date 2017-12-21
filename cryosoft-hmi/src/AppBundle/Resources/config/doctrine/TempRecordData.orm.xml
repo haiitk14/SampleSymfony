@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\TempRecordData" table="temp_record_data">
+    <indexes>
+      <index name="IX_ID_REC_POS" columns="ID_REC_POS"/>
+    </indexes>
+    <id name="idTempRecordData" type="integer" column="ID_TEMP_RECORD_DATA">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="recAxisXPos" type="integer" column="REC_AXIS_X_POS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="recAxisYPos" type="integer" column="REC_AXIS_Y_POS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="recAxisZPos" type="integer" column="REC_AXIS_Z_POS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="temp" type="float" column="TEMP" precision="24" scale="0" nullable="true"/>
+    <field name="enth" type="float" column="ENTH" precision="24" scale="0" nullable="true"/>
+    <field name="trdBuffer" type="boolean" column="TRD_BUFFER" nullable="true"/>
+    <field name="trdState" type="boolean" column="TRD_STATE" nullable="true"/>
+    <many-to-one field="idRecPos" target-entity="RecordPosition" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_REC_POS" referenced-column-name="ID_REC_POS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

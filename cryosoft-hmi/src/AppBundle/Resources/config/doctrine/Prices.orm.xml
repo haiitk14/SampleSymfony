@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Prices" table="prices">
+    <indexes>
+      <index name="FK_PRICES_STUDIES" columns="ID_STUDY"/>
+    </indexes>
+    <id name="idPrice" type="integer" column="ID_PRICE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="energy" type="float" column="ENERGY" precision="10" scale="0" nullable="true"/>
+    <field name="ecoInCryo1" type="float" column="ECO_IN_CRYO1" precision="10" scale="0" nullable="true"/>
+    <field name="ecoInPbp1" type="float" column="ECO_IN_PBP1" precision="10" scale="0" nullable="true"/>
+    <field name="ecoInCryo2" type="float" column="ECO_IN_CRYO2" precision="10" scale="0" nullable="true"/>
+    <field name="ecoInPbp2" type="float" column="ECO_IN_PBP2" precision="10" scale="0" nullable="true"/>
+    <field name="ecoInCryo3" type="float" column="ECO_IN_CRYO3" precision="10" scale="0" nullable="true"/>
+    <field name="ecoInPbp3" type="float" column="ECO_IN_PBP3" precision="10" scale="0" nullable="true"/>
+    <field name="ecoInCryo4" type="float" column="ECO_IN_CRYO4" precision="10" scale="0" nullable="true"/>
+    <field name="ecoInMinmp" type="float" column="ECO_IN_MINMP" precision="10" scale="0" nullable="true"/>
+    <field name="ecoInMaxmp" type="float" column="ECO_IN_MAXMP" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idStudy" target-entity="Studies" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_STUDY" referenced-column-name="ID_STUDY"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

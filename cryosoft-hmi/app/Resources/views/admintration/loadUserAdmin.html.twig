@@ -1,0 +1,195 @@
+{% extends 'base.html.twig' %} {% block body %}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="/newUser" aria-expanded="false">{{'Users'|trans}}</a></li>
+                            <li class=""><a href="/unitsManager" aria-expanded="false">{{'Unit'|trans}}</a></li>
+                            <li class=""><a href="/admin/_trans" aria-expanded="false">{{'Translation'|trans}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>{{'User - Load'|trans}}<small>{{'Summary info'|trans}}</small></h1>
+                <ol class="breadcrumb">
+                    <li><a href="/home"><i class="fa fa-dashboard"></i> {{'Home'|trans}}</a></li>
+                    <li><a href="/newUser">{{'Users'|trans}}</a></li>
+                    <li class="active">{{'Load'|trans}}</li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="nav-tabs-custom">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs pull-right">
+                            <li class=""><a href="/connection">{{'Connection'|trans}}</a></li>
+                            <li class="active"><a href="/loadUser">{{'Load'|trans}}</a></li>
+                            <li class=""><a href="/newUser">{{'New'|trans}}</a></li>
+                        </ul>
+                        <div class="row">
+                            <!-- div row -->
+                            <!-- div col-md-12 -->
+                            <form class="form-inline" id="load-form-user" role="form" method="POST" action="/loadUser">
+                                <div class="col-md-6">
+                                    {% for flash_massage in app.session.flashbag.get('error') %}
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-warning"></i>{{'Alert'|trans}} !</h4>
+                                        <span style="color:#ffffff;" ;><strong>{{flash_massage}}</strong></span>
+                                    </div>
+                                    {% endfor %} {% for flash_massage in app.session.flashbag.get('success') %}
+                                    <div class="alert alert-success alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-check"></i> {{'Alert'|trans}}!</h4>
+                                        <span style="color:#ffffff;" ;><strong>{{flash_massage}}</strong></span>
+                                    </div>
+                                    {% endfor %} {% for flash_massage in app.session.flashbag.get('Discsuccess') %}
+                                    <div class="alert alert-success alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-check"></i> {{'Alert'|trans}}!</h4>
+                                        <span style="color:#ffffff;" ;><strong>{{flash_massage}}</strong></span>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="form-group group">
+                                        <h2>
+                     {{'User selection'|trans}} :
+                  </h2>
+                                        <label>{{'Login'|trans}}</label>
+                                        <select id="chooseLog" name="_chooseLog" class="form-control chosen-select">
+                                            <option value="">{{'Choose login name'|trans}}</option>
+                                            {% for listUser in listUser %}
+                                            <option value="{{listUser.idUser}}" style="text-transform: uppercase;">{{listUser.usernam}}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <br/>
+                                        <h2>
+                      {{'User modification'|trans}} :
+                  </h2>
+                                        <div class="form_group has-feedback">
+                                            <input type="text" placeholder="Login" id="loginUsername" name="_loginUsername" class="form-control input-radius" style="text-transform: uppercase;">
+                                            <span class="glyphicon glyphicon-user form-control-feedback"></span></p>
+                                        </div>
+                                        <div class="form_group has-feedback">
+                                            <input type="text" placeholder="Email" id="loginUsermail" name="_loginUsermail" value="" class="form-control input-radius">
+                                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span></p>
+                                        </div>
+                                        <div class="form_group has-feedback">
+                                            <input type="password" placeholder="Password" id="loginUserpass" name="_loginUserpass" class="form-control input-radius">
+                                            <span class="glyphicon glyphicon-lock form-control-feedback"></span></p>
+                                        </div>
+                                        <div class="form_group has-feedback">
+                                            <input type="password" placeholder="Confirm password" id="loginConUserpass" name="_loginConUserpass" class="form-control input-radius">
+                                            <span class="glyphicon glyphicon-lock form-control-feedback"></span></p>
+                                        </div>
+
+                                    </div>
+                                    <!-- div group -->
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-flat margin buttons" type="submit" id="updateUser" name="updateUser"><i class="fa fa-check"></i> {{'Save'|trans}}</button>
+                                        <button class="btn btn-danger btn-flat margin buttons" type="submit" id="deleteUser" name="deleteUser"><i class="fa fa-check"></i> {{'Delete'|trans}}</button>
+                                        <button class="btn btn-danger btn-flat margin buttons" type="submit" name="diconnect" id="diconnect"><i class="fa fa-check"></i>{{'Disconnect'|trans}} </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="">
+                                        <h2>{{'Users connected'|trans}}</h2>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="tableDiconnect">
+                                            <tr>
+                                                <th colspan="2">{{'Login'|trans}}</th>
+                                                <th>{{'Disconnect'|trans}}</th>
+                                            </tr>
+                                            {% if getListUserConnected != null %} {% for getListUserConnected in getListUserConnected %}
+                                            <tr>
+                                                <td colspan="2">{{getListUserConnected[2]}}</td>
+                                                <td><a href="diconnect/{{getListUserConnected[1]}}"  data-IdUser ="{{getListUserConnected[1]}}" type="submit"> <i class="fa fa-ban" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                            
+                                            {% endfor %} {% else %}
+                                            <tr>
+                                                <th colspan="6">{{'Connection List is empty'|trans}}</th>
+                                            </tr>
+                                            {% endif %}
+                                            <tr>
+                                                <td colspan="3">
+                                                    <button class="btn btn-primary btn-info margin buttons" id="refeshConnection" type="submit" name="Refresh"><i class="fa fa-refresh"></i>{{'Refresh'|trans}} </button>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                            </div>
+                            </div>
+            </section>
+            </div>
+            </div>
+</body>
+<script type="text/javascript">
+    $(function() {
+        $('#chooseLog').on('change', function() {
+            var that = $(this);
+            // alert(that.val());
+            var id = that.val();
+            $.ajax('/loadUser', {
+                data: {
+                    'id': id
+                },
+                type: 'POST',
+                dataType: 'json',
+                success: function(ret) {
+                    var info = ret;
+                    $('#loginUsername').val(info['username']);
+                    $('#loginUsermail').val(info['email']);
+                    $('#updateUser').val(info['updateUser']);
+                    $('#deleteUser').val(info['deleteUser']);
+                    $('#diconnect').val(info['diconnect']);
+                }
+            })
+        });
+        $('#updateUser').click(function() {
+            //change action for form
+            $("#load-form-user").attr("action", "/saveAdmin");
+            //form.submit
+            document.getElementById("#load-form-user").submit();
+        })
+        $('#deleteUser').click(function() {
+            //change action for form
+            $("#load-form-user").attr("action", "/delete");
+            //form.submit
+            document.getElementById("#load-form-user").submit();
+        })
+        $('#refeshConnection').click(function() {
+            //change action for form
+            $("#load-form-user").attr("action", "/refesh");
+            //form.submit
+            document.getElementById("#load-form-user").submit();
+        })
+        $('#iconBan').click(function() {
+            //change action for form
+            $("#load-form-user").attr("action", "/disconect");
+            //form.submit
+            document.getElementById("#load-form-user").submit();
+        })
+        $('#diconnect').click(function() {
+            //change action for form
+            $("#load-form-user").attr("action", "/disconnect");
+            //form.submit
+            document.getElementById("#load-form-user").submit();
+        })
+        $('#tableDiconnect').on('click', 'a', function() {
+            $("#iconBan").val($(this).data('idUser'));
+        });
+    });
+</script>
+
+{% endblock %}

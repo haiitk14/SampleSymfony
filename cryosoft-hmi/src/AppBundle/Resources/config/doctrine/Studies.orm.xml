@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Studies" table="studies">
+    <indexes>
+      <index name="FK_STUDIES_LN2USER" columns="ID_USER"/>
+    </indexes>
+    <id name="idStudy" type="integer" column="ID_STUDY">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idTempRecordPts" type="integer" column="ID_TEMP_RECORD_PTS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idProduction" type="integer" column="ID_PRODUCTION" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idPacking" type="integer" column="ID_PACKING" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idStudyResults" type="integer" column="ID_STUDY_RESULTS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idProd" type="integer" column="ID_PROD" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idPrice" type="integer" column="ID_PRICE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idHaverageResults" type="integer" column="ID_HAVERAGE_RESULTS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idReport" type="integer" column="ID_REPORT" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idPrecalcLdgRatePrm" type="integer" column="ID_PRECALC_LDG_RATE_PRM" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="calculationMode" type="integer" column="CALCULATION_MODE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="calculationStatus" type="integer" column="CALCULATION_STATUS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="studyName" type="string" column="STUDY_NAME" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="customer" type="string" column="CUSTOMER" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="commentTxt" type="string" column="COMMENT_TXT" length="2000" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="optionCryopipeline" type="boolean" column="OPTION_CRYOPIPELINE" nullable="true"/>
+    <field name="optionExhaustpipeline" type="boolean" column="OPTION_EXHAUSTPIPELINE" nullable="true"/>
+    <field name="optionEco" type="boolean" column="OPTION_ECO" nullable="true"/>
+    <field name="chainingControls" type="boolean" column="CHAINING_CONTROLS" nullable="true"/>
+    <field name="chainingAddCompEnable" type="boolean" column="CHAINING_ADD_COMP_ENABLE" nullable="true"/>
+    <field name="chainingNodeDecimEnable" type="boolean" column="CHAINING_NODE_DECIM_ENABLE" nullable="true"/>
+    <field name="toRecalculate" type="boolean" column="TO_RECALCULATE" nullable="true"/>
+    <field name="parentId" type="integer" column="PARENT_ID" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="parentStudEqpId" type="integer" column="PARENT_STUD_EQP_ID" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="hasChild" type="boolean" column="HAS_CHILD" nullable="true"/>
+    <field name="openByOwner" type="boolean" column="OPEN_BY_OWNER" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="idUser" target-entity="Ln2user"  inversed-by="idStudy" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_USER" referenced-column-name="ID_USER"/>
+      </join-columns>
+    </many-to-one>
+    <!-- <one-to-many field="idProd" target-entity="Product" mapped-by="idStudy" fetch="LAZY" /> -->
+  </entity>
+</doctrine-mapping>
